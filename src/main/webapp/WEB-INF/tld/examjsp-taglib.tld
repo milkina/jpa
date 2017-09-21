@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>exam-tags</shortname>
+    <info>
+        A tag library for Exam.
+    </info>
+    <tag>
+        <name>checkbox</name>
+        <tagclass>main.java.tags.exam.CheckboxTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Checkbox for selecting answered questions</info>
+    </tag>
+    <tag>
+        <name>number</name>
+        <tagclass>main.java.tags.exam.NumberTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Number of the current question in the exam.</info>
+    </tag>
+    <tag>
+        <name>size</name>
+        <tagclass>main.java.tags.exam.ExamSizeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Number of questions in the exam.</info>
+    </tag>
+    <tag>
+        <name>previousButton</name>
+        <tagclass>main.java.tags.exam.PreviousButtonTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Button to select previous question in the exam.</info>
+    </tag>
+    <tag>
+        <name>nextButton</name>
+        <tagclass>main.java.tags.exam.NextButtonTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Button to select next question in the exam.</info>
+    </tag>
+</taglib>

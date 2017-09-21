@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>question-tags</shortname>
+    <info>
+        A tag library for Question Entry List.
+    </info>
+
+    <tag>
+        <name>qeList</name>
+        <tagclass>main.java.tags.questionEntry.QuestionEntryListTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Question Entry tag.</info>
+    </tag>
+    <tag>
+        <name>qe</name>
+        <tagclass>main.java.tags.questionEntry.QuestionEntryTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Question Entry parent tag.</info>
+    </tag>
+    <tag>
+        <name>id</name>
+        <tagclass>main.java.tags.questionEntry.QuestionEntryIdTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Id of Question Entry.</info>
+    </tag>
+    <tag>
+        <name>type</name>
+        <tagclass>main.java.tags.questionEntry.QuestionEntryTypeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Name of class for li.</info>
+    </tag>
+    <tag>
+        <name>checkbox</name>
+        <tagclass>main.java.tags.questionEntry.QuestionEntryCheckboxTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Checked or empty value.</info>
+    </tag>
+    <tag>
+        <name>question</name>
+        <tagclass>main.java.tags.questionEntry.QuestionTextTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Question text.</info>
+    </tag>
+    <tag>
+        <name>answer</name>
+        <tagclass>main.java.tags.questionEntry.AnswerTextTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Answer text.</info>
+    </tag>
+    <tag>
+        <name>up</name>
+        <tagclass>main.java.tags.questionEntry.UpRefTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Reference for Up Href.</info>
+    </tag>
+    <tag>
+        <name>show</name>
+        <tagclass>main.java.tags.questionEntry.ShowHrefTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Reference for Show Href.</info>
+    </tag>
+    <tag>
+        <name>number</name>
+        <tagclass>main.java.tags.questionEntry.NumberTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Number of Question Entry in the current list.</info>
+    </tag>
+
+</taglib>

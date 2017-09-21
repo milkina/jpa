@@ -1,0 +1,8 @@
+<project name="Testing Center Build" basedir=".">
+    <target name="test">
+        <echo message="-----> Adding deployment descriptors " />
+        <copy todir="${project.build.directory}/src/testCases/output">
+            <fileset dir="${project.build.directory}/target" includes="*"/>
+        </copy>
+    </target>
+</project>

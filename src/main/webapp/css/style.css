@@ -1,0 +1,172 @@
+        * {
+        	margin: 0;
+        	padding: 0;
+        }
+        
+        html {
+        	height: 100%;
+        }
+        
+        header, nav, section, main, article, aside, footer {
+        	display: block;
+        }
+        
+        body {
+                height: 100%;
+                width: 100%;
+        }
+        
+        .maxw {
+        	margin: 0 auto;
+        	min-width: 240px;											
+        	max-width: 1920px;
+        }
+                                                                                                     
+       header {
+            min-width:240px;
+        	width: 100%;
+        	height: 100px;
+        }
+             
+      #wrapper {
+                position: relative;
+                margin: 0 auto;
+                height: auto !important;
+                height: 100%;
+                min-height: 100%;
+                padding:5px 0;
+        }
+
+         .section {
+        	width: 100%;
+        	padding: 0 0 100px;
+        	position: relative;
+        }
+        
+          .section:after {
+        	content: '';
+        	clear: both;
+        	display: table;
+        }
+        
+        .mainwrap,.mainwrap2 {
+        	width: 100%;
+        	float: left;
+        	overflow: hidden;
+        	text-align:justify;
+        }
+        
+       .mainwrap .mainArea {
+        	padding: 0 240px 0 240px;
+        	min-height: 350px;
+            margin:0;
+        }
+        .mainwrap2 .mainArea {
+        	padding: 0 240px 0 10px;
+        	min-height: 350px;
+            margin:0;
+        }
+        
+        article {
+            padding:0 5px;
+            margin:0 5px;
+            background:#EAF2F5;
+            min-height: 350px;
+        }
+              
+                    #s_left {
+                    	float: left;
+                    	width: 240px;
+                    	margin-left: -100%;
+                        left:0;
+                    	position: relative;
+                    	min-height: 350px;
+                    }
+        
+              
+                    #s_right {
+                    	float: left;
+                    	width: 240px;
+                    	margin-left: -240px;
+                        right:0;
+                    	position: relative;
+                    	min-height: 350px;
+                    }
+        
+              footer {
+        	margin: -100px auto 0;
+        	width: 100%;
+            min-width:240px;
+        	height: 50px;
+        	position: relative;
+        }
+        
+/* Для отображения на устройствах меньше 980px*/
+        @media screen and (min-width:240px) and (max-width:479px) {
+            
+                .mainwrap .mainArea, .mainwrap2 .mainArea {
+                        padding:10px;
+                    }
+                    
+                     #s_left {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        left: 0;
+                    }
+                               
+                    #s_right {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        right: 0;
+                    } 
+        }
+        
+        @media screen and (min-width:480px) and (max-width:799px) {
+            
+                .mainwrap .mainArea, .mainwrap2 .mainArea {
+                        padding:10px;
+                    }
+                    
+                     #s_left {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        left: 0;
+                    }
+                               
+                    #s_right {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        right: 0;
+                    } 
+        }
+        
+        @media screen and (min-width:800px) and (max-width:979px) {
+        
+                 .mainwrap .mainArea, .mainwrap2 .mainArea {
+                        padding:10px;
+                    }
+                    
+                     #s_left {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        left: 0;
+                    }
+                               
+                    #s_right {
+                        padding: 0;
+                        margin: 0 auto;
+                        float: none;
+                        clear: both;
+                        right: 0;
+                    } 
+        }

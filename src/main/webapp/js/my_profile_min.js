@@ -1,0 +1,1 @@
+function saveUserSettings(b){var a=confirm("Are you sure you want to save?");if(a){var c=document.getElementById("ProfileForm");c.action=b+"/servlet/ChangeUserSettings";c.method="POST";c.submit()}}function openChangePasswordWindow(a){window.location.href=a+"/person/ChangePassword.jsp"};

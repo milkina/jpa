@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>category-tags</shortname>
+    <info>
+        A tag library for Category.
+    </info>
+
+
+    <tag>
+        <name>category</name>
+        <tagclass>main.java.tags.category.CategoryTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Category parent tag.</info>
+        <attribute>
+            <name>categoryPath</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>name</name>
+        <tagclass>main.java.tags.category.CategoryNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Category name.</info>
+    </tag>
+    <tag>
+        <name>description</name>
+        <tagclass>main.java.tags.category.CategoryDescriptionTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Category description.</info>
+    </tag>
+    <tag>
+        <name>pathName</name>
+        <tagclass>main.java.tags.category.CategoryPathNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Category path name.</info>
+    </tag>
+    <tag>
+        <name>parentCategory</name>
+        <tagclass>main.java.tags.category.CategoryParentTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Category parent name.</info>
+    </tag>
+</taglib>

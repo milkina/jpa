@@ -1,0 +1,58 @@
+package main.java.util.question;
+
+import main.java.data.questionEntry.QuestionEntryHandler;
+import main.java.model.Exam;
+import main.java.model.QuestionEntry;
+import main.java.util.AllConstants;
+import main.java.util.AllConstantsAttribute;
+import main.java.util.AllConstantsParam;
+import main.java.util.GeneralUtility;
+import main.java.util.exam.ExamUtility;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.NavigableSet;
+
+/**
+ * Created by Tatyana on 27.03.2016.
+ */
+public class QuestionEntryUtility {
+    public static Integer[] getQuestionsId(NavigableSet<Integer> set, Integer from, Integer to) {
+        if (set == null || set.isEmpty()) {
+            return null;
+        }
+        Integer[] questionsId = set.toArray(new Integer[set.size()]);
+        return Arrays.copyOfRange(questionsId, from - 1, to);
+    }
+
+    public static boolean isValidNumbers(int from, int to, long questionsNumber) {
+        return (from <= to && from <= questionsNumber && to <= questionsNumber);
+    }
+
+    public static QuestionEntry getQuestionEntry(HttpServletRequest request) {
+        Integer questionEntryId = GeneralUtility.getIntegerValue(request, AllConstantsParam.QUESTION_ENTRY_ID_PARAM);
+        if (questionEntryId == null) {
+            return getQuestionEntryFromExam(request.getSession());
+        } else {
+            return getQuestionEntry(questionEntryId);
+        }
+    }
+
+    public static QuestionEntry getQuestionEntryFromExam(HttpSession session) {
+        Exam exam = (Exam) session.getAttribute(AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE);
+        return ExamUtility.getCurrentQuestionEntry(exam);
+    }
+
+    public static QuestionEntry getQuestionEntry(Integer questionEntryId) {
+        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        return questionEntryHandler.getQuestionEntry(questionEntryId);
+    }
+
+    public static String getQuestionUrl(int questionId) {
+        return String.format("%s?%s=%d",
+                AllConstants.SHOW_QUESTION_SERVLET_PAGE,
+                AllConstantsParam.QUESTION_ENTRY_ID_PARAM,
+                questionId);
+    }
+}

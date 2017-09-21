@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /ShowQuestions.jsp
+Disallow: /administration/
+Disallow: /edit/
+Disallow: /person/
+Disallow: /servlet/ChangeTestServlet
+Disallow: /servlet/SaveComment
+Disallow: /person/login.jsp
+Host: www.examclouds.com
+Sitemap: http://www.examclouds.com/sitemap.xml

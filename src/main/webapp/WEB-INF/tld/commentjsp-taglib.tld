@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>comment-tags</shortname>
+    <info>
+        A tag library for Comment.
+    </info>
+
+    <tag>
+        <name>commentList</name>
+        <tagclass>main.java.tags.comment.CommentListTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Comment List tag.</info>
+        <attribute>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>main.java.model.comment.CommentType</type>
+        </attribute>
+        <attribute>
+            <name>referenceId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+        <attribute>
+            <name>amount</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+    </tag>
+    <tag>
+        <name>comment</name>
+        <tagclass>main.java.tags.comment.CommentTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Comment parent tag.</info>
+        <attribute>
+            <name>commentId</name>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+    </tag>
+    <tag>
+        <name>createdDate</name>
+        <tagclass>main.java.tags.comment.CommentDateTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Date of the comment creation.</info>
+    </tag>
+    <tag>
+        <name>author</name>
+        <tagclass>main.java.tags.comment.CommentAuthorTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Author of the comment.</info>
+    </tag>
+    <tag>
+        <name>body</name>
+        <tagclass>main.java.tags.comment.CommentBodyTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Text of the comment.</info>
+    </tag>
+    <tag>
+        <name>amount</name>
+        <tagclass>main.java.tags.comment.CommentAmountTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Amount of comments for the current page.</info>
+    </tag>
+    <tag>
+        <name>url</name>
+        <tagclass>main.java.tags.comment.CommentUrlTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Url of the comment referrer.</info>
+    </tag>
+    <tag>
+        <name>type</name>
+        <tagclass>main.java.tags.comment.CommentTypeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Comment type.</info>
+    </tag>
+    <tag>
+        <name>id</name>
+        <tagclass>main.java.tags.comment.CommentIdTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Comment id.</info>
+    </tag>
+    <tag>
+        <name>referenceId</name>
+        <tagclass>main.java.tags.comment.CommentReferenceIdTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Comment id.</info>
+    </tag>
+</taglib>

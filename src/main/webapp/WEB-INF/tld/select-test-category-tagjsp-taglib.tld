@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>select-test-tags</shortname>
+    <info>
+        A tag library for Select Test.
+    </info>
+
+    <tag>
+        <name>test</name>
+        <tagclass>main.java.tags.selectTestCategory.TestTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Test parent tag.</info>
+    </tag>
+    <tag>
+        <name>testPathName</name>
+        <tagclass>main.java.tags.selectTestCategory.TestPathNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>PathName of the test.</info>
+    </tag>
+    <tag>
+        <name>testName</name>
+        <tagclass>main.java.tags.selectTestCategory.TestNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Name of the test.</info>
+    </tag>
+    <tag>
+        <name>testSelected</name>
+        <tagclass>main.java.tags.selectTestCategory.TestSelectedOptionTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Selected text for option.</info>
+    </tag>
+    <tag>
+        <name>category</name>
+        <tagclass>main.java.tags.selectTestCategory.CategoryTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Category parent tag.</info>
+    </tag>
+    <tag>
+        <name>categoryPathName</name>
+        <tagclass>main.java.tags.selectTestCategory.CategoryPathNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>PathName of the category.</info>
+    </tag>
+    <tag>
+        <name>categoryName</name>
+        <tagclass>main.java.tags.selectTestCategory.CategoryNameTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Name of the category.</info>
+    </tag>
+    <tag>
+        <name>categorySelected</name>
+        <tagclass>main.java.tags.selectTestCategory.CategorySelectedOptionTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Selected text for option.</info>
+    </tag>
+
+
+</taglib>

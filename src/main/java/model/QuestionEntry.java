@@ -1,14 +1,10 @@
 package main.java.model;
 
-import main.java.model.comment.Comment;
 import main.java.model.person.Person;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

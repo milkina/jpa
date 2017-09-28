@@ -1,6 +1,5 @@
 package main.java.data.article;
 
-import main.java.model.Category;
 import main.java.model.article.Article;
 
 import javax.ejb.Stateless;

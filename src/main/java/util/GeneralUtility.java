@@ -134,11 +134,11 @@ public class GeneralUtility {
             return null;
         }
         String result = s;
-        try {
+       /* try {
             result = new String(s.getBytes("ISO8859-1"), "utf-8");
         } catch (UnsupportedEncodingException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
         return result;
     }
 }

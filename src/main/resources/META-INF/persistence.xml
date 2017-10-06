@@ -13,6 +13,10 @@
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="update" />
+         <!--<property name="useUnicode" value="true" />
+         <property name="connectionCollation" value="utf8_general_ci" />
+         <property name="characterSetResults" value="utf8" />
+         <property name="characterEncoding" value="utf8" />-->
         <!-- <property name="hibernate.show_sql" value="true" />-->
           <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>-->
       </properties>

@@ -138,6 +138,6 @@ public class TestUtility {
         test.setName(newName);
         test.setPathName(newPathName);
         test.setTags(newTags);
-        test.setIconText(iconText);
+        test.setIconText( GeneralUtility.decodeRussianCharacters(iconText));
     }
 }

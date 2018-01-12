@@ -12,7 +12,7 @@
 
     <tag>
         <name>test</name>
-        <tagclass>main.java.tags.test.TestTag</tagclass>
+        <tagclass>tags.test.TestTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Test Tag. Use testId or pathName attribute.</info>
         <attribute>

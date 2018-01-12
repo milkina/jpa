@@ -1,7 +1,7 @@
-package main.java.data.test;
+package data.test;
 
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import java.util.List;
 

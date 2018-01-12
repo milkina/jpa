@@ -1,6 +1,6 @@
-package main.java.data.article;
+package data.article;
 
-import main.java.model.article.Article;
+import model.article.Article;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +14,7 @@ import java.util.List;
 @Stateless
 public class ArticleBean implements ArticleBeanI {
     @PersistenceContext(unitName = "primary")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public Article getArticle(int id) {
         return entityManager.find(Article.class, id);
@@ -34,13 +34,13 @@ public class ArticleBean implements ArticleBeanI {
         entityManager.merge(article);
     }
 
-    public void deleteArticle(Article article){
+    public void deleteArticle(Article article) {
         entityManager.remove(entityManager.merge(article));
     }
 
-    public Article getArticleByUrl(String url){
+    public Article getArticleByUrl(String url) {
         Query query = entityManager.createNamedQuery("Article.getArticleByUrl");
-        query.setParameter("param",url);
-        return (Article)query.getSingleResult();
+        query.setParameter("param", url);
+        return (Article) query.getSingleResult();
     }
 }

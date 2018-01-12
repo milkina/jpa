@@ -1,16 +1,16 @@
-package main.java.util;
+package util;
 
-import main.java.data.person.PersonHandler;
-import main.java.model.QuestionEntry;
-import main.java.model.comment.Comment;
-import main.java.model.person.Person;
-import main.java.model.person.PersonInfo;
+import data.person.PersonHandler;
+import model.QuestionEntry;
+import model.comment.Comment;
+import model.person.Person;
+import model.person.PersonInfo;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import static main.java.util.AllConstantsAttribute.PERSON_ANSWERED_QUESTIONS;
-import static main.java.util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsAttribute.PERSON_ANSWERED_QUESTIONS;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 
 /**
  * Created by Tatyana on 29.12.2015.
@@ -21,7 +21,8 @@ public class PersonUtility {
     }
 
     public static String getCommentAuthor(Comment comment) {
-        if (comment == null || comment.getUser() == null || comment.getUser().getPersonInfo() == null) {
+        if (comment == null || comment.getUser() == null
+                || comment.getUser().getPersonInfo() == null) {
             return AllConstants.UNKNOWN_USER;
         }
         return getPersonName(comment.getUser());
@@ -52,16 +53,20 @@ public class PersonUtility {
         return firstName + " " + lastName;
     }
 
-    public static List<QuestionEntry> getAnsweredQuestions(HttpSession session) {
-        List<QuestionEntry> answeredQuestions = (List<QuestionEntry>) session.getAttribute(PERSON_ANSWERED_QUESTIONS);
+    public static List<QuestionEntry> getAnsweredQuestions(
+            HttpSession session) {
+        List<QuestionEntry> answeredQuestions = (List<QuestionEntry>)
+                session.getAttribute(PERSON_ANSWERED_QUESTIONS);
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
             answeredQuestions = getAnsweredQuestionsFromDB(session);
-            session.setAttribute(PERSON_ANSWERED_QUESTIONS, answeredQuestions);
-               }
+            session.setAttribute(PERSON_ANSWERED_QUESTIONS,
+                    answeredQuestions);
+        }
         return answeredQuestions;
     }
 
-    private static List<QuestionEntry> getAnsweredQuestionsFromDB(HttpSession session) {
+    private static List<QuestionEntry> getAnsweredQuestionsFromDB(
+            HttpSession session) {
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         if (person == null) {
             return null;

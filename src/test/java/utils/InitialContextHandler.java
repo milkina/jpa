@@ -1,12 +1,11 @@
 package utils;
 
-
-import main.java.data.article.ArticleBeanI;
-import main.java.data.category.CategoryBeanI;
-import main.java.data.comment.CommentBeanI;
-import main.java.data.person.PersonBeanI;
-import main.java.data.questionEntry.QuestionEntryBeanI;
-import main.java.data.test.TestBeanI;
+import data.article.ArticleBeanI;
+import data.category.CategoryBeanI;
+import data.comment.CommentBeanI;
+import data.person.PersonBeanI;
+import data.questionEntry.QuestionEntryBeanI;
+import data.test.TestBeanI;
 import org.testng.Assert;
 
 import javax.naming.Context;

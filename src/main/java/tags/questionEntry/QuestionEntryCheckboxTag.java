@@ -1,6 +1,6 @@
-package main.java.tags.questionEntry;
+package tags.questionEntry;
 
-import main.java.model.QuestionEntry;
+import model.QuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
@@ -24,6 +24,6 @@ public class QuestionEntryCheckboxTag extends BaseQuestionEntryTypeTag {
         } catch (IOException ioe) {
             System.out.println("Error in QuestionEntryCheckboxTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

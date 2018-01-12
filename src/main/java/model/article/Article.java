@@ -1,8 +1,8 @@
-package main.java.model.article;
+package model.article;
 
-import main.java.model.Category;
-import main.java.model.comment.Comment;
-import main.java.model.person.Person;
+import model.Category;
+import model.comment.Comment;
+import model.person.Person;
 
 import javax.persistence.*;
 import java.util.Date;

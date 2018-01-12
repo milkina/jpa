@@ -1,10 +1,9 @@
-package main.java.util;
+package util;
 
-import main.java.model.person.Person;
+import model.person.Person;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -18,10 +17,12 @@ import java.util.Locale;
  * Created by Tatyana on 01.01.2016.
  */
 public class GeneralUtility {
-    public static String DATE_FORMAT1 = "yyyy.MM.dd  HH:mm:ss";
-    public static String DATE_FORMAT2 = "EEE, dd MMM yyyy HH:mm:ss z";
-    public static int SEVEN_DAYS = 604800000;
-    public static int CACHED_PERIOD = SEVEN_DAYS * 2;
+    public static final String DATE_FORMAT1 = "yyyy.MM.dd  HH:mm:ss";
+    public static final String DATE_FORMAT2 = "EEE, dd MMM yyyy HH:mm:ss z";
+    public static final int SEVEN_DAYS = 604800000;
+    public static final int CACHED_PERIOD = SEVEN_DAYS * 2;
+    public static final int THOUSAND = 1000;
+    public static final int TEN_THOUSANDS = 10000;
 
     public static String formatDate(Date date) {
         if (date == null) {
@@ -31,15 +32,19 @@ public class GeneralUtility {
         return simpleDateFormat.format(date);
     }
 
-    public void setIfModifiedSinceHeader(HttpServletRequest request, HttpServletResponse response) {
+    public void setIfModifiedSinceHeader(HttpServletRequest request,
+                                         HttpServletResponse response) {
         setIfModifiedSinceHeader(request, response, 0);
     }
 
-    public void setIfModifiedSinceHeader(HttpServletRequest request, HttpServletResponse response, long updatedDate) {
+    public void setIfModifiedSinceHeader(HttpServletRequest request,
+                                         HttpServletResponse response,
+                                         long updatedDate) {
         String ifModifiedSince = request.getHeader("if-modified-since");
         if (isIfModifiedSinceHeaderExist(ifModifiedSince)) {
             long cachedDate = getCachedDate(ifModifiedSince);
-            if (!isUpdated(updatedDate, cachedDate) && cachedDate + CACHED_PERIOD > getNowDate()) {
+            if (!isUpdated(updatedDate, cachedDate)
+                    && cachedDate + CACHED_PERIOD > getNowDate()) {
                 sendNotModifiedStatus(response);
                 return;
             }
@@ -56,7 +61,7 @@ public class GeneralUtility {
     }
 
     public static long roundTime(long time) {
-        return time / 1000 * 1000;
+        return time / THOUSAND * THOUSAND;
     }
 
     public static long getTodayDate() {
@@ -66,8 +71,10 @@ public class GeneralUtility {
     public static long getCachedDate(String ifModifiedSince) {
         Calendar modifiedCal = Calendar.getInstance();
         try {
-            // Format should be something like this: Thu, 10 Jan 2008 09:20:50 GMT
-            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT2, Locale.ENGLISH);
+            // Format should be something like this:
+            // Thu, 10 Jan 2008 09:20:50 GMT
+            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT2,
+                    Locale.ENGLISH);
             Date modifiedDate = sdf.parse(ifModifiedSince);
             modifiedCal.setTime(modifiedDate);
         } catch (Exception e) {
@@ -92,18 +99,24 @@ public class GeneralUtility {
 
     public void setCachedHeaders(HttpServletResponse response) {
         long date = getTodayDate();
-        response.setHeader("Cache-Control", "max-age=" + CACHED_PERIOD / 10000); //  days in seconds
-        response.setDateHeader("Expires", date + CACHED_PERIOD); //  days in milliseconds
+        //  days in seconds
+        response.setHeader("Cache-Control", "max-age="
+                + CACHED_PERIOD / TEN_THOUSANDS);
+        //  days in milliseconds
+        response.setDateHeader("Expires", date + CACHED_PERIOD);
         response.setDateHeader("Last-Modified", date);
     }
 
-    public void setIfModifiedSinceHeader(HttpServletRequest request, HttpServletResponse response, Person person) {
+    public void setIfModifiedSinceHeader(
+            HttpServletRequest request, HttpServletResponse response,
+            Person person) {
         if (person == null) {
             setIfModifiedSinceHeader(request, response);
         }
     }
 
-    public static Integer getIntegerValue(HttpServletRequest request, String paramName) {
+    public static Integer getIntegerValue(
+            HttpServletRequest request, String paramName) {
         if (isEmpty(request.getParameter(paramName))) {
             return null;
         }
@@ -124,7 +137,7 @@ public class GeneralUtility {
             writer.println("The second line");
             writer.close();
         } catch (IOException e) {
-            // do something
+            e.printStackTrace();
         }
 
     }

@@ -1,11 +1,13 @@
-package main.java.model;
+package model;
 
 
-import main.java.model.article.Article;
+import model.article.Article;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,9 +19,14 @@ import java.util.*;
 @Entity
 @Table(name = "TESTS")
 @NamedQueries({
-        @NamedQuery(name = "Test.findAllTests", query = "select t,count(q) from Test t left join t.categories c " +
-                "left join c.questionEntries q where (c.hidden=false or t.categories is empty) group by t order by t.orderId"),
-        @NamedQuery(name = "Test.findPathName", query = "select t.id,t.pathName from Test t")
+        @NamedQuery(name = "Test.findAllTests",
+                query = "select t,count(q) from Test t "
+                        + "left join t.categories c "
+                        + "left join c.questionEntries q where "
+                        + "(c.hidden=false or t.categories is empty)"
+                        + " group by t order by t.orderId"),
+        @NamedQuery(name = "Test.findPathName",
+                query = "select t.id,t.pathName from Test t")
 })
 public class Test implements Serializable, Comparable<Test> {
     @Id

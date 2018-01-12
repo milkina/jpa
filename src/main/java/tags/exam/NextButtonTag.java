@@ -1,11 +1,11 @@
-package main.java.tags.exam;
+package tags.exam;
 
-import main.java.model.Exam;
-import main.java.util.exam.ExamUtility;
+import model.Exam;
+import util.exam.ExamUtility;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
-import static main.java.util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 
 /**
  * Created by Tatyana on 30.04.2016.

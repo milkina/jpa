@@ -1,8 +1,8 @@
 package tags.selectTag;
 
 import junit.framework.Assert;
-import main.java.model.comment.CommentType;
-import main.java.tags.selectTag.SelectTagUtility;
+import model.comment.CommentType;
+import tags.selectTag.SelectTagUtility;
 import org.testng.annotations.Test;
 
 /**

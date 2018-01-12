@@ -1,7 +1,7 @@
-package main.java.controller.test;
+package controller.test;
 
-import main.java.util.CategoryUtility;
-import main.java.util.TestUtility;
+import util.CategoryUtility;
+import util.TestUtility;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

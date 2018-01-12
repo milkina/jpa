@@ -1,6 +1,6 @@
-package main.java.tags.article;
+package tags.article;
 
-import main.java.model.article.Article;
+import model.article.Article;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -16,14 +16,13 @@ public class ArticleTag extends BodyTagSupport {
     private Article article;
     private Iterator<Article> iterator;
 
-
     public int doStartTag() {
         setIterator();
         if (iterator.hasNext()) {
             setArticle(iterator.next());
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 
     private void setIterator() {
@@ -44,11 +43,11 @@ public class ArticleTag extends BodyTagSupport {
         }
         if (iterator.hasNext()) {
             setArticle(iterator.next());
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         } else {
             iterator = null;
             article = null;
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
     }
 

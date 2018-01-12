@@ -1,10 +1,10 @@
-package main.java.data.category;
+package data.category;
 
-import main.java.data.test.TestBeanI;
-import main.java.data.test.TestHandler;
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.util.CategoryUtility;
+import data.test.TestBeanI;
+import data.test.TestHandler;
+import model.Category;
+import model.Test;
+import util.CategoryUtility;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static main.java.util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
+import static util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,8 +24,8 @@ import static main.java.util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
  */
 public class CategoryHandler {
 
-    CategoryBeanI categoryBean;
-    Context ct;
+    private CategoryBeanI categoryBean;
+    private Context ct;
     private TestHandler testHandler;
 
     public CategoryHandler() {
@@ -34,7 +34,7 @@ public class CategoryHandler {
             ct = new InitialContext();
             categoryBean = (CategoryBeanI) ct.lookup(CATEGORY_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

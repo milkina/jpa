@@ -1,7 +1,7 @@
-package main.java.tags.article;
+package tags.article;
 
-import main.java.data.article.ArticleHandler;
-import main.java.model.article.Article;
+import data.article.ArticleHandler;
+import model.article.Article;
 
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.util.List;
@@ -15,7 +15,7 @@ public class ArticleListTag extends BodyTagSupport {
     public int doStartTag() {
         ArticleHandler articleHandler = new ArticleHandler();
         articleList = articleHandler.getArticles();
-        return (EVAL_BODY_INCLUDE);
+        return EVAL_BODY_INCLUDE;
     }
 
     public List<Article> getArticleList() {

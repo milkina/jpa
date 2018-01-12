@@ -11,31 +11,31 @@
     </info>
     <tag>
         <name>checkbox</name>
-        <tagclass>main.java.tags.exam.CheckboxTag</tagclass>
+        <tagclass>tags.exam.CheckboxTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Checkbox for selecting answered questions</info>
     </tag>
     <tag>
         <name>number</name>
-        <tagclass>main.java.tags.exam.NumberTag</tagclass>
+        <tagclass>tags.exam.NumberTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Number of the current question in the exam.</info>
     </tag>
     <tag>
         <name>size</name>
-        <tagclass>main.java.tags.exam.ExamSizeTag</tagclass>
+        <tagclass>tags.exam.ExamSizeTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Number of questions in the exam.</info>
     </tag>
     <tag>
         <name>previousButton</name>
-        <tagclass>main.java.tags.exam.PreviousButtonTag</tagclass>
+        <tagclass>tags.exam.PreviousButtonTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Button to select previous question in the exam.</info>
     </tag>
     <tag>
         <name>nextButton</name>
-        <tagclass>main.java.tags.exam.NextButtonTag</tagclass>
+        <tagclass>tags.exam.NextButtonTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Button to select next question in the exam.</info>
     </tag>

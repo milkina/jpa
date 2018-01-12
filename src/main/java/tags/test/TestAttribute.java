@@ -1,4 +1,4 @@
-package main.java.tags.test;
+package tags.test;
 
 /**
  * Created by Tatyana on 15.05.2016.

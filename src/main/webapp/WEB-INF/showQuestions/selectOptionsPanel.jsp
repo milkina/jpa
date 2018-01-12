@@ -1,4 +1,4 @@
-<%@ page import="static main.java.util.AllConstants.MARK_QUESTION_HINT" %>
+<%@ page import="static util.AllConstants.MARK_QUESTION_HINT" %>
 <div class="selectOptionsPanel" id="selectOptionsPanel">
 Show All <input type="radio" name="questionType" value="ALL" checked
                                    onclick="changeShowingMode(this);" title="<%=MARK_QUESTION_HINT%>">

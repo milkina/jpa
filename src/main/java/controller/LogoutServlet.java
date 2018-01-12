@@ -1,6 +1,6 @@
-package main.java.controller;
+package controller;
 
-import main.java.util.AllConstants;
+import  util.AllConstants;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +23,8 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.invalidate();
-        RequestDispatcher dispatcher = request.getRequestDispatcher(AllConstants.INDEX_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(AllConstants.INDEX_PAGE);
         dispatcher.forward(request, response);
     }
 

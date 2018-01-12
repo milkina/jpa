@@ -1,6 +1,6 @@
-package main.java.tags.category;
+package tags.category;
 
-import main.java.model.Category;
+import model.Category;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -17,12 +17,12 @@ public class CategoryParentTag extends TagSupport {
             Category category = parent.getCategory();
             JspWriter out = pageContext.getOut();
             Category parentCategory = category.getParentCategory();
-            String result = parentCategory == null ? "" :  parentCategory.getName()+"." ;
+            String result = parentCategory == null ? "" : parentCategory.getName() + ".";
             out.print(result);
         } catch (IOException ioe) {
             System.out.println("Error in CategoryParentTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }
 

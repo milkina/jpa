@@ -1,14 +1,13 @@
-package main.java.tags.category;
+package tags.category;
 
-import main.java.model.Category;
-import main.java.util.CategoryUtility;
+import model.Category;
+import util.CategoryUtility;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -16,7 +15,6 @@ import java.util.Map;
  */
 public class CategoryTag extends BodyTagSupport {
     private Category category;
-    private Iterator<Category> iterator;
     private String categoryPath;
 
     public void setCategoryPath(String categoryPath) {
@@ -33,9 +31,9 @@ public class CategoryTag extends BodyTagSupport {
         }
 
         if (category == null) {
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
-        return (EVAL_BODY_TAG);
+        return EVAL_BODY_TAG;
     }
 
     private void getCategoryFromServletContext(ServletRequest request) {
@@ -52,8 +50,8 @@ public class CategoryTag extends BodyTagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CategoryTag: " + ioe);
         }
-            category = null;
-            return (SKIP_BODY);
+        category = null;
+        return SKIP_BODY;
     }
 }
 

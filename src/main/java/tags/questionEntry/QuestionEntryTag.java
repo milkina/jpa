@@ -1,6 +1,6 @@
-package main.java.tags.questionEntry;
+package tags.questionEntry;
 
-import main.java.model.QuestionEntry;
+import model.QuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -31,9 +31,9 @@ public class QuestionEntryTag extends BodyTagSupport {
             getQuestionEntryFromList();
         }
         if (questionEntry == null) {
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
-        return (EVAL_BODY_TAG);
+        return EVAL_BODY_TAG;
     }
 
     private void getQuestionEntryFromList() {
@@ -42,8 +42,8 @@ public class QuestionEntryTag extends BodyTagSupport {
     }
 
     private void setIterator() {
-        QuestionEntryListTag parent =
-                (QuestionEntryListTag) findAncestorWithClass(this, QuestionEntryListTag.class);
+        QuestionEntryListTag parent = (QuestionEntryListTag)
+                findAncestorWithClass(this, QuestionEntryListTag.class);
         List<QuestionEntry> questionEntries = parent.getQuestionEntries();
         iterator = questionEntries.iterator();
     }
@@ -59,12 +59,12 @@ public class QuestionEntryTag extends BodyTagSupport {
         }
         if (iterator != null && iterator.hasNext()) {
             getQuestionEntryFromList();
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         } else {
             iterator = null;
-            number=0;
+            number = 0;
             questionEntry = null;
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
     }
 }

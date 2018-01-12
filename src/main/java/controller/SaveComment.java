@@ -1,11 +1,11 @@
-package main.java.controller;
+package controller;
 
-import main.java.data.comment.CommentHandler;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
-import main.java.util.GeneralUtility;
-import main.java.util.TestUtility;
+import data.comment.CommentHandler;
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
+import util.GeneralUtility;
+import util.TestUtility;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +14,10 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.Date;
 
-import static main.java.util.AllConstantsParam.*;
-import static main.java.util.AllConstantsAttribute.*;
+import static util.AllConstantsParam.COMMENT_TEXT_PARAM;
+import static util.AllConstantsParam.REFERENCE_ID;
+import static util.AllConstantsParam.COMMENT_TYPE;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 
 
 /**
@@ -28,7 +30,8 @@ import static main.java.util.AllConstantsAttribute.*;
 public class SaveComment extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Person person = (Person) request.getSession().getAttribute(PERSON_ATTRIBUTE);
+        Person person = (Person)
+                request.getSession().getAttribute(PERSON_ATTRIBUTE);
         if (person != null) {
             Comment commentEntity = createComment(request);
 
@@ -50,12 +53,15 @@ public class SaveComment extends HttpServlet {
         return commentEntity;
     }
 
-    private void setCommentText(HttpServletRequest request, Comment commentEntity) {
-        String comment = GeneralUtility.decodeRussianCharacters(request.getParameter(COMMENT_TEXT_PARAM));
+    private void setCommentText(HttpServletRequest request,
+                                Comment commentEntity) {
+        String comment = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(COMMENT_TEXT_PARAM));
         commentEntity.setComment(comment);
     }
 
-    private void setReferenceId(HttpServletRequest request, Comment commentEntity) {
+    private void setReferenceId(HttpServletRequest request,
+                                Comment commentEntity) {
         int referenceId = GeneralUtility.getIntegerValue(request, REFERENCE_ID);
         commentEntity.setReferenceId(referenceId);
     }
@@ -66,7 +72,8 @@ public class SaveComment extends HttpServlet {
     }
 
     private void setUser(HttpServletRequest request, Comment commentEntity) {
-        Person person = (Person) request.getSession().getAttribute(PERSON_ATTRIBUTE);
+        Person person = (Person)
+                request.getSession().getAttribute(PERSON_ATTRIBUTE);
         commentEntity.setUser(person);
     }
 

@@ -1,8 +1,8 @@
-package main.java.controller.edit;
+package controller.edit;
 
 import com.google.gson.Gson;
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static main.java.util.AllConstantsAttribute.TESTS;
-import static main.java.util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsParam.TEST_PATH;
 
 /**
  * Created by Tatyana on 28.03.2016.
@@ -23,7 +23,8 @@ public class ChangeTestServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String testPath = request.getParameter(TEST_PATH);
-        Map<String, Test> tests = (Map) request.getServletContext().getAttribute(TESTS);
+        Map<String, Test> tests =
+                (Map) request.getServletContext().getAttribute(TESTS);
         Test test = tests.get(testPath);
 
         Map<String, String> categoryMap = new TreeMap<String, String>();

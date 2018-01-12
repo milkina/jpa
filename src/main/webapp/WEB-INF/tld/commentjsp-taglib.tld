@@ -12,14 +12,14 @@
 
     <tag>
         <name>commentList</name>
-        <tagclass>main.java.tags.comment.CommentListTag</tagclass>
+        <tagclass>tags.comment.CommentListTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Comment List tag.</info>
         <attribute>
             <name>type</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
-            <type>main.java.model.comment.CommentType</type>
+            <type>model.comment.CommentType</type>
         </attribute>
         <attribute>
             <name>referenceId</name>
@@ -36,7 +36,7 @@
     </tag>
     <tag>
         <name>comment</name>
-        <tagclass>main.java.tags.comment.CommentTag</tagclass>
+        <tagclass>tags.comment.CommentTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Comment parent tag.</info>
         <attribute>
@@ -47,49 +47,49 @@
     </tag>
     <tag>
         <name>createdDate</name>
-        <tagclass>main.java.tags.comment.CommentDateTag</tagclass>
+        <tagclass>tags.comment.CommentDateTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Date of the comment creation.</info>
     </tag>
     <tag>
         <name>author</name>
-        <tagclass>main.java.tags.comment.CommentAuthorTag</tagclass>
+        <tagclass>tags.comment.CommentAuthorTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Author of the comment.</info>
     </tag>
     <tag>
         <name>body</name>
-        <tagclass>main.java.tags.comment.CommentBodyTag</tagclass>
+        <tagclass>tags.comment.CommentBodyTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Text of the comment.</info>
     </tag>
     <tag>
         <name>amount</name>
-        <tagclass>main.java.tags.comment.CommentAmountTag</tagclass>
+        <tagclass>tags.comment.CommentAmountTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Amount of comments for the current page.</info>
     </tag>
     <tag>
         <name>url</name>
-        <tagclass>main.java.tags.comment.CommentUrlTag</tagclass>
+        <tagclass>tags.comment.CommentUrlTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Url of the comment referrer.</info>
     </tag>
     <tag>
         <name>type</name>
-        <tagclass>main.java.tags.comment.CommentTypeTag</tagclass>
+        <tagclass>tags.comment.CommentTypeTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Comment type.</info>
     </tag>
     <tag>
         <name>id</name>
-        <tagclass>main.java.tags.comment.CommentIdTag</tagclass>
+        <tagclass>tags.comment.CommentIdTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Comment id.</info>
     </tag>
     <tag>
         <name>referenceId</name>
-        <tagclass>main.java.tags.comment.CommentReferenceIdTag</tagclass>
+        <tagclass>tags.comment.CommentReferenceIdTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Comment id.</info>
     </tag>

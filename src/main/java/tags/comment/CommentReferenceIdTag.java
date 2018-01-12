@@ -1,6 +1,6 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.model.comment.Comment;
+import model.comment.Comment;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Tatyana on 12.05.2016.
  */
-public class CommentReferenceIdTag  extends TagSupport {
+public class CommentReferenceIdTag extends TagSupport {
 
     public int doStartTag() {
         try {
@@ -21,6 +21,6 @@ public class CommentReferenceIdTag  extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CommentReferenceIdTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

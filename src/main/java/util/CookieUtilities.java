@@ -1,6 +1,7 @@
-package main.java.util;
+package util;
 
-import javax.servlet.http.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,20 +11,19 @@ import javax.servlet.http.*;
  * To change this template use File | Settings | File Templates.
  */
 public class CookieUtilities {
-    public static String getCookieValue
-            (HttpServletRequest request,
-             String cookieName,
-             String defaultValue) {
+    public static String getCookieValue(HttpServletRequest request,
+                                        String cookieName,
+                                        String defaultValue) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 Cookie cookie = cookies[i];
                 if (cookieName.equals(cookie.getName())) {
-                    return (cookie.getValue());
+                    return cookie.getValue();
                 }
             }
         }
-        return (defaultValue);
+        return defaultValue;
     }
 
     public static Cookie getCookie(HttpServletRequest request,
@@ -33,10 +33,10 @@ public class CookieUtilities {
             for (int i = 0; i < cookies.length; i++) {
                 Cookie cookie = cookies[i];
                 if (cookieName.equals(cookie.getName())) {
-                    return (cookie);
+                    return cookie;
                 }
             }
         }
-        return (null);
+        return null;
     }
 }

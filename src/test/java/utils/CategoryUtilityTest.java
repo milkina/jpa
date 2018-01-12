@@ -1,7 +1,7 @@
 package utils;
 
-import main.java.model.Category;
-import main.java.util.CategoryUtility;
+import model.Category;
+import util.CategoryUtility;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

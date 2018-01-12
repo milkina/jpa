@@ -1,9 +1,25 @@
-package main.java.model;
+package model;
 
 
-import main.java.model.article.Article;
+import model.article.Article;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Transient;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OrderBy;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +36,15 @@ import java.util.List;
 
 @Table(name = "Category")
 @NamedQueries({
-        @NamedQuery(name = "Category.findPathName", query = "select c.id,c.pathName from Category c"),
-        @NamedQuery(name = "Category.findByPathName", query = "select c from Category c  " +
+        @NamedQuery(name = "Category.findPathName",
+                query = "select c.id,c.pathName from Category c"),
+        @NamedQuery(name = "Category.findByPathName",
+                query = "select c from Category c  " +
                 "where c.pathName=:p"),
-        @NamedQuery(name = "Category.findCategories", query = "select c from Test t join t.categories c where t.id=:p"),
-        @NamedQuery(name = "Category.findCategoriesByTestPath", query = "select c from Test t join t.categories c where t.pathName=:p"),
+        @NamedQuery(name = "Category.findCategories",
+                query = "select c from Test t join t.categories c where t.id=:p"),
+        @NamedQuery(name = "Category.findCategoriesByTestPath",
+                query = "select c from Test t join t.categories c where t.pathName=:p"),
         @NamedQuery(name = "Category.findDuplicateCategories",
                 query = "select c from Category c join fetch c.tests where c.id in " +
                         "(select cc.id from Category cc join cc.tests t group by cc having count(t)>1)")

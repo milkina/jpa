@@ -1,7 +1,7 @@
 package ejb.comment;
 
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
+import model.comment.Comment;
+import model.comment.CommentType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseIT;

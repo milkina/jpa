@@ -1,6 +1,6 @@
 package utils;
 
-import main.java.util.GeneralUtility;
+import util.GeneralUtility;
 import org.mockito.verification.VerificationMode;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

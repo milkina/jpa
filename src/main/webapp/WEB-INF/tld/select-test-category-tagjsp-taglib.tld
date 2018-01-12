@@ -12,49 +12,49 @@
 
     <tag>
         <name>test</name>
-        <tagclass>main.java.tags.selectTestCategory.TestTag</tagclass>
+        <tagclass>tags.selectTestCategory.TestTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Test parent tag.</info>
     </tag>
     <tag>
         <name>testPathName</name>
-        <tagclass>main.java.tags.selectTestCategory.TestPathNameTag</tagclass>
+        <tagclass>tags.selectTestCategory.TestPathNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>PathName of the test.</info>
     </tag>
     <tag>
         <name>testName</name>
-        <tagclass>main.java.tags.selectTestCategory.TestNameTag</tagclass>
+        <tagclass>tags.selectTestCategory.TestNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Name of the test.</info>
     </tag>
     <tag>
         <name>testSelected</name>
-        <tagclass>main.java.tags.selectTestCategory.TestSelectedOptionTag</tagclass>
+        <tagclass>tags.selectTestCategory.TestSelectedOptionTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Selected text for option.</info>
     </tag>
     <tag>
         <name>category</name>
-        <tagclass>main.java.tags.selectTestCategory.CategoryTag</tagclass>
+        <tagclass>tags.selectTestCategory.CategoryTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Category parent tag.</info>
     </tag>
     <tag>
         <name>categoryPathName</name>
-        <tagclass>main.java.tags.selectTestCategory.CategoryPathNameTag</tagclass>
+        <tagclass>tags.selectTestCategory.CategoryPathNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>PathName of the category.</info>
     </tag>
     <tag>
         <name>categoryName</name>
-        <tagclass>main.java.tags.selectTestCategory.CategoryNameTag</tagclass>
+        <tagclass>tags.selectTestCategory.CategoryNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Name of the category.</info>
     </tag>
     <tag>
         <name>categorySelected</name>
-        <tagclass>main.java.tags.selectTestCategory.CategorySelectedOptionTag</tagclass>
+        <tagclass>tags.selectTestCategory.CategorySelectedOptionTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Selected text for option.</info>
     </tag>

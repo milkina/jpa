@@ -1,10 +1,10 @@
-package main.java.controller.category;
+package controller.category;
 
-import main.java.data.test.TestHandler;
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.util.CategoryUtility;
-import main.java.util.TestUtility;
+import data.test.TestHandler;
+import model.Category;
+import model.Test;
+import util.CategoryUtility;
+import util.TestUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.CATEGORY_PATH;
-import static main.java.util.AllMessage.CATEGORY_REMOVED_FROM_TEST_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllMessage.CATEGORY_REMOVED_FROM_TEST_MESSAGE;
 
 /**
  * Created by Tatyana on 12.12.2016.
@@ -36,8 +36,10 @@ public class DeleteFromTestServlet extends HttpServlet {
         TestUtility.loadTestsToServletContext(request.getServletContext());
         CategoryUtility.setDuplicateCategories(request.getServletContext());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
-        request.setAttribute(MESSAGE_ATTRIBUTE, CATEGORY_REMOVED_FROM_TEST_MESSAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
+        request.setAttribute(MESSAGE_ATTRIBUTE,
+                CATEGORY_REMOVED_FROM_TEST_MESSAGE);
         dispatcher.forward(request, response);
     }
 

@@ -1,6 +1,6 @@
-package main.java.tags.category;
+package tags.category;
 
-import main.java.model.Category;
+import model.Category;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -20,6 +20,6 @@ public class CategoryPathNameTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CategoryPathNameTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

@@ -1,7 +1,6 @@
-package main.java.model.comment;
+package model.comment;
 
-
-import main.java.model.person.Person;
+import model.person.Person;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,7 +19,7 @@ import java.util.Date;
                 query = "SELECT c FROM Comment c WHERE c.type=:typeParam AND c.referenceId=:referenceParam order by c.date"),
         @NamedQuery(name = "Comment.getLastComments",
                 query = "SELECT c FROM Comment c order by c.date desc"),
-        @NamedQuery(name="Comment.updateAuthor",
+        @NamedQuery(name = "Comment.updateAuthor",
                 query = "UPDATE Comment c SET c.user=NULL WHERE c.user.ID =:id")
 }
 )

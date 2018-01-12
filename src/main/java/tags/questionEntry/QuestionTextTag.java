@@ -1,6 +1,6 @@
-package main.java.tags.questionEntry;
+package tags.questionEntry;
 
-import main.java.model.QuestionEntry;
+import model.QuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -13,14 +13,14 @@ public class QuestionTextTag extends TagSupport {
 
     public int doStartTag() {
         try {
-            QuestionEntryTag parent =
-                    (QuestionEntryTag) findAncestorWithClass(this, QuestionEntryTag.class);
+            QuestionEntryTag parent = (QuestionEntryTag)
+                    findAncestorWithClass(this, QuestionEntryTag.class);
             QuestionEntry questionEntry = parent.getQuestionEntry();
             JspWriter out = pageContext.getOut();
             out.print(questionEntry.getQuestion().getText());
         } catch (IOException ioe) {
             System.out.println("Error in QuestionTextTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

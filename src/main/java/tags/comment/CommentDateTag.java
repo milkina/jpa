@@ -1,6 +1,6 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.model.comment.Comment;
+import model.comment.Comment;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -15,7 +15,7 @@ public class CommentDateTag extends TagSupport {
     public int doStartTag() {
         try {
             CommentTag parent =
-                    (CommentTag)findAncestorWithClass(this, CommentTag.class);
+                    (CommentTag) findAncestorWithClass(this, CommentTag.class);
             Comment comment = parent.getComment();
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
             JspWriter out = pageContext.getOut();
@@ -23,6 +23,6 @@ public class CommentDateTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CommentDateTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

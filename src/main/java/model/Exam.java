@@ -1,6 +1,6 @@
-package main.java.model;
+package model;
 
-import main.java.model.person.Person;
+import model.person.Person;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class Exam {
         this.category = category;
     }
 
-    public QuestionEntry getCurrentQuestionEntry(){
+    public QuestionEntry getCurrentQuestionEntry() {
         return currentQuestionEntry;
     }
 

@@ -1,10 +1,10 @@
-package main.java.controller.article;
+package controller.article;
 
-import main.java.data.article.ArticleHandler;
-import main.java.data.category.CategoryHandler;
-import main.java.model.Category;
-import main.java.model.article.Article;
-import main.java.util.GeneralUtility;
+import data.article.ArticleHandler;
+import data.category.CategoryHandler;
+import model.Category;
+import model.article.Article;
+import util.GeneralUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.ARTICLE_ID;
-import static main.java.util.AllMessage.ARTICLE_REMOVED_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsParam.ARTICLE_ID;
+import static util.AllMessage.ARTICLE_REMOVED_MESSAGE;
 
 /**
  * Created by Tatyana on 23.06.2016.
@@ -32,7 +32,8 @@ public class DeleteArticleServlet extends HttpServlet {
 
         request.setAttribute(MESSAGE_ATTRIBUTE, ARTICLE_REMOVED_MESSAGE);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         dispatcher.forward(request, response);
     }
 

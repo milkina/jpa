@@ -1,6 +1,6 @@
-package main.java.tags.selectTestCategory;
+package tags.selectTestCategory;
 
-import main.java.model.Test;
+import model.Test;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -17,15 +17,15 @@ public class TestSelectedOptionTag extends TagSupport {
                     (TestTag) findAncestorWithClass(this, TestTag.class);
             Test test = parent.getTest();
             int testId = test.getId();
-            String selected = testId == parent.getSelectedTestID() ? "selected" : "";
+            String selected = testId == parent.getSelectedTestID()
+                    ? "selected" : "";
             JspWriter out = pageContext.getOut();
             out.print(selected);
         } catch (IOException ioe) {
             System.out.println("Error in TestSelectedOptionTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
-
 }
 
 

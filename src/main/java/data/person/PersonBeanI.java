@@ -1,7 +1,7 @@
-package main.java.data.person;
+package data.person;
 
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
+import model.QuestionEntry;
+import model.person.Person;
 
 import javax.ejb.Local;
 import java.util.List;

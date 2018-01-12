@@ -1,10 +1,10 @@
 package ejb.person;
 
-import main.java.model.QuestionEntry;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
-import main.java.model.person.PersonInfo;
+import model.QuestionEntry;
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
+import model.person.PersonInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseIT;

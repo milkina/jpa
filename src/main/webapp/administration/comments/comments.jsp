@@ -1,4 +1,4 @@
-<%@ page import="main.java.controller.EditMode" %>
+<%@ page import="controller.EditMode" %>
 <%@ taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <h3>Comments</h3>
 <h4>

@@ -1,17 +1,17 @@
-package main.java.tags.exam;
+package tags.exam;
 
-import main.java.model.Exam;
-import main.java.model.QuestionEntry;
-import main.java.util.PersonUtility;
-import main.java.util.exam.ExamUtility;
+import model.Exam;
+import model.QuestionEntry;
+import util.PersonUtility;
+import util.exam.ExamUtility;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 import java.util.List;
 
-import static main.java.util.AllConstants.MARK_QUESTION_HINT;
-import static main.java.util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstants.MARK_QUESTION_HINT;
+import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 
 /**
  * Created by Tatyana on 30.04.2016.
@@ -29,7 +29,7 @@ public class CheckboxTag extends TagSupport {
                 String isCheckedQuestion = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions) ? "checked" : "";
                 String contextPath = pageContext.getServletContext().getContextPath();
                 String str = String.format("<input type='checkbox' id='%s' name='isAnswered'" +
-                        "title='%s' %s onchange=\"markAnswered('%s',%d);\">"
+                                "title='%s' %s onchange=\"markAnswered('%s',%d);\">"
                         , checkboxId
                         , MARK_QUESTION_HINT
                         , isCheckedQuestion
@@ -40,7 +40,7 @@ public class CheckboxTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CheckboxTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 
     private int getQuestionEntryId(Exam exam) {

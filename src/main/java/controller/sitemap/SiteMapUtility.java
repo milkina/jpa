@@ -1,25 +1,31 @@
-package main.java.controller.sitemap;
+package controller.sitemap;
 
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.model.article.Article;
+import model.Category;
+import model.Test;
+import model.article.Article;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-import static main.java.util.AllConstants.SITE_NAME;
+import static util.AllConstants.SITE_NAME;
 
 /**
  * Created by Tatyana on 07.02.2017.
  */
 public class SiteMapUtility {
+    public static final double NORM_PRIORITY = 0.5;
+    public static final double HIGH_PRIORITY = 0.8;
     private UrlSet links;
     private Map<String, Category> duplicateCategories;
     private Map<String, Test> testMap;
     private List<Article> articles;
 
-    public SiteMapUtility(Map<String, Category> duplicateCategories, Map<String, Test> testMap, List<Article> articles) {
+    public SiteMapUtility(Map<String, Category> duplicateCategories,
+                          Map<String, Test> testMap, List<Article> articles) {
         this.duplicateCategories = duplicateCategories;
         this.testMap = testMap;
         this.articles = articles;
@@ -30,7 +36,8 @@ public class SiteMapUtility {
         return duplicateCategories;
     }
 
-    public void setDuplicateCategories(Map<String, Category> duplicateCategories) {
+    public void setDuplicateCategories(
+            Map<String, Category> duplicateCategories) {
         this.duplicateCategories = duplicateCategories;
     }
 
@@ -50,11 +57,12 @@ public class SiteMapUtility {
 
     public void setArticleLinks() {
         for (Article article : articles) {
-            double priority = 0.5;
+            double priority = NORM_PRIORITY;
             if (article.getUrl().trim().isEmpty()) {
                 priority = 1;
             }
-            UrlEntity urlEntity = createUrlEntity(SITE_NAME + article.getUrl(), priority, "monthly");
+            UrlEntity urlEntity = createUrlEntity(SITE_NAME
+                    + article.getUrl(), priority, "monthly");
             links.addUrlEntity(urlEntity);
         }
     }
@@ -70,14 +78,16 @@ public class SiteMapUtility {
         if (!isExceptionTestPath(test.getPathName())) {
             testPathName = SITE_NAME + "exam/" + test.getPathName();
         }
-        UrlEntity urlEntity = createUrlEntity(testPathName, 0.8, "weekly");
+        UrlEntity urlEntity =
+                createUrlEntity(testPathName, HIGH_PRIORITY, "weekly");
 
         links.addUrlEntity(urlEntity);
 
         setCategoryLinks(test);
     }
 
-    private UrlEntity createUrlEntity(String testPathName, double priority, String freq) {
+    private UrlEntity createUrlEntity(String testPathName,
+                                      double priority, String freq) {
         UrlEntity urlEntity = new UrlEntity();
         urlEntity.setLoc(testPathName);
         urlEntity.setChangefreq(freq);
@@ -98,16 +108,20 @@ public class SiteMapUtility {
 
     private void setCategoryLink(Test test, Category category) {
         if (isCategoryLinkable(test, category)) {
-            UrlEntity urlEntity = createUrlEntity(SITE_NAME + "java/" + test.getPathName() + "/" + category.getPathName(), 0.5, "weekly");
+            UrlEntity urlEntity = createUrlEntity(SITE_NAME + "java/"
+                    + test.getPathName() + "/"
+                    + category.getPathName(), NORM_PRIORITY, "weekly");
             links.addUrlEntity(urlEntity);
         }
     }
 
     private boolean isCategoryLinkable(Test test, Category category) {
-        if (category.getHidden() || (category.getSubCategories() != null && !category.getSubCategories().isEmpty())) {
+        if (category.getHidden() || (category.getSubCategories() != null
+                && !category.getSubCategories().isEmpty())) {
             return false;
         }
-        if (isDuplicateCategory(duplicateCategories.get(category.getPathName()), test)) {
+        if (isDuplicateCategory(
+                duplicateCategories.get(category.getPathName()), test)) {
             return false;
         }
         return true;

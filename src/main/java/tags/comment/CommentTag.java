@@ -1,7 +1,7 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.data.comment.CommentHandler;
-import main.java.model.comment.Comment;
+import data.comment.CommentHandler;
+import model.comment.Comment;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -26,9 +26,9 @@ public class CommentTag extends BodyTagSupport {
             getCommentFromList();
         }
         if (comment == null) {
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
-        return (EVAL_BODY_TAG);
+        return EVAL_BODY_TAG;
     }
 
     private void getCommentFromList() {
@@ -60,11 +60,11 @@ public class CommentTag extends BodyTagSupport {
         }
         if (iterator != null && iterator.hasNext()) {
             comment = iterator.next();
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         } else {
             iterator = null;
             comment = null;
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
     }
 

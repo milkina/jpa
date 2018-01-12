@@ -1,4 +1,4 @@
-package main.java.model.person;
+package model.person;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

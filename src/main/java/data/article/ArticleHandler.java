@@ -1,33 +1,27 @@
-package main.java.data.article;
+package data.article;
 
-import main.java.data.category.CategoryHandler;
-import main.java.model.Category;
-import main.java.model.article.Article;
-import main.java.model.person.Person;
-import main.java.util.article.ArticleUtility;
+import model.article.Article;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
-import java.util.Date;
 import java.util.List;
 
-import static main.java.util.AllBeanNameConstants.ARTICLE_BEAN_NAME;
+import static util.AllBeanNameConstants.ARTICLE_BEAN_NAME;
 
 /**
  * Created by Tatyana on 08.05.2016.
  */
 public class ArticleHandler {
-    ArticleBeanI articleBean;
-    Context ct;
+    private ArticleBeanI articleBean;
+    private Context ct;
 
     public ArticleHandler() {
         try {
             ct = new InitialContext();
             articleBean = (ArticleBeanI) ct.lookup(ARTICLE_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

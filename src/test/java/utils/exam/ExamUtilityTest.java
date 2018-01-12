@@ -1,15 +1,15 @@
 package utils.exam;
 
 import junit.framework.Assert;
-import main.java.data.person.PersonBean;
-import main.java.data.person.PersonBeanI;
-import main.java.data.person.PersonHandler;
-import main.java.model.Category;
-import main.java.model.Exam;
-import main.java.model.QuestionEntry;
-import main.java.model.article.Article;
-import main.java.model.person.Person;
-import main.java.util.exam.ExamUtility;
+import data.person.PersonBean;
+import data.person.PersonBeanI;
+import data.person.PersonHandler;
+import model.Category;
+import model.Exam;
+import model.QuestionEntry;
+import model.article.Article;
+import model.person.Person;
+import util.exam.ExamUtility;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -32,10 +32,10 @@ public class ExamUtilityTest {
 
     @BeforeTest
     public void beforeMethod() {
-        main.java.model.Test test = TestUtils.createTest(0);
+        model.Test test = TestUtils.createTest(0);
         person = new Person();
         Article article = TestUtils.createArticle(0, person);
-        category = TestUtils.createCategory(0,   article);
+        category = TestUtils.createCategory(0, article);
         category.addTest(test);
 
 
@@ -96,10 +96,10 @@ public class ExamUtilityTest {
         }
         PersonBeanI personBeanI = mock(PersonBean.class);
         PersonHandler personHandler = new PersonHandler(personBeanI);
-        ExamUtility.personHandler = personHandler;
+        ExamUtility.setPersonHandler(personHandler);
         List<QuestionEntry> answeredQuestions = person != null ? person.getAnsweredQuestions() : null;
         when(personHandler.findAnsweredQuestions(anyInt())).thenReturn(answeredQuestions);
-        boolean result = ExamUtility.isCurrentQuestionChecked(exam,answeredQuestions);
+        boolean result = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions);
         Assert.assertEquals(result, expectedResult);
     }
 

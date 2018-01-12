@@ -1,7 +1,7 @@
-package main.java.data.test;
+package data.test;
 
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +20,7 @@ import java.util.List;
 @Stateless
 public class TestBean implements TestBeanI {
     @PersistenceContext(unitName = "primary")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public List<Object[]> getAllTests() {
         Query query = entityManager.createNamedQuery("Test.findAllTests");

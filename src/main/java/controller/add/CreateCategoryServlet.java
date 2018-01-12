@@ -1,12 +1,12 @@
-package main.java.controller.add;
+package controller.add;
 
-import main.java.data.category.CategoryHandler;
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.util.AllConstantsAttribute;
-import main.java.util.AllConstantsParam;
-import main.java.util.CategoryUtility;
-import main.java.util.TestUtility;
+import data.category.CategoryHandler;
+import model.Category;
+import model.Test;
+import util.AllConstantsAttribute;
+import util.AllConstantsParam;
+import util.CategoryUtility;
+import util.TestUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.Map;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllMessage.CATEGORY_CREATED_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllMessage.CATEGORY_CREATED_MESSAGE;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +32,9 @@ public class CreateCategoryServlet extends HttpServlet {
             throws ServletException, IOException {
 //TODO Return error if category with such name or pathName already exists
         String testPath = request.getParameter(AllConstantsParam.TEST_PATH);
-        Map<String, Test> testMap = (Map<String, Test>) request.getServletContext().getAttribute(AllConstantsAttribute.TESTS);
+        Map<String, Test> testMap =
+                (Map<String, Test>) request.getServletContext()
+                .getAttribute(AllConstantsAttribute.TESTS);
         Test test = testMap.get(testPath);
 
         Category category = new Category();
@@ -45,7 +47,8 @@ public class CreateCategoryServlet extends HttpServlet {
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, CATEGORY_CREATED_MESSAGE);
         dispatcher.forward(request, response);
     }

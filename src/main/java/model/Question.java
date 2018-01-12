@@ -1,6 +1,11 @@
-package main.java.model;
+package model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import java.io.Serializable;
 
 /**
@@ -42,7 +47,8 @@ public class Question implements Serializable {
 
         Question question = (Question) o;
 
-        if (text != null ? !text.equals(question.text) : question.text != null) return false;
+        if (text != null ? !text.equals(question.text)
+                : question.text != null) return false;
 
         return true;
     }

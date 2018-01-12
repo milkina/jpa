@@ -1,7 +1,7 @@
-package main.java.tags.selectTestCategory;
+package tags.selectTestCategory;
 
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -10,11 +10,10 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
-import static main.java.util.AllConstantsAttribute.TESTS;
-import static main.java.util.AllConstantsParam.CATEGORY_PATH;
-import static main.java.util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.TEST_PATH;
 
 /**
  * Created by Tatyana on 20.05.2016.
@@ -39,9 +38,9 @@ public class CategoryTag extends BodyTagSupport {
         setIterator();
         getCategoryFromList();
         if (category == null) {
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
-        return (EVAL_BODY_TAG);
+        return EVAL_BODY_TAG;
     }
 
     private void setSelectedTestID() {
@@ -54,10 +53,12 @@ public class CategoryTag extends BodyTagSupport {
 
     private void setCategories() {
         String testPath = pageContext.getRequest().getParameter(TEST_PATH);
-        LinkedHashMap<String, Test> tests = (LinkedHashMap) pageContext.getServletContext().getAttribute(TESTS);
+        LinkedHashMap<String, Test> tests = (LinkedHashMap)
+                pageContext.getServletContext().getAttribute(TESTS);
         Test test = tests.get(testPath);
         if (testPath == null) {
-            Iterator<Map.Entry<String, Test>> itr1 = tests.entrySet().iterator();
+            Iterator<Map.Entry<String, Test>> itr1 =
+                    tests.entrySet().iterator();
             if (itr1.hasNext()) {
                 test = itr1.next().getValue();
             }
@@ -86,11 +87,11 @@ public class CategoryTag extends BodyTagSupport {
         }
         if (iterator != null && iterator.hasNext()) {
             category = iterator.next();
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         } else {
             iterator = null;
             category = null;
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
     }
 }

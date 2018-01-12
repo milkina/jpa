@@ -1,8 +1,8 @@
-package main.java.controller.add;
+package controller.add;
 
-import main.java.data.test.TestHandler;
-import main.java.model.Test;
-import main.java.util.TestUtility;
+import data.test.TestHandler;
+import model.Test;
+import util.TestUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllMessage.TEST_ADDED_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllMessage.TEST_ADDED_MESSAGE;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,7 +35,8 @@ public class AddTestServlet extends HttpServlet {
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, TEST_ADDED_MESSAGE);
         dispatcher.forward(request, response);
     }

@@ -1,6 +1,6 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.model.comment.Comment;
+import model.comment.Comment;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -21,6 +21,6 @@ public class CommentIdTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CommentIdTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

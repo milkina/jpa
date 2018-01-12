@@ -5,11 +5,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
-
-
      <filter>
         <filter-name>IndexPageFilter</filter-name>
-        <filter-class>main.java.controller.filters.IndexPageFilter</filter-class>
+        <filter-class>controller.filters.IndexPageFilter</filter-class>
     </filter>
     <filter>
         <filter-name>ExpiresFilter</filter-name>
@@ -38,138 +36,138 @@
     </filter-mapping>
 
     <listener>
-        <listener-class>main.java.controller.test.LoadTestServlet</listener-class>
+        <listener-class>controller.test.LoadTestServlet</listener-class>
     </listener>
 
 
     <servlet>
         <servlet-name>CreateCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.add.CreateCategoryServlet</servlet-class>
+        <servlet-class>controller.add.CreateCategoryServlet</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>AddTestServlet</servlet-name>
-        <servlet-class>main.java.controller.add.AddTestServlet</servlet-class>
+        <servlet-class>controller.add.AddTestServlet</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>main.java.controller.LoginServlet</servlet-class>
+        <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreatePerson</servlet-name>
-        <servlet-class>main.java.controller.CreatePerson</servlet-class>
+        <servlet-class>controller.CreatePerson</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>SaveComment</servlet-name>
-        <servlet-class>main.java.controller.SaveComment</servlet-class>
+        <servlet-class>controller.SaveComment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
-        <servlet-class>main.java.controller.ChangeAnsweredQuestionServlet</servlet-class>
+        <servlet-class>controller.ChangeAnsweredQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>main.java.controller.LogoutServlet</servlet-class>
+        <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>EditQuestionEntryServlet</servlet-name>
-        <servlet-class>main.java.controller.EditQuestionEntryServlet</servlet-class>
+        <servlet-class>controller.EditQuestionEntryServlet</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>ChangeUserSettings</servlet-name>
-        <servlet-class>main.java.controller.person.ChangeUserSettings</servlet-class>
+        <servlet-class>controller.person.ChangeUserSettings</servlet-class>
     </servlet>
       <servlet>
         <servlet-name>ChangePassword</servlet-name>
-        <servlet-class>main.java.controller.person.ChangePassword</servlet-class>
+        <servlet-class>controller.person.ChangePassword</servlet-class>
     </servlet>
       <servlet>
         <servlet-name>AddQuestionEntry</servlet-name>
-        <servlet-class>main.java.controller.add.AddQuestionEntry</servlet-class>
+        <servlet-class>controller.add.AddQuestionEntry</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.edit.EditCategoryServlet</servlet-class>
+        <servlet-class>controller.edit.EditCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditTestServlet</servlet-name>
-        <servlet-class>main.java.controller.test.EditTestServlet</servlet-class>
+        <servlet-class>controller.test.EditTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeTestServlet</servlet-name>
-        <servlet-class>main.java.controller.edit.ChangeTestServlet</servlet-class>
+        <servlet-class>controller.edit.ChangeTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StartExamServlet</servlet-name>
-        <servlet-class>main.java.controller.exam.StartExamServlet</servlet-class>
+        <servlet-class>controller.exam.StartExamServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowExamQuestionServlet</servlet-name>
-        <servlet-class>main.java.controller.exam.ShowExamQuestionServlet</servlet-class>
+        <servlet-class>controller.exam.ShowExamQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowQuestionServlet</servlet-name>
-        <servlet-class>main.java.controller.exam.ShowQuestionServlet</servlet-class>
+        <servlet-class>controller.exam.ShowQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditArticleServlet</servlet-name>
-        <servlet-class>main.java.controller.article.EditArticleServlet</servlet-class>
+        <servlet-class>controller.article.EditArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ModifyCommentServlet</servlet-name>
-        <servlet-class>main.java.controller.comment.ModifyCommentServlet</servlet-class>
+        <servlet-class>controller.comment.ModifyCommentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpTestServlet</servlet-name>
-        <servlet-class>main.java.controller.test.UpTestServlet</servlet-class>
+        <servlet-class>controller.test.UpTestServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>DeleteUser</servlet-name>
-        <servlet-class>main.java.controller.person.DeleteUser</servlet-class>
+        <servlet-class>controller.person.DeleteUser</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ClearHistoryServlet</servlet-name>
-        <servlet-class>main.java.controller.person.ClearHistoryServlet</servlet-class>
+        <servlet-class>controller.person.ClearHistoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.category.ShowCategoryServlet</servlet-class>
+        <servlet-class>controller.category.ShowCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.category.DeleteCategoryServlet</servlet-class>
+        <servlet-class>controller.category.DeleteCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteArticleServlet</servlet-name>
-        <servlet-class>main.java.controller.article.DeleteArticleServlet</servlet-class>
+        <servlet-class>controller.article.DeleteArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadEditArticleServlet</servlet-name>
-        <servlet-class>main.java.controller.article.LoadEditArticleServlet</servlet-class>
+        <servlet-class>controller.article.LoadEditArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowArticleServlet</servlet-name>
-        <servlet-class>main.java.controller.article.ShowArticleServlet</servlet-class>
+        <servlet-class>controller.article.ShowArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.category.AddCategoryServlet</servlet-class>
+        <servlet-class>controller.category.AddCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteFromTestServlet</servlet-name>
-        <servlet-class>main.java.controller.category.DeleteFromTestServlet</servlet-class>
+        <servlet-class>controller.category.DeleteFromTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpCategoryServlet</servlet-name>
-        <servlet-class>main.java.controller.category.UpCategoryServlet</servlet-class>
+        <servlet-class>controller.category.UpCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteTestServlet</servlet-name>
-        <servlet-class>main.java.controller.test.DeleteTestServlet</servlet-class>
+        <servlet-class>controller.test.DeleteTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiteMapServlet</servlet-name>
-        <servlet-class>main.java.controller.sitemap.SiteMapServlet</servlet-class>
+        <servlet-class>controller.sitemap.SiteMapServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

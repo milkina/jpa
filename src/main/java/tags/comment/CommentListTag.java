@@ -1,14 +1,14 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.data.comment.CommentHandler;
-import main.java.model.article.Article;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
+import data.comment.CommentHandler;
+import model.article.Article;
+import model.comment.Comment;
+import model.comment.CommentType;
 
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.util.List;
 
-import static main.java.util.AllConstantsAttribute.ARTICLE_ATTRIBUTE;
+import static util.AllConstantsAttribute.ARTICLE_ATTRIBUTE;
 
 /**
  * Created by Tatyana on 07.05.2016.
@@ -45,7 +45,7 @@ public class CommentListTag extends BodyTagSupport {
         } else {
             commentList = commentHandler.getComments(type, referenceId);
         }
-        return (EVAL_BODY_INCLUDE);
+        return EVAL_BODY_INCLUDE;
     }
 
     public List<Comment> getCommentList() {

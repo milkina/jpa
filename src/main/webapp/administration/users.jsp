@@ -1,7 +1,7 @@
-<%@ page import="main.java.data.person.PersonHandler" %>
+<%@ page import="data.person.PersonHandler" %>
 <%@ page import="java.util.List"%>
-<%@ page import="main.java.model.person.Person"%>
-<%@ page import="main.java.util.GeneralUtility"%>
+<%@ page import="model.person.Person"%>
+<%@ page import="util.GeneralUtility"%>
 <%  PersonHandler personHandler = new PersonHandler();
     List<Person> personList = personHandler.getAllPersonsList();
 %>

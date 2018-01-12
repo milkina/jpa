@@ -1,14 +1,13 @@
-package main.java.data.category;
+package data.category;
 
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,7 +19,7 @@ import java.util.Map;
 @Stateless
 public class CategoryBean implements CategoryBeanI {
     @PersistenceContext(unitName = "primary")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public Category createCategory(Category category) {
         entityManager.persist(category);
@@ -42,19 +41,23 @@ public class CategoryBean implements CategoryBeanI {
     }
 
     public Category getCategory(String pathName) {
-        Query query = entityManager.createNamedQuery("Category.findByPathName");
+        Query query = entityManager.createNamedQuery(
+                "Category.findByPathName");
         query.setParameter("p", pathName);
         return (Category) query.getSingleResult();
     }
 
     public List<Category> getCategories(int testId) {
-        Query query = entityManager.createNamedQuery("Category.findCategories");
+        Query query = entityManager.createNamedQuery(
+                "Category.findCategories");
         query.setParameter("p", testId);
         return query.getResultList();
     }
 
     public List<Category> getCategories(String testPath) {
-        Query query = entityManager.createNamedQuery("Category.findCategoriesByTestPath");
+        Query query =
+                entityManager.createNamedQuery(
+                        "Category.findCategoriesByTestPath");
         query.setParameter("p", testPath);
         return query.getResultList();
     }
@@ -78,7 +81,8 @@ public class CategoryBean implements CategoryBeanI {
     }
 
     public List<Category> getDuplicateCategories() {
-        Query query = entityManager.createNamedQuery("Category.findDuplicateCategories");
+        Query query = entityManager.createNamedQuery(
+                "Category.findDuplicateCategories");
         return query.getResultList();
     }
 }

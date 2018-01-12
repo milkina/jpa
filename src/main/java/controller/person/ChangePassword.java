@@ -1,13 +1,12 @@
-package main.java.controller.person;
+package controller.person;
 
+import data.person.PersonHandler;
+import model.person.Person;
+import util.AllConstants;
+import util.ServletUtilities;
 
-import main.java.data.person.PersonHandler;
-import main.java.model.person.Person;
-import main.java.util.AllConstants;
-import main.java.util.ServletUtilities;
-
-import static main.java.util.AllConstantsParam.*;
-import static main.java.util.AllConstantsAttribute.*;
+import static util.AllConstantsParam.PASSWORD_PARAMETER;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
 import java.io.IOException;
-
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +34,8 @@ public class ChangePassword extends HttpServlet {
         person.setPassword(ServletUtilities.getMD5(password));
         PersonHandler personHandler = new PersonHandler();
         personHandler.updatePerson(person);
-        response.sendRedirect(request.getServletContext().getContextPath() + AllConstants.MY_PROFILE_PAGE);
+        response.sendRedirect(request.getServletContext().getContextPath()
+                + AllConstants.MY_PROFILE_PAGE);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

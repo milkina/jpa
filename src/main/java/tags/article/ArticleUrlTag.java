@@ -1,7 +1,6 @@
-package main.java.tags.article;
+package tags.article;
 
-import main.java.model.article.Article;
-import main.java.util.CategoryUtility;
+import model.article.Article;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -23,6 +22,6 @@ public class ArticleUrlTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in ArticleUrlTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

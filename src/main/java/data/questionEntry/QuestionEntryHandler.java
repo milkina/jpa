@@ -1,10 +1,10 @@
-package main.java.data.questionEntry;
+package data.questionEntry;
 
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
-import main.java.model.QuestionType;
-import main.java.model.Test;
-import main.java.model.person.Person;
+import model.Category;
+import model.QuestionEntry;
+import model.QuestionType;
+import model.Test;
+import model.person.Person;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static main.java.util.AllBeanNameConstants.QUESTION_ENTRY_BEAN_NAME;
+import static util.AllBeanNameConstants.QUESTION_ENTRY_BEAN_NAME;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,15 +25,15 @@ import static main.java.util.AllBeanNameConstants.QUESTION_ENTRY_BEAN_NAME;
  */
 public class QuestionEntryHandler {
 
-    QuestionEntryBeanI questionEntryBean;
-    Context ct;
+    private QuestionEntryBeanI questionEntryBean;
+    private Context ct;
 
     public QuestionEntryHandler() {
         try {
             ct = new InitialContext();
             questionEntryBean = (QuestionEntryBeanI) ct.lookup(QUESTION_ENTRY_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
@@ -55,8 +55,11 @@ public class QuestionEntryHandler {
         return questionEntryBean.getAllQuestions(category);
     }
 
-    public List<QuestionEntry> getQuestions(Category category, Person person, String questionType) {
-        if (person == null || questionType == null || QuestionType.ALL.toString().equals(questionType)) {
+    public List<QuestionEntry> getQuestions(Category category,
+                                            Person person,
+                                            String questionType) {
+        if (person == null || questionType == null
+                || QuestionType.ALL.toString().equals(questionType)) {
             return questionEntryBean.getAllQuestions(category);
         } else if (QuestionType.ANSWERED.toString().equals(questionType)) {
             return questionEntryBean.getAnsweredQuestions(category, person);
@@ -65,11 +68,13 @@ public class QuestionEntryHandler {
         }
     }
 
-    public List<QuestionEntry> getAnsweredQuestions(Category category, Person person) {
+    public List<QuestionEntry> getAnsweredQuestions(Category category,
+                                                    Person person) {
         return questionEntryBean.getAnsweredQuestions(category, person);
     }
 
-    public List<QuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
+    public List<QuestionEntry> getNotAnsweredQuestions(Category category,
+                                                       Person person) {
         return questionEntryBean.getNotAnsweredQuestions(category, person);
     }
 
@@ -101,7 +106,8 @@ public class QuestionEntryHandler {
         return questionEntryBean.getQuestionEntry(id);
     }
 
-    public void moveBatch(Category oldCategory, Category category, Integer from, Integer to) {
+    public void moveBatch(Category oldCategory, Category category,
+                          Integer from, Integer to) {
         questionEntryBean.moveBatch(oldCategory, category, from, to);
     }
 
@@ -112,7 +118,8 @@ public class QuestionEntryHandler {
 
     public void moveQuestionEntryUp(int questionId) {
         QuestionEntry questionEntry = getQuestionEntry(questionId);
-        QuestionEntry previousQuestionEntry = getPreviousQuestionEntry(questionEntry.getOrderColumn());
+        QuestionEntry previousQuestionEntry =
+                getPreviousQuestionEntry(questionEntry.getOrderColumn());
         if (previousQuestionEntry != null) {
             swapQuestionEntries(questionEntry, previousQuestionEntry);
         }

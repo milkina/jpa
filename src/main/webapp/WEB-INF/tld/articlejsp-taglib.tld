@@ -12,43 +12,43 @@
 
     <tag>
         <name>articleList</name>
-        <tagclass>main.java.tags.article.ArticleListTag</tagclass>
+        <tagclass>tags.article.ArticleListTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Article List tag.</info>
     </tag>
     <tag>
         <name>article</name>
-        <tagclass>main.java.tags.article.ArticleTag</tagclass>
+        <tagclass>tags.article.ArticleTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Article parent tag.</info>
     </tag>
     <tag>
         <name>articleId</name>
-        <tagclass>main.java.tags.article.ArticleIdTag</tagclass>
+        <tagclass>tags.article.ArticleIdTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Article id.</info>
     </tag>
     <tag>
         <name>articleUrl</name>
-        <tagclass>main.java.tags.article.ArticleUrlTag</tagclass>
+        <tagclass>tags.article.ArticleUrlTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Article url.</info>
     </tag>
     <tag>
         <name>articleTitle</name>
-        <tagclass>main.java.tags.article.ArticleTitleTag</tagclass>
+        <tagclass>tags.article.ArticleTitleTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Article title.</info>
     </tag>
     <tag>
         <name>articleDescription</name>
-        <tagclass>main.java.tags.article.ArticleDescriptionTag</tagclass>
+        <tagclass>tags.article.ArticleDescriptionTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Article description.</info>
     </tag>
     <tag>
         <name>articleImg</name>
-        <tagclass>main.java.tags.article.ArticleImgTag</tagclass>
+        <tagclass>tags.article.ArticleImgTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Article image.</info>
     </tag>

@@ -1,15 +1,16 @@
-package main.java.controller;
+package controller;
 
-import main.java.data.category.CategoryHandler;
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.Answer;
-import main.java.model.Category;
-import main.java.model.Question;
-import main.java.model.QuestionEntry;
-import main.java.util.CategoryUtility;
-import main.java.util.GeneralUtility;
-import main.java.util.ServletUtilities;
-import main.java.util.TestUtility;
+import data.category.CategoryHandler;
+import data.questionEntry.QuestionEntryHandler;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.QuestionEntry;
+import util.CategoryUtility;
+import util.GeneralUtility;
+import util.ServletUtilities;
+import util.TestUtility;
+import util.question.QuestionEntryUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,12 +20,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import static main.java.util.AllConstants.*;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.*;
-import static main.java.util.AllMessage.*;
-import static main.java.util.question.QuestionEntryUtility.isValidNumbers;
+import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstants.SHOW_QUESTIONS_PAGE;
+import static util.AllConstants.EDIT_QUESTION_ENTRY_SERVLET;
+import static util.AllConstants.MOVE_QUESTIONS_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
+import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
+import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
+import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
+import static util.AllConstantsParam.EDIT_MODE_PARAM;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.OLD_CATEGORY_PATH;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.OLD_TEST_PATH;
+import static util.AllConstantsParam.FROM_NUMBER;
+import static util.AllConstantsParam.TO_NUMBER;
+import static util.AllMessage.QUESTION_CHANGED_MESSAGE;
+import static util.AllMessage.QUESTION_REMOVE_MESSAGE;
+import static util.AllMessage.SELECT_DIFFERENT_CATEGORY;
+import static util.AllMessage.INVALID_NUMBERS_MESSAGE;
+import static util.AllMessage.QUESTIONS_MOVED;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +53,8 @@ import static main.java.util.question.QuestionEntryUtility.isValidNumbers;
 
 public class EditQuestionEntryServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response)
             throws ServletException, IOException {
         String modeParam = request.getParameter(EDIT_MODE_PARAM);
         EditMode mode = EditMode.valueOf(modeParam);
@@ -61,17 +79,21 @@ public class EditQuestionEntryServlet extends HttpServlet {
         TestUtility.loadTestsToServletContext(request.getServletContext());
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request,
+                      HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
     }
 
-    private void showQuestionEntry(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void showQuestionEntry(HttpServletRequest request,
+                                   HttpServletResponse response)
+            throws IOException, ServletException {
         QuestionEntry questionEntry = findQuestionEntry(request);
 
         fixTinyMCEIssue(questionEntry);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(EDIT_QUESTION_ENTRY_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(EDIT_QUESTION_ENTRY_PAGE);
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
         dispatcher.forward(request, response);
     }
@@ -84,14 +106,19 @@ public class EditQuestionEntryServlet extends HttpServlet {
         answer.setText(ServletUtilities.fixTinyMceIssue(answer.getText()));
     }
 
-    private void saveQuestionEntry(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void saveQuestionEntry(
+            HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
 
-        String newQuestionText = GeneralUtility.decodeRussianCharacters(request.getParameter(QUESTION_TEXT_PARAM).trim());
-        String newAnswerText = GeneralUtility.decodeRussianCharacters(request.getParameter(ANSWER_TEXT_PARAM).trim());
+        String newQuestionText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(QUESTION_TEXT_PARAM).trim());
+        String newAnswerText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(ANSWER_TEXT_PARAM).trim());
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
         QuestionEntry questionEntry = null;
-        Category category = CategoryUtility.getCategoryFromServletContext(request);
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
         if (oldCategoryPath.equals(categoryPath)) {
             questionEntry = findQuestionEntry(request);
         } else {
@@ -106,18 +133,24 @@ public class EditQuestionEntryServlet extends HttpServlet {
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.updateQuestionEntry(questionEntry);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_CHANGED_MESSAGE);
         dispatcher.forward(request, response);
     }
 
     private QuestionEntry findQuestionEntry(HttpServletRequest request) {
         String questionEntryId = request.getParameter(QUESTION_ENTRY_ID_PARAM);
-        return new QuestionEntryHandler().getQuestionEntry(Integer.valueOf(questionEntryId));
+        return new QuestionEntryHandler().getQuestionEntry(
+                Integer.valueOf(questionEntryId));
     }
 
-    private void moveQuestionEntryUp(HttpServletRequest request, HttpServletResponse response, EditMode mode) throws IOException, ServletException {
-        Integer questionId = GeneralUtility.getIntegerValue(request, QUESTION_ENTRY_ID_PARAM);
+    private void moveQuestionEntryUp(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     EditMode mode)
+            throws IOException, ServletException {
+        Integer questionId = GeneralUtility.getIntegerValue(
+                request, QUESTION_ENTRY_ID_PARAM);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.moveQuestionEntryUp(questionId);
@@ -135,7 +168,8 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 TEST_PATH, request.getParameter(TEST_PATH));
     }
 
-    private String createEditQuestionPageUrl(HttpServletRequest request, Integer questionId) {
+    private String createEditQuestionPageUrl(HttpServletRequest request,
+                                             Integer questionId) {
         return String.format("%s%s?%s=%s&%s=%s&%s=%d&%s=%s",
                 request.getContextPath(),
                 EDIT_QUESTION_ENTRY_SERVLET,
@@ -145,40 +179,51 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 EDIT_MODE_PARAM, EditMode.SHOW);
     }
 
-    private void deleteQuestionEntry(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int questionEntryId = GeneralUtility.getIntegerValue(request, QUESTION_ENTRY_ID_PARAM);
+    private void deleteQuestionEntry(
+            HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        int questionEntryId = GeneralUtility.getIntegerValue(request,
+                QUESTION_ENTRY_ID_PARAM);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.deleteQuestionEntry(questionEntryId);
-        Category category = CategoryUtility.getCategoryFromServletContext(request);
-        Map<Integer, QuestionEntry> allQuestionsOfCategory = questionEntryHandler.getAllQuestions(category);
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
+        Map<Integer, QuestionEntry> allQuestionsOfCategory =
+                questionEntryHandler.getAllQuestions(category);
         allQuestionsOfCategory.remove(questionEntryId);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_REMOVE_MESSAGE);
         dispatcher.forward(request, response);
     }
 
-    public void moveBatch(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void moveBatch(
+            HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         Category category = CategoryUtility.getCategoryByPath(request);
         String oldTestPath = request.getParameter(OLD_TEST_PATH).trim();
         CategoryHandler categoryHandler = new CategoryHandler();
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
         Category oldCategory = categoryHandler.getCategory(oldCategoryPath);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        long oldCategoryQuestionsNumber = questionEntryHandler.getAllQuestions(oldCategory).size();
-
+        long oldCategoryQuestionsNumber =
+                questionEntryHandler.getAllQuestions(oldCategory).size();
 
         Integer from = GeneralUtility.getIntegerValue(request, FROM_NUMBER);
         Integer to = GeneralUtility.getIntegerValue(request, TO_NUMBER);
         String page = MESSAGE_PAGE;
         String message = String.format(QUESTIONS_MOVED, to - from + 1);
         if (oldCategory.getId() == category.getId()) {
-            page = String.format(MOVE_QUESTIONS_PAGE, oldTestPath, oldCategoryPath);
+            page = String.format(MOVE_QUESTIONS_PAGE,
+                    oldTestPath, oldCategoryPath);
             message = SELECT_DIFFERENT_CATEGORY;
-        } else if (isValidNumbers(from, to, oldCategoryQuestionsNumber)) {
+        } else if (QuestionEntryUtility.isValidNumbers(
+                from, to, oldCategoryQuestionsNumber)) {
             questionEntryHandler.moveBatch(oldCategory, category, from, to);
         } else {
-            page = String.format(MOVE_QUESTIONS_PAGE, oldTestPath, oldCategoryPath);
+            page = String.format(MOVE_QUESTIONS_PAGE, oldTestPath,
+                    oldCategoryPath);
             message = INVALID_NUMBERS_MESSAGE;
         }
 
@@ -186,5 +231,4 @@ public class EditQuestionEntryServlet extends HttpServlet {
         request.setAttribute(MESSAGE_ATTRIBUTE, message);
         dispatcher.forward(request, response);
     }
-
 }

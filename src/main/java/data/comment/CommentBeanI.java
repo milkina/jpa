@@ -1,8 +1,8 @@
-package main.java.data.comment;
+package data.comment;
 
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -30,7 +30,7 @@ public interface CommentBeanI {
 
     List<Comment> getAllCommentsForPerson(Person person);
 
-    List<Comment> getComments(CommentType type,Integer referenceId);
+    List<Comment> getComments(CommentType type, Integer referenceId);
 
     List<Comment> getLastComments(int number);
 

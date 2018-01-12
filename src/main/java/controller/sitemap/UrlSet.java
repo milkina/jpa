@@ -1,4 +1,4 @@
-package main.java.controller.sitemap;
+package controller.sitemap;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,10 +9,12 @@ import java.util.List;
  * Created by Tatyana on 04.02.2017.
  */
 
-@XmlRootElement(name = "urlset",namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")
+@XmlRootElement(name = "urlset",
+        namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")
 public class UrlSet {
 
     private List<UrlEntity> url;
+
     @XmlElement(namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")
     public List<UrlEntity> getUrl() {
         return url;

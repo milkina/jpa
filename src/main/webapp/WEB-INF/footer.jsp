@@ -1,5 +1,5 @@
 <div class="socialIconDiv">
-<span>Copyright &#169; 2012-2017 ExamClouds</span>
+<span>Copyright &#169; 2012-2018 ExamClouds</span>
 <span class="contactUs">Contact Us:&nbsp;</span>
     <a href="http://www.facebook.com/Examclouds" target="_blank" rel="nofollow">
          <div id="sprite-icon_facebook" class="socialIcon"></div>

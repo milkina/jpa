@@ -1,33 +1,44 @@
-package main.java.util.exam;
+package util.exam;
 
-import main.java.data.person.PersonHandler;
-import main.java.model.Exam;
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
-import main.java.util.PersonUtility;
+import data.person.PersonHandler;
+import model.Exam;
+import model.QuestionEntry;
+import model.person.Person;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
  * Created by Tatyana on 30.04.2016.
  */
 public class ExamUtility {
-    public static PersonHandler personHandler = new PersonHandler();
+    private static PersonHandler personHandler = new PersonHandler();
 
-    public static boolean isQuestionChecked(int questionNumber, Exam exam, List<QuestionEntry> answeredQuestions) {
-        QuestionEntry questionEntry = exam.getQuestionEntries().get(questionNumber);
+    public static PersonHandler getPersonHandler() {
+        return personHandler;
+    }
+
+    public static void setPersonHandler(PersonHandler personHandler) {
+        ExamUtility.personHandler = personHandler;
+    }
+
+    public static boolean isQuestionChecked(int questionNumber, Exam exam,
+                                            List<QuestionEntry> ansQuestions) {
+        QuestionEntry questionEntry =
+                exam.getQuestionEntries().get(questionNumber);
         Person person = exam.getPerson();
         if (person == null) {
             return false;
         }
-        return (answeredQuestions != null && answeredQuestions.contains(questionEntry));
+        return ansQuestions != null
+                && ansQuestions.contains(questionEntry);
     }
 
-    public static boolean isCurrentQuestionChecked(Exam exam, List<QuestionEntry> answeredQuestions) {
-        return exam != null && exam.getCurrentNumber() != null && isQuestionChecked(exam.getCurrentNumber(), exam, answeredQuestions);
+    public static boolean isCurrentQuestionChecked(
+            Exam exam, List<QuestionEntry> answeredQuestions) {
+        return exam != null && exam.getCurrentNumber() != null
+                && isQuestionChecked(exam.getCurrentNumber(),
+                exam, answeredQuestions);
     }
-
 
     public static QuestionEntry getCurrentQuestionEntry(Exam exam) {
         if (exam == null || exam.getQuestionEntries() == null

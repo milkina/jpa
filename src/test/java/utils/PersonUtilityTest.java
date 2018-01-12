@@ -1,10 +1,10 @@
 package utils;
 
-import main.java.model.comment.Comment;
-import main.java.model.person.Person;
-import main.java.model.person.PersonInfo;
-import main.java.util.AllConstants;
-import main.java.util.PersonUtility;
+import model.comment.Comment;
+import model.person.Person;
+import model.person.PersonInfo;
+import util.AllConstants;
+import util.PersonUtility;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;

@@ -1,6 +1,6 @@
-package main.java.tags.questionEntry;
+package tags.questionEntry;
 
-import main.java.model.QuestionEntry;
+import model.QuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -21,6 +21,6 @@ public class QuestionEntryIdTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in QuestionEntryIdTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

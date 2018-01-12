@@ -1,9 +1,9 @@
-package main.java.data.questionEntry;
+package data.questionEntry;
 
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
-import main.java.model.Test;
-import main.java.model.person.Person;
+import model.Category;
+import model.QuestionEntry;
+import model.Test;
+import model.person.Person;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-import static main.java.util.AllConstants.*;
+import static util.AllConstants.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,7 +23,7 @@ import static main.java.util.AllConstants.*;
 @Stateless
 public class QuestionEntryBean implements QuestionEntryBeanI {
     @PersistenceContext(unitName = "primary")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public List<QuestionEntry> getAllQuestions(Category category) {
         List<QuestionEntry> list;
@@ -35,7 +35,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
 
     public List<QuestionEntry> getAnsweredQuestions(Category category, Person person) {
         List<QuestionEntry> list;
-        Query query = entityManager.createNamedQuery("QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES");
+        Query query = entityManager.createNamedQuery(
+                "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);
         query.setParameter("person", person);
         list = query.getResultList();
@@ -44,7 +45,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
 
     public List<QuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
         List<QuestionEntry> list;
-        Query query = entityManager.createNamedQuery("QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES");
+        Query query = entityManager.createNamedQuery(
+                "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);
         query.setParameter("person", person);
         list = query.getResultList();
@@ -71,7 +73,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public QuestionEntry getPreviousQuestionEntry(int orderColumn) {
-        Query query = entityManager.createNamedQuery("QuestionEntry.getPreviousQuestionEntry");
+        Query query = entityManager.createNamedQuery(
+                "QuestionEntry.getPreviousQuestionEntry");
         query.setParameter("param", orderColumn);
         List<QuestionEntry> list = query.getResultList();
         QuestionEntry result = null;
@@ -81,7 +84,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         return result;
     }
 
-    public void moveBatch(Category oldCategory, Category category, Integer from, Integer to) {
+    public void moveBatch(Category oldCategory, Category category,
+                          Integer from, Integer to) {
         List<QuestionEntry> list = getAllQuestions(oldCategory);
         for (int i = from - 1; i < to; i++) {
             QuestionEntry questionEntry = list.get(i);
@@ -90,11 +94,14 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public List<Test> getQuestionEntryTests(int id) {
-        QuestionEntry questionEntry = entityManager.find(QuestionEntry.class, id);
+        QuestionEntry questionEntry =
+                entityManager.find(QuestionEntry.class, id);
         return questionEntry.getCategory().getTests();
     }
-   public Test getFirstQuestionEntryTest(int id) {
-        QuestionEntry questionEntry = entityManager.find(QuestionEntry.class, id);
+
+    public Test getFirstQuestionEntryTest(int id) {
+        QuestionEntry questionEntry =
+                entityManager.find(QuestionEntry.class, id);
         return questionEntry.getCategory().getTests().get(0);
     }
 }

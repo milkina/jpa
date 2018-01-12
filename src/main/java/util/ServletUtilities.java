@@ -1,13 +1,8 @@
-package main.java.util;
-
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
+package util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +27,7 @@ public class ServletUtilities {
 
     public static String filter(String input) {
         if (!hasSpecialChars(input)) {
-            return (input);
+            return input;
         }
         StringBuffer filtered = new StringBuffer(input.length());
         char c;
@@ -54,39 +49,34 @@ public class ServletUtilities {
                     filtered.append(c);
             }
         }
-        return (filtered.toString());
+        return filtered.toString();
     }
 
     public static boolean hasSpecialChars(String input) {
         boolean flag = false;
-        if ((input != null) && (input.length() > 0)) {
+        if (input != null && input.length() > 0) {
             char c;
             for (int i = 0; i < input.length(); i++) {
                 c = input.charAt(i);
                 switch (c) {
                     case '<':
-                        flag = true;
-                        break;
                     case '>':
-                        flag = true;
-                        break;
                     case '"':
-                        flag = true;
-                        break;
                     case '&':
-                        flag = true;
-                        break;
                     case '\n':
                         flag = true;
                         break;
+                    default:
+                        flag = false;
                 }
             }
         }
-        return (flag);
+        return flag;
     }
 
     public static String fixTinyMceIssue(String input) {
-        if (input != null && (input.contains("&lt;") || input.contains("&gt;"))) {
+        if (input != null
+                && (input.contains("&lt;") || input.contains("&gt;"))) {
             String result = input.replaceAll("&lt;", "&amp;lt;");
             return result.replaceAll("&gt;", "&amp;gt;");
         }

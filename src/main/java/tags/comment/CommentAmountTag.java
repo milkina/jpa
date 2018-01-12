@@ -1,11 +1,10 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.model.comment.Comment;
+import model.comment.Comment;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.util.List;
 
 /**
@@ -24,6 +23,6 @@ public class CommentAmountTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CommentAmountTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

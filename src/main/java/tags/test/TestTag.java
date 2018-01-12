@@ -1,7 +1,7 @@
-package main.java.tags.test;
+package tags.test;
 
-import main.java.data.test.TestHandler;
-import main.java.model.Test;
+import data.test.TestHandler;
+import model.Test;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -27,13 +27,14 @@ public class TestTag extends TagSupport {
             } else if (pathName != null) {
                 test = getTestMapPath().get(pathName);
             }
-            String output = getOutputString(test, pageContext.getServletContext().getContextPath());
+            String output = getOutputString(test,
+                    pageContext.getServletContext().getContextPath());
             JspWriter out = pageContext.getOut();
             out.print(output);
         } catch (IOException ioe) {
             System.out.println("Error in TestTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 
     public Map<Integer, Test> getTestMap() {
@@ -58,8 +59,9 @@ public class TestTag extends TagSupport {
                 return contextPath + "/" + test.getPathName();
             case NAME:
                 return test.getName();
+            default:
+                return "";
         }
-        return "";
     }
 
     public void setTestId(Integer testId) {

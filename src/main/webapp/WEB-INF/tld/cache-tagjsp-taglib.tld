@@ -13,7 +13,7 @@
 
     <tag>
         <name>cacheTag</name>
-        <tagclass>main.java.tags.cacheTag.CacheTag</tagclass>
+        <tagclass>tags.cacheTag.CacheTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Cache Tag.</info>
     </tag>

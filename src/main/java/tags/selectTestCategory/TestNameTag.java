@@ -1,6 +1,6 @@
-package main.java.tags.selectTestCategory;
+package tags.selectTestCategory;
 
-import main.java.model.Test;
+import model.Test;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -21,8 +21,7 @@ public class TestNameTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in TestNameTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
-
 }
 

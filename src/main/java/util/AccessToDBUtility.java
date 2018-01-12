@@ -1,10 +1,8 @@
-package main.java.util;
+package util;
 
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.Category;
+import model.Category;
 
 import java.sql.*;
-import java.util.HashSet;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,7 +18,8 @@ public class AccessToDBUtility {
     private String password;
     private Connection connection;
 
-    public AccessToDBUtility(String driver, String url, String username, String password) {
+    public AccessToDBUtility(String driver, String url, String username,
+                             String password) {
         this.driver = "com.mysql.jdbc.jdbc2.optional.MysqlXADataSource";
         this.url = "jdbc:mysql://127.12.113.1:3306/quiz";
         this.username = "admin";
@@ -29,7 +28,6 @@ public class AccessToDBUtility {
 
     public AccessToDBUtility() {
         this.driver = "com.mysql.jdbc.jdbc2.optional.MysqlXADataSource";
-        ;
         this.url = "jdbc:mysql://127.11.235.1:3306/jpa";
         this.username = "admin";
         this.password = "G1Jy3bY1Hban";
@@ -45,11 +43,9 @@ public class AccessToDBUtility {
             connection = DriverManager.getConnection(url, username, password);
             //	System.out.println("Connection is created "+this);
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in createConnection" + e);
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException in createConnection " + e);
         }
 
@@ -59,49 +55,31 @@ public class AccessToDBUtility {
         try {
             connection.close();
             //	System.out.println("Connection is closed "+this);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in closeConnection" + e);
         }
 
     }
 
     public static void main(String[] args) {
-        //   String  driver = "sun.jdbc.odbc.JdbcOdbcDriver";
-        // String  driver =    "net.sourceforge.jtds.jdbc.Driver";
-        String driver = "com.mysql.jdbc.jdbc2.optional.MysqlXADataSource";
-        //  String url = "jdbc:odbc:MSAccess";
-        //String url =   "jdbc:jtds:sqlserver://172.23.4.26:1433;tds=8.0;lastupdatecount=true;DatabaseName=TestingCenter;SelectMethod=Cursor";
-        String url = "jdbc:mysql://127.9.120.129:3306/testingcenter";
-        String username = "admin"; // No username/password required
-        //    String username = ""; // No username/password required
-        String password = "csmdZfsVzBr6";
 
-        AccessToDBUtility a = new AccessToDBUtility(driver, url, username, password);
-        a.createConnection();
-
-        HashSet<Integer> moderators = new HashSet<Integer>();
-        SerializationUtility serializationUtility = new SerializationUtility();
-        serializationUtility.deserialize();
-        a.closeConnection();
 
     }
 
-    public synchronized int addCategory(Category category) throws SQLException{
+    public synchronized int addCategory(Category category) throws SQLException {
         String templateInsert = "INSERT INTO Category (name) VALUES(?)";
         try {
             PreparedStatement statement = connection.prepareStatement(templateInsert);
             statement.setString(1, category.getName());
             statement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in writeCategory" + e);
             throw e;
         }
         return getCategoryMaxId();
     }
 
-    public synchronized int getCategoryMaxId() throws SQLException{
+    public synchronized int getCategoryMaxId() throws SQLException {
         String template = "SELECT max(ID) as qID from Category";
         int categoryID = 0;
         try {
@@ -111,8 +89,7 @@ public class AccessToDBUtility {
             if (resultSet.next()) {
                 categoryID = resultSet.getInt("qID");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in getCategoryMaxId" + e);
             throw e;
         }
@@ -126,8 +103,7 @@ public class AccessToDBUtility {
             PreparedStatement statement = connection.prepareStatement(templateInsert);
             statement.setString(1, question);
             statement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in addQuestionText" + e);
             throw e;
         }
@@ -144,23 +120,21 @@ public class AccessToDBUtility {
             if (resultSet.next()) {
                 questionID = resultSet.getInt("qID");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in getQuestionMaxId" + e);
-           throw e;
+            throw e;
         }
         return questionID;
 
     }
 
-    public int addAnswerText(String answer) throws SQLException{
+    public int addAnswerText(String answer) throws SQLException {
         String templateInsert = "INSERT INTO ANSWER_TEXT (answer) VALUES(?)";
         try {
             PreparedStatement statement = connection.prepareStatement(templateInsert);
             statement.setString(1, answer);
             statement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in addAnswerText" + e);
             throw e;
 
@@ -168,7 +142,7 @@ public class AccessToDBUtility {
         return getAnswerMaxId();
     }
 
-    public synchronized int getAnswerMaxId() throws SQLException{
+    public synchronized int getAnswerMaxId() throws SQLException {
         String template = "SELECT max(ID) as qID from ANSWER_TEXT";
         int answerID = 0;
         try {
@@ -178,8 +152,7 @@ public class AccessToDBUtility {
             if (resultSet.next()) {
                 answerID = resultSet.getInt("qID");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in getAnswerMaxId" + e);
             throw e;
         }
@@ -187,19 +160,19 @@ public class AccessToDBUtility {
 
     }
 
-    public void addQuestionEntry(int categoryId, int questionId, int answerId)throws SQLException {
-        String templateInsert = "INSERT INTO QUESTIONS (CATEGORY_ID,QUESTION_ID,ANSWER_ID) VALUES(?,?,?)";
+    public void addQuestionEntry(int categoryId, int questionId, int answerId)
+            throws SQLException {
+        String templateInsert =
+                "INSERT INTO QUESTIONS (CATEGORY_ID,QUESTION_ID,ANSWER_ID) VALUES(?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(templateInsert);
             statement.setInt(1, categoryId);
             statement.setInt(2, questionId);
             statement.setInt(3, answerId);
             statement.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQLException in addQuestionEntry" + e);
             throw e;
         }
-
     }
 }

@@ -12,7 +12,7 @@
 
     <tag>
         <name>select</name>
-        <tagclass>main.java.tags.selectTag.SelectTag</tagclass>
+        <tagclass>tags.selectTag.SelectTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Select tag.</info>
         <attribute>

@@ -1,12 +1,11 @@
 package utils;
 
-
-import main.java.model.*;
-import main.java.model.article.Article;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
-import main.java.model.person.PersonInfo;
+import model.*;
+import model.article.Article;
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
+import model.person.PersonInfo;
 
 import java.util.*;
 

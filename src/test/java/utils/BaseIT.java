@@ -1,25 +1,25 @@
 package utils;
 
-import main.java.data.article.ArticleBeanI;
-import main.java.data.article.ArticleHandler;
-import main.java.data.category.CategoryBeanI;
-import main.java.data.category.CategoryHandler;
-import main.java.data.comment.CommentBeanI;
-import main.java.data.comment.CommentHandler;
-import main.java.data.person.PersonBeanI;
-import main.java.data.person.PersonHandler;
-import main.java.data.questionEntry.QuestionEntryBeanI;
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.data.test.TestBeanI;
-import main.java.data.test.TestHandler;
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
-import main.java.model.Test;
-import main.java.model.article.Article;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
-import main.java.model.person.PersonInfo;
+import data.article.ArticleBeanI;
+import data.article.ArticleHandler;
+import data.category.CategoryBeanI;
+import data.category.CategoryHandler;
+import data.comment.CommentBeanI;
+import data.comment.CommentHandler;
+import data.person.PersonBeanI;
+import data.person.PersonHandler;
+import data.questionEntry.QuestionEntryBeanI;
+import data.questionEntry.QuestionEntryHandler;
+import data.test.TestBeanI;
+import data.test.TestHandler;
+import model.Category;
+import model.QuestionEntry;
+import model.Test;
+import model.article.Article;
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
+import model.person.PersonInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class BaseIT {
     protected static CommentHandler commentHandler;
     protected static ArticleHandler articleHandler;
 
-    protected static main.java.model.Test[] tests;
+    protected static model.Test[] tests;
     protected static Person[] persons;
     protected static PersonInfo personInfo[];
     protected static Category[] categories;
@@ -119,7 +119,7 @@ public class BaseIT {
 
     private static void prepareTests() {
         int testLength = 3;
-        tests = new main.java.model.Test[testLength];
+        tests = new model.Test[testLength];
 
         for (int i = 0; i < testLength; i++) {
             tests[i] = TestUtils.createTest(i);
@@ -174,14 +174,14 @@ public class BaseIT {
     }
 
     protected Category createCategoryWithTest(int testId, int categoryId) {
-        main.java.model.Test test = TestUtils.createTest(testId);
+        model.Test test = TestUtils.createTest(testId);
         test = testHandler.addTest(test);
         Article article = createArticle(categoryId, persons[0]);
         articleHandler.addArticle(article);
         return createCategory(categoryId, test, article);
     }
 
-    protected Category createCategoryWithArticle(main.java.model.Test test, int categoryId) {
+    protected Category createCategoryWithArticle(model.Test test, int categoryId) {
         Article article = createArticle(categoryId, persons[0]);
         articleHandler.addArticle(article);
         return createCategory(categoryId, test, article);

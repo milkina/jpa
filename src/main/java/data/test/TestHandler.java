@@ -1,17 +1,22 @@
-package main.java.data.test;
+package data.test;
 
-import main.java.data.category.CategoryBeanI;
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.util.TestUtility;
+import data.category.CategoryBeanI;
+import model.Category;
+import model.Test;
+import util.TestUtility;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.*;
 
-import static main.java.util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
-import static main.java.util.AllBeanNameConstants.TEST_BEAN_NAME;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.HashMap;
+
+import static util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
+import static util.AllBeanNameConstants.TEST_BEAN_NAME;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,9 +26,9 @@ import static main.java.util.AllBeanNameConstants.TEST_BEAN_NAME;
  * To change this template use File | Settings | File Templates.
  */
 public class TestHandler {
-    TestBeanI testBean;
-    CategoryBeanI categoryBean;
-    Context ct;
+    private TestBeanI testBean;
+    private CategoryBeanI categoryBean;
+    private Context ct;
 
     public TestHandler() {
         try {
@@ -31,7 +36,7 @@ public class TestHandler {
             testBean = (TestBeanI) ct.lookup(TEST_BEAN_NAME);
             categoryBean = (CategoryBeanI) ct.lookup(CATEGORY_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

@@ -1,4 +1,4 @@
-package main.java.controller.sitemap;
+package controller.sitemap;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

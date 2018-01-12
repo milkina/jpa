@@ -1,14 +1,14 @@
-package main.java.controller.add;
+package controller.add;
 
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.Answer;
-import main.java.model.Category;
-import main.java.model.Question;
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
-import main.java.util.CategoryUtility;
-import main.java.util.GeneralUtility;
-import main.java.util.TestUtility;
+import data.questionEntry.QuestionEntryHandler;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.QuestionEntry;
+import model.person.Person;
+import util.CategoryUtility;
+import util.GeneralUtility;
+import util.TestUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,13 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllConstantsAttribute.PERSON_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.ANSWER_TEXT_PARAM;
-import static main.java.util.AllConstantsParam.QUESTION_TEXT_PARAM;
-import static main.java.util.AllMessage.QUESTION_ADDED_MESSAGE;
-
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
+import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
+import static util.AllMessage.QUESTION_ADDED_MESSAGE;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,7 +34,6 @@ import static main.java.util.AllMessage.QUESTION_ADDED_MESSAGE;
  */
 
 public class AddQuestionEntry extends HttpServlet {
-
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         addQuestionEntry(request, response);
@@ -47,10 +45,15 @@ public class AddQuestionEntry extends HttpServlet {
         doPost(request, response);
     }
 
-    private void addQuestionEntry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String newQuestionText = GeneralUtility.decodeRussianCharacters(request.getParameter(QUESTION_TEXT_PARAM).trim());
-        String newAnswerText = GeneralUtility.decodeRussianCharacters(request.getParameter(ANSWER_TEXT_PARAM).trim());
-        Category category = CategoryUtility.getCategoryFromServletContext(request);
+    private void addQuestionEntry(HttpServletRequest request,
+                                  HttpServletResponse response)
+            throws ServletException, IOException {
+        String newQuestionText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(QUESTION_TEXT_PARAM).trim());
+        String newAnswerText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(ANSWER_TEXT_PARAM).trim());
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
 
         QuestionEntry newQuestionEntry = new QuestionEntry();
         newQuestionEntry.setCategory(category);
@@ -66,13 +69,16 @@ public class AddQuestionEntry extends HttpServlet {
         newQuestionEntry.setCreatedDate(new Date());
 
         if (request.getSession().getAttribute(PERSON_ATTRIBUTE) != null) {
-            newQuestionEntry.setPerson((Person) request.getSession().getAttribute(PERSON_ATTRIBUTE));
+            Person person = (Person)
+                    request.getSession().getAttribute(PERSON_ATTRIBUTE);
+            newQuestionEntry.setPerson(person);
         }
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.addQuestionEntry(newQuestionEntry);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_ADDED_MESSAGE);
         dispatcher.forward(request, response);
     }

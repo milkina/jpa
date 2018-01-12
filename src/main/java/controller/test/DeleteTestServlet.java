@@ -1,8 +1,8 @@
-package main.java.controller.test;
+package controller.test;
 
-import main.java.data.test.TestHandler;
-import main.java.model.Test;
-import main.java.util.TestUtility;
+import data.test.TestHandler;
+import model.Test;
+import util.TestUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllMessage.TEST_DELETED_MESSAGE;
-import static main.java.util.AllMessage.TEST_NOT_DELETED_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllMessage.TEST_DELETED_MESSAGE;
+import static util.AllMessage.TEST_NOT_DELETED_MESSAGE;
 
 /**
  * Created by Tatyana on 20.01.2017.
@@ -32,7 +32,8 @@ public class DeleteTestServlet extends HttpServlet {
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(MESSAGE_PAGE);
         dispatcher.forward(request, response);
     }
 

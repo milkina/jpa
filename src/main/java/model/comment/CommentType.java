@@ -1,9 +1,8 @@
-package main.java.model.comment;
+package model.comment;
 
-import main.java.util.CategoryUtility;
-import main.java.util.TestUtility;
-import main.java.util.article.ArticleUtility;
-import main.java.util.question.QuestionEntryUtility;
+import util.TestUtility;
+import util.article.ArticleUtility;
+import util.question.QuestionEntryUtility;
 
 /**
  * Created by IntelliJ IDEA.

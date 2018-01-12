@@ -1,8 +1,20 @@
-package main.java.model;
+package model;
 
-import main.java.model.person.Person;
+import model.person.Person;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,19 +28,22 @@ import java.util.Date;
 @Entity
 @Table(name = "QUESTIONS")
 @NamedQueries({
-        @NamedQuery(name = "GET_ALL_QUESTION_ENTRIES", query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer " +
-                "JOIN FETCH qe.category where qe.category=:param ORDER BY qe.orderColumn, qe.id"),
-        @NamedQuery(name = "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES", query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer " +
-                "JOIN FETCH qe.category where qe.category=:category AND qe.id IN " +
-                "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
-        @NamedQuery(name = "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES", query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer " +
-                "JOIN FETCH qe.category where qe.category=:category and qe.id NOT IN " +
-                "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
+        @NamedQuery(name = "GET_ALL_QUESTION_ENTRIES",
+                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
+                        + "JOIN FETCH qe.category where qe.category=:param ORDER BY qe.orderColumn, qe.id"),
+        @NamedQuery(name = "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES",
+                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
+                        + "JOIN FETCH qe.category where qe.category=:category AND qe.id IN "
+                        + "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
+        @NamedQuery(name = "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES",
+                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
+                        + "JOIN FETCH qe.category where qe.category=:category and qe.id NOT IN "
+                        + "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
         @NamedQuery(name = "QuestionEntry.getPreviousQuestionEntry",
-                query = "select qe1 from QuestionEntry qe1 " +
-                        "where qe1.orderColumn = (select max(qe2.orderColumn) " +
-                        "from QuestionEntry qe2 where qe2.orderColumn<:param and qe2.category.id=" +
-                        "(select qe3.category.id from QuestionEntry qe3 where qe3.orderColumn=:param))")
+                query = "select qe1 from QuestionEntry qe1 "
+                        + "where qe1.orderColumn = (select max(qe2.orderColumn) "
+                        + "from QuestionEntry qe2 where qe2.orderColumn<:param and qe2.category.id="
+                        + "(select qe3.category.id from QuestionEntry qe3 where qe3.orderColumn=:param))")
 
 })
 public class QuestionEntry implements Serializable {
@@ -41,11 +56,13 @@ public class QuestionEntry implements Serializable {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "question_id", referencedColumnName = "id")
     private Question question;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "answer_id", referencedColumnName = "id")
     private Answer answer;
 

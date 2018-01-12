@@ -1,7 +1,7 @@
-package main.java.tags.comment;
+package tags.comment;
 
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
+import model.comment.Comment;
+import model.comment.CommentType;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -25,8 +25,6 @@ public class CommentUrlTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in CommentUrlTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
-
-
 }

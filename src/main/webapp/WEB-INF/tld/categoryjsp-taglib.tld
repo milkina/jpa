@@ -13,7 +13,7 @@
 
     <tag>
         <name>category</name>
-        <tagclass>main.java.tags.category.CategoryTag</tagclass>
+        <tagclass>tags.category.CategoryTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Category parent tag.</info>
         <attribute>
@@ -27,25 +27,25 @@
 
     <tag>
         <name>name</name>
-        <tagclass>main.java.tags.category.CategoryNameTag</tagclass>
+        <tagclass>tags.category.CategoryNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Category name.</info>
     </tag>
     <tag>
         <name>description</name>
-        <tagclass>main.java.tags.category.CategoryDescriptionTag</tagclass>
+        <tagclass>tags.category.CategoryDescriptionTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Category description.</info>
     </tag>
     <tag>
         <name>pathName</name>
-        <tagclass>main.java.tags.category.CategoryPathNameTag</tagclass>
+        <tagclass>tags.category.CategoryPathNameTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Category path name.</info>
     </tag>
     <tag>
         <name>parentCategory</name>
-        <tagclass>main.java.tags.category.CategoryParentTag</tagclass>
+        <tagclass>tags.category.CategoryParentTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Category parent name.</info>
     </tag>

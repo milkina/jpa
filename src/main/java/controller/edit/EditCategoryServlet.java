@@ -1,11 +1,9 @@
-package main.java.controller.edit;
+package controller.edit;
 
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.model.article.Article;
-import main.java.util.AllConstantsAttribute;
-import main.java.util.CategoryUtility;
-import main.java.util.article.ArticleUtility;
+import model.Category;
+import model.article.Article;
+import util.CategoryUtility;
+import util.article.ArticleUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,22 +11,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
-import static main.java.util.AllConstants.MESSAGE_PAGE;
-import static main.java.util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
-import static main.java.util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.*;
-import static main.java.util.AllMessage.CATEGORY_UPDATED_MESSAGE;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.CATEGORY_NAME;
+import static util.AllMessage.CATEGORY_UPDATED_MESSAGE;
 
 /**
  * Created by Tatyana on 09.12.2015.
  */
 public class EditCategoryServlet extends HttpServlet {
+
+    public static final String STRING =
+            "/edit/editCategory.jsp?CATEGORY_PATH=%s&TEST_PATH=%s";
+
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //TODO Return error if category with such name or pathName already exists
+        //TODO Return error if category with such name or pathName
+        // already exists
         String url = MESSAGE_PAGE;
         Category category = CategoryUtility.getCategoryByPath(request);
         if (request.getParameter(CATEGORY_NAME) != null) {
@@ -40,12 +43,11 @@ public class EditCategoryServlet extends HttpServlet {
             Article article = category.getArticle();
             ArticleUtility.fixTinyMceIssue(article);
             request.setAttribute(CATEGORY_ATTRIBUTE, category);
-            url = String.format("/edit/editCategory.jsp?CATEGORY_PATH=%s&TEST_PATH=%s", categoryPath, testPath);
+            url = String.format(STRING, categoryPath, testPath);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

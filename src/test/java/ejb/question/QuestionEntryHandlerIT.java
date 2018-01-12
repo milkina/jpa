@@ -1,9 +1,9 @@
 package ejb.question;
 
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
-import main.java.model.article.Article;
-import main.java.model.person.Person;
+import model.Category;
+import model.QuestionEntry;
+import model.article.Article;
+import model.person.Person;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseIT;
@@ -65,7 +65,7 @@ public class QuestionEntryHandlerIT extends BaseIT {
         QuestionEntry questionEntry = TestUtils.createQuestionEntry(4, category, person);
         questionEntry = questionEntryHandler.addQuestionEntry(questionEntry);
 
-        main.java.model.Test newTest = TestUtils.createTest(9);
+        model.Test newTest = TestUtils.createTest(9);
         newTest = testHandler.addTest(newTest);
         Article article = TestUtils.createArticle(10, person);
         articleHandler.addArticle(article);
@@ -147,7 +147,7 @@ public class QuestionEntryHandlerIT extends BaseIT {
 
     @Test
     public void testGetPreviousQuestionEntry() {
-        main.java.model.Test test = TestUtils.createTest(14);
+        model.Test test = TestUtils.createTest(14);
         test = testHandler.addTest(test);
         Category category1 = createCategoryWithArticle(test, 14);
         Category category2 = createCategoryWithArticle(test, 15);

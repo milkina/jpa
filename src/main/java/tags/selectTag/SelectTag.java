@@ -1,4 +1,4 @@
-package main.java.tags.selectTag;
+package tags.selectTag;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -16,11 +16,12 @@ public class SelectTag extends TagSupport {
     public int doStartTag() {
         try {
             JspWriter out = pageContext.getOut();
-            out.print(SelectTagUtility.createSelectTag(name, options, selected));
+            out.print(SelectTagUtility.createSelectTag(name,
+                    options, selected));
         } catch (IOException ioe) {
             System.out.println("Error in SelectTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 
 

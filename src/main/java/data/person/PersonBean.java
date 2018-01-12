@@ -1,7 +1,7 @@
-package main.java.data.person;
+package data.person;
 
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
+import model.QuestionEntry;
+import model.person.Person;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -20,7 +20,7 @@ import java.util.List;
 @Stateless
 public class PersonBean implements PersonBeanI {
     @PersistenceContext(unitName = "primary")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public Person getPersonById(int id) {
         return entityManager.find(Person.class, id);
@@ -32,7 +32,9 @@ public class PersonBean implements PersonBeanI {
     }
 
     public List<Person> getAllPersons() {
-        Query query = entityManager.createQuery("SELECT i FROM Person i order by i.createdDate desc, i.ID desc");
+        Query query = entityManager.createQuery(
+                "SELECT i FROM Person i order by "
+                        + "i.createdDate desc, i.ID desc");
         List<Person> list = query.getResultList();
         return list;
     }
@@ -40,7 +42,8 @@ public class PersonBean implements PersonBeanI {
     public Person getPersonByLoginAndPassword(String login, String password) {
         Person person = null;
         try {
-            Query query = entityManager.createNamedQuery("findPersonByLoginAndPassword");
+            Query query =
+                    entityManager.createNamedQuery("findPersonByLoginAndPassword");
             query.setParameter("loginName", login);
             query.setParameter("passwordName", password);
             person = (Person) query.getSingleResult();
@@ -78,13 +81,15 @@ public class PersonBean implements PersonBeanI {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery query = criteriaBuilder.createQuery(Person.class);
         Root<Person> personRoot = query.from(Person.class);
-        query.select(personRoot).where(criteriaBuilder.equal(personRoot.get("login"), login));
-        TypedQuery<Person> typedQuery = entityManager.createQuery(query);
+        query.select(personRoot).where(
+                criteriaBuilder.equal(personRoot.get("login"), login));
+        TypedQuery<Person> typedQuery =
+                entityManager.createQuery(query);
         Person person = null;
         try {
             person = typedQuery.getSingleResult();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return person;
     }
@@ -101,13 +106,15 @@ public class PersonBean implements PersonBeanI {
     }
 
     public List<QuestionEntry> findAnsweredQuestions(int personId) {
-        Query query = entityManager.createNamedQuery("Person.findAnsweredQuestions");
+        Query query = entityManager.createNamedQuery(
+                "Person.findAnsweredQuestions");
         query.setParameter("personId", personId);
         return query.getResultList();
     }
 
     public void removeAnsweredQuestions(Person person) {
-        List<QuestionEntry> answeredQuestions = findAnsweredQuestions(person.getID());
+        List<QuestionEntry> answeredQuestions =
+                findAnsweredQuestions(person.getID());
         person = entityManager.merge(person);
         person.getAnsweredQuestions().removeAll(answeredQuestions);
     }

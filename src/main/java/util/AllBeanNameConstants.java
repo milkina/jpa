@@ -1,4 +1,4 @@
-package main.java.util;
+package util;
 
 /**
  * Created by IntelliJ IDEA.

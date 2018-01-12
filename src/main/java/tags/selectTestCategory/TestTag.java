@@ -1,8 +1,6 @@
-package main.java.tags.selectTestCategory;
+package tags.selectTestCategory;
 
-import main.java.model.Test;
-import main.java.util.AllConstantsAttribute;
-import main.java.util.AllConstantsParam;
+import model.Test;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -11,10 +9,9 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
-import static main.java.util.AllConstantsAttribute.*;
-import static main.java.util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsParam.TEST_PATH;
 
 /**
  * Created by Tatyana on 20.05.2016.
@@ -39,18 +36,20 @@ public class TestTag extends BodyTagSupport {
         setIterator();
         getTestFromList();
         if (test == null) {
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
-        return (EVAL_BODY_TAG);
+        return EVAL_BODY_TAG;
     }
 
     private void setSelectedTestID() {
-        String selectedTestPath = pageContext.getRequest().getParameter(TEST_PATH);
+        String selectedTestPath =
+                pageContext.getRequest().getParameter(TEST_PATH);
         if (selectedTestPath != null) {
             Test selectedTest = tests.get(selectedTestPath);
             selectedTestID = selectedTest.getId();
         } else {
-            Iterator<Map.Entry<String, Test>> itr1 = tests.entrySet().iterator();
+            Iterator<Map.Entry<String, Test>> itr1 =
+                    tests.entrySet().iterator();
             if (itr1.hasNext()) {
                 selectedTestID = itr1.next().getValue().getId();
             }
@@ -58,7 +57,8 @@ public class TestTag extends BodyTagSupport {
     }
 
     private void setTests() {
-        tests = (LinkedHashMap) pageContext.getServletContext().getAttribute(TESTS);
+        tests = (LinkedHashMap)
+                pageContext.getServletContext().getAttribute(TESTS);
     }
 
     private void getTestFromList() {
@@ -83,13 +83,12 @@ public class TestTag extends BodyTagSupport {
         }
         if (iterator != null && iterator.hasNext()) {
             test = iterator.next();
-            return (EVAL_BODY_TAG);
+            return EVAL_BODY_TAG;
         } else {
             iterator = null;
             test = null;
-            return (SKIP_BODY);
+            return SKIP_BODY;
         }
     }
 }
-
 

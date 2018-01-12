@@ -1,7 +1,7 @@
-package main.java.controller.exam;
+package controller.exam;
 
-import main.java.model.Exam;
-import main.java.model.QuestionEntry;
+import model.Exam;
+import model.QuestionEntry;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static main.java.util.AllConstants.SHOW_EXAM_QUESTION_PAGE;
-import static main.java.util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstants.SHOW_EXAM_QUESTION_PAGE;
+import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 
 /**
  * Created by Tatyana on 18.05.2016.
@@ -29,7 +29,8 @@ public class ShowExamQuestionServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         updateCurrentQuestionEntry(i, session);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(SHOW_EXAM_QUESTION_PAGE);
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher(SHOW_EXAM_QUESTION_PAGE);
         dispatcher.forward(request, response);
     }
 
@@ -38,7 +39,8 @@ public class ShowExamQuestionServlet extends HttpServlet {
         Integer currentNumber = exam.getCurrentNumber() + i;
         exam.setCurrentNumber(currentNumber);
 
-        QuestionEntry currentQuestionEntry = exam.getQuestionEntries().get(currentNumber);
+        QuestionEntry currentQuestionEntry =
+                exam.getQuestionEntries().get(currentNumber);
         exam.setCurrentQuestionEntry(currentQuestionEntry);
     }
 

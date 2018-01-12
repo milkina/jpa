@@ -1,7 +1,6 @@
-package main.java.data.article;
+package data.article;
 
-import main.java.model.Category;
-import main.java.model.article.Article;
+import model.article.Article;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -12,9 +11,14 @@ import java.util.List;
 @Local
 public interface ArticleBeanI {
     Article getArticle(int id);
+
     Article addArticle(Article article);
+
     List<Article> getArticles();
+
     void updateArticle(Article article);
+
     void deleteArticle(Article article);
+
     Article getArticleByUrl(String url);
 }

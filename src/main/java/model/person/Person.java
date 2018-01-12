@@ -1,7 +1,6 @@
-package main.java.model.person;
+package model.person;
 
-
-import main.java.model.QuestionEntry;
+import model.QuestionEntry;
 
 import javax.persistence.*;
 import java.util.*;

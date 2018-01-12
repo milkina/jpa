@@ -1,4 +1,4 @@
-package main.java.model.person;
+package model.person;
 
 /**
  * Created by IntelliJ IDEA.

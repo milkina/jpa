@@ -1,4 +1,4 @@
-<%@ page import="main.java.model.comment.CommentType" %>
+<%@ page import="model.comment.CommentType" %>
 <comment:comment commentId="${param.COMMENT_ID}">
            <div><span class="adminLabel">Comment Id</span> <comment:id/></div>
            <div><span class="adminLabel">Created Date</span> <comment:createdDate/></div>

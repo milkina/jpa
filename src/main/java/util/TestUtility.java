@@ -1,22 +1,33 @@
-package main.java.util;
+package util;
 
-import main.java.data.category.CategoryHandler;
-import main.java.data.test.TestHandler;
-import main.java.model.Category;
-import main.java.model.Test;
-import main.java.model.article.Article;
-import main.java.model.person.Person;
-import main.java.util.article.ArticleUtility;
+import data.category.CategoryHandler;
+import data.test.TestHandler;
+import model.Category;
+import model.Test;
+import model.article.Article;
+import model.person.Person;
+import util.article.ArticleUtility;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.*;
 
-import static main.java.util.AllConstants.TEST_NAME_PARAM;
-import static main.java.util.AllConstantsAttribute.*;
-import static main.java.util.AllConstantsParam.*;
+import java.util.Date;
+import java.util.Map;
+
+import static util.AllConstants.TEST_NAME_PARAM;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsAttribute.TEST_PATHS_ATTRIBUTE;
+import static util.AllConstantsParam.CATEGORY_ID_PARAMETER;
+import static util.AllConstantsParam.TEST_ID_PARAM;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TEST_TAGS;
+import static util.AllConstantsParam.TEST_ICON_TEXT;
+import static util.GeneralUtility.roundTime;
+import static util.GeneralUtility.decodeRussianCharacters;
+import static util.GeneralUtility.getIntegerValue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,7 +42,8 @@ public class TestUtility {
 
 
     public static Category getCategoryByParam(HttpServletRequest request) {
-        Integer categoryId = GeneralUtility.getIntegerValue(request, CATEGORY_ID_PARAMETER);
+        Integer categoryId =
+                getIntegerValue(request, CATEGORY_ID_PARAMETER);
         if (categoryId == null) {
             return null;
         }
@@ -40,7 +52,7 @@ public class TestUtility {
     }
 
     public static Test getTestByParam(HttpServletRequest request) {
-        Integer testId = GeneralUtility.getIntegerValue(request, TEST_ID_PARAM);
+        Integer testId = getIntegerValue(request, TEST_ID_PARAM);
         if (testId == null) {
             return null;
         }
@@ -52,9 +64,11 @@ public class TestUtility {
         return personObj != null ? (Person) personObj : null;
     }
 
-    public static Map<String, Integer> getTestPaths(ServletContext servletContext) {
+    public static Map<String, Integer> getTestPaths(
+            ServletContext servletContext) {
         Map<String, Integer> testPaths;
-        Object testPathsObj = servletContext.getAttribute(TEST_PATHS_ATTRIBUTE);
+        Object testPathsObj = servletContext.getAttribute(
+                TEST_PATHS_ATTRIBUTE);
         if (testPathsObj == null) {
             testPaths = testHandler.getPathName();
             servletContext.setAttribute(TEST_PATHS_ATTRIBUTE, testPaths);
@@ -66,7 +80,8 @@ public class TestUtility {
 
     public static Integer getTestIdByPath(HttpServletRequest request) {
         String testPathParameter = request.getParameter(TEST_ID_PARAM);
-        Map<String, Integer> testPaths = getTestPaths(request.getServletContext());
+        Map<String, Integer> testPaths = getTestPaths(
+                request.getServletContext());
         return testPaths.get(testPathParameter);
     }
 
@@ -75,12 +90,15 @@ public class TestUtility {
         if (updatedDate == null) {
             return 0;
         }
-        return GeneralUtility.roundTime(updatedDate.getTime());
+        return roundTime(updatedDate.getTime());
     }
 
-    public static void setIfModifiedSinceHeader(HttpServletRequest request, HttpServletResponse response, Test test) {
+    public static void setIfModifiedSinceHeader(
+            HttpServletRequest request,
+            HttpServletResponse response, Test test) {
         GeneralUtility generalUtility = new GeneralUtility();
-        generalUtility.setIfModifiedSinceHeader(request, response, getUpdatedDate(test));
+        generalUtility.setIfModifiedSinceHeader(request, response,
+                getUpdatedDate(test));
     }
 
     public static String getTestUrl(int testId) {
@@ -92,13 +110,15 @@ public class TestUtility {
         return testHandler.getAllTests();
     }
 
-    public static void loadTestsToServletContext(ServletContext servletContext) {
+    public static void loadTestsToServletContext(
+            ServletContext servletContext) {
         Map<String, Test> testMap = testHandler.getAllTestsWithPath();
         servletContext.setAttribute(TESTS, testMap);
     }
 
     public static Test getTestFromServletContext(HttpServletRequest request) {
-        Map<String, Test> testMap = (Map<String, Test>) request.getServletContext().getAttribute(TESTS);
+        Map<String, Test> testMap = (Map<String, Test>)
+                request.getServletContext().getAttribute(TESTS);
         String testPath = request.getParameter(TEST_PATH);
         Test test = testMap.get(testPath);
         return test;
@@ -123,13 +143,15 @@ public class TestUtility {
         if (article != null) {
             ArticleUtility.updateArticle(article, request);
         } else {
-            Person person = (Person) request.getSession().getAttribute(PERSON_ATTRIBUTE);
+            Person person = (Person)
+                    request.getSession().getAttribute(PERSON_ATTRIBUTE);
             article = ArticleUtility.createArticle(request, person);
         }
         test.setArticle(article);
     }
 
-    public static void setTestData(Test test, HttpServletRequest request){
+    public static void setTestData(Test test,
+                                   HttpServletRequest request) {
         String newName = request.getParameter(TEST_NAME_PARAM);
         String newPathName = request.getParameter(TEST_PATH);
         String newTags = request.getParameter(TEST_TAGS);
@@ -138,6 +160,6 @@ public class TestUtility {
         test.setName(newName);
         test.setPathName(newPathName);
         test.setTags(newTags);
-        test.setIconText( GeneralUtility.decodeRussianCharacters(iconText));
+        test.setIconText(decodeRussianCharacters(iconText));
     }
 }

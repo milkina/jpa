@@ -1,6 +1,6 @@
 package utils;
 
-import main.java.util.question.QuestionEntryUtility;
+import util.question.QuestionEntryUtility;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

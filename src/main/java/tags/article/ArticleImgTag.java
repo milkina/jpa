@@ -1,7 +1,7 @@
-package main.java.tags.article;
+package tags.article;
 
-import main.java.model.article.Article;
-import main.java.util.GeneralUtility;
+import model.article.Article;
+import util.GeneralUtility;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -19,16 +19,16 @@ public class ArticleImgTag extends TagSupport {
             Article article = parent.getArticle();
             JspWriter out = pageContext.getOut();
             String image = article.getImage();
-            String result="";
-            if(!GeneralUtility.isEmpty(image)){
-                String title=article.getTitle();
-                        result="<img class='categoryImage'src='"+pageContext.getServletContext().getContextPath()+image+"'" +
-                        "alt='"+title+"' title='"+title+"' width='280' height='200'>";
+            String result = "";
+            if (!GeneralUtility.isEmpty(image)) {
+                String title = article.getTitle();
+                result = "<img class='categoryImage'src='" + pageContext.getServletContext().getContextPath() + image + "'" +
+                        "alt='" + title + "' title='" + title + "' width='280' height='200'>";
             }
             out.print(result);
         } catch (IOException ioe) {
             System.out.println("Error in ArticleImgTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

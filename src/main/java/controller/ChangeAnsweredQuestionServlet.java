@@ -1,10 +1,10 @@
-package main.java.controller;
+package controller;
 
-import main.java.data.person.PersonHandler;
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
-import main.java.util.PersonUtility;
+import data.person.PersonHandler;
+import data.questionEntry.QuestionEntryHandler;
+import model.QuestionEntry;
+import model.person.Person;
+import util.PersonUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static main.java.util.AllConstantsAttribute.PERSON_ATTRIBUTE;
-import static main.java.util.AllConstantsParam.CHECKED_PARAM;
-import static main.java.util.AllConstantsParam.UNCHECKED_PARAM;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsParam.CHECKED_PARAM;
+import static util.AllConstantsParam.UNCHECKED_PARAM;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,12 +29,15 @@ public class ChangeAnsweredQuestionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean checked = request.getParameter(CHECKED_PARAM) != null;
-        String idString = checked ? request.getParameter(CHECKED_PARAM) : request.getParameter(UNCHECKED_PARAM);
+        String idString = checked ? request.getParameter(CHECKED_PARAM)
+                : request.getParameter(UNCHECKED_PARAM);
         HttpSession session = request.getSession();
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        QuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(Integer.valueOf(idString));
+        QuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(
+                Integer.valueOf(idString));
 
-        List<QuestionEntry> answeredQuestions = PersonUtility.getAnsweredQuestions(session);
+        List<QuestionEntry> answeredQuestions =
+                PersonUtility.getAnsweredQuestions(session);
         if (checked && !answeredQuestions.contains(questionEntry)) {
             answeredQuestions.add(questionEntry);
         } else if (!checked) {

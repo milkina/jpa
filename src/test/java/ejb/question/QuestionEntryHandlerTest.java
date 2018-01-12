@@ -1,10 +1,10 @@
 package ejb.question;
 
-import main.java.data.questionEntry.QuestionEntryBean;
-import main.java.data.questionEntry.QuestionEntryBeanI;
-import main.java.data.questionEntry.QuestionEntryHandler;
-import main.java.model.Category;
-import main.java.model.person.Person;
+import data.questionEntry.QuestionEntryBean;
+import data.questionEntry.QuestionEntryBeanI;
+import data.questionEntry.QuestionEntryHandler;
+import model.Category;
+import model.person.Person;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

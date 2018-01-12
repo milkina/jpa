@@ -1,9 +1,9 @@
-package main.java.data.questionEntry;
+package data.questionEntry;
 
-import main.java.model.Category;
-import main.java.model.QuestionEntry;
-import main.java.model.Test;
-import main.java.model.person.Person;
+import model.Category;
+import model.QuestionEntry;
+import model.Test;
+import model.person.Person;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -27,14 +27,18 @@ public interface QuestionEntryBeanI {
 
     QuestionEntry getQuestionEntry(int id);
 
-    List<QuestionEntry> getNotAnsweredQuestions(Category category, Person person);
+    List<QuestionEntry> getNotAnsweredQuestions(Category category,
+                                                Person person);
 
-    List<QuestionEntry> getAnsweredQuestions(Category category, Person person);
+    List<QuestionEntry> getAnsweredQuestions(Category category,
+                                             Person person);
 
     QuestionEntry getPreviousQuestionEntry(int orderColumn);
 
-    void moveBatch(Category oldCategory, Category category, Integer from, Integer to);
+    void moveBatch(Category oldCategory, Category category,
+                   Integer from, Integer to);
 
     List<Test> getQuestionEntryTests(int id);
+
     Test getFirstQuestionEntryTest(int id);
 }

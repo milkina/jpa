@@ -1,7 +1,7 @@
-package main.java.data.category;
+package data.category;
 
-import main.java.model.Category;
-import main.java.model.Test;
+import model.Category;
+import model.Test;
 
 import javax.ejb.Local;
 import java.util.List;

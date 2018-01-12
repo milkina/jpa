@@ -12,61 +12,61 @@
 
     <tag>
         <name>qeList</name>
-        <tagclass>main.java.tags.questionEntry.QuestionEntryListTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionEntryListTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Question Entry tag.</info>
     </tag>
     <tag>
         <name>qe</name>
-        <tagclass>main.java.tags.questionEntry.QuestionEntryTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionEntryTag</tagclass>
         <bodycontent>JSP</bodycontent>
         <info>Question Entry parent tag.</info>
     </tag>
     <tag>
         <name>id</name>
-        <tagclass>main.java.tags.questionEntry.QuestionEntryIdTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionEntryIdTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Id of Question Entry.</info>
     </tag>
     <tag>
         <name>type</name>
-        <tagclass>main.java.tags.questionEntry.QuestionEntryTypeTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionEntryTypeTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Name of class for li.</info>
     </tag>
     <tag>
         <name>checkbox</name>
-        <tagclass>main.java.tags.questionEntry.QuestionEntryCheckboxTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionEntryCheckboxTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Checked or empty value.</info>
     </tag>
     <tag>
         <name>question</name>
-        <tagclass>main.java.tags.questionEntry.QuestionTextTag</tagclass>
+        <tagclass>tags.questionEntry.QuestionTextTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Question text.</info>
     </tag>
     <tag>
         <name>answer</name>
-        <tagclass>main.java.tags.questionEntry.AnswerTextTag</tagclass>
+        <tagclass>tags.questionEntry.AnswerTextTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Answer text.</info>
     </tag>
     <tag>
         <name>up</name>
-        <tagclass>main.java.tags.questionEntry.UpRefTag</tagclass>
+        <tagclass>tags.questionEntry.UpRefTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Reference for Up Href.</info>
     </tag>
     <tag>
         <name>show</name>
-        <tagclass>main.java.tags.questionEntry.ShowHrefTag</tagclass>
+        <tagclass>tags.questionEntry.ShowHrefTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Reference for Show Href.</info>
     </tag>
     <tag>
         <name>number</name>
-        <tagclass>main.java.tags.questionEntry.NumberTag</tagclass>
+        <tagclass>tags.questionEntry.NumberTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Number of Question Entry in the current list.</info>
     </tag>

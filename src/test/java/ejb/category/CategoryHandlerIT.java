@@ -1,8 +1,7 @@
 package ejb.category;
 
-
-import main.java.model.Category;
-import main.java.model.article.Article;
+import model.Category;
+import model.article.Article;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseIT;
@@ -27,7 +26,7 @@ import static utils.TestValues.CATEGORY_PATHNAMES;
 public class CategoryHandlerIT extends BaseIT {
     @Test
     public void testCreateCategory() {
-        main.java.model.Test test = TestUtils.createTest(4);
+        model.Test test = TestUtils.createTest(4);
         test = testHandler.addTest(test);
         Article article = TestUtils.createArticle(11, persons[0]);
         articleHandler.addArticle(article);
@@ -84,7 +83,7 @@ public class CategoryHandlerIT extends BaseIT {
 
     @Test
     public void testUpdateCategory() {
-        main.java.model.Test test1 = TestUtils.createTest(5);
+        model.Test test1 = TestUtils.createTest(5);
         test1 = testHandler.addTest(test1);
         Category categoryToUpdate = createCategory(5, test1, null);
 
@@ -108,8 +107,8 @@ public class CategoryHandlerIT extends BaseIT {
 
     @Test(enabled = false)
     public void testAddCategoryToTest() {
-        main.java.model.Test test1 = TestUtils.createTest(6);
-        main.java.model.Test test2 = TestUtils.createTest(17);
+        model.Test test1 = TestUtils.createTest(6);
+        model.Test test2 = TestUtils.createTest(17);
         test1 = testHandler.addTest(test1);
         test2 = testHandler.addTest(test2);
         Category categoryToUpdate = createCategory(18, test1, null);
@@ -124,7 +123,7 @@ public class CategoryHandlerIT extends BaseIT {
 
     @Test
     public void testRemoveCategory() {
-        main.java.model.Test test = TestUtils.createTest(13);
+        model.Test test = TestUtils.createTest(13);
         test = testHandler.addTest(test);
         Article article = TestUtils.createArticle(12, persons[0]);
         articleHandler.addArticle(article);
@@ -139,8 +138,8 @@ public class CategoryHandlerIT extends BaseIT {
 
     @Test
     public void testGetDuplicateCategories() {
-        main.java.model.Test test1 = TestUtils.createTest(18);
-        main.java.model.Test test2 = TestUtils.createTest(19);
+        model.Test test1 = TestUtils.createTest(18);
+        model.Test test2 = TestUtils.createTest(19);
         test1 = testHandler.addTest(test1);
         test2 = testHandler.addTest(test2);
         Category category = createCategory(19, test1, null);
@@ -158,7 +157,7 @@ public class CategoryHandlerIT extends BaseIT {
 
     @Test
     public void testSwapCategories() {
-        main.java.model.Test test = TestUtils.createTest(20);
+        model.Test test = TestUtils.createTest(20);
         test = testHandler.addTest(test);
 
         Category category1 = createCategoryWithArticle(test, 20);

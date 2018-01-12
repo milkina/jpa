@@ -1,10 +1,7 @@
-package main.java.data.person;
+package data.person;
 
-import main.java.model.QuestionEntry;
-import main.java.model.person.Person;
-import main.java.util.AllConstants;
-
-import static main.java.util.AllBeanNameConstants.*;
+import model.QuestionEntry;
+import model.person.Person;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -13,6 +10,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static util.AllBeanNameConstants.PERSON_BEAN_NAME;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,15 +22,15 @@ import java.util.Map;
  */
 public class PersonHandler {
 
-    PersonBeanI personBean;
-    Context ct;
+    private PersonBeanI personBean;
+    private Context ct;
 
     public PersonHandler() {
         try {
             ct = new InitialContext();
             personBean = (PersonBeanI) ct.lookup(PERSON_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

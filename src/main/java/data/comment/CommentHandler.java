@@ -1,11 +1,10 @@
-package main.java.data.comment;
+package data.comment;
 
+import model.comment.Comment;
+import model.comment.CommentType;
+import model.person.Person;
 
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentType;
-import main.java.model.person.Person;
-
-import static main.java.util.AllBeanNameConstants.*;
+import static util.AllBeanNameConstants.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -21,15 +20,15 @@ import java.util.List;
  */
 public class CommentHandler {
 
-    CommentBeanI commentBean;
-    Context ct;
+    private CommentBeanI commentBean;
+    private Context ct;
 
     public CommentHandler() {
         try {
             ct = new InitialContext();
             commentBean = (CommentBeanI) ct.lookup(COMMENT_BEAN_NAME);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

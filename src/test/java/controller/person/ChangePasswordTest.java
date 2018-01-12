@@ -1,6 +1,6 @@
 package controller.person;
 
-import main.java.controller.person.ChangePassword;
+import controller.person.ChangePassword;
 import org.mortbay.jetty.SessionManager;
 import org.mortbay.jetty.servlet.HashSessionManager;
 import org.mortbay.jetty.testing.HttpTester;

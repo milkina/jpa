@@ -6,8 +6,8 @@
             remove_script_host : false,
             convert_urls : false,
             selector: 'textarea#ARTICLE_TEXT',
-            plugins: 'code codesample image imagetools link',
-            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | codesample | code | image | link",
+            plugins: 'code codesample image imagetools link table',
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | codesample | code | image | link | table",
             code_dialog_height: 300,
             code_dialog_width: 500,
             browser_spellcheck: true

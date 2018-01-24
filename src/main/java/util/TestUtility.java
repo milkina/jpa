@@ -157,9 +157,9 @@ public class TestUtility {
         String newTags = request.getParameter(TEST_TAGS);
         String iconText = request.getParameter(TEST_ICON_TEXT);
 
-        test.setName(newName);
+        test.setName(decodeRussianCharacters(newName));
         test.setPathName(newPathName);
-        test.setTags(newTags);
+        test.setTags(decodeRussianCharacters(newTags));
         test.setIconText(decodeRussianCharacters(iconText));
     }
 }

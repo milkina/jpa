@@ -169,6 +169,10 @@
         <servlet-name>SiteMapServlet</servlet-name>
         <servlet-class>controller.sitemap.SiteMapServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteCommentServlet</servlet-name>
+        <servlet-class>controller.comment.DeleteCommentServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateCategoryServlet</servlet-name>
@@ -298,6 +302,10 @@
     <servlet-mapping>
         <servlet-name>SiteMapServlet</servlet-name>
         <url-pattern>/sitemap.xml</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCommentServlet</servlet-name>
+        <url-pattern>/delete-comment</url-pattern>
     </servlet-mapping>
 
 

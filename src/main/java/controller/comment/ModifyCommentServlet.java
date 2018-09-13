@@ -47,9 +47,6 @@ public class ModifyCommentServlet extends HttpServlet {
             commentHandler.updateComment(comment);
 
             request.setAttribute(MESSAGE_ATTRIBUTE, COMMENT_CHANGED);
-        } else if (EditMode.DELETE.toString().equals(editMode)) {
-            commentHandler.deleteComment(commentId);
-            request.setAttribute(MESSAGE_ATTRIBUTE, COMMENT_REMOVED);
         }
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);

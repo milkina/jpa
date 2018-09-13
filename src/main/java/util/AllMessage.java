@@ -39,7 +39,7 @@ public interface AllMessage {
     String EXAM_EMPTY = "There are no questions selected. " +
             "Either you have already answered all the questions or the selected category is empty.";
     String COMMENT_CHANGED = "Comment is updated.";
-    String COMMENT_REMOVED = "Comment is removed.";
+    String COMMENT_REMOVED = "Comments are removed.";
     String USER_REMOVED = "User is removed.";
     String USER_NOT_REMOVED = "User cannot be removed.";
 }

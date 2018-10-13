@@ -47,10 +47,28 @@
         <info>Question text.</info>
     </tag>
     <tag>
+        <name>answers</name>
+        <tagclass>tags.questionEntry.AnswersTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Answers tag.</info>
+    </tag>
+    <tag>
         <name>answer</name>
+        <tagclass>tags.questionEntry.AnswerTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+        <info>Answer tag.</info>
+    </tag>
+    <tag>
+        <name>answertext</name>
         <tagclass>tags.questionEntry.AnswerTextTag</tagclass>
         <bodycontent>empty</bodycontent>
         <info>Answer text.</info>
+    </tag>
+    <tag>
+        <name>answercheckbox</name>
+        <tagclass>tags.questionEntry.AnswerCheckboxTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Answer checkbox.</info>
     </tag>
     <tag>
         <name>up</name>

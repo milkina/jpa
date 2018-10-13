@@ -42,7 +42,7 @@
     <li><a href="<%=request.getContextPath()%>/web-services" id="web-services">OCEJWSD 6</a></li>
     <li><a href="<%=request.getContextPath()%>/exam/java-core-russian" id="java-core-russian">Java Basics (Russian)</a></li>
     <c:if test="${person!=null}">
-       <li><a href="<%=request.getContextPath()%>/person/MyProfile.jsp">My Profile</a></li>
+       <li><a href="<%=request.getContextPath()%>/show-user-profile">My Profile</a></li>
     </c:if>
     <c:if test="${person.sysadmin}">
             <li><a href="<%=request.getContextPath()%>/administration/welcome.jsp">Administration</a></li>

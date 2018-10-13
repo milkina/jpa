@@ -1,6 +1,6 @@
 package tags.questionEntry;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
@@ -15,10 +15,10 @@ public class QuestionEntryTypeTag extends BaseQuestionEntryTypeTag {
         try {
             QuestionEntryTag parent = (QuestionEntryTag)
                     findAncestorWithClass(this, QuestionEntryTag.class);
-            QuestionEntry questionEntry = parent.getQuestionEntry();
+            AbstractQuestionEntry questionEntry = parent.getQuestionEntry();
             JspWriter out = pageContext.getOut();
 
-            List<QuestionEntry> answeredQuestion = getAnsweredQuestions();
+            List<AbstractQuestionEntry> answeredQuestion = getAnsweredQuestions();
 
             String liClass = isAnswered(questionEntry, answeredQuestion)
                     ? "answeredQuestion" : "notAnsweredQuestion";

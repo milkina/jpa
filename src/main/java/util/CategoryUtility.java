@@ -2,8 +2,8 @@ package util;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import model.AbstractQuestionEntry;
 import model.Category;
-import model.QuestionEntry;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
@@ -14,15 +14,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static util.AllConstantsAttribute.TESTS;
-import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
-import static util.AllConstantsAttribute.DUPLICATE_CATEGORIES;
-import static util.AllConstantsParam.CATEGORY_NAME;
-import static util.AllConstantsParam.CATEGORY_PATH_NAME;
-import static util.AllConstantsParam.CATEGORY_PARENT;
-import static util.AllConstantsParam.CATEGORY_HIDDEN;
-import static util.AllConstantsParam.CATEGORY_PATH;
-import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsAttribute.*;
+import static util.AllConstantsParam.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -136,8 +129,8 @@ public class CategoryUtility {
     }
 
     public static boolean containQuestionEntries(Category category) {
-        Map<Integer, QuestionEntry> questions =
-                questionEntryHandler.getAllQuestions(category);
+        Map<Integer, AbstractQuestionEntry> questions =
+                questionEntryHandler.getAllAbstractQuestionsMap(category);
         return questions != null && !questions.isEmpty();
     }
 

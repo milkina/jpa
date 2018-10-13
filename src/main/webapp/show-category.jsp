@@ -37,7 +37,10 @@
                          <h1 class="header1">${CATEGORY_ATTRIBUTE.parentCategory.name}</h1>
                     </c:if>
                     <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
-                    <jsp:include page="/WEB-INF/showQuestions/start-quiz-button.jsp" /><BR>
+                    <input type="button" value="Start Test" class="submitButton"
+                    onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                    <input type="button" value="See Questions" id="startQuiz"
+                    onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     ${CATEGORY_ATTRIBUTE.article.text}
                     <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
                       <ol>
@@ -51,6 +54,10 @@
                         </c:forEach>
                        </ol>
                     </c:if>
+                    <input type="button" value="Start Test" class="submitButton"
+                                        onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                    <input type="button" value="See Questions" id="startQuiz"
+                                        onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
               </article>
             </main>
             <%@ include file="/WEB-INF/socialButtons.jsp" %>

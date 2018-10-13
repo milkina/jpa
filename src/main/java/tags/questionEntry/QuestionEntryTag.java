@@ -1,6 +1,6 @@
 package tags.questionEntry;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class QuestionEntryTag extends BodyTagSupport {
     private int number;
-    private QuestionEntry questionEntry;
-    private Iterator<QuestionEntry> iterator;
+    private AbstractQuestionEntry questionEntry;
+    private Iterator<AbstractQuestionEntry> iterator;
 
-    public QuestionEntry getQuestionEntry() {
+    public AbstractQuestionEntry getQuestionEntry() {
         return questionEntry;
     }
 
@@ -44,7 +44,7 @@ public class QuestionEntryTag extends BodyTagSupport {
     private void setIterator() {
         QuestionEntryListTag parent = (QuestionEntryListTag)
                 findAncestorWithClass(this, QuestionEntryListTag.class);
-        List<QuestionEntry> questionEntries = parent.getQuestionEntries();
+        List<AbstractQuestionEntry> questionEntries = parent.getQuestionEntries();
         iterator = questionEntries.iterator();
     }
 

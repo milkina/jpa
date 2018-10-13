@@ -4,7 +4,7 @@
 <form ACTION="${pageContext.request.contextPath}/delete-comment"
     method="POST">
 <h4>
-<input type="submit" value="Delete Comment" name="DeleteCommentButton">
+<input type="submit" value="Delete Comments" name="DeleteCommentButton">
 <div style="padding-left:20px;padding-right:20px;margin-left:10px;margin-right:10px">
   <div class="adminComment" style="width:10%">Created Date</div>
   <div class="adminComment" style="width:14%">Author</div>

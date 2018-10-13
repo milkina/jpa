@@ -26,6 +26,7 @@ public interface AllConstants {
     String MESSAGE_PAGE = "/messagePage.jsp";
     String MOVE_QUESTIONS_PAGE = "/edit/move-questions.jsp?TEST_PATH=%s&CATEGORY_PATH=%s";
     String MY_PROFILE_PAGE = "/person/MyProfile.jsp";
+    String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
     String EDIT_ARTICLE = "/article/editArticle.jsp";
     String SHOW_ARTICLE_PAGE = "/article/showArticle.jsp";
 
@@ -39,6 +40,7 @@ public interface AllConstants {
     String SHOW_QUESTION_PAGE = "/WEB-INF/showQuestions/show-question.jsp";
     String SHOW_QUESTION_PICTURE_PAGE = "/WEB-INF/showQuestions/show-question-picture.jsp";
     String SHOW_EXAM_QUESTION_PAGE = "/WEB-INF/showQuestions/show-exam-question.jsp";
+    String SHOW_EXAM_TEST_QUESTION = "/WEB-INF/showQuestions/show-exam-test-question.jsp";
     String SHOW_QUESTION_SERVLET_PAGE = "show-question";
     String SHOW_EXAM_QUESTION = "show-exam-question";
     String GROUP_NAME = "java";

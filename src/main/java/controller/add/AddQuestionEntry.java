@@ -1,14 +1,12 @@
 package controller.add;
 
 import data.questionEntry.QuestionEntryHandler;
-import model.Answer;
-import model.Category;
-import model.Question;
-import model.QuestionEntry;
+import model.*;
 import model.person.Person;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.TestUtility;
+import util.question.QuestionEntryUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +17,10 @@ import java.io.IOException;
 import java.util.Date;
 
 import static util.AllConstants.MESSAGE_PAGE;
-import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsParam.ANSWER_NUMBER;
 import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
-import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
 import static util.AllMessage.QUESTION_ADDED_MESSAGE;
 
 /**
@@ -48,31 +46,18 @@ public class AddQuestionEntry extends HttpServlet {
     private void addQuestionEntry(HttpServletRequest request,
                                   HttpServletResponse response)
             throws ServletException, IOException {
-        String newQuestionText = GeneralUtility.decodeRussianCharacters(
-                request.getParameter(QUESTION_TEXT_PARAM).trim());
-        String newAnswerText = GeneralUtility.decodeRussianCharacters(
-                request.getParameter(ANSWER_TEXT_PARAM).trim());
-        Category category =
-                CategoryUtility.getCategoryFromServletContext(request);
-
-        QuestionEntry newQuestionEntry = new QuestionEntry();
-        newQuestionEntry.setCategory(category);
-
-        Question question = new Question();
-        question.setText(newQuestionText);
-        newQuestionEntry.setQuestion(question);
-
-        Answer answer = new Answer();
-        answer.setText(newAnswerText);
-        newQuestionEntry.setAnswer(answer);
-
-        newQuestionEntry.setCreatedDate(new Date());
-
-        if (request.getSession().getAttribute(PERSON_ATTRIBUTE) != null) {
-            Person person = (Person)
-                    request.getSession().getAttribute(PERSON_ATTRIBUTE);
-            newQuestionEntry.setPerson(person);
+        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+        AbstractQuestionEntry newQuestionEntry = null;
+        if (answerNumber > 1) {
+            newQuestionEntry = new TestQuestionEntry();
+        } else {
+            newQuestionEntry = new QuestionEntry();
         }
+        QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);
+        setCategory(request, newQuestionEntry);
+        setQuestionText(request, newQuestionEntry);
+        newQuestionEntry.setCreatedDate(new Date());
+        setPerson(request, newQuestionEntry);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.addQuestionEntry(newQuestionEntry);
@@ -82,4 +67,28 @@ public class AddQuestionEntry extends HttpServlet {
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_ADDED_MESSAGE);
         dispatcher.forward(request, response);
     }
+
+    private void setPerson(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
+        if (request.getSession().getAttribute(PERSON_ATTRIBUTE) != null) {
+            Person person = (Person)
+                    request.getSession().getAttribute(PERSON_ATTRIBUTE);
+            newQuestionEntry.setPerson(person);
+        }
+    }
+
+    private void setCategory(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
+        newQuestionEntry.setCategory(category);
+    }
+
+    private void setQuestionText(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
+        String newQuestionText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(QUESTION_TEXT_PARAM).trim());
+        Question question = new Question();
+        question.setText(newQuestionText);
+        newQuestionEntry.setQuestion(question);
+    }
+
+
 }

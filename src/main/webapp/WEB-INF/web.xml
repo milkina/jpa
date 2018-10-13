@@ -173,6 +173,22 @@
         <servlet-name>DeleteCommentServlet</servlet-name>
         <servlet-class>controller.comment.DeleteCommentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StartSeeQuestionsServlet</servlet-name>
+        <servlet-class>controller.exam.StartSeeQuestionsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserAnswerServlet</servlet-name>
+        <servlet-class>controller.exam.AddUserAnswerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPersonProfile</servlet-name>
+        <servlet-class>controller.person.ShowPersonProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPersonHistoryServlet</servlet-name>
+        <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateCategoryServlet</servlet-name>
@@ -232,7 +248,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StartExamServlet</servlet-name>
-        <url-pattern>/start-quiz</url-pattern>
+        <url-pattern>/start-test</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowExamQuestionServlet</servlet-name>
@@ -306,6 +322,22 @@
     <servlet-mapping>
         <servlet-name>DeleteCommentServlet</servlet-name>
         <url-pattern>/delete-comment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartSeeQuestionsServlet</servlet-name>
+        <url-pattern>/see-questions</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserAnswerServlet</servlet-name>
+        <url-pattern>/add-user-answer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPersonProfile</servlet-name>
+        <url-pattern>/show-user-profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPersonHistoryServlet</servlet-name>
+        <url-pattern>/show-person-history</url-pattern>
     </servlet-mapping>
 
 

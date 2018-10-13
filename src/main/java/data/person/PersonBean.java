@@ -1,6 +1,6 @@
 package data.person;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.person.Person;
 
 import javax.ejb.Stateless;
@@ -105,7 +105,7 @@ public class PersonBean implements PersonBeanI {
         query.executeUpdate();
     }
 
-    public List<QuestionEntry> findAnsweredQuestions(int personId) {
+    public List<AbstractQuestionEntry> findAnsweredQuestions(int personId) {
         Query query = entityManager.createNamedQuery(
                 "Person.findAnsweredQuestions");
         query.setParameter("personId", personId);
@@ -113,7 +113,7 @@ public class PersonBean implements PersonBeanI {
     }
 
     public void removeAnsweredQuestions(Person person) {
-        List<QuestionEntry> answeredQuestions =
+        List<AbstractQuestionEntry> answeredQuestions =
                 findAnsweredQuestions(person.getID());
         person = entityManager.merge(person);
         person.getAnsweredQuestions().removeAll(answeredQuestions);

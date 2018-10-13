@@ -40,7 +40,7 @@ function editQuestion(contextPath) {
 
 function isQAEmpty(){
     var question = tinyMCE.get("QUESTION_TEXT_PARAM").getContent();
-    var answer = tinyMCE.get("ANSWER_TEXT_PARAM").getContent();
+    var answer = tinyMCE.get("ANSWER_TEXT_PARAM1").getContent();
     if (trim(question).length == 0) {
            alert("Question cannot be empty.");
            return true;
@@ -61,30 +61,62 @@ function changeTest(contextPath) {
     form.submit();
 }
 
-
 function addNextAnswer() {
+    var numberElement = document.getElementById('answerNumber');
+    var number = Number(numberElement.value) + 1;
     var answersDiv= document.getElementById('answersDiv');
+
+    var answerBlock = document.createElement('div');
+    answerBlock.setAttribute("id", "answerblock" + number);
+
+    answersDiv.appendChild(answerBlock);
 
     var br = document.createElement('br');
     var br1 = document.createElement('br');
 
-    var strongElement = document.createElement('strong');
-    var textNode = document.createTextNode("Answer:   ");
-    strongElement.appendChild(textNode);
+    answerBlock.appendChild(br);
+    answerBlock.appendChild(br1);
 
+    addCheckBox(answerBlock, number);
+    addTextArea(answerBlock, number);
+    addDeleteButton(answerBlock, number);
+
+    addWYSIWG();
+    numberElement.value = number;
+}
+
+function addCheckBox(answersDiv, number){
     var checkbox = document.createElement('input');
     checkbox.setAttribute("type","checkbox");
+    checkbox.setAttribute("name","checkbox" + number);
+    answersDiv.appendChild(checkbox);
+}
+
+function addTextArea(answersDiv,number){
+    var divElement = document.createElement('div');
+    divElement.setAttribute("class","answerDiv");
+    divElement.setAttribute("id","answer" + number);
 
     var textArea = document.createElement('textarea');
-    textArea.setAttribute("rows","7");
-    textArea.setAttribute("cols","60");
-    textArea.setAttribute("name","ANSWER_TEXT_PARAM");
+    textArea.setAttribute("name","ANSWER_TEXT_PARAM" + number);
+    divElement.appendChild(textArea);
 
-    answersDiv.appendChild(br);
-    answersDiv.appendChild(br1);
-    answersDiv.appendChild(strongElement);
-    answersDiv.appendChild(checkbox);
-    answersDiv.appendChild(textArea);
+    answersDiv.appendChild(divElement);
+}
+
+function addDeleteButton(answersDiv, number){
+    var buttonElement = document.createElement('input');
+    buttonElement.setAttribute("type", "button");
+    buttonElement.setAttribute("value", "Delete");
+    buttonElement.setAttribute("onclick", "deleteAnswer("+number+")");
+    buttonElement.setAttribute("id", "deleteAnswer" + number);
+
+    answersDiv.appendChild(buttonElement);
+}
+
+function deleteAnswer(number){
+    var element = document.getElementById('answerblock' + number);
+    element.parentNode.removeChild(element);
 }
 
 

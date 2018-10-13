@@ -1,9 +1,6 @@
 package data.questionEntry;
 
-import model.Category;
-import model.QuestionEntry;
-import model.QuestionType;
-import model.Test;
+import model.*;
 import model.person.Person;
 
 import javax.naming.Context;
@@ -41,17 +38,17 @@ public class QuestionEntryHandler {
         this.questionEntryBean = questionEntryBean;
     }
 
-    public Map<Integer, QuestionEntry> getAllQuestions(Category category) {
-        List<QuestionEntry> list = questionEntryBean.getAllQuestions(category);
-        Map<Integer, QuestionEntry> map = new TreeMap<Integer, QuestionEntry>();
-        for (QuestionEntry questionEntry : list) {
+    public Map<Integer, AbstractQuestionEntry> getAllAbstractQuestionsMap(Category category) {
+        List<AbstractQuestionEntry> list = questionEntryBean.getAllAbstractQuestions(category);
+        Map<Integer, AbstractQuestionEntry> map = new TreeMap<>();
+        for (AbstractQuestionEntry questionEntry : list) {
             map.put(questionEntry.getId(), questionEntry);
         }
         return map;
     }
 
 
-    public List<QuestionEntry> getAllQuestionsList(Category category) {
+    public List<QuestionEntry> getAllQuestions(Category category) {
         return questionEntryBean.getAllQuestions(category);
     }
 
@@ -68,6 +65,14 @@ public class QuestionEntryHandler {
         }
     }
 
+    public List<AbstractQuestionEntry> getAllAbstractQuestions(Category category) {
+        return questionEntryBean.getAllAbstractQuestions(category);
+    }
+
+    public List<TestQuestionEntry> getAllTestQuestions(Category category) {
+        return questionEntryBean.getAllTestQuestions(category);
+    }
+
     public List<QuestionEntry> getAnsweredQuestions(Category category,
                                                     Person person) {
         return questionEntryBean.getAnsweredQuestions(category, person);
@@ -78,31 +83,31 @@ public class QuestionEntryHandler {
         return questionEntryBean.getNotAnsweredQuestions(category, person);
     }
 
-    public QuestionEntry updateQuestionEntry(QuestionEntry questionEntry) {
+    public AbstractQuestionEntry updateQuestionEntry(AbstractQuestionEntry questionEntry) {
         return questionEntryBean.updateQuestionEntry(questionEntry);
     }
 
-    public void addQuestionEntries(QuestionEntry[] questionEntries) {
-        for (QuestionEntry questionEntry : questionEntries) {
+    public void addQuestionEntries(AbstractQuestionEntry[] questionEntries) {
+        for (AbstractQuestionEntry questionEntry : questionEntries) {
             addQuestionEntry(questionEntry);
         }
     }
 
-    public QuestionEntry addQuestionEntry(QuestionEntry questionEntry) {
+    public AbstractQuestionEntry addQuestionEntry(AbstractQuestionEntry questionEntry) {
         questionEntry.setCreatedDate(new Date());
         return questionEntryBean.addQuestionEntry(questionEntry);
     }
 
-    public void deleteQuestionEntry(QuestionEntry questionEntry) {
+    public void deleteQuestionEntry(AbstractQuestionEntry questionEntry) {
         questionEntryBean.deleteQuestionEntry(questionEntry);
     }
 
     public void deleteQuestionEntry(int id) {
-        QuestionEntry questionEntry = questionEntryBean.getQuestionEntry(id);
+        AbstractQuestionEntry questionEntry = questionEntryBean.getQuestionEntry(id);
         questionEntryBean.deleteQuestionEntry(questionEntry);
     }
 
-    public QuestionEntry getQuestionEntry(int id) {
+    public AbstractQuestionEntry getQuestionEntry(int id) {
         return questionEntryBean.getQuestionEntry(id);
     }
 
@@ -112,20 +117,20 @@ public class QuestionEntryHandler {
     }
 
 
-    public QuestionEntry getPreviousQuestionEntry(int orderColumn) {
+    public AbstractQuestionEntry getPreviousQuestionEntry(int orderColumn) {
         return questionEntryBean.getPreviousQuestionEntry(orderColumn);
     }
 
     public void moveQuestionEntryUp(int questionId) {
-        QuestionEntry questionEntry = getQuestionEntry(questionId);
-        QuestionEntry previousQuestionEntry =
+        AbstractQuestionEntry questionEntry = getQuestionEntry(questionId);
+        AbstractQuestionEntry previousQuestionEntry =
                 getPreviousQuestionEntry(questionEntry.getOrderColumn());
         if (previousQuestionEntry != null) {
             swapQuestionEntries(questionEntry, previousQuestionEntry);
         }
     }
 
-    public void swapQuestionEntries(QuestionEntry q1, QuestionEntry q2) {
+    public void swapQuestionEntries(AbstractQuestionEntry q1, AbstractQuestionEntry q2) {
         int id1 = q1.getOrderColumn();
         int id2 = q2.getOrderColumn();
         q1.setOrderColumn(id2);
@@ -140,5 +145,26 @@ public class QuestionEntryHandler {
 
     public Test getFirstQuestionEntryTest(int id) {
         return questionEntryBean.getFirstQuestionEntryTest(id);
+    }
+
+    public void removeAnswers(AbstractQuestionEntry questionEntry) {
+        List<Answer> answers = questionEntry.getAnswers();
+        questionEntry.setAnswers(null);
+        questionEntryBean.updateQuestionEntry(questionEntry);
+        for (Answer answer : answers) {
+            removeAnswer(answer);
+        }
+    }
+
+    public void removeAnswer(Answer answer) {
+        questionEntryBean.removeAnswer(answer);
+    }
+
+    public Answer getAnswer(int id){
+        return questionEntryBean.getAnswer(id);
+    }
+
+    public Question getQuestion(int id) {
+        return questionEntryBean.getQuestion(id);
     }
 }

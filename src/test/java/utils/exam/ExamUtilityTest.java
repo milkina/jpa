@@ -4,8 +4,9 @@ import junit.framework.Assert;
 import data.person.PersonBean;
 import data.person.PersonBeanI;
 import data.person.PersonHandler;
+import model.AbstractQuestionEntry;
 import model.Category;
-import model.Exam;
+import model.QuestionExam;
 import model.QuestionEntry;
 import model.article.Article;
 import model.person.Person;
@@ -24,7 +25,7 @@ import java.util.List;
  * Created by Tatyana on 30.04.2016.
  */
 public class ExamUtilityTest {
-    private Exam exam;
+    private QuestionExam exam;
     Category category;
     private List<QuestionEntry> questionEntries;
     private int questionsArraySize = 4;
@@ -39,14 +40,14 @@ public class ExamUtilityTest {
         category.addTest(test);
 
 
-        questionEntries = new ArrayList<QuestionEntry>();
+        questionEntries = new ArrayList<>();
         for (int i = 0; i < questionsArraySize; i++) {
             questionEntries.add(TestUtils.createQuestionEntry(i, category, person));
         }
-        exam = new Exam();
+        exam = new QuestionExam();
         exam.setQuestionEntries(questionEntries);
 
-        List<QuestionEntry> answeredQuestions = new ArrayList<QuestionEntry>();
+        List<AbstractQuestionEntry> answeredQuestions = new ArrayList<>();
         answeredQuestions.add(questionEntries.get(0));
         answeredQuestions.add(questionEntries.get(3));
         person.setAnsweredQuestions(answeredQuestions);
@@ -66,11 +67,11 @@ public class ExamUtilityTest {
 
     @Test(dataProvider = "getCurrentQuestionEntry")
     public void testGetCurrentQuestionEntry(List<QuestionEntry> list, Integer currentNumber, QuestionEntry expected) {
-        Exam exam = new Exam();
+        QuestionExam exam = new QuestionExam();
         exam.setQuestionEntries(list);
         exam.setCurrentNumber(currentNumber);
         exam.setCategory(category);
-        QuestionEntry result = ExamUtility.getCurrentQuestionEntry(exam);
+        AbstractQuestionEntry result = ExamUtility.getCurrentQuestionEntry(exam);
         Assert.assertEquals(result, expected);
     }
 
@@ -78,7 +79,7 @@ public class ExamUtilityTest {
     public Object[][] isCurrentQuestionChecked() {
         return new Object[][]
                 {{null, null, null, false},
-                        {new Exam(), null, null, false},
+                        {new QuestionExam(), null, null, false},
                         {exam, null, null, false},
                         {exam, new Person(), null, false},
                         {exam, person, null, false},
@@ -89,7 +90,7 @@ public class ExamUtilityTest {
     }
 
     @Test(dataProvider = "isCurrentQuestionChecked")
-    public void testIsCurrentQuestionChecked(Exam exam, Person person, Integer currentNumber, boolean expectedResult) {
+    public void testIsCurrentQuestionChecked(QuestionExam exam, Person person, Integer currentNumber, boolean expectedResult) {
         if (exam != null) {
             exam.setPerson(person);
             exam.setCurrentNumber(currentNumber);
@@ -97,7 +98,7 @@ public class ExamUtilityTest {
         PersonBeanI personBeanI = mock(PersonBean.class);
         PersonHandler personHandler = new PersonHandler(personBeanI);
         ExamUtility.setPersonHandler(personHandler);
-        List<QuestionEntry> answeredQuestions = person != null ? person.getAnsweredQuestions() : null;
+        List<AbstractQuestionEntry> answeredQuestions = person != null ? person.getAnsweredQuestions() : null;
         when(personHandler.findAnsweredQuestions(anyInt())).thenReturn(answeredQuestions);
         boolean result = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions);
         Assert.assertEquals(result, expectedResult);

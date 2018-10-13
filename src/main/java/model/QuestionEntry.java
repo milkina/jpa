@@ -1,22 +1,13 @@
 package model;
 
-import model.person.Person;
-
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToOne;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
-
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,132 +17,30 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "QUESTIONS")
 @NamedQueries({
         @NamedQuery(name = "GET_ALL_QUESTION_ENTRIES",
-                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
-                        + "JOIN FETCH qe.category where qe.category=:param ORDER BY qe.orderColumn, qe.id"),
+                query = "SELECT DISTINCT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+                        + "JOIN FETCH qe.category WHERE qe.category=:param ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES",
-                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
-                        + "JOIN FETCH qe.category where qe.category=:category AND qe.id IN "
-                        + "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
+                query = "SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+                        + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.id IN "
+                        + "(select aq.id FROM Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
         @NamedQuery(name = "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES",
-                query = "SELECT qe from QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answer "
-                        + "JOIN FETCH qe.category where qe.category=:category and qe.id NOT IN "
-                        + "(select aq.id from Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
-        @NamedQuery(name = "QuestionEntry.getPreviousQuestionEntry",
-                query = "select qe1 from QuestionEntry qe1 "
-                        + "where qe1.orderColumn = (select max(qe2.orderColumn) "
-                        + "from QuestionEntry qe2 where qe2.orderColumn<:param and qe2.category.id="
-                        + "(select qe3.category.id from QuestionEntry qe3 where qe3.orderColumn=:param))")
+                query = "SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+                        + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.id NOT IN "
+                        + "(SELECT aq.id FROM Person p JOIN p.answeredQuestions aq WHERE p=:person) ORDER BY qe.orderColumn,qe.id"),
 
 })
-public class QuestionEntry implements Serializable {
-    @Id
-    @Column(name = "entry_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category category;
-
-    @OneToOne(cascade = {CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "question_id", referencedColumnName = "id")
-    private Question question;
-
-    @OneToOne(cascade = {CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "answer_id", referencedColumnName = "id")
-    private Answer answer;
-
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
-
-    @Column(name = "CREATED_DATE")
-    private Date createdDate;
-
-    private int orderColumn;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
+@DiscriminatorValue("QUESTION")
+public class QuestionEntry extends AbstractQuestionEntry implements Serializable {
     public Answer getAnswer() {
-        return answer;
+        Stream<Answer> stream = getAnswers().stream();
+        return stream.findFirst().get();
     }
 
     public void setAnswer(Answer answer) {
-        this.answer = answer;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public int getOrderColumn() {
-        return orderColumn;
-    }
-
-    public void setOrderColumn(int orderColumn) {
-        this.orderColumn = orderColumn;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        QuestionEntry that = (QuestionEntry) o;
-
-        if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
-        if (category != null ? !category.equals(that.category) : that.category != null) return false;
-        if (person != null ? !person.equals(that.person) : that.person != null) return false;
-        if (question != null ? !question.equals(that.question) : that.question != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = category != null ? category.hashCode() : 0;
-        result = 31 * result + (question != null ? question.hashCode() : 0);
-        result = 31 * result + (answer != null ? answer.hashCode() : 0);
-        result = 31 * result + (person != null ? person.hashCode() : 0);
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        return result;
+        List<Answer> set = new ArrayList<>();
+        set.add(answer);
+        setAnswers(set);
     }
 }

@@ -36,6 +36,7 @@ public interface AllConstantsParam {
     String EDIT_MODE_PARAM = "EDIT_MODE_PARAM";
     String QUESTION_TEXT_PARAM = "QUESTION_TEXT_PARAM";
     String ANSWER_TEXT_PARAM = "ANSWER_TEXT_PARAM";
+    String ANSWER_NUMBER = "answerNumber";
     String SELECTED_TEST_ID = "SELECTED_TEST_ID";
     String FROM_NUMBER = "FROM_NUMBER";
     String TO_NUMBER = "TO_NUMBER";

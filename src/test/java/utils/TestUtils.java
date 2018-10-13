@@ -25,7 +25,7 @@ public class TestUtils {
     }
 
     public static Person createPerson(String login, String password, Boolean sysadmin,
-                                      PersonInfo personInfo, List<QuestionEntry> answeredQuestions) {
+                                      PersonInfo personInfo, List<AbstractQuestionEntry> answeredQuestions) {
         Person person = new Person();
         person.setLogin(login);
         person.setPassword(password);
@@ -52,10 +52,26 @@ public class TestUtils {
         return createQuestionEntry(category, ANSWERS[i], person, QUESTION_TEXTS[i]);
     }
 
+    public static TestQuestionEntry createTestQuestionEntry(int i, Category category, Person person) {
+        return createTestQuestionEntry(category, ANSWERS[i], person, QUESTION_TEXTS[i]);
+    }
+
     public static QuestionEntry createQuestionEntry(Category category, String answerText, Person person, String questionText) {
         Question question = TestUtils.createQuestion(questionText);
-        Answer answer = TestUtils.createAnswer(answerText);
+        Answer answer = TestUtils.createAnswer(answerText, false);
         return createQuestionEntry(category, answer, person, question);
+    }
+
+    public static TestQuestionEntry createTestQuestionEntry(Category category, String answerText, Person person, String questionText) {
+        Question question = TestUtils.createQuestion(questionText);
+        Answer answer1 = TestUtils.createAnswer(answerText + 0, true);
+        Answer answer2 = TestUtils.createAnswer(answerText + 1, false);
+        Answer answer3 = TestUtils.createAnswer(answerText + 3, true);
+        List<Answer> answers = new ArrayList<>();
+        answers.add(answer1);
+        answers.add(answer2);
+        answers.add(answer3);
+        return createTestQuestionEntry(category, answers, person, question);
     }
 
     public static QuestionEntry createQuestionEntry(Category category, Answer answer, Person person, Question question) {
@@ -64,6 +80,21 @@ public class TestUtils {
         questionEntry.setAnswer(answer);
         questionEntry.setPerson(person);
         questionEntry.setQuestion(question);
+
+        answer.setQuestionEntry(questionEntry);
+        return questionEntry;
+    }
+
+    public static TestQuestionEntry createTestQuestionEntry(Category category, List<Answer> answers, Person person, Question question) {
+        TestQuestionEntry questionEntry = new TestQuestionEntry();
+        questionEntry.setCategory(category);
+        questionEntry.setAnswers(answers);
+        questionEntry.setPerson(person);
+        questionEntry.setQuestion(question);
+
+        for (Answer answer : answers) {
+            answer.setQuestionEntry(questionEntry);
+        }
         return questionEntry;
     }
 
@@ -99,9 +130,10 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
     return possibleAnswer;
 } */
 
-    public static Answer createAnswer(String answerText) {
+    public static Answer createAnswer(String answerText, boolean correct) {
         Answer answer = new Answer();
         answer.setText(answerText);
+        answer.setCorrect(correct);
         return answer;
     }
 
@@ -127,6 +159,24 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
         comment.setUser(user);
         comment.setReferenceId(referenceId);
         return comment;
+    }
+
+    public static TestExam createTestExam(Category category, Person person, int percent) {
+        TestExam exam = new TestExam();
+        exam.setCategory(category);
+        exam.setPercent(percent);
+        exam.setPerson(person);
+        exam.setDate(new Date());
+        return exam;
+    }
+
+    public static QuestionExam createQuestionExam(Category category, Person person, int percent) {
+        QuestionExam exam = new QuestionExam();
+        exam.setCategory(category);
+        exam.setPercent(percent);
+        exam.setPerson(person);
+        exam.setDate(new Date());
+        return exam;
     }
 
     public static Article createArticle(int i, Person author) {

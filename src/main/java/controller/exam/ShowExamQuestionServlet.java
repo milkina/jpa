@@ -1,7 +1,6 @@
 package controller.exam;
 
-import model.Exam;
-import model.QuestionEntry;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static util.AllConstants.SHOW_EXAM_QUESTION_PAGE;
+import static util.AllConstants.SHOW_EXAM_TEST_QUESTION;
 import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 
 /**
@@ -28,20 +28,26 @@ public class ShowExamQuestionServlet extends HttpServlet {
         }
         HttpSession session = request.getSession();
 
-        updateCurrentQuestionEntry(i, session);
+        String url = updateCurrentQuestionEntry(i, session);
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher(SHOW_EXAM_QUESTION_PAGE);
+                request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 
-    private void updateCurrentQuestionEntry(int i, HttpSession session) {
-        Exam exam = (Exam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
-        Integer currentNumber = exam.getCurrentNumber() + i;
+    private String updateCurrentQuestionEntry(int i, HttpSession session) {
+        String url = null;
+        AbstractExam exam = (AbstractExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
+        int currentNumber = exam.getCurrentNumber() + i;
         exam.setCurrentNumber(currentNumber);
-
-        QuestionEntry currentQuestionEntry =
-                exam.getQuestionEntries().get(currentNumber);
+        AbstractQuestionEntry currentQuestionEntry =
+                (AbstractQuestionEntry) exam.getQuestionEntries().get(currentNumber);
+        if (exam instanceof QuestionExam) {
+            url = SHOW_EXAM_QUESTION_PAGE;
+        } else {
+            url = SHOW_EXAM_TEST_QUESTION;
+        }
         exam.setCurrentQuestionEntry(currentQuestionEntry);
+        return url;
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

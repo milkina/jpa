@@ -1,6 +1,6 @@
 package tags.questionEntry;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -15,7 +15,7 @@ public class QuestionEntryIdTag extends TagSupport {
         try {
             QuestionEntryTag parent =
                     (QuestionEntryTag) findAncestorWithClass(this, QuestionEntryTag.class);
-            QuestionEntry questionEntry = parent.getQuestionEntry();
+            AbstractQuestionEntry questionEntry = parent.getQuestionEntry();
             JspWriter out = pageContext.getOut();
             out.print(questionEntry.getId());
         } catch (IOException ioe) {

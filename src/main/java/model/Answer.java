@@ -1,12 +1,8 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,13 +13,20 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "ANSWER_TEXT")
-public class Answer implements Serializable {
+public class Answer implements Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @Column(name="answer")
+
+    @Column(name = "answer")
     private String text;
+
+    @Column(name = "is_correct")
+    private Boolean correct;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "entry_id", referencedColumnName = "entry_id")
+    private AbstractQuestionEntry questionEntry;
 
     public int getId() {
         return id;
@@ -41,21 +44,44 @@ public class Answer implements Serializable {
         this.text = text;
     }
 
+    public Boolean getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
+    }
+
+    public AbstractQuestionEntry getQuestionEntry() {
+        return questionEntry;
+    }
+
+    public void setQuestionEntry(AbstractQuestionEntry questionEntry) {
+        this.questionEntry = questionEntry;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-
+        if (o == null || getClass() != o.getClass()) return false;
         Answer answer = (Answer) o;
-
-        if (text != null ? !text.equals(answer.text) : answer.text != null) return false;
-
-        return true;
+        return id == answer.id &&
+                Objects.equals(text, answer.text) &&
+                Objects.equals(correct, answer.correct);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (text != null ? text.hashCode() : 0);
-        return result;
+        return Objects.hash(id, text, correct);
+    }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        }catch (CloneNotSupportedException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

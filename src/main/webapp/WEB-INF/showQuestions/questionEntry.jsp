@@ -6,7 +6,11 @@
 </div>
 <div class="questionEntryBody">
      <div class="questionText"><qe:number/>.&nbsp;<qe:question/></div>
-     <div class="answer" id="answer<qe:number/>"><qe:answer/></div>
+     <qe:answers>
+       <div class="answer" id="answer<qe:number/>"><qe:answer>
+       <div><input type="checkbox" disabled <qe:answercheckbox/> ><qe:answertext/></div>
+       </qe:answer></div>
+     </qe:answers>
      <aside>
        <c:if test="${person.sysadmin}">
              <a href="<qe:up/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer">Up</a>

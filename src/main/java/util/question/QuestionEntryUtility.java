@@ -1,8 +1,9 @@
 package util.question;
 
 import data.questionEntry.QuestionEntryHandler;
-import model.Exam;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
+import model.Answer;
+import model.QuestionExam;
 import util.AllConstants;
 import util.AllConstantsAttribute;
 import util.AllConstantsParam;
@@ -11,8 +12,12 @@ import util.exam.ExamUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.NavigableSet;
+
+import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
 
 /**
  * Created by Tatyana on 27.03.2016.
@@ -32,7 +37,7 @@ public class QuestionEntryUtility {
         return from <= to && from <= questionsNumber && to <= questionsNumber;
     }
 
-    public static QuestionEntry getQuestionEntry(HttpServletRequest request) {
+    public static AbstractQuestionEntry getQuestionEntry(HttpServletRequest request) {
         Integer questionEntryId = GeneralUtility.getIntegerValue(request,
                 AllConstantsParam.QUESTION_ENTRY_ID_PARAM);
         if (questionEntryId == null) {
@@ -42,13 +47,30 @@ public class QuestionEntryUtility {
         }
     }
 
-    public static QuestionEntry getQuestionEntryFromExam(HttpSession session) {
-        Exam exam = (Exam) session.getAttribute(
+    public static void setAnswers(HttpServletRequest request, int answerNumber, AbstractQuestionEntry newQuestionEntry) {
+        List<Answer> answers = new ArrayList<>();
+        for (int i = 1; i < answerNumber + 1; i++) {
+            String newAnswerText = request.getParameter(ANSWER_TEXT_PARAM + i);
+            if (newAnswerText != null) {
+                newAnswerText = GeneralUtility.decodeRussianCharacters(newAnswerText.trim());
+                Answer answer = new Answer();
+                answer.setText(newAnswerText);
+                answer.setQuestionEntry(newQuestionEntry);
+                String checkbox = request.getParameter("checkbox" + i);
+                answer.setCorrect(checkbox != null);
+                answers.add(answer);
+            }
+        }
+        newQuestionEntry.setAnswers(answers);
+    }
+
+    public static AbstractQuestionEntry getQuestionEntryFromExam(HttpSession session) {
+        QuestionExam exam = (QuestionExam) session.getAttribute(
                 AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE);
         return ExamUtility.getCurrentQuestionEntry(exam);
     }
 
-    public static QuestionEntry getQuestionEntry(Integer questionEntryId) {
+    public static AbstractQuestionEntry getQuestionEntry(Integer questionEntryId) {
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         return questionEntryHandler.getQuestionEntry(questionEntryId);
     }

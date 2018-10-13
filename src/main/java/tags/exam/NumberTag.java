@@ -1,6 +1,6 @@
 package tags.exam;
 
-import model.Exam;
+import model.AbstractExam;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -24,7 +24,7 @@ public class NumberTag extends TagSupport {
         return SKIP_BODY;
     }
 
-    private Exam getExam() {
-        return (Exam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
+    private AbstractExam getExam() {
+        return (AbstractExam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
     }
 }

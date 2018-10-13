@@ -2,14 +2,12 @@ package tags.questionEntry;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import model.AbstractQuestionEntry;
 import model.Category;
-import model.QuestionEntry;
-import model.person.Person;
 
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.util.List;
 
-import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsParam.CATEGORY_PATH;
 
 /**
@@ -18,16 +16,15 @@ import static util.AllConstantsParam.CATEGORY_PATH;
 public class QuestionEntryListTag extends BodyTagSupport {
     QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
     CategoryHandler categoryHandler = new CategoryHandler();
-    private List<QuestionEntry> questionEntries;
+    private List<AbstractQuestionEntry> questionEntries;
 
-    public List<QuestionEntry> getQuestionEntries() {
+    public List<AbstractQuestionEntry> getQuestionEntries() {
         return questionEntries;
     }
 
     public int doStartTag() {
         Category category = getCategory();
-        Person person = (Person) pageContext.getSession().getAttribute(PERSON_ATTRIBUTE);
-        questionEntries = questionEntryHandler.getQuestions(category, person, "ALL");
+        questionEntries = questionEntryHandler.getAllAbstractQuestions(category);
         return EVAL_BODY_INCLUDE;
     }
 

@@ -1,6 +1,7 @@
 <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 <%@ include file="/WEB-INF/head/prism.jsp"%>
 <script>
+function addWYSIWG() {
       tinymce.init({
         selector: 'textarea',
         plugins: 'code codesample',
@@ -9,4 +10,6 @@
         code_dialog_width: 500,
         browser_spellcheck: true
       });
+ }
+ addWYSIWG();
 </script>

@@ -1,6 +1,6 @@
 package data.person;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.person.Person;
 
 import javax.ejb.Local;
@@ -29,7 +29,7 @@ public interface PersonBeanI {
 
     void removePerson(Person person);
 
-    List<QuestionEntry> findAnsweredQuestions(int personId);
+    List<AbstractQuestionEntry> findAnsweredQuestions(int personId);
 
     void removeAnsweredQuestions(Person person);
 }

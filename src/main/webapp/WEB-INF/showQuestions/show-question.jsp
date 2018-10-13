@@ -35,10 +35,18 @@
               <div class="questionEntryBody">
                        <div class="questionText">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
                        <input type="button" value="Read Answer" onclick="showAnswer('1');" id="a1">
-                       <div class="answer" id="answer1">${QUESTION_ENTRY_ATTRIBUTE.answer.text}</div>
+                       <c:set var="count" value="${1}"/>
+                       <div class="answer" id="answer1">
+                          <c:forEach var="answer" items="${QUESTION_ENTRY_ATTRIBUTE.answers}">
+                             <div><input type="checkbox" name = "checkbox${count}"
+                               <c:if test="${answer.correct==true}">checked</c:if>>${answer.text}
+                             </div>
+                             <c:set var="count" value="${count+1}" />
+                          </c:forEach>
+                       </div>
                </div>
          </div><BR>
-          <a href="${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${param.TEST_PATH}"
+          <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${param.TEST_PATH}"
           name="seeOtherQuestions">
           See other questions</a><BR>
               <jsp:include page="/WEB-INF/comment/comments.jsp">

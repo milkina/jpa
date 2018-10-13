@@ -1,6 +1,6 @@
 package data.person;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.person.Person;
 
 import javax.naming.Context;
@@ -88,7 +88,7 @@ public class PersonHandler {
         personBean.removePerson(person);
     }
 
-    public List<QuestionEntry> findAnsweredQuestions(int personId) {
+    public List<AbstractQuestionEntry> findAnsweredQuestions(int personId) {
         return personBean.findAnsweredQuestions(personId);
     }
 

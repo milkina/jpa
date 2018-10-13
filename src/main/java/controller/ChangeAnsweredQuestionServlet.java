@@ -2,7 +2,7 @@ package controller;
 
 import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryHandler;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.person.Person;
 import util.PersonUtility;
 
@@ -33,10 +33,10 @@ public class ChangeAnsweredQuestionServlet extends HttpServlet {
                 : request.getParameter(UNCHECKED_PARAM);
         HttpSession session = request.getSession();
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        QuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(
+        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(
                 Integer.valueOf(idString));
 
-        List<QuestionEntry> answeredQuestions =
+        List<AbstractQuestionEntry> answeredQuestions =
                 PersonUtility.getAnsweredQuestions(session);
         if (checked && !answeredQuestions.contains(questionEntry)) {
             answeredQuestions.add(questionEntry);

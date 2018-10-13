@@ -1,7 +1,7 @@
 package tags.questionEntry;
 
 import controller.EditMode;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import util.ShowQuestionUtility;
 
 import javax.servlet.jsp.JspWriter;
@@ -17,7 +17,7 @@ public class UpRefTag extends TagSupport {
         try {
             QuestionEntryTag parent = (QuestionEntryTag)
                     findAncestorWithClass(this, QuestionEntryTag.class);
-            QuestionEntry questionEntry = parent.getQuestionEntry();
+            AbstractQuestionEntry questionEntry = parent.getQuestionEntry();
             String path = ShowQuestionUtility.createPath(questionEntry,
                     pageContext.getServletContext().getContextPath());
             JspWriter out = pageContext.getOut();

@@ -1,6 +1,6 @@
 package tags.exam;
 
-import model.Exam;
+import model.AbstractExam;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -12,7 +12,7 @@ import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 public class PreviousButtonTag extends TagSupport {
 
     public int doStartTag() {
-        Exam exam = getExam();
+        AbstractExam exam = getExam();
         if (exam != null && exam.getCurrentNumber() != 0) {
             return EVAL_BODY_INCLUDE;
         } else {
@@ -20,7 +20,7 @@ public class PreviousButtonTag extends TagSupport {
         }
     }
 
-    private Exam getExam() {
-        return (Exam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
+    private AbstractExam getExam() {
+        return (AbstractExam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
     }
 }

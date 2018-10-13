@@ -27,4 +27,6 @@ public interface AllConstantsAttribute {
     String CATEGORY_PATHS_ATTRIBUTE = "CATEGORY_PATHS_ATTRIBUTE";
     String CURRENT_EXAM_ATTRIBUTE = "CURRENT_EXAM_ATTRIBUTE";
     String USER_NAME = "USER_NAME";
+    String USER_TEST_EXAMS = "USER_TEST_EXAMS";
+    String SOME_USER = "SOME_USER";
 }

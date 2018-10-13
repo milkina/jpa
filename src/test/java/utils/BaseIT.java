@@ -6,15 +6,15 @@ import data.category.CategoryBeanI;
 import data.category.CategoryHandler;
 import data.comment.CommentBeanI;
 import data.comment.CommentHandler;
+import data.exam.ExamBeanI;
+import data.exam.ExamHandler;
 import data.person.PersonBeanI;
 import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryBeanI;
 import data.questionEntry.QuestionEntryHandler;
 import data.test.TestBeanI;
 import data.test.TestHandler;
-import model.Category;
-import model.QuestionEntry;
-import model.Test;
+import model.*;
 import model.article.Article;
 import model.comment.Comment;
 import model.comment.CommentType;
@@ -22,9 +22,7 @@ import model.person.Person;
 import model.person.PersonInfo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static utils.TestUtils.*;
 
@@ -38,6 +36,7 @@ public class BaseIT {
     protected static PersonBeanI personBean;
     protected static CommentBeanI commentBean;
     protected static ArticleBeanI articleBean;
+    protected static ExamBeanI examBean;
 
     protected static TestHandler testHandler;
     protected static CategoryHandler categoryHandler;
@@ -45,14 +44,16 @@ public class BaseIT {
     protected static PersonHandler personHandler;
     protected static CommentHandler commentHandler;
     protected static ArticleHandler articleHandler;
+    protected static ExamHandler examHandler;
 
     protected static model.Test[] tests;
     protected static Person[] persons;
     protected static PersonInfo personInfo[];
     protected static Category[] categories;
-    protected static QuestionEntry[] questionEntries;
+    protected static AbstractQuestionEntry[] questionEntries;
     protected static Comment[] comments;
     protected static Article[] articles;
+    protected static AbstractExam[] exams;
 
     static {
         prepareBeans();
@@ -66,6 +67,15 @@ public class BaseIT {
         prepareComments();
 
         prepareArticles();
+        prepareExams();
+    }
+
+    private static void prepareExams(){
+        exams = new AbstractExam[2];
+        exams[0] = createTestExam(categories[2],persons[0],50);
+        exams[1] = createQuestionExam(categories[1],persons[0],50);
+        examHandler.createExam(exams[0]);
+        examHandler.createExam(exams[1]);
     }
 
     private static void prepareArticles() {
@@ -74,7 +84,6 @@ public class BaseIT {
         articles[1] = createArticle(1, persons[0]);
         articles[2] = createArticle(2, persons[0]);
         articles = articleHandler.addArticles(articles);
-
     }
 
     private static void prepareComments() {
@@ -89,7 +98,7 @@ public class BaseIT {
     }
 
     private static void prepareAnsweredQuestions() {
-        List<QuestionEntry> answeredQuestions = new ArrayList<QuestionEntry>();
+        List<AbstractQuestionEntry> answeredQuestions = new ArrayList<>();
         answeredQuestions.add(questionEntries[0]);
         answeredQuestions.add(questionEntries[1]);
         persons[0].setAnsweredQuestions(answeredQuestions);
@@ -97,13 +106,15 @@ public class BaseIT {
     }
 
     private static void prepareQuestionEntries() {
-        int questionLength = 5;
-        questionEntries = new QuestionEntry[questionLength];
+        int questionLength = 7;
+        questionEntries = new AbstractQuestionEntry[questionLength];
         questionEntries[0] = createQuestionEntry(0, categories[0], persons[0]);
         questionEntries[1] = createQuestionEntry(1, categories[1], persons[1]);
         questionEntries[2] = createQuestionEntry(2, categories[1], persons[2]);
         questionEntries[3] = createQuestionEntry(3, categories[3], persons[2]);
         questionEntries[4] = createQuestionEntry(4, categories[2], persons[2]);
+        questionEntries[5] = createTestQuestionEntry(5, categories[1], persons[2]);
+        questionEntries[6] = createTestQuestionEntry(6, categories[1], persons[2]);
         questionEntryHandler.addQuestionEntries(questionEntries);
     }
 
@@ -134,6 +145,7 @@ public class BaseIT {
         personHandler = new PersonHandler(personBean);
         commentHandler = new CommentHandler(commentBean);
         articleHandler = new ArticleHandler(articleBean);
+        examHandler = new ExamHandler(examBean);
     }
 
     private static void prepareBeans() {
@@ -143,6 +155,7 @@ public class BaseIT {
         personBean = InitialContextHandler.getPersonBean();
         commentBean = InitialContextHandler.getCommentBean();
         articleBean = InitialContextHandler.getArticleBean();
+        examBean = InitialContextHandler.getExamBean();
     }
 
     private static void prepareCategories() {

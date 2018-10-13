@@ -1,9 +1,11 @@
 package model.person;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -15,7 +17,7 @@ import java.util.*;
                 query = "SELECT c FROM Person c WHERE c.login=:loginName"),
         @NamedQuery(
                 name = "Person.findAnsweredQuestions",
-                query = "SELECT aq from Person p join p.answeredQuestions aq WHERE p.ID=:personId")
+                query = "SELECT aq from Person p JOIN p.answeredQuestions aq WHERE p.ID=:personId")
 })
 @Table(name = "Users")
 public class Person implements Comparable<Person> {
@@ -42,7 +44,7 @@ public class Person implements Comparable<Person> {
     @JoinTable(name = "answered_questions",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "question_id"))
-    private List<QuestionEntry> answeredQuestions;
+    private List<AbstractQuestionEntry> answeredQuestions;
 
 
     public void setLogin(String l) {
@@ -100,14 +102,14 @@ public class Person implements Comparable<Person> {
         this.createdDate = createdDate;
     }
 
-    public List<QuestionEntry> getAnsweredQuestions() {
+    public List<AbstractQuestionEntry> getAnsweredQuestions() {
         if (answeredQuestions == null) {
-            answeredQuestions = new ArrayList<QuestionEntry>();
+            answeredQuestions = new ArrayList<>();
         }
         return answeredQuestions;
     }
 
-    public void setAnsweredQuestions(List<QuestionEntry> answeredQuestions) {
+    public void setAnsweredQuestions(List<AbstractQuestionEntry> answeredQuestions) {
         this.answeredQuestions = answeredQuestions;
     }
 

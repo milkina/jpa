@@ -1,7 +1,7 @@
 package controller.exam;
 
 import data.questionEntry.QuestionEntryHandler;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.Test;
 import util.AllConstantsParam;
 
@@ -28,7 +28,7 @@ public class ShowQuestionServlet extends HttpServlet {
         Integer questionEntryId = getIntegerValue(request,
                 AllConstantsParam.QUESTION_ENTRY_ID_PARAM);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        QuestionEntry questionEntry =
+        AbstractQuestionEntry questionEntry =
                 questionEntryHandler.getQuestionEntry(questionEntryId);
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
         String mode = request.getParameter(AllConstantsParam.MODE);

@@ -2,10 +2,10 @@ package controller;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import model.AbstractQuestionEntry;
 import model.Answer;
 import model.Category;
 import model.Question;
-import model.QuestionEntry;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.ServletUtilities;
@@ -20,28 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
-import static util.AllConstants.MESSAGE_PAGE;
-import static util.AllConstants.SHOW_QUESTIONS_PAGE;
-import static util.AllConstants.EDIT_QUESTION_ENTRY_SERVLET;
-import static util.AllConstants.MOVE_QUESTIONS_PAGE;
+import static util.AllConstants.*;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
-import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
-import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
-import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
-import static util.AllConstantsParam.EDIT_MODE_PARAM;
-import static util.AllConstantsParam.CATEGORY_PATH;
-import static util.AllConstantsParam.OLD_CATEGORY_PATH;
-import static util.AllConstantsParam.TEST_PATH;
-import static util.AllConstantsParam.OLD_TEST_PATH;
-import static util.AllConstantsParam.FROM_NUMBER;
-import static util.AllConstantsParam.TO_NUMBER;
-import static util.AllMessage.QUESTION_CHANGED_MESSAGE;
-import static util.AllMessage.QUESTION_REMOVE_MESSAGE;
-import static util.AllMessage.SELECT_DIFFERENT_CATEGORY;
-import static util.AllMessage.INVALID_NUMBERS_MESSAGE;
-import static util.AllMessage.QUESTIONS_MOVED;
+import static util.AllConstantsParam.*;
+import static util.AllMessage.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -88,7 +71,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
     private void showQuestionEntry(HttpServletRequest request,
                                    HttpServletResponse response)
             throws IOException, ServletException {
-        QuestionEntry questionEntry = findQuestionEntry(request);
+        AbstractQuestionEntry questionEntry = findQuestionEntry(request);
 
         fixTinyMCEIssue(questionEntry);
 
@@ -98,12 +81,12 @@ public class EditQuestionEntryServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void fixTinyMCEIssue(QuestionEntry questionEntry) {
+    private void fixTinyMCEIssue(AbstractQuestionEntry questionEntry) {
         Question question = questionEntry.getQuestion();
         question.setText(ServletUtilities.fixTinyMceIssue(question.getText()));
-
-        Answer answer = questionEntry.getAnswer();
-        answer.setText(ServletUtilities.fixTinyMceIssue(answer.getText()));
+        for (Answer answer : questionEntry.getAnswers()) {
+            answer.setText(ServletUtilities.fixTinyMceIssue(answer.getText()));
+        }
     }
 
     private void saveQuestionEntry(
@@ -112,11 +95,9 @@ public class EditQuestionEntryServlet extends HttpServlet {
 
         String newQuestionText = GeneralUtility.decodeRussianCharacters(
                 request.getParameter(QUESTION_TEXT_PARAM).trim());
-        String newAnswerText = GeneralUtility.decodeRussianCharacters(
-                request.getParameter(ANSWER_TEXT_PARAM).trim());
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
-        QuestionEntry questionEntry = null;
+        AbstractQuestionEntry questionEntry = null;
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
         if (oldCategoryPath.equals(categoryPath)) {
@@ -128,9 +109,11 @@ public class EditQuestionEntryServlet extends HttpServlet {
         }
 
         questionEntry.getQuestion().setText(newQuestionText);
-        questionEntry.getAnswer().setText(newAnswerText);
-
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        questionEntryHandler.removeAnswers(questionEntry);
+        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+        QuestionEntryUtility.setAnswers(request, answerNumber, questionEntry);
+
         questionEntryHandler.updateQuestionEntry(questionEntry);
 
         RequestDispatcher dispatcher =
@@ -139,7 +122,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private QuestionEntry findQuestionEntry(HttpServletRequest request) {
+    private AbstractQuestionEntry findQuestionEntry(HttpServletRequest request) {
         String questionEntryId = request.getParameter(QUESTION_ENTRY_ID_PARAM);
         return new QuestionEntryHandler().getQuestionEntry(
                 Integer.valueOf(questionEntryId));
@@ -189,8 +172,8 @@ public class EditQuestionEntryServlet extends HttpServlet {
         questionEntryHandler.deleteQuestionEntry(questionEntryId);
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
-        Map<Integer, QuestionEntry> allQuestionsOfCategory =
-                questionEntryHandler.getAllQuestions(category);
+        Map<Integer, AbstractQuestionEntry> allQuestionsOfCategory =
+                questionEntryHandler.getAllAbstractQuestionsMap(category);
         allQuestionsOfCategory.remove(questionEntryId);
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
@@ -208,7 +191,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
         Category oldCategory = categoryHandler.getCategory(oldCategoryPath);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         long oldCategoryQuestionsNumber =
-                questionEntryHandler.getAllQuestions(oldCategory).size();
+                questionEntryHandler.getAllAbstractQuestionsMap(oldCategory).size();
 
         Integer from = GeneralUtility.getIntegerValue(request, FROM_NUMBER);
         Integer to = GeneralUtility.getIntegerValue(request, TO_NUMBER);

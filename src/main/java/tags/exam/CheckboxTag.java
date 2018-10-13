@@ -1,7 +1,7 @@
 package tags.exam;
 
-import model.Exam;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
+import model.QuestionExam;
 import util.PersonUtility;
 import util.exam.ExamUtility;
 
@@ -21,11 +21,11 @@ public class CheckboxTag extends TagSupport {
     public int doStartTag() {
         try {
             JspWriter out = pageContext.getOut();
-            Exam exam = getExam();
+            QuestionExam exam = getExam();
             if (exam != null) {
                 int questionEntryId = getQuestionEntryId(exam);
                 String checkboxId = "isAnswered" + questionEntryId;
-                List<QuestionEntry> answeredQuestions = PersonUtility.getAnsweredQuestions(pageContext.getSession());
+                List<AbstractQuestionEntry> answeredQuestions = PersonUtility.getAnsweredQuestions(pageContext.getSession());
                 String isCheckedQuestion = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions) ? "checked" : "";
                 String contextPath = pageContext.getServletContext().getContextPath();
                 String str = String.format("<input type='checkbox' id='%s' name='isAnswered'" +
@@ -43,12 +43,12 @@ public class CheckboxTag extends TagSupport {
         return SKIP_BODY;
     }
 
-    private int getQuestionEntryId(Exam exam) {
-        QuestionEntry questionEntry = ExamUtility.getCurrentQuestionEntry(exam);
+    private int getQuestionEntryId(QuestionExam exam) {
+        AbstractQuestionEntry questionEntry = ExamUtility.getCurrentQuestionEntry(exam);
         return questionEntry.getId();
     }
 
-    private Exam getExam() {
-        return (Exam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
+    private QuestionExam getExam() {
+        return (QuestionExam) pageContext.getSession().getAttribute(CURRENT_EXAM_ATTRIBUTE);
     }
 }

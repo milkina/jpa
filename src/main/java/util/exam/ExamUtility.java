@@ -1,8 +1,9 @@
 package util.exam;
 
 import data.person.PersonHandler;
-import model.Exam;
-import model.QuestionEntry;
+import model.AbstractExam;
+import model.AbstractQuestionEntry;
+import model.QuestionExam;
 import model.person.Person;
 
 import java.util.List;
@@ -21,10 +22,10 @@ public class ExamUtility {
         ExamUtility.personHandler = personHandler;
     }
 
-    public static boolean isQuestionChecked(int questionNumber, Exam exam,
-                                            List<QuestionEntry> ansQuestions) {
-        QuestionEntry questionEntry =
-                exam.getQuestionEntries().get(questionNumber);
+    public static boolean isQuestionChecked(int questionNumber, QuestionExam exam,
+                                            List<AbstractQuestionEntry> ansQuestions) {
+        AbstractQuestionEntry questionEntry =
+                (AbstractQuestionEntry)exam.getQuestionEntries().get(questionNumber);
         Person person = exam.getPerson();
         if (person == null) {
             return false;
@@ -34,23 +35,23 @@ public class ExamUtility {
     }
 
     public static boolean isCurrentQuestionChecked(
-            Exam exam, List<QuestionEntry> answeredQuestions) {
+            QuestionExam exam, List<AbstractQuestionEntry> answeredQuestions) {
         return exam != null && exam.getCurrentNumber() != null
                 && isQuestionChecked(exam.getCurrentNumber(),
                 exam, answeredQuestions);
     }
 
-    public static QuestionEntry getCurrentQuestionEntry(Exam exam) {
+    public static AbstractQuestionEntry getCurrentQuestionEntry(QuestionExam exam) {
         if (exam == null || exam.getQuestionEntries() == null
                 || exam.getQuestionEntries().isEmpty()
                 || exam.getCurrentNumber() == null) {
             return null;
         }
-        return exam.getQuestionEntries().get(exam.getCurrentNumber());
+        return (AbstractQuestionEntry)exam.getQuestionEntries().get(exam.getCurrentNumber());
     }
 
 
-    public static boolean isLastQuestion(Exam exam) {
+    public static boolean isLastQuestion(AbstractExam exam) {
         return exam.getCurrentNumber() == exam.getQuestionEntries().size() - 1;
     }
 }

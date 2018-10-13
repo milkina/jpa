@@ -2,9 +2,7 @@ package controller.exam;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
-import model.Category;
-import model.Exam;
-import model.QuestionEntry;
+import model.*;
 import model.person.Person;
 
 import javax.servlet.ServletException;
@@ -38,8 +36,8 @@ public class StartExamServlet extends HttpServlet {
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
         Category category = getCategory(categoryPath);
-        List<QuestionEntry> questionEntries =
-                getQuestionEntries(person, category, request);
+        List<TestQuestionEntry> questionEntries =
+                getQuestionEntries(category);
         String url = MESSAGE_PAGE;
         if (questionEntries.isEmpty()) {
             url = url + "?" + MESSAGE_ATTRIBUTE + "=" + EXAM_EMPTY;
@@ -55,19 +53,15 @@ public class StartExamServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + url);
     }
 
-    private List<QuestionEntry> getQuestionEntries(Person person,
-                                                   Category category,
-                                                   HttpServletRequest request) {
-        String questionType = request.getParameter("questionType");
+    private List<TestQuestionEntry> getQuestionEntries(Category category) {
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        return questionEntryHandler.getQuestions(category,
-                person, questionType);
+        return questionEntryHandler.getAllTestQuestions(category);
     }
 
-    private Exam setExam(HttpSession session, Person person,
-                         List<QuestionEntry> questionEntries,
+    private TestExam setExam(HttpSession session, Person person,
+                         List<TestQuestionEntry> questionEntries,
                          Category category) {
-        Exam exam = new Exam();
+        TestExam exam = new TestExam();
         exam.setPerson(person);
         exam.setQuestionEntries(questionEntries);
         exam.setCurrentNumber(0);

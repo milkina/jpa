@@ -1,8 +1,6 @@
 package data.questionEntry;
 
-import model.Category;
-import model.QuestionEntry;
-import model.Test;
+import model.*;
 import model.person.Person;
 
 import javax.ejb.Local;
@@ -19,13 +17,17 @@ import java.util.List;
 public interface QuestionEntryBeanI {
     List<QuestionEntry> getAllQuestions(Category category);
 
-    QuestionEntry updateQuestionEntry(QuestionEntry questionEntry);
+    List<AbstractQuestionEntry> getAllAbstractQuestions(Category category);
 
-    QuestionEntry addQuestionEntry(QuestionEntry questionEntry);
+    List<TestQuestionEntry> getAllTestQuestions(Category category);
 
-    void deleteQuestionEntry(QuestionEntry questionEntry);
+    AbstractQuestionEntry updateQuestionEntry(AbstractQuestionEntry questionEntry);
 
-    QuestionEntry getQuestionEntry(int id);
+    AbstractQuestionEntry addQuestionEntry(AbstractQuestionEntry questionEntry);
+
+    void deleteQuestionEntry(AbstractQuestionEntry questionEntry);
+
+    AbstractQuestionEntry getQuestionEntry(int id);
 
     List<QuestionEntry> getNotAnsweredQuestions(Category category,
                                                 Person person);
@@ -33,7 +35,7 @@ public interface QuestionEntryBeanI {
     List<QuestionEntry> getAnsweredQuestions(Category category,
                                              Person person);
 
-    QuestionEntry getPreviousQuestionEntry(int orderColumn);
+    AbstractQuestionEntry getPreviousQuestionEntry(int orderColumn);
 
     void moveBatch(Category oldCategory, Category category,
                    Integer from, Integer to);
@@ -41,4 +43,10 @@ public interface QuestionEntryBeanI {
     List<Test> getQuestionEntryTests(int id);
 
     Test getFirstQuestionEntryTest(int id);
+
+    void removeAnswer(Answer answer);
+
+    Answer getAnswer(int id);
+
+    Question getQuestion(int id);
 }

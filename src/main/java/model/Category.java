@@ -40,7 +40,7 @@ import java.util.List;
                 query = "select c.id,c.pathName from Category c"),
         @NamedQuery(name = "Category.findByPathName",
                 query = "select c from Category c  " +
-                "where c.pathName=:p"),
+                        "where c.pathName=:p"),
         @NamedQuery(name = "Category.findCategories",
                 query = "select c from Test t join t.categories c where t.id=:p"),
         @NamedQuery(name = "Category.findCategoriesByTestPath",
@@ -73,7 +73,7 @@ public class Category implements Serializable, Comparable<Category> {
     private Article article;
 
     @OneToMany(mappedBy = "category")
-    private List<QuestionEntry> questionEntries;
+    private List<AbstractQuestionEntry> questionEntries;
 
     @ManyToOne
     @JoinColumn(name = "parent_category")
@@ -127,12 +127,11 @@ public class Category implements Serializable, Comparable<Category> {
         this.questionsNumber = questionsNumber;
     }
 
-
-    public List<QuestionEntry> getQuestionEntries() {
+    public List<AbstractQuestionEntry> getQuestionEntries() {
         return questionEntries;
     }
 
-    public void setQuestionEntries(List<QuestionEntry> questionEntries) {
+    public void setQuestionEntries(List<AbstractQuestionEntry> questionEntries) {
         this.questionEntries = questionEntries;
     }
 

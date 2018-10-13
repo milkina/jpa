@@ -1,6 +1,6 @@
 package ejb.person;
 
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
@@ -131,7 +131,7 @@ public class PersonHandlerIT extends BaseIT {
     @Test
     public void testRemoveAnsweredQuestions() {
         PersonInfo personInfo = TestUtils.createPersonInfo(10);
-        List<QuestionEntry> answeredQuestions = new ArrayList<QuestionEntry>();
+        List<AbstractQuestionEntry> answeredQuestions = new ArrayList<>();
         answeredQuestions.add(questionEntries[0]);
         answeredQuestions.add(questionEntries[1]);
         answeredQuestions.add(questionEntries[2]);

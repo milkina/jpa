@@ -10,6 +10,7 @@
   <div class="adminUserCellHead">Login</div>
   <div class="adminUserCellHead">Created Date</div>
   <div class="adminUserCellHead">&nbsp;</div>
+  <div class="adminUserCellHead">&nbsp;</div>
 </div>
 <div class="adminUserTable" id="adminUserTable">
        <%for(Person p:personList){
@@ -20,6 +21,8 @@
          <div class="adminUserCell"><%=createdDate%></div>
          <div class="adminUserCell">
             <a href="${pageContext.request.contextPath}/servlet/DeleteUser?USER_ID=<%=p.getID()%>">Delete</a></div>
+         <div class="adminUserCell">
+                     <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>">See History</a></div>
        </div>
        <%}%>
 </div>

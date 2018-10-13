@@ -402,12 +402,12 @@ border-right: 1px solid white;
   width:100%;
 }
 .adminUserCell{
-  width:30%;
+  width:22%;
   display:inline-block;
   float:left;
 }
 .adminUserCellHead{
-  width:30%;
+  width:22%;
   display:inline-block;
   float:left;
   font-weight:bold;
@@ -665,6 +665,13 @@ border-right: 1px solid white;
 .articleDescription{
     display:inline-block;
     width:100%;
+}
+.answerDiv{
+    display:inline-block;
+    width:90%
+}
+.answerBlockDiv{
+    width:100%
 }
 
 code[class*="language-"],

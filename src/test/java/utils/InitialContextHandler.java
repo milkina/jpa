@@ -3,6 +3,7 @@ package utils;
 import data.article.ArticleBeanI;
 import data.category.CategoryBeanI;
 import data.comment.CommentBeanI;
+import data.exam.ExamBeanI;
 import data.person.PersonBeanI;
 import data.questionEntry.QuestionEntryBeanI;
 import data.test.TestBeanI;
@@ -27,6 +28,7 @@ public class InitialContextHandler {
     protected static String QUESTION_ENTRY_BEAN_NAME = "QuestionEntryBeanLocal";
     protected static String COMMENT_BEAN_NAME = "CommentBeanLocal";
     protected static String ARTICLE_BEAN_NAME = "ArticleBeanLocal";
+    protected static String EXAM_BEAN_NAME = "ExamBeanLocal";
 
     public static InitialContext initialContext = createInitialContext();
 
@@ -50,11 +52,11 @@ public class InitialContextHandler {
                 properties.put(NON_JTA_DATA_SOURCE + ".JdbcUrl", "jdbc:hsqldb:mem:moviedb");
                 properties.put(NON_JTA_DATA_SOURCE + ".JtaManaged", "false");
 
-                properties.put(PERSISTENCE_UNIT_NAME+".openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
+                properties.put(PERSISTENCE_UNIT_NAME + ".openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
 
                 initialContext = new InitialContext(properties);
             } catch (NamingException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                e.printStackTrace();
             }
         }
         return initialContext;
@@ -106,5 +108,11 @@ public class InitialContextHandler {
         Object object = getBean(ARTICLE_BEAN_NAME);
         Assert.assertTrue(object instanceof ArticleBeanI);
         return (ArticleBeanI) object;
+    }
+
+    public static ExamBeanI getExamBean() {
+        Object object = getBean(EXAM_BEAN_NAME);
+        Assert.assertTrue(object instanceof ExamBeanI);
+        return (ExamBeanI) object;
     }
 }

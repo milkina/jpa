@@ -1,8 +1,6 @@
 package data.questionEntry;
 
-import model.Category;
-import model.QuestionEntry;
-import model.Test;
+import model.*;
 import model.person.Person;
 
 import javax.ejb.Stateless;
@@ -26,11 +24,21 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     private EntityManager entityManager;
 
     public List<QuestionEntry> getAllQuestions(Category category) {
-        List<QuestionEntry> list;
         Query query = entityManager.createNamedQuery(GET_ALL_QUESTION_ENTRIES);
         query.setParameter("param", category);
-        list = query.getResultList();
-        return list;
+        return query.getResultList();
+    }
+
+    public List<AbstractQuestionEntry> getAllAbstractQuestions(Category category) {
+        Query query = entityManager.createNamedQuery("AbstractQuestionEntry.getAllQuestions");
+        query.setParameter("param", category);
+        return query.getResultList();
+    }
+
+    public List<TestQuestionEntry> getAllTestQuestions(Category category) {
+        Query query = entityManager.createNamedQuery("TestQuestionEntry.getAllQuestions");
+        query.setParameter("param", category);
+        return query.getResultList();
     }
 
     public List<QuestionEntry> getAnsweredQuestions(Category category, Person person) {
@@ -53,31 +61,31 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         return list;
     }
 
-    public QuestionEntry updateQuestionEntry(QuestionEntry questionEntry) {
+    public AbstractQuestionEntry updateQuestionEntry(AbstractQuestionEntry questionEntry) {
         return entityManager.merge(questionEntry);
-
     }
 
-    public QuestionEntry addQuestionEntry(QuestionEntry questionEntry) {
+    public AbstractQuestionEntry addQuestionEntry(AbstractQuestionEntry questionEntry) {
         entityManager.persist(questionEntry);
         questionEntry.setOrderColumn(questionEntry.getId());
         return questionEntry;
     }
 
-    public void deleteQuestionEntry(QuestionEntry questionEntry) {
-        entityManager.remove(entityManager.merge(questionEntry));
+    public void deleteQuestionEntry(AbstractQuestionEntry questionEntry) {
+        questionEntry = entityManager.merge(questionEntry);
+        entityManager.remove(questionEntry);
     }
 
-    public QuestionEntry getQuestionEntry(int id) {
-        return entityManager.find(QuestionEntry.class, id);
+    public AbstractQuestionEntry getQuestionEntry(int id) {
+        return entityManager.find(AbstractQuestionEntry.class, id);
     }
 
-    public QuestionEntry getPreviousQuestionEntry(int orderColumn) {
+    public AbstractQuestionEntry getPreviousQuestionEntry(int orderColumn) {
         Query query = entityManager.createNamedQuery(
                 "QuestionEntry.getPreviousQuestionEntry");
         query.setParameter("param", orderColumn);
         List<QuestionEntry> list = query.getResultList();
-        QuestionEntry result = null;
+        AbstractQuestionEntry result = null;
         if (!list.isEmpty()) {
             result = list.get(0);
         }
@@ -86,9 +94,9 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
 
     public void moveBatch(Category oldCategory, Category category,
                           Integer from, Integer to) {
-        List<QuestionEntry> list = getAllQuestions(oldCategory);
+        List<AbstractQuestionEntry> list = getAllAbstractQuestions(oldCategory);
         for (int i = from - 1; i < to; i++) {
-            QuestionEntry questionEntry = list.get(i);
+            AbstractQuestionEntry questionEntry = list.get(i);
             questionEntry.setCategory(category);
         }
     }
@@ -103,6 +111,18 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         QuestionEntry questionEntry =
                 entityManager.find(QuestionEntry.class, id);
         return questionEntry.getCategory().getTests().get(0);
+    }
+
+    public void removeAnswer(Answer answer) {
+        entityManager.remove(entityManager.merge(answer));
+    }
+
+    public Answer getAnswer(int id) {
+        return entityManager.find(Answer.class, id);
+    }
+
+    public Question getQuestion(int id) {
+        return entityManager.find(Question.class, id);
     }
 }
 

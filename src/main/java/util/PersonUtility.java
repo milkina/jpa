@@ -1,7 +1,7 @@
 package util;
 
 import data.person.PersonHandler;
-import model.QuestionEntry;
+import model.AbstractQuestionEntry;
 import model.comment.Comment;
 import model.person.Person;
 import model.person.PersonInfo;
@@ -53,9 +53,9 @@ public class PersonUtility {
         return firstName + " " + lastName;
     }
 
-    public static List<QuestionEntry> getAnsweredQuestions(
+    public static List<AbstractQuestionEntry> getAnsweredQuestions(
             HttpSession session) {
-        List<QuestionEntry> answeredQuestions = (List<QuestionEntry>)
+        List<AbstractQuestionEntry> answeredQuestions = (List<AbstractQuestionEntry>)
                 session.getAttribute(PERSON_ANSWERED_QUESTIONS);
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
             answeredQuestions = getAnsweredQuestionsFromDB(session);
@@ -65,7 +65,7 @@ public class PersonUtility {
         return answeredQuestions;
     }
 
-    private static List<QuestionEntry> getAnsweredQuestionsFromDB(
+    private static List<AbstractQuestionEntry> getAnsweredQuestionsFromDB(
             HttpSession session) {
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         if (person == null) {

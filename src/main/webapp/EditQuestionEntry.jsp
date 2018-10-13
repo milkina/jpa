@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <t:wrapper>
     <jsp:attribute name="header">
            <%@ include file="/WEB-INF/head/editableArea.jsp"%>
@@ -21,10 +22,24 @@
            <strong> Question:</strong>
             <textarea  name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM">${QUESTION_ENTRY_ATTRIBUTE.question.text}
             </textarea>   <BR> <BR>
-          <strong>  Answer:&nbsp;&nbsp;</strong>
-            <textarea  name="ANSWER_TEXT_PARAM" id="ANSWER_TEXT_PARAM">${QUESTION_ENTRY_ATTRIBUTE.answer.text}</textarea>
-            <BR> <BR>
-            <input type="button" value="Ok" class="submitButton" name="ok" onclick="editQuestion('${pageContext.request.contextPath}');">
+          <strong>  Answers:&nbsp;&nbsp;</strong><BR>
+          <c:set var="count" value="${1}"/>
+          <div id="answersDiv" class="answerBlockDiv">
+          <c:forEach var="answer" items="${QUESTION_ENTRY_ATTRIBUTE.answers}">
+            <div id="answerblock${count}">
+                 <input type="checkbox" name = "checkbox${count}" <c:if test="${answer.correct==true}">checked</c:if>>
+                 <div class="answerDiv">
+                    <textarea  name="ANSWER_TEXT_PARAM${count}" id="ANSWER_TEXT_PARAM${count}">${answer.text}</textarea>
+                 </div>
+                 <input type="button" onclick="deleteAnswer('${count}')" value="Delete" id="deleteAnswer${count}"><BR><BR>
+                 <c:set var="count" value="${count+1}" />
+            </div>
+          </c:forEach>
+          </div>
+          <BR> <BR>
+          <input type="button" value="Ok" class="submitButton" name="ok" onclick="editQuestion('${pageContext.request.contextPath}');">
+          <input type="button" value="Add Next Answer" onclick="addNextAnswer();">
+          <input type="hidden" value="${count}" id="answerNumber" name="answerNumber">
         </form>
       </div>
  </jsp:body>

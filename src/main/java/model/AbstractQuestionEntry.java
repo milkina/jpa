@@ -20,7 +20,7 @@ import java.util.List;
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE")
-@Table(name = "questions")
+@Table(name = "QUESTIONS")
 public abstract class AbstractQuestionEntry {
     @Id
     @Column(name = "entry_id")

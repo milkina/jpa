@@ -8,5 +8,5 @@
     </a><a href="https://twitter.com/ExamClouds" target="_blank" rel="nofollow">
         <div id="sprite-icon_twitter" class="socialIcon"></div>
     </a>&nbsp;&nbsp;
-    <a href="mailto:jpa2.quiz@gmail.com" class="contactUsEmail">jpa2.quiz@gmail.com</a>
+    <a href="mailto:tatyana.milkina@gmail.com" class="contactUsEmail">tatyana.milkina@gmail.com</a>
 </div>

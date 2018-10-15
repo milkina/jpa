@@ -36,7 +36,7 @@ public abstract class AbstractQuestionEntry {
     @JoinColumn(name = "question_id", referencedColumnName = "id")
     protected Question question;
 
-    @OneToMany(mappedBy = "questionEntry",fetch = FetchType.EAGER,
+    @OneToMany(mappedBy = "questionEntry", fetch = FetchType.EAGER,
             cascade = {CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REMOVE})
     protected List<Answer> answers;
@@ -89,7 +89,6 @@ public abstract class AbstractQuestionEntry {
         this.person = person;
     }
 
-
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -109,7 +108,7 @@ public abstract class AbstractQuestionEntry {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        //    if (o == null || getClass() != o.getClass()) return false;
 
         AbstractQuestionEntry that = (AbstractQuestionEntry) o;
 
@@ -119,7 +118,20 @@ public abstract class AbstractQuestionEntry {
             return false;
         if (getQuestion() != null ? !getQuestion().equals(that.getQuestion()) : that.getQuestion() != null)
             return false;
-        if (getAnswers() != null ? !getAnswers().equals(that.getAnswers()) : that.getAnswers() != null) return false;
+        if (getAnswers() == null && that.getAnswers() != null) {
+            return false;
+        }
+        if (getAnswers() != null && that.getAnswers() == null) {
+            return false;
+        }
+        if (getAnswers().size() != that.getAnswers().size()) {
+            return false;
+        }
+        for (int i = 0; i < getAnswers().size(); i++) {
+            if(!getAnswers().get(i).equals(that.getAnswers().get(i))){
+                return false;
+            }
+        }
         if (getPerson() != null ? !getPerson().equals(that.getPerson()) : that.getPerson() != null) return false;
         return getCreatedDate() != null ? getCreatedDate().equals(that.getCreatedDate()) : that.getCreatedDate() == null;
     }

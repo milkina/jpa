@@ -48,11 +48,11 @@ public class QuestionEntryHandler {
     }
 
 
-    public List<QuestionEntry> getAllQuestions(Category category) {
+    public List<AbstractQuestionEntry> getAllQuestions(Category category) {
         return questionEntryBean.getAllQuestions(category);
     }
 
-    public List<QuestionEntry> getQuestions(Category category,
+    public List<AbstractQuestionEntry> getQuestions(Category category,
                                             Person person,
                                             String questionType) {
         if (person == null || questionType == null
@@ -69,16 +69,16 @@ public class QuestionEntryHandler {
         return questionEntryBean.getAllAbstractQuestions(category);
     }
 
-    public List<TestQuestionEntry> getAllTestQuestions(Category category) {
+    public List<AbstractQuestionEntry> getAllTestQuestions(Category category) {
         return questionEntryBean.getAllTestQuestions(category);
     }
 
-    public List<QuestionEntry> getAnsweredQuestions(Category category,
+    public List<AbstractQuestionEntry> getAnsweredQuestions(Category category,
                                                     Person person) {
         return questionEntryBean.getAnsweredQuestions(category, person);
     }
 
-    public List<QuestionEntry> getNotAnsweredQuestions(Category category,
+    public List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category,
                                                        Person person) {
         return questionEntryBean.getNotAnsweredQuestions(category, person);
     }
@@ -160,11 +160,19 @@ public class QuestionEntryHandler {
         questionEntryBean.removeAnswer(answer);
     }
 
-    public Answer getAnswer(int id){
+    public Answer getAnswer(int id) {
         return questionEntryBean.getAnswer(id);
     }
 
     public Question getQuestion(int id) {
         return questionEntryBean.getQuestion(id);
+    }
+
+    public void changeQuestionToTestQuestion(int id) {
+        questionEntryBean.changeQuestionType(id, QuestionType.TEST.toString());
+    }
+
+    public void changeTestQuestionToQuestion(int id) {
+        questionEntryBean.changeQuestionType(id, QuestionType.QUESTION.toString());
     }
 }

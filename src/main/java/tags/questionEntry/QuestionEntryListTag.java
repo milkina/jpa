@@ -2,13 +2,16 @@ package tags.questionEntry;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import model.AbstractExam;
 import model.AbstractQuestionEntry;
 import model.Category;
+import model.QuestionType;
 
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.util.List;
 
 import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.TYPE;
 
 /**
  * Created by Tatyana on 05.06.2016.
@@ -24,7 +27,13 @@ public class QuestionEntryListTag extends BodyTagSupport {
 
     public int doStartTag() {
         Category category = getCategory();
-        questionEntries = questionEntryHandler.getAllAbstractQuestions(category);
+        String type = pageContext.getRequest().getParameter(TYPE);
+        if(QuestionType.QUESTION.toString().equals(type)){
+            questionEntries = questionEntryHandler.getAllQuestions(category);
+        }else {
+            questionEntries = questionEntryHandler.getAllTestQuestions(category);
+        }
+
         return EVAL_BODY_INCLUDE;
     }
 

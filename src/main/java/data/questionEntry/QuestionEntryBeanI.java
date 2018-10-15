@@ -15,11 +15,11 @@ import java.util.List;
  */
 @Local
 public interface QuestionEntryBeanI {
-    List<QuestionEntry> getAllQuestions(Category category);
+    List<AbstractQuestionEntry> getAllQuestions(Category category);
 
     List<AbstractQuestionEntry> getAllAbstractQuestions(Category category);
 
-    List<TestQuestionEntry> getAllTestQuestions(Category category);
+    List<AbstractQuestionEntry> getAllTestQuestions(Category category);
 
     AbstractQuestionEntry updateQuestionEntry(AbstractQuestionEntry questionEntry);
 
@@ -29,10 +29,10 @@ public interface QuestionEntryBeanI {
 
     AbstractQuestionEntry getQuestionEntry(int id);
 
-    List<QuestionEntry> getNotAnsweredQuestions(Category category,
+    List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category,
                                                 Person person);
 
-    List<QuestionEntry> getAnsweredQuestions(Category category,
+    List<AbstractQuestionEntry> getAnsweredQuestions(Category category,
                                              Person person);
 
     AbstractQuestionEntry getPreviousQuestionEntry(int orderColumn);
@@ -49,4 +49,7 @@ public interface QuestionEntryBeanI {
     Answer getAnswer(int id);
 
     Question getQuestion(int id);
+
+    void changeQuestionType(int id, String type);
+
 }

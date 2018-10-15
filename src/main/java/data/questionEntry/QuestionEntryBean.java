@@ -23,7 +23,7 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     @PersistenceContext(unitName = "primary")
     private EntityManager entityManager;
 
-    public List<QuestionEntry> getAllQuestions(Category category) {
+    public List<AbstractQuestionEntry> getAllQuestions(Category category) {
         Query query = entityManager.createNamedQuery(GET_ALL_QUESTION_ENTRIES);
         query.setParameter("param", category);
         return query.getResultList();
@@ -35,14 +35,14 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         return query.getResultList();
     }
 
-    public List<TestQuestionEntry> getAllTestQuestions(Category category) {
+    public List<AbstractQuestionEntry> getAllTestQuestions(Category category) {
         Query query = entityManager.createNamedQuery("TestQuestionEntry.getAllQuestions");
         query.setParameter("param", category);
         return query.getResultList();
     }
 
-    public List<QuestionEntry> getAnsweredQuestions(Category category, Person person) {
-        List<QuestionEntry> list;
+    public List<AbstractQuestionEntry> getAnsweredQuestions(Category category, Person person) {
+        List<AbstractQuestionEntry> list;
         Query query = entityManager.createNamedQuery(
                 "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);
@@ -51,8 +51,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         return list;
     }
 
-    public List<QuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
-        List<QuestionEntry> list;
+    public List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
+        List<AbstractQuestionEntry> list;
         Query query = entityManager.createNamedQuery(
                 "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);
@@ -123,6 +123,13 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
 
     public Question getQuestion(int id) {
         return entityManager.find(Question.class, id);
+    }
+
+    public void changeQuestionType(int id, String type) {
+        Query query = entityManager.createNativeQuery("UPDATE QUESTIONS SET TYPE = ? WHERE entry_id = ?");
+        query.setParameter(1, type);
+        query.setParameter(2, id);
+        query.executeUpdate();
     }
 }
 

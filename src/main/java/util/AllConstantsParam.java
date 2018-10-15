@@ -50,6 +50,7 @@ public interface AllConstantsParam {
     String TEST_TAGS = "TEST_TAGS";
     String TEST_ICON_TEXT = "ICON_TEXT";
     String USER_ID = "USER_ID";
+    String TYPE = "TYPE";
 
     String CATEGORY_NAME = "categoryName";
     String CATEGORY_PATH_NAME = "categoryPathName";

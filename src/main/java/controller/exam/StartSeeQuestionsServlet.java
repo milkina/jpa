@@ -2,6 +2,7 @@ package controller.exam;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import model.AbstractQuestionEntry;
 import model.Category;
 import model.QuestionEntry;
 import model.QuestionExam;
@@ -30,7 +31,7 @@ public class StartSeeQuestionsServlet extends HttpServlet {
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
         Category category = getCategory(categoryPath);
-        List<QuestionEntry> questionEntries =
+        List<AbstractQuestionEntry> questionEntries =
                 getQuestionEntries(person, category, request);
         String url = MESSAGE_PAGE;
         if (questionEntries.isEmpty()) {
@@ -47,7 +48,7 @@ public class StartSeeQuestionsServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + url);
     }
 
-    private List<QuestionEntry> getQuestionEntries(Person person,
+    private List<AbstractQuestionEntry> getQuestionEntries(Person person,
                                                            Category category,
                                                            HttpServletRequest request) {
         String questionType = request.getParameter("questionType");
@@ -57,7 +58,7 @@ public class StartSeeQuestionsServlet extends HttpServlet {
     }
 
     private QuestionExam setExam(HttpSession session, Person person,
-                                 List<QuestionEntry> questionEntries,
+                                 List<AbstractQuestionEntry> questionEntries,
                                  Category category) {
         QuestionExam exam = new QuestionExam();
         exam.setPerson(person);

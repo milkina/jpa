@@ -109,17 +109,31 @@ public class EditQuestionEntryServlet extends HttpServlet {
         }
 
         questionEntry.getQuestion().setText(newQuestionText);
+        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+
+        int oldAnswersSize = questionEntry.getAnswers().size();
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.removeAnswers(questionEntry);
-        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+
         QuestionEntryUtility.setAnswers(request, answerNumber, questionEntry);
 
         questionEntryHandler.updateQuestionEntry(questionEntry);
+        changeQuestionType(questionEntry, oldAnswersSize, questionEntryHandler);
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_CHANGED_MESSAGE);
         dispatcher.forward(request, response);
+    }
+
+    private void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler) {
+        int id = questionEntry.getId();
+        int size = questionEntry.getAnswers().size();
+        if (oldAnswersSize == 1 && size > 1) {
+            questionEntryHandler.changeQuestionToTestQuestion(id);
+        } else if (oldAnswersSize > 1 && size == 1) {
+            questionEntryHandler.changeTestQuestionToQuestion(id);
+        }
     }
 
     private AbstractQuestionEntry findQuestionEntry(HttpServletRequest request) {

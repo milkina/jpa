@@ -59,20 +59,20 @@ public class QuestionEntryHandlerIT extends BaseIT {
 
     @Test
     public void testGetAllQuestions() {
-        List<QuestionEntry> result = questionEntryHandler.getAllQuestions(categories[1]);
+        List<AbstractQuestionEntry> result = questionEntryHandler.getAllQuestions(categories[1]);
         Assert.assertNotNull(result);
         Assert.assertSame(result.size(), 2);
-        for (QuestionEntry questionEntry : result) {
+        for (AbstractQuestionEntry questionEntry : result) {
             Assert.assertNotNull(questionEntry);
         }
     }
 
     @Test
     public void testGetAllTestQuestions() {
-        List<TestQuestionEntry> result = questionEntryHandler.getAllTestQuestions(categories[1]);
+        List<AbstractQuestionEntry> result = questionEntryHandler.getAllTestQuestions(categories[1]);
         Assert.assertNotNull(result);
         Assert.assertSame(result.size(), 2);
-        for (TestQuestionEntry questionEntry : result) {
+        for (AbstractQuestionEntry questionEntry : result) {
             Assert.assertNotNull(questionEntry);
         }
     }
@@ -179,7 +179,7 @@ public class QuestionEntryHandlerIT extends BaseIT {
 
     @Test
     public void testGetAnsweredQuestions() {
-        List<QuestionEntry> questionEntryList = questionEntryHandler.getAnsweredQuestions(categories[1], persons[0]);
+        List<AbstractQuestionEntry> questionEntryList = questionEntryHandler.getAnsweredQuestions(categories[1], persons[0]);
         Assert.assertNotNull(questionEntryList);
         Assert.assertEquals(questionEntryList.size(), 1);
         Assert.assertEquals(questionEntryList.get(0), questionEntries[1]);
@@ -187,7 +187,7 @@ public class QuestionEntryHandlerIT extends BaseIT {
 
     @Test
     public void testGetNotAnsweredQuestions() {
-        List<QuestionEntry> questionEntryList = questionEntryHandler.getNotAnsweredQuestions(categories[1], persons[0]);
+        List<AbstractQuestionEntry> questionEntryList = questionEntryHandler.getNotAnsweredQuestions(categories[1], persons[0]);
         Assert.assertNotNull(questionEntryList);
         Assert.assertEquals(questionEntryList.size(), 1);
         Assert.assertEquals(questionEntryList.get(0), questionEntries[2]);

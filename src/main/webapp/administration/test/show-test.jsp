@@ -26,9 +26,14 @@
                                 ${category.value.name}
                                 </a>
                              </td>
-                             <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}"
+                             <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
                              name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}">
                                       Show Questions
+                                 </a>
+                             </td>
+                             <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
+                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}">
+                                      Show Test Questions
                                  </a>
                              </td>
                              <td>

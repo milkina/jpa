@@ -50,7 +50,8 @@ public class BaseIT {
     protected static Person[] persons;
     protected static PersonInfo personInfo[];
     protected static Category[] categories;
-    protected static AbstractQuestionEntry[] questionEntries;
+    protected static QuestionEntry[] questionEntries;
+    protected static TestQuestionEntry[] testQuestionEntries;
     protected static Comment[] comments;
     protected static Article[] articles;
     protected static AbstractExam[] exams;
@@ -62,6 +63,7 @@ public class BaseIT {
         preparePersons();
         prepareCategories();
         prepareQuestionEntries();
+        prepareTestQuestionEntries();
 
         prepareAnsweredQuestions();
         prepareComments();
@@ -70,10 +72,10 @@ public class BaseIT {
         prepareExams();
     }
 
-    private static void prepareExams(){
+    private static void prepareExams() {
         exams = new AbstractExam[2];
-        exams[0] = createTestExam(categories[2],persons[0],50);
-        exams[1] = createQuestionExam(categories[1],persons[0],50);
+        exams[0] = createTestExam(categories[2], persons[0], 50);
+        exams[1] = createQuestionExam(categories[1], persons[0], 50);
         examHandler.createExam(exams[0]);
         examHandler.createExam(exams[1]);
     }
@@ -106,16 +108,22 @@ public class BaseIT {
     }
 
     private static void prepareQuestionEntries() {
-        int questionLength = 7;
-        questionEntries = new AbstractQuestionEntry[questionLength];
+        int questionLength = 5;
+        questionEntries = new QuestionEntry[questionLength];
         questionEntries[0] = createQuestionEntry(0, categories[0], persons[0]);
         questionEntries[1] = createQuestionEntry(1, categories[1], persons[1]);
         questionEntries[2] = createQuestionEntry(2, categories[1], persons[2]);
         questionEntries[3] = createQuestionEntry(3, categories[3], persons[2]);
         questionEntries[4] = createQuestionEntry(4, categories[2], persons[2]);
-        questionEntries[5] = createTestQuestionEntry(5, categories[1], persons[2]);
-        questionEntries[6] = createTestQuestionEntry(6, categories[1], persons[2]);
         questionEntryHandler.addQuestionEntries(questionEntries);
+    }
+
+    private static void prepareTestQuestionEntries() {
+        int questionLength = 2;
+        testQuestionEntries = new TestQuestionEntry[questionLength];
+        testQuestionEntries[0] = createTestQuestionEntry(0, categories[1], persons[2]);
+        testQuestionEntries[1] = createTestQuestionEntry(1, categories[1], persons[2]);
+        questionEntryHandler.addQuestionEntries(testQuestionEntries);
     }
 
     private static void preparePersons() {

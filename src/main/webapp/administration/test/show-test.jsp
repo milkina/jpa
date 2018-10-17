@@ -27,12 +27,12 @@
                                 </a>
                              </td>
                              <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
-                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}">
+                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION">
                                       Show Questions
                                  </a>
                              </td>
                              <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
-                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}">
+                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST">
                                       Show Test Questions
                                  </a>
                              </td>

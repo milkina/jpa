@@ -145,7 +145,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
     private void moveQuestionEntryUp(HttpServletRequest request,
                                      HttpServletResponse response,
                                      EditMode mode)
-            throws IOException, ServletException {
+            throws IOException {
         Integer questionId = GeneralUtility.getIntegerValue(
                 request, QUESTION_ENTRY_ID_PARAM);
 
@@ -158,11 +158,12 @@ public class EditQuestionEntryServlet extends HttpServlet {
     }
 
     private String createShowQuestionPageUrl(HttpServletRequest request) {
-        return String.format("%s%s?%s=%s&%s=%s",
+        return String.format("%s%s?%s=%s&%s=%s&%s=%s",
                 request.getContextPath(),
                 SHOW_QUESTIONS_PAGE,
                 CATEGORY_PATH, request.getParameter(CATEGORY_PATH),
-                TEST_PATH, request.getParameter(TEST_PATH));
+                TEST_PATH, request.getParameter(TEST_PATH),
+                TYPE, request.getParameter(TYPE));
     }
 
     private String createEditQuestionPageUrl(HttpServletRequest request,
@@ -205,7 +206,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
         Category oldCategory = categoryHandler.getCategory(oldCategoryPath);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         long oldCategoryQuestionsNumber =
-                questionEntryHandler.getAllAbstractQuestionsMap(oldCategory).size();
+                questionEntryHandler.getAllQuestions(oldCategory).size();
 
         Integer from = GeneralUtility.getIntegerValue(request, FROM_NUMBER);
         Integer to = GeneralUtility.getIntegerValue(request, TO_NUMBER);

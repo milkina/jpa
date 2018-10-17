@@ -37,7 +37,7 @@
                          <h1 class="header1">${CATEGORY_ATTRIBUTE.parentCategory.name}</h1>
                     </c:if>
                     <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
-                    <input type="button" value="Start Test" class="submitButton"
+                    <input type="button" value="Start Test" class="submitButton" id="startTest"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     <input type="button" value="See Questions" id="startQuiz"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
@@ -54,7 +54,7 @@
                         </c:forEach>
                        </ol>
                     </c:if>
-                    <input type="button" value="Start Test" class="submitButton"
+                    <input type="button" value="Start Test" class="submitButton" id="startTest"width
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     <input type="button" value="See Questions" id="startQuiz"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">

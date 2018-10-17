@@ -13,7 +13,7 @@
      </qe:answers>
      <aside>
        <c:if test="${person.sysadmin}">
-             <a href="<qe:up/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer">Up</a>
+             <a href="<qe:up/>&TEST_PATH=${param.TEST_PATH}&TYPE=${param.TYPE}" class="showAnswer">Up</a>
              <a href="<qe:show/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer" name="editQuestion">Edit</a>
              <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&TEST_PATH=${param.TEST_PATH}"
              class="showAnswer" name="goToQuestion">Go To</a>

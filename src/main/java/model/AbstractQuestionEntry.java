@@ -12,10 +12,11 @@ import java.util.List;
                 query = "SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
                         + "JOIN FETCH qe.category WHERE qe.category=:param ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "QuestionEntry.getPreviousQuestionEntry",
-                query = "select qe1 from AbstractQuestionEntry qe1 "
-                        + "where qe1.orderColumn = (select max(qe2.orderColumn) "
-                        + "from AbstractQuestionEntry qe2 where qe2.orderColumn<:param and qe2.category.id="
-                        + "(select qe3.category.id from AbstractQuestionEntry qe3 where qe3.orderColumn=:param))")
+                query = "SELECT qe1 FROM AbstractQuestionEntry qe1 "
+                        + "WHERE qe1.orderColumn = (SELECT max(qe2.orderColumn) "
+                        + "FROM AbstractQuestionEntry qe2 WHERE qe2.orderColumn<:param AND qe2.category.id="
+                        + "(SELECT qe3.category.id FROM AbstractQuestionEntry qe3 WHERE qe3.orderColumn=:param)"
+                        + " AND qe2.type=(SELECT qe4.type FROM AbstractQuestionEntry qe4 WHERE qe4.orderColumn=:param))")
 
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -47,7 +48,19 @@ public abstract class AbstractQuestionEntry {
 
     @Column(name = "CREATED_DATE")
     protected Date createdDate;
+
     protected int orderColumn;
+
+    @Column(name = "TYPE", insertable = false, updatable = false)
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
@@ -128,7 +141,7 @@ public abstract class AbstractQuestionEntry {
             return false;
         }
         for (int i = 0; i < getAnswers().size(); i++) {
-            if(!getAnswers().get(i).equals(that.getAnswers().get(i))){
+            if (!getAnswers().get(i).equals(that.getAnswers().get(i))) {
                 return false;
             }
         }

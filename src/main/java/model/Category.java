@@ -24,7 +24,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Created by IntelliJ IDEA.
  * User: Tatyana
@@ -33,7 +32,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-
 @Table(name = "Category")
 @NamedQueries({
         @NamedQuery(name = "Category.findPathName",
@@ -82,7 +80,6 @@ public class Category implements Serializable, Comparable<Category> {
     @OneToMany(mappedBy = "parentCategory", fetch = FetchType.EAGER)
     @OrderBy("orderId,id")
     public List<Category> subCategories;
-
 
     private boolean hidden = false;
     private int orderId;

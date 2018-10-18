@@ -26,7 +26,7 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
     private double percent;
 
     public double getPercent() {
-        return percent;
+        return Math.round(percent);
     }
 
     public void setPercent(double percent) {

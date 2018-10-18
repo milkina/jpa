@@ -13,7 +13,7 @@ import java.util.List;
 })
 @DiscriminatorValue("TEST")
 public class TestExam extends AbstractExam {
-    public double getRightQuestionsCount() {
+    public int getRightQuestionsCount() {
         int result = 0;
         List<TestQuestionEntry> questionEntries = getQuestionEntries();
         for (TestQuestionEntry questionEntry : questionEntries) {

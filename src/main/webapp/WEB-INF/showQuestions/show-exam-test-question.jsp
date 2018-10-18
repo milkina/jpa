@@ -22,7 +22,18 @@
         </h2>
         <form ACTION="${pageContext.request.contextPath}/add-user-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
               method="POST">
-         <div class="questionEntryDiv" style="display:inline-block;width:95%">
+        <div style="color:rgb(134, 156, 202)">
+                      <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
+                          <span
+                          <c:if test="${number==CURRENT_EXAM_ATTRIBUTE.currentNumber+1}">style="font-weight:bold" </c:if>
+                          >${number}</span>
+                          <c:if test="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answered}">
+                             &#10004;
+                          </c:if>
+                          &nbsp;
+                      </c:forEach>
+         </div><BR>
+         <div class="questionEntryDiv">
               <div class="questionEntryBody">
                        <div class="questionText"><exam:number/>.&nbsp;${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.question.text}</div>
                        <c:set var="count" value="${0}"/>
@@ -40,17 +51,7 @@
                        </div>
                </div>
          </div>
-         <div style="float:right;width:5%" >
-             <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
-                 <span
-                 <c:if test="${number==CURRENT_EXAM_ATTRIBUTE.currentNumber+1}">style="font-weight:bold" </c:if>
-                 >${number}</span>
-                 <c:if test="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answered}">
-                    &#10004;
-                 </c:if>
-                 <BR>
-             </c:forEach>
-         </div>
+
          <BR>
          <input type="submit" value="Answer" class="submitButton">
          </form>

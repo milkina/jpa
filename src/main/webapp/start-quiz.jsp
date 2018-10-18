@@ -1,14 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/WEB-INF/tld/categoryjsp-taglib.tld" prefix="category"%>
 <t:wrapper3>
     <jsp:attribute name="header">
+                <category:category categoryPath="${param.CATEGORY_PATH}">
                 <title>
-                   <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
-                      ${CATEGORY_ATTRIBUTE.parentCategory.name}.
-                   </c:if>
-                   ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}
+                    <category:parentCategory/> <category:name/> - ${TESTS[param.TEST_PATH].name}
                 </title>
+                </category:category>
                 <meta name="robots" content="noindex">
                 <%@ include file="/edit/categoryOL.jsp" %>
                 <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
@@ -20,7 +20,6 @@
          <div class="mainArea">
            <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
             <main>
-              <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <form ACTION="${pageContext.request.contextPath}/see-questions" METHOD="POST">
                   <input type="hidden" name="CATEGORY_PATH" value="${param.CATEGORY_PATH}">
                   <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">

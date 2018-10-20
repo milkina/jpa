@@ -20,7 +20,7 @@ import java.util.List;
 
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE")
+@DiscriminatorColumn(name = "QTYPE")
 @Table(name = "QUESTIONS")
 public abstract class AbstractQuestionEntry {
     @Id
@@ -51,7 +51,7 @@ public abstract class AbstractQuestionEntry {
 
     protected int orderColumn;
 
-    @Column(name = "TYPE", insertable = false, updatable = false)
+    @Column(name = "QTYPE", insertable = false, updatable = false)
     private String type;
 
     public String getType() {

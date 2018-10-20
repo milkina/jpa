@@ -126,7 +126,7 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public void changeQuestionType(int id, String type) {
-        Query query = entityManager.createNativeQuery("UPDATE QUESTIONS SET TYPE = ? WHERE entry_id = ?");
+        Query query = entityManager.createNativeQuery("UPDATE QUESTIONS SET QTYPE = ? WHERE entry_id = ?");
         query.setParameter(1, type);
         query.setParameter(2, id);
         query.executeUpdate();

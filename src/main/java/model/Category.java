@@ -3,23 +3,7 @@ package model;
 
 import model.article.Article;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Transient;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.OrderBy;
-import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +41,6 @@ public class Category implements Serializable, Comparable<Category> {
     // @Column(unique = true)
     private String pathName;
 
-    @Transient
-    private Long questionsNumber;
-
     @ManyToMany
     @JoinTable(name = "TEST_CATEGORY",
             joinColumns = @JoinColumn(name = "CATEGORY_ID"),
@@ -83,6 +64,12 @@ public class Category implements Serializable, Comparable<Category> {
 
     private boolean hidden = false;
     private int orderId;
+
+    @Column(name = "qcount")
+    private int questionsCount;
+
+    @Column(name = "tcount")
+    private int testsCount;
 
     public int getId() {
         return id;
@@ -114,14 +101,6 @@ public class Category implements Serializable, Comparable<Category> {
 
     public void setPathName(String pathName) {
         this.pathName = pathName;
-    }
-
-    public Long getQuestionsNumber() {
-        return questionsNumber;
-    }
-
-    public void setQuestionsNumber(Long questionsNumber) {
-        this.questionsNumber = questionsNumber;
     }
 
     public List<AbstractQuestionEntry> getQuestionEntries() {
@@ -170,6 +149,22 @@ public class Category implements Serializable, Comparable<Category> {
 
     public void setSubCategories(List<Category> subCategories) {
         this.subCategories = subCategories;
+    }
+
+    public int getQuestionsCount() {
+        return questionsCount;
+    }
+
+    public void setQuestionsCount(int questionsCount) {
+        this.questionsCount = questionsCount;
+    }
+
+    public int getTestsCount() {
+        return testsCount;
+    }
+
+    public void setTestsCount(int testsCount) {
+        this.testsCount = testsCount;
     }
 
     public void addTest(Test test) {

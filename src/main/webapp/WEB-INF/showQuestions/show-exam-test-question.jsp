@@ -53,9 +53,13 @@
          </div>
 
          <BR>
-         <input type="submit" value="Answer" class="submitButton">
+         <input type="submit" value="Answer" class="submitButton" name="answerBtn">
          </form>
-          <BR>
+         <form ACTION="${pageContext.request.contextPath}/finish-exam?CATEGORY_PATH=${param.CATEGORY_PATH}"
+         method="POST">
+               <input type="submit" value="Finish" class="submitButton" name="finishBtn">
+         </form>
+         <BR>
          <div style="display:inline">
               <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=<exam:number/>"
                         method="POST">

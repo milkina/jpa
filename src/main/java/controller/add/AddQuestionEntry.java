@@ -1,5 +1,6 @@
 package controller.add;
 
+import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.*;
 import model.person.Person;
@@ -47,20 +48,27 @@ public class AddQuestionEntry extends HttpServlet {
                                   HttpServletResponse response)
             throws ServletException, IOException {
         int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
+
         AbstractQuestionEntry newQuestionEntry = null;
         if (answerNumber > 1) {
             newQuestionEntry = new TestQuestionEntry();
+            category.setTestsCount(category.getTestsCount() + 1);
         } else {
             newQuestionEntry = new QuestionEntry();
+            category.setQuestionsCount(category.getQuestionsCount() + 1);
         }
+        newQuestionEntry.setCategory(category);
         QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);
-        setCategory(request, newQuestionEntry);
         setQuestionText(request, newQuestionEntry);
         newQuestionEntry.setCreatedDate(new Date());
         setPerson(request, newQuestionEntry);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.addQuestionEntry(newQuestionEntry);
+        CategoryHandler categoryHandler = new CategoryHandler();
+        categoryHandler.updateCategory(category);
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
@@ -76,12 +84,6 @@ public class AddQuestionEntry extends HttpServlet {
         }
     }
 
-    private void setCategory(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
-        Category category =
-                CategoryUtility.getCategoryFromServletContext(request);
-        newQuestionEntry.setCategory(category);
-    }
-
     private void setQuestionText(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
         String newQuestionText = GeneralUtility.decodeRussianCharacters(
                 request.getParameter(QUESTION_TEXT_PARAM).trim());
@@ -89,6 +91,4 @@ public class AddQuestionEntry extends HttpServlet {
         question.setText(newQuestionText);
         newQuestionEntry.setQuestion(question);
     }
-
-
 }

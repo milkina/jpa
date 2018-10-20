@@ -49,7 +49,11 @@
            <tr>
                 <td width="10%">${exam.formattedDate}</td>
                 <td width="10%">${exam.percent}%</td>
-                <td width="80%">${exam.category.name}</td>
+                <td width="80%">
+                  <c:if test="${exam.category!=null && exam.category.parentCategory!=null}">
+                        ${exam.category.parentCategory.name}.</c:if>
+                  ${exam.category.name}
+                </td>
            </tr>
         </c:forEach>
         </table>

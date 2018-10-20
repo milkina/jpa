@@ -1,6 +1,5 @@
 package controller.exam;
 
-import data.exam.ExamHandler;
 import model.Answer;
 import model.Category;
 import model.TestExam;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import static util.AllConstants.SHOW_EXAM_QUESTION;
@@ -31,19 +29,13 @@ public class AddUserAnswerServlet
         TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
         TestQuestionEntry currentQuestionEntry = (TestQuestionEntry) exam.getCurrentQuestionEntry();
 
-        Category category = CategoryUtility.getCategoryByPath(request);
-
         setUserAnswer(request, currentQuestionEntry);
-        String url = null;
+        String url = String.format("/%s?%s=%s&%s=%s&%s=%s", SHOW_EXAM_QUESTION,
+                CATEGORY_PATH, categoryPath,
+                TEST_PATH, testPath,
+                QUESTION_NUMBER, exam.getCurrentNumber());
         if (exam.getCurrentNumber() != exam.getQuestionEntries().size() - 1) {
-            url = String.format("/%s?%s=%s&%s=%s&%s=%s&%s=%s", SHOW_EXAM_QUESTION,
-                    CATEGORY_PATH, categoryPath,
-                    TEST_PATH, testPath,
-                    QUESTION_NUMBER, exam.getCurrentNumber(),
-                    "NEXT", "NEXT");
-        } else {
-            url = "/show-test-result.jsp";
-            createExam(exam, category);
+            url = url + "&NEXT=NEXT";
         }
         response.sendRedirect(request.getContextPath() + url);
     }
@@ -57,13 +49,6 @@ public class AddUserAnswerServlet
             answer.setCorrect(checkbox != null);
         }
         currentQuestionEntry.setAnswered(true);
-    }
-
-    private void createExam(TestExam exam, Category category) {
-        exam.setPercent(exam.getRightQuestionsCount() / exam.getQuestionEntries().size() * 100.0);
-        exam.setDate(new Date());
-        exam.setCategory(category);
-        new ExamHandler().createExam(exam);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

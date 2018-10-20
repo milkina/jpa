@@ -37,10 +37,14 @@
                          <h1 class="header1">${CATEGORY_ATTRIBUTE.parentCategory.name}</h1>
                     </c:if>
                     <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
-                    <input type="button" value="Start Test" class="submitButton" id="startTest"
+                    <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
+                       <input type="button" value="Start Test" class="submitButton" id="startTest"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
-                    <input type="button" value="See Questions" id="startQuiz"
+                    </c:if>
+                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
+                       <input type="button" value="See Questions" id="startQuiz"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                   </c:if>
                     ${CATEGORY_ATTRIBUTE.article.text}
                     <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
                       <ol>
@@ -54,10 +58,14 @@
                         </c:forEach>
                        </ol>
                     </c:if>
-                    <input type="button" value="Start Test" class="submitButton" id="startTest"width
+                    <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
+                       <input type="button" value="Start Test" class="submitButton" id="startTest"width
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
-                    <input type="button" value="See Questions" id="startQuiz"
+                    </c:if>
+                    <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
+                      <input type="button" value="See Questions" id="startQuiz"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                    </c:if>
               </article>
             </main>
             <%@ include file="/WEB-INF/socialButtons.jsp" %>

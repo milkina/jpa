@@ -2,10 +2,7 @@ package controller;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
-import model.AbstractQuestionEntry;
-import model.Answer;
-import model.Category;
-import model.Question;
+import model.*;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.ServletUtilities;
@@ -184,16 +181,31 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 QUESTION_ENTRY_ID_PARAM);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        Category category = updateCategory(request, questionEntryId, questionEntryHandler);
         questionEntryHandler.deleteQuestionEntry(questionEntryId);
-        Category category =
-                CategoryUtility.getCategoryFromServletContext(request);
-        Map<Integer, AbstractQuestionEntry> allQuestionsOfCategory =
+
+    /*    Map<Integer, AbstractQuestionEntry> allQuestionsOfCategory =
                 questionEntryHandler.getAllAbstractQuestionsMap(category);
+
         allQuestionsOfCategory.remove(questionEntryId);
-        RequestDispatcher dispatcher =
+    */    RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_REMOVE_MESSAGE);
         dispatcher.forward(request, response);
+    }
+
+    private Category updateCategory(HttpServletRequest request, int questionEntryId, QuestionEntryHandler questionEntryHandler) {
+        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(questionEntryId);
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
+
+        if (questionEntry instanceof QuestionEntry) {
+            category.setQuestionsCount(category.getQuestionsCount() - 1);
+        } else {
+            category.setTestsCount(category.getTestsCount() - 1);
+        }
+        new CategoryHandler().updateCategory(category);
+        return category;
     }
 
     public void moveBatch(

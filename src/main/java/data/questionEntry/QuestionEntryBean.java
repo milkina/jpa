@@ -108,8 +108,8 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public Test getFirstQuestionEntryTest(int id) {
-        QuestionEntry questionEntry =
-                entityManager.find(QuestionEntry.class, id);
+        AbstractQuestionEntry questionEntry =
+                entityManager.find(AbstractQuestionEntry.class, id);
         return questionEntry.getCategory().getTests().get(0);
     }
 
@@ -138,8 +138,7 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         query.setParameter("param", category);
         List<TestQuestionEntry> list = query.getResultList();
         Collections.shuffle(list);
-        list.subList(0, count);
-        return list;
+        return list.subList(0, count);
     }
 }
 

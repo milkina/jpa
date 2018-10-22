@@ -1,6 +1,7 @@
 package controller.exam;
 
 import model.*;
+import util.GeneralUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import static util.AllConstants.SHOW_EXAM_QUESTION_PAGE;
 import static util.AllConstants.SHOW_EXAM_TEST_QUESTION;
 import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstantsParam.QUESTION_NUMBER;
 
 /**
  * Created by Tatyana on 18.05.2016.
@@ -27,17 +29,20 @@ public class ShowExamQuestionServlet extends HttpServlet {
             i = 1;
         }
         HttpSession session = request.getSession();
+        AbstractExam exam = (AbstractExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
 
-        String url = updateCurrentQuestionEntry(i, session);
+        int currentNumber = exam.getCurrentNumber() + i;
+        if (request.getParameter(QUESTION_NUMBER) != null) {
+            currentNumber = GeneralUtility.getIntegerValue(request, QUESTION_NUMBER);
+        }
+        String url = updateCurrentQuestionEntry(currentNumber, exam);
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 
-    private String updateCurrentQuestionEntry(int i, HttpSession session) {
+    private String updateCurrentQuestionEntry(int currentNumber, AbstractExam exam) {
         String url = null;
-        AbstractExam exam = (AbstractExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
-        int currentNumber = exam.getCurrentNumber() + i;
         exam.setCurrentNumber(currentNumber);
         AbstractQuestionEntry currentQuestionEntry =
                 (AbstractQuestionEntry) exam.getQuestionEntries().get(currentNumber);

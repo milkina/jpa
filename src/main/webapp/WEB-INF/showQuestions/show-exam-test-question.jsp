@@ -22,11 +22,12 @@
         </h2>
         <form ACTION="${pageContext.request.contextPath}/add-user-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
               method="POST">
-        <div style="color:rgb(134, 156, 202)">
+        <div class="examNumbers">
                       <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
                           <span
                           <c:if test="${number==CURRENT_EXAM_ATTRIBUTE.currentNumber+1}">style="font-weight:bold" </c:if>
-                          >${number}</span>
+                          ><a href="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=${number-1}">
+                              ${number}</a></span>
                           <c:if test="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answered}">
                              &#10004;
                           </c:if>
@@ -43,7 +44,7 @@
                                 <input type="checkbox" name = "checkbox${count}" <c:if test="${answer.correct}">checked</c:if>>
                                     <div class="answerDiv">
                                            ${answer.text}
-                                    </div>
+                                    </div><BR><BR>
                                     <c:set var="count" value="${count+1}" />
                              </div>
                           </c:forEach>

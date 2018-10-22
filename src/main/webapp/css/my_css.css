@@ -240,6 +240,10 @@ border-right: 1px solid white;
     bottom:0;
     left:120px;
 }
+.examNumbers span a,.examNumbers span a:visited{
+   text-decoration:none;
+   color:rgb(134, 156, 202);
+}
 
  .breadCrumbs{
     color:#3a5795;

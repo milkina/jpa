@@ -36,8 +36,9 @@ public class StartExamServlet extends HttpServlet {
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
         Category category = getCategory(categoryPath);
+        int count = category.getTestsCount() != 0 ? category.getTestsCount() : 20;
         List<TestQuestionEntry> questionEntries =
-                getQuestionEntries(category, category.getTestsCount());
+                getQuestionEntries(category, count);
         String url = MESSAGE_PAGE;
         if (questionEntries.isEmpty()) {
             url = url + "?" + MESSAGE_ATTRIBUTE + "=" + EXAM_EMPTY;

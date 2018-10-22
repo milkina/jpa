@@ -54,10 +54,10 @@ public class AddQuestionEntry extends HttpServlet {
         AbstractQuestionEntry newQuestionEntry = null;
         if (answerNumber > 1) {
             newQuestionEntry = new TestQuestionEntry();
-            category.setTestsCount(category.getTestsCount() + 1);
+            category.increaseTestsCount();
         } else {
             newQuestionEntry = new QuestionEntry();
-            category.setQuestionsCount(category.getQuestionsCount() + 1);
+            category.increaseQuestionsCount();
         }
         newQuestionEntry.setCategory(category);
         QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);

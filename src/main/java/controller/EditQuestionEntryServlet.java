@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 import static util.AllConstants.*;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
@@ -115,7 +114,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
         QuestionEntryUtility.setAnswers(request, answerNumber, questionEntry);
 
         questionEntryHandler.updateQuestionEntry(questionEntry);
-        changeQuestionType(questionEntry, oldAnswersSize, questionEntryHandler);
+        changeQuestionType(questionEntry, oldAnswersSize, questionEntryHandler, category);
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
@@ -123,14 +122,19 @@ public class EditQuestionEntryServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler) {
+    private void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler, Category category) {
         int id = questionEntry.getId();
         int size = questionEntry.getAnswers().size();
         if (oldAnswersSize == 1 && size > 1) {
             questionEntryHandler.changeQuestionToTestQuestion(id);
+            category.increaseTestsCount();
+            category.decreaseQuestionsCount();
         } else if (oldAnswersSize > 1 && size == 1) {
             questionEntryHandler.changeTestQuestionToQuestion(id);
+            category.decreaseTestsCount();
+            category.increaseQuestionsCount();
         }
+        new CategoryHandler().updateCategory(category);
     }
 
     private AbstractQuestionEntry findQuestionEntry(HttpServletRequest request) {
@@ -188,7 +192,8 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 questionEntryHandler.getAllAbstractQuestionsMap(category);
 
         allQuestionsOfCategory.remove(questionEntryId);
-    */    RequestDispatcher dispatcher =
+    */
+        RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_REMOVE_MESSAGE);
         dispatcher.forward(request, response);
@@ -200,9 +205,9 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 CategoryUtility.getCategoryFromServletContext(request);
 
         if (questionEntry instanceof QuestionEntry) {
-            category.setQuestionsCount(category.getQuestionsCount() - 1);
+            category.decreaseQuestionsCount();
         } else {
-            category.setTestsCount(category.getTestsCount() - 1);
+            category.decreaseTestsCount();
         }
         new CategoryHandler().updateCategory(category);
         return category;

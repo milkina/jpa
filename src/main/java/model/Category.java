@@ -159,6 +159,22 @@ public class Category implements Serializable, Comparable<Category> {
         this.questionsCount = questionsCount;
     }
 
+    public void increaseQuestionsCount() {
+        this.questionsCount++;
+    }
+
+    public void decreaseQuestionsCount() {
+        this.questionsCount--;
+    }
+
+    public void increaseTestsCount() {
+        this.testsCount++;
+    }
+
+    public void decreaseTestsCount() {
+        this.testsCount--;
+    }
+
     public int getTestsCount() {
         return testsCount;
     }

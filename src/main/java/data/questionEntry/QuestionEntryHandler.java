@@ -53,8 +53,8 @@ public class QuestionEntryHandler {
     }
 
     public List<AbstractQuestionEntry> getQuestions(Category category,
-                                            Person person,
-                                            String questionType) {
+                                                    Person person,
+                                                    String questionType) {
         if (person == null || questionType == null
                 || QuestionType.ALL.toString().equals(questionType)) {
             return questionEntryBean.getAllQuestions(category);
@@ -74,12 +74,12 @@ public class QuestionEntryHandler {
     }
 
     public List<AbstractQuestionEntry> getAnsweredQuestions(Category category,
-                                                    Person person) {
+                                                            Person person) {
         return questionEntryBean.getAnsweredQuestions(category, person);
     }
 
     public List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category,
-                                                       Person person) {
+                                                               Person person) {
         return questionEntryBean.getNotAnsweredQuestions(category, person);
     }
 
@@ -174,5 +174,9 @@ public class QuestionEntryHandler {
 
     public void changeTestQuestionToQuestion(int id) {
         questionEntryBean.changeQuestionType(id, QuestionType.QUESTION.toString());
+    }
+
+    public List<TestQuestionEntry> getQuestionsForExam(Category category, int count) {
+        return questionEntryBean.getQuestionsForExam(category, count);
     }
 }

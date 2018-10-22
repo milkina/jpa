@@ -8,8 +8,12 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "TestQuestionEntry.getAllQuestions",
-                query = "SELECT distinct qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category where qe.category=:param ORDER BY qe.orderColumn, qe.id")
+                query = "SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+                        + "JOIN FETCH qe.category WHERE qe.category=:param ORDER BY qe.orderColumn, qe.id"),
+        @NamedQuery(name = "TestQuestionEntry.getAllQuestionsForExam",
+                query = "SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+                        + "JOIN FETCH qe.category WHERE qe.category=:param OR qe.category IN "
+                        + "(SELECT c FROM Category c WHERE c.parentCategory=:param)")
 })
 @DiscriminatorValue("TEST")
 public class TestQuestionEntry extends AbstractQuestionEntry implements Serializable {

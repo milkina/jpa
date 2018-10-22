@@ -25,6 +25,7 @@
                <%@ include file="/WEB-INF/showQuestions/selectOptionsPanel.jsp" %>
           </c:if>
           </form>
+          Total: <category:questionsCount/> questions.
           <qe:qeList>
             <ul class="showQuestionsList">
               <qe:qe>

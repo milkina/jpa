@@ -7,9 +7,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Collections;
 import java.util.List;
 
-import static util.AllConstants.*;
+import static util.AllConstants.GET_ALL_QUESTION_ENTRIES;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,8 +48,7 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
                 "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);
         query.setParameter("person", person);
-        list = query.getResultList();
-        return list;
+        return query.getResultList();
     }
 
     public List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
@@ -130,6 +130,16 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         query.setParameter(1, type);
         query.setParameter(2, id);
         query.executeUpdate();
+    }
+
+    public List<TestQuestionEntry> getQuestionsForExam(Category category, int count) {
+        Query query = entityManager.createNamedQuery(
+                "TestQuestionEntry.getAllQuestionsForExam");
+        query.setParameter("param", category);
+        List<TestQuestionEntry> list = query.getResultList();
+        Collections.shuffle(list);
+        list.subList(0, count);
+        return list;
     }
 }
 

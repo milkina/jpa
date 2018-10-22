@@ -36,8 +36,8 @@ public class StartExamServlet extends HttpServlet {
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
         Category category = getCategory(categoryPath);
-        List<AbstractQuestionEntry> questionEntries =
-                getQuestionEntries(category);
+        List<TestQuestionEntry> questionEntries =
+                getQuestionEntries(category, category.getTestsCount());
         String url = MESSAGE_PAGE;
         if (questionEntries.isEmpty()) {
             url = url + "?" + MESSAGE_ATTRIBUTE + "=" + EXAM_EMPTY;
@@ -53,14 +53,14 @@ public class StartExamServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + url);
     }
 
-    private List<AbstractQuestionEntry> getQuestionEntries(Category category) {
+    private List<TestQuestionEntry> getQuestionEntries(Category category, int count) {
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        return questionEntryHandler.getAllTestQuestions(category);
+        return questionEntryHandler.getQuestionsForExam(category, count);
     }
 
     private TestExam setExam(HttpSession session, Person person,
-                         List<AbstractQuestionEntry> questionEntries,
-                         Category category) {
+                             List<TestQuestionEntry> questionEntries,
+                             Category category) {
         TestExam exam = new TestExam();
         exam.setPerson(person);
         exam.setQuestionEntries(questionEntries);

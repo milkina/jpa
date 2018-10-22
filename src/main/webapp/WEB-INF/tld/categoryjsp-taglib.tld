@@ -49,4 +49,10 @@
         <bodycontent>empty</bodycontent>
         <info>Category parent name.</info>
     </tag>
+    <tag>
+        <name>questionsCount</name>
+        <tagclass>tags.category.CategoryQuestionsCountTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Category questions count.</info>
+    </tag>
 </taglib>

@@ -30,10 +30,10 @@ public interface QuestionEntryBeanI {
     AbstractQuestionEntry getQuestionEntry(int id);
 
     List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category,
-                                                Person person);
+                                                        Person person);
 
     List<AbstractQuestionEntry> getAnsweredQuestions(Category category,
-                                             Person person);
+                                                     Person person);
 
     AbstractQuestionEntry getPreviousQuestionEntry(int orderColumn);
 
@@ -52,4 +52,5 @@ public interface QuestionEntryBeanI {
 
     void changeQuestionType(int id, String type);
 
+    List<TestQuestionEntry> getQuestionsForExam(Category category, int count);
 }

@@ -174,5 +174,21 @@ public class CategoryHandlerIT extends BaseIT {
         Assert.assertEquals(updatedCategory1.getOrderId(), orderColumn2);
         Assert.assertEquals(updatedCategory2.getOrderId(), orderColumn1);
     }
+
+    @Test
+    public void testUpdateCategoryCounts() {
+        Category category = categoryHandler.getCategory(categories[1].getId());
+        category.setQuestionsCount(0);
+        category.setTestsCount(0);
+        categoryHandler.updateCategory(category);
+        category = categoryHandler.getCategory(categories[1].getId());
+        Assert.assertEquals(category.getQuestionsCount(), 0);
+        Assert.assertEquals(category.getTestsCount(), 0);
+
+        categoryHandler.updateCategoryCounts(category);
+        category = categoryHandler.getCategory(categories[1].getId());
+        Assert.assertEquals(category.getQuestionsCount(), 2);
+        Assert.assertEquals(category.getTestsCount(), 2);
+    }
 }
 

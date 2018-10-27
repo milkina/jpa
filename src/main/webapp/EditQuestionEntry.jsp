@@ -12,8 +12,8 @@
        <div class="mainArea">
         <form action="${pageContext.request.contextPath}/servlet/EditQuestionEntryServlet" method="POST"  id="editQuestionForm">
             <input type="hidden" name="QUESTION_ENTRY_ID_PARAM" id="QUESTION_ENTRY_ID_PARAM" value="${QUESTION_ENTRY_ATTRIBUTE.id}">
-            <input type="hidden" name="OLD_CATEGORY_PATH" value="${CATEGORY_PATH}">
-            <input type="hidden" name="OLD_TEST_PATH" id="TEST_ID_PARAM" value="${TEST_PATH}">
+            <input type="hidden" name="OLD_CATEGORY_PATH" value="${param.CATEGORY_PATH}">
+            <input type="hidden" name="OLD_TEST_PATH" id="TEST_ID_PARAM" value="${param.TEST_PATH}">
             <input type="hidden" name="EDIT_MODE_PARAM" id="EDIT_MODE_PARAM" value="SAVE">
              <BR> <BR>
                <%@ include file="/edit/select-test-category-new.jsp" %>

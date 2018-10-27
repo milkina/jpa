@@ -29,7 +29,7 @@
                </div>
          </div><BR>
          <div style="display:inline">
-              <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=<exam:number/>"
+              <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
                         method="POST">
                           <exam:previousButton><input type="submit" value="Previous" name="PREVIOUS" class="submitButton" ></exam:previousButton>
                           <exam:nextButton><input type="submit" value="Next" name="NEXT" class="submitButton" style="float:right"></exam:nextButton>

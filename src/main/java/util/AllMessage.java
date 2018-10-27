@@ -42,4 +42,5 @@ public interface AllMessage {
     String COMMENT_REMOVED = "Comments are removed.";
     String USER_REMOVED = "User is removed.";
     String USER_NOT_REMOVED = "User cannot be removed.";
+    String QUESTION_APPROVED = "The question is approved.";
 }

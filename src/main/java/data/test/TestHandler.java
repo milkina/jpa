@@ -1,6 +1,7 @@
 package data.test;
 
 import data.category.CategoryBeanI;
+import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
 import util.TestUtility;
@@ -125,5 +126,9 @@ public class TestHandler {
 
     public boolean deleteTest(Test test) {
         return testBean.deleteTest(test);
+    }
+
+    public Test getTestByQuestion(AbstractQuestionEntry questionEntry){
+        return testBean.getTestByQuestion(questionEntry);
     }
 }

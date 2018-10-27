@@ -134,4 +134,11 @@ public class TestHandlerIT extends BaseIT {
         category = categoryHandler.getCategory(category.getId());
         Assert.assertNotNull(category);
     }
+
+    @Test
+    public void testGetTestByQuestion() {
+        model.Test result = testHandler.getTestByQuestion(testQuestionEntries[0]);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(result, tests[0]);
+    }
 }

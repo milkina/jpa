@@ -9,11 +9,11 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "TestQuestionEntry.getAllQuestions",
                 query = "SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.category=:param ORDER BY qe.orderColumn, qe.id"),
+                        + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "TestQuestionEntry.getAllQuestionsForExam",
                 query = "SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.category=:param OR qe.category IN "
-                        + "(SELECT c FROM Category c WHERE c.parentCategory=:param)")
+                        + "JOIN FETCH qe.category WHERE qe.approved=true AND (qe.category=:param OR qe.category IN "
+                        + "(SELECT c FROM Category c WHERE c.parentCategory=:param))")
 })
 @DiscriminatorValue("TEST")
 public class TestQuestionEntry extends AbstractQuestionEntry implements Serializable {
@@ -71,5 +71,10 @@ public class TestQuestionEntry extends AbstractQuestionEntry implements Serializ
             }
         }
         return correctAnswered;
+    }
+
+    public void changeCategoryCount(int i) {
+        int count = getCategory().getTestsCount();
+        getCategory().setTestsCount(count + i);
     }
 }

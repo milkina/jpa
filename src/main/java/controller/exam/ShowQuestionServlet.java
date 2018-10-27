@@ -4,6 +4,7 @@ import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Test;
 import util.AllConstantsParam;
+import util.GeneralUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,15 +33,15 @@ public class ShowQuestionServlet extends HttpServlet {
                 questionEntryHandler.getQuestionEntry(questionEntryId);
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
         String mode = request.getParameter(AllConstantsParam.MODE);
-        String showQuestionPageUrl = SHOW_QUESTION_PAGE;
-        if (request.getParameter(TEST_PATH) == null) {
+        String testPathName = request.getParameter(TEST_PATH);
+        if (GeneralUtility.isEmpty(testPathName)) {
             Test test = questionEntryHandler.getFirstQuestionEntryTest(
                     questionEntry.getId());
-            showQuestionPageUrl = showQuestionPageUrl + "?"
-                    + TEST_PATH + "=" + test.getPathName();
+            testPathName = test.getPathName();
         }
-        String url = mode == null ? showQuestionPageUrl
+        String url = mode == null ? SHOW_QUESTION_PAGE
                 : SHOW_QUESTION_PICTURE_PAGE;
+        url = url + "?" + TEST_PATH + "=" + testPathName;
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

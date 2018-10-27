@@ -80,6 +80,13 @@ function deleteQuestion(contextPath, questionId,categoryPath,testPath) {
         '&TEST_PATH='+testPath+'&EDIT_MODE_PARAM=DELETE';
     }
 }
+
+function approveQuestion(contextPath, questionId) {
+    if (confirm("Are you sure you want to approve the question?")) {
+        window.location.href  = contextPath + '/servlet/EditQuestionEntryServlet?'+
+        'QUESTION_ENTRY_ID_PARAM=' + questionId + '&EDIT_MODE_PARAM=APPROVE';
+    }
+}
  function newXMLHttpRequest() {
      var xmlreq = false;
      if (window.XMLHttpRequest) {

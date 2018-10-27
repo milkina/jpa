@@ -1,6 +1,7 @@
 package controller.person;
 
 import data.person.PersonHandler;
+import model.QuestionType;
 import model.person.Person;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import static util.AllConstantsAttribute.PERSON_ANSWERED_QUESTIONS;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TYPE;
 
 /**
  * Created by Tatyana on 07.06.2016.
@@ -35,7 +37,7 @@ public class ClearHistoryServlet extends HttpServlet {
 
         response.sendRedirect(request.getContextPath() + SHOW_QUESTIONS_PAGE
                 + "?" + CATEGORY_PATH + "=" + categoryPath + "&"
-                + TEST_PATH + "=" + testPath);
+                + TEST_PATH + "=" + testPath + "&" + TYPE + "=" + QuestionType.QUESTION);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

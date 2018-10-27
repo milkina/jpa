@@ -7,7 +7,7 @@
 <t:wrapper>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
-        <title><category:name/> - ${TESTS[param.TEST_PATH].name}</title>
+        <title>Questions <category:name/> - ${TESTS[param.TEST_PATH].name}</title>
         <META NAME="Description" CONTENT="<category:description/>">
         <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=3"></script>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/prism_min.css">
@@ -20,12 +20,12 @@
           <form action="${pageContext.request.contextPath}/servlet/ClearHistoryServlet">
           <input type="hidden" name="CATEGORY_PATH" value="<category:pathName/>">
           <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">
-          <c:if test="${person!=null}">
+          <c:if test="${person!=null && (param.TYPE.equals('QUESTION') || param.TYPE.equals('TEST'))}">
                <input type="submit" value="Clear History" name="clearHistory">
                <%@ include file="/WEB-INF/showQuestions/selectOptionsPanel.jsp" %>
           </c:if>
           </form>
-          Total: <category:questionsCount/> questions.
+          <category:questionsCount/>
           <qe:qeList>
             <ul class="showQuestionsList">
               <qe:qe>

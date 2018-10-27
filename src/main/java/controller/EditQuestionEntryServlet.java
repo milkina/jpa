@@ -2,7 +2,9 @@ package controller;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
+import data.test.TestHandler;
 import model.*;
+import model.person.Person;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.ServletUtilities;
@@ -31,6 +33,7 @@ import static util.AllMessage.*;
  */
 
 public class EditQuestionEntryServlet extends HttpServlet {
+    private static CategoryHandler categoryHandler = new CategoryHandler();
 
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
@@ -54,6 +57,9 @@ public class EditQuestionEntryServlet extends HttpServlet {
             case MOVE_BATCH:
                 moveBatch(request, response);
                 break;
+            case APPROVE:
+                approve(request, response);
+                break;
         }
         TestUtility.loadTestsToServletContext(request.getServletContext());
     }
@@ -73,6 +79,10 @@ public class EditQuestionEntryServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(EDIT_QUESTION_ENTRY_PAGE);
+        if (GeneralUtility.isEmpty(request.getParameter(TEST_PATH))) {
+            Test test = new TestHandler().getTestByQuestion(questionEntry);
+            request.setAttribute(TEST_PATH, test.getPathName());
+        }
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
         dispatcher.forward(request, response);
     }
@@ -93,15 +103,16 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 request.getParameter(QUESTION_TEXT_PARAM).trim());
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
-        AbstractQuestionEntry questionEntry = null;
+        AbstractQuestionEntry questionEntry = findQuestionEntry(request);
+        Person person = TestUtility.getPersonFromSession(request.getSession());
+        questionEntry.setApproved(person.isSysadmin());
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
-        if (oldCategoryPath.equals(categoryPath)) {
-            questionEntry = findQuestionEntry(request);
-        } else {
+        Category oldCategory = null;
+        if (!oldCategoryPath.equals(categoryPath)) {
             //moved to different category
-            questionEntry = findQuestionEntry(request);
             questionEntry.setCategory(category);
+            oldCategory = categoryHandler.getCategory(oldCategoryPath);
         }
 
         questionEntry.getQuestion().setText(newQuestionText);
@@ -114,7 +125,12 @@ public class EditQuestionEntryServlet extends HttpServlet {
         QuestionEntryUtility.setAnswers(request, answerNumber, questionEntry);
 
         questionEntryHandler.updateQuestionEntry(questionEntry);
-        changeQuestionType(questionEntry, oldAnswersSize, questionEntryHandler, category);
+        changeQuestionType(questionEntry, oldAnswersSize, questionEntryHandler);
+
+        categoryHandler.updateCategoryCounts(category);
+        if (oldCategory != null) {
+            categoryHandler.updateCategoryCounts(oldCategory);
+        }
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
@@ -122,19 +138,14 @@ public class EditQuestionEntryServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler, Category category) {
+    private void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler) {
         int id = questionEntry.getId();
         int size = questionEntry.getAnswers().size();
         if (oldAnswersSize == 1 && size > 1) {
             questionEntryHandler.changeQuestionToTestQuestion(id);
-            category.increaseTestsCount();
-            category.decreaseQuestionsCount();
         } else if (oldAnswersSize > 1 && size == 1) {
             questionEntryHandler.changeTestQuestionToQuestion(id);
-            category.decreaseTestsCount();
-            category.increaseQuestionsCount();
         }
-        new CategoryHandler().updateCategory(category);
     }
 
     private AbstractQuestionEntry findQuestionEntry(HttpServletRequest request) {
@@ -185,31 +196,23 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 QUESTION_ENTRY_ID_PARAM);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        Category category = updateCategory(request, questionEntryId, questionEntryHandler);
+        Category category = updateCategory(questionEntryId, questionEntryHandler);
         questionEntryHandler.deleteQuestionEntry(questionEntryId);
 
-    /*    Map<Integer, AbstractQuestionEntry> allQuestionsOfCategory =
-                questionEntryHandler.getAllAbstractQuestionsMap(category);
-
-        allQuestionsOfCategory.remove(questionEntryId);
-    */
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
         request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_REMOVE_MESSAGE);
         dispatcher.forward(request, response);
     }
 
-    private Category updateCategory(HttpServletRequest request, int questionEntryId, QuestionEntryHandler questionEntryHandler) {
+    private Category updateCategory(int questionEntryId, QuestionEntryHandler questionEntryHandler) {
         AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(questionEntryId);
-        Category category =
-                CategoryUtility.getCategoryFromServletContext(request);
-
-        if (questionEntry instanceof QuestionEntry) {
-            category.decreaseQuestionsCount();
-        } else {
-            category.decreaseTestsCount();
+        Category category = null;
+        if (questionEntry.getApproved()) {
+            category = questionEntry.getCategory();
+            questionEntry.changeCategoryCount(-1);
+            categoryHandler.updateCategory(category);
         }
-        new CategoryHandler().updateCategory(category);
         return category;
     }
 
@@ -218,7 +221,6 @@ public class EditQuestionEntryServlet extends HttpServlet {
             throws IOException, ServletException {
         Category category = CategoryUtility.getCategoryByPath(request);
         String oldTestPath = request.getParameter(OLD_TEST_PATH).trim();
-        CategoryHandler categoryHandler = new CategoryHandler();
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
         Category oldCategory = categoryHandler.getCategory(oldCategoryPath);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
@@ -228,7 +230,8 @@ public class EditQuestionEntryServlet extends HttpServlet {
         Integer from = GeneralUtility.getIntegerValue(request, FROM_NUMBER);
         Integer to = GeneralUtility.getIntegerValue(request, TO_NUMBER);
         String page = MESSAGE_PAGE;
-        String message = String.format(QUESTIONS_MOVED, to - from + 1);
+        int amount = to - from + 1;
+        String message = String.format(QUESTIONS_MOVED, amount);
         if (oldCategory.getId() == category.getId()) {
             page = String.format(MOVE_QUESTIONS_PAGE,
                     oldTestPath, oldCategoryPath);
@@ -236,6 +239,8 @@ public class EditQuestionEntryServlet extends HttpServlet {
         } else if (QuestionEntryUtility.isValidNumbers(
                 from, to, oldCategoryQuestionsNumber)) {
             questionEntryHandler.moveBatch(oldCategory, category, from, to);
+            categoryHandler.updateCategoryCounts(category);
+            categoryHandler.updateCategoryCounts(oldCategory);
         } else {
             page = String.format(MOVE_QUESTIONS_PAGE, oldTestPath,
                     oldCategoryPath);
@@ -244,6 +249,22 @@ public class EditQuestionEntryServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(page);
         request.setAttribute(MESSAGE_ATTRIBUTE, message);
+        dispatcher.forward(request, response);
+    }
+
+    private void approve(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
+        int questionEntryId = GeneralUtility.getIntegerValue(request,
+                QUESTION_ENTRY_ID_PARAM);
+
+        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(questionEntryId);
+        questionEntry.setApproved(true);
+        questionEntryHandler.updateQuestionEntry(questionEntry);
+        categoryHandler.updateCategory(questionEntry.getCategory());
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(MESSAGE_PAGE);
+        request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_APPROVED);
         dispatcher.forward(request, response);
     }
 }

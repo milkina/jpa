@@ -1,5 +1,6 @@
 package data.test;
 
+import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
 
@@ -65,5 +66,12 @@ public class TestBean implements TestBeanI {
             return true;
         }
         return false;
+    }
+
+    public Test getTestByQuestion(AbstractQuestionEntry questionEntry) {
+        Query query = entityManager.createNamedQuery("Test.getTestByQuestion");
+        query.setParameter("param", questionEntry);
+        List<Test> tests = query.getResultList();
+        return tests.get(0);
     }
 }

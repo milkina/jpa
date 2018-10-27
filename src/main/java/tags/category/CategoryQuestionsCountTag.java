@@ -17,9 +17,11 @@ public class CategoryQuestionsCountTag extends TagSupport {
                     (CategoryTag) findAncestorWithClass(this, CategoryTag.class);
             Category category = parent.getCategory();
             JspWriter out = pageContext.getOut();
-            int count = type.equals(QuestionType.QUESTION.toString()) ?
-                    category.getQuestionsCount() : category.getTestsCount();
-            out.print(count);
+            if (category != null) {
+                int count = type.equals(QuestionType.QUESTION.toString()) ?
+                        category.getQuestionsCount() : category.getTestsCount();
+                out.print("Total: " + count + " questions.");
+            }
         } catch (IOException ioe) {
             System.out.println("Error in CategoryQuestionsCountTag: " + ioe);
         }

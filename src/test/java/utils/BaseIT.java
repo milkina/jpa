@@ -148,7 +148,7 @@ public class BaseIT {
 
     private static void prepareHandlers() {
         testHandler = new TestHandler(testBean);
-        categoryHandler = new CategoryHandler(categoryBean, testBean);
+        categoryHandler = new CategoryHandler(categoryBean, testBean, questionEntryBean);
         questionEntryHandler = new QuestionEntryHandler(questionEntryBean);
         personHandler = new PersonHandler(personBean);
         commentHandler = new CommentHandler(commentBean);

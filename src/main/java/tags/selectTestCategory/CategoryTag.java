@@ -2,6 +2,7 @@ package tags.selectTestCategory;
 
 import model.Category;
 import model.Test;
+import util.GeneralUtility;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -53,6 +54,9 @@ public class CategoryTag extends BodyTagSupport {
 
     private void setCategories() {
         String testPath = pageContext.getRequest().getParameter(TEST_PATH);
+        if (GeneralUtility.isEmpty(testPath)) {
+            testPath = (String) pageContext.getRequest().getAttribute(TEST_PATH);
+        }
         LinkedHashMap<String, Test> tests = (LinkedHashMap)
                 pageContext.getServletContext().getAttribute(TESTS);
         Test test = tests.get(testPath);

@@ -1,10 +1,8 @@
 package controller.exam;
 
 import model.Answer;
-import model.Category;
 import model.TestExam;
 import model.TestQuestionEntry;
-import util.CategoryUtility;
 import util.GeneralUtility;
 
 import javax.servlet.ServletException;
@@ -30,10 +28,9 @@ public class AddUserAnswerServlet
         TestQuestionEntry currentQuestionEntry = (TestQuestionEntry) exam.getCurrentQuestionEntry();
 
         setUserAnswer(request, currentQuestionEntry);
-        String url = String.format("/%s?%s=%s&%s=%s&%s=%s", SHOW_EXAM_QUESTION,
+        String url = String.format("/%s?%s=%s&%s=%s&", SHOW_EXAM_QUESTION,
                 CATEGORY_PATH, categoryPath,
-                TEST_PATH, testPath,
-                QUESTION_NUMBER, exam.getCurrentNumber());
+                TEST_PATH, testPath);
         if (exam.getCurrentNumber() != exam.getQuestionEntries().size() - 1) {
             url = url + "&NEXT=NEXT";
         }

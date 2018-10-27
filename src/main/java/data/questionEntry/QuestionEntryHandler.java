@@ -179,4 +179,12 @@ public class QuestionEntryHandler {
     public List<TestQuestionEntry> getQuestionsForExam(Category category, int count) {
         return questionEntryBean.getQuestionsForExam(category, count);
     }
+
+    public List<AbstractQuestionEntry> getNotApprovedQuestions() {
+        return questionEntryBean.getNotApprovedQuestions();
+    }
+
+    public List<AbstractQuestionEntry> getPersonQuestions(Person person) {
+        return questionEntryBean.getPersonQuestions(person);
+    }
 }

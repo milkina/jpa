@@ -57,6 +57,8 @@
            </tr>
         </c:forEach>
         </table>
+        <a href="${pageContext.request.contextPath}/addQuestion.jsp" name="addQuestion">Add Question</a>
+        <BR><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?TYPE=MY_QUESTIONS" name="myQuestions">My Questions</a>
     </div>
     <BR>
  </jsp:body>

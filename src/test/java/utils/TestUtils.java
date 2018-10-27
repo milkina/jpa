@@ -80,7 +80,7 @@ public class TestUtils {
         questionEntry.setAnswer(answer);
         questionEntry.setPerson(person);
         questionEntry.setQuestion(question);
-
+        questionEntry.setApproved(true);
         answer.setQuestionEntry(questionEntry);
         return questionEntry;
     }
@@ -91,6 +91,7 @@ public class TestUtils {
         questionEntry.setAnswers(answers);
         questionEntry.setPerson(person);
         questionEntry.setQuestion(question);
+        questionEntry.setApproved(true);
 
         for (Answer answer : answers) {
             answer.setQuestionEntry(questionEntry);

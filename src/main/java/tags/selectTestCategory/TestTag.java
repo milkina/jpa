@@ -1,6 +1,7 @@
 package tags.selectTestCategory;
 
 import model.Test;
+import util.GeneralUtility;
 
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
@@ -44,6 +45,9 @@ public class TestTag extends BodyTagSupport {
     private void setSelectedTestID() {
         String selectedTestPath =
                 pageContext.getRequest().getParameter(TEST_PATH);
+        if (GeneralUtility.isEmpty(selectedTestPath)) {
+            selectedTestPath = (String) pageContext.getRequest().getAttribute(TEST_PATH);
+        }
         if (selectedTestPath != null) {
             Test selectedTest = tests.get(selectedTestPath);
             selectedTestID = selectedTest.getId();

@@ -26,7 +26,10 @@ import java.util.Map;
                         + "(c.hidden=false or t.categories is empty)"
                         + " group by t order by t.orderId"),
         @NamedQuery(name = "Test.findPathName",
-                query = "select t.id,t.pathName from Test t")
+                query = "select t.id,t.pathName from Test t"),
+        @NamedQuery(name = "Test.getTestByQuestion",
+                query = "SELECT t FROM Test t INNER JOIN t.categories c INNER JOIN c.questionEntries q" +
+                        " WHERE q=:param")
 })
 public class Test implements Serializable, Comparable<Test> {
     @Id

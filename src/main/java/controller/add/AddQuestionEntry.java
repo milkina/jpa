@@ -1,6 +1,5 @@
 package controller.add;
 
-import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.*;
 import model.person.Person;
@@ -51,14 +50,7 @@ public class AddQuestionEntry extends HttpServlet {
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
 
-        AbstractQuestionEntry newQuestionEntry = null;
-        if (answerNumber > 1) {
-            newQuestionEntry = new TestQuestionEntry();
-            category.increaseTestsCount();
-        } else {
-            newQuestionEntry = new QuestionEntry();
-            category.increaseQuestionsCount();
-        }
+        AbstractQuestionEntry newQuestionEntry = answerNumber > 1 ? new TestQuestionEntry() : new QuestionEntry();
         newQuestionEntry.setCategory(category);
         QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);
         setQuestionText(request, newQuestionEntry);
@@ -67,8 +59,6 @@ public class AddQuestionEntry extends HttpServlet {
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.addQuestionEntry(newQuestionEntry);
-        CategoryHandler categoryHandler = new CategoryHandler();
-        categoryHandler.updateCategory(category);
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(MESSAGE_PAGE);
@@ -81,6 +71,7 @@ public class AddQuestionEntry extends HttpServlet {
             Person person = (Person)
                     request.getSession().getAttribute(PERSON_ATTRIBUTE);
             newQuestionEntry.setPerson(person);
+            newQuestionEntry.setApproved(person.isSysadmin());
         }
     }
 

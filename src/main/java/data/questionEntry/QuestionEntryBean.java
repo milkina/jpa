@@ -62,12 +62,14 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public AbstractQuestionEntry updateQuestionEntry(AbstractQuestionEntry questionEntry) {
+        entityManager.merge(questionEntry.getCategory());
         return entityManager.merge(questionEntry);
     }
 
     public AbstractQuestionEntry addQuestionEntry(AbstractQuestionEntry questionEntry) {
         entityManager.persist(questionEntry);
         questionEntry.setOrderColumn(questionEntry.getId());
+        entityManager.merge(questionEntry.getCategory());
         return questionEntry;
     }
 
@@ -138,7 +140,21 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         query.setParameter("param", category);
         List<TestQuestionEntry> list = query.getResultList();
         Collections.shuffle(list);
+        count = list.size() < count ? list.size() : count;
         return list.subList(0, count);
+    }
+
+    public List<AbstractQuestionEntry> getNotApprovedQuestions() {
+        Query query = entityManager.createNamedQuery(
+                "AbstractQuestionEntry.getNotApprovedQuestions");
+        return query.getResultList();
+    }
+
+    public List<AbstractQuestionEntry> getPersonQuestions(Person person) {
+        Query query = entityManager.createNamedQuery(
+                "AbstractQuestionEntry.getPersonQuestions");
+        query.setParameter("param", person);
+        return query.getResultList();
     }
 }
 

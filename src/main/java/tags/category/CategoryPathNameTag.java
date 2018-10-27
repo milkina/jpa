@@ -16,7 +16,8 @@ public class CategoryPathNameTag extends TagSupport {
                     (CategoryTag) findAncestorWithClass(this, CategoryTag.class);
             Category category = parent.getCategory();
             JspWriter out = pageContext.getOut();
-            out.print(category.getPathName());
+            String pathName = category != null ? category.getPathName() : "";
+            out.print(pathName);
         } catch (IOException ioe) {
             System.out.println("Error in CategoryPathNameTag: " + ioe);
         }

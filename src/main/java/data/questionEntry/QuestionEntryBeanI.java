@@ -53,4 +53,8 @@ public interface QuestionEntryBeanI {
     void changeQuestionType(int id, String type);
 
     List<TestQuestionEntry> getQuestionsForExam(Category category, int count);
+
+    List<AbstractQuestionEntry> getNotApprovedQuestions();
+
+    List<AbstractQuestionEntry> getPersonQuestions(Person person);
 }

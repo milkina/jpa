@@ -260,5 +260,31 @@ public class QuestionEntryHandlerIT extends BaseIT {
         Assert.assertNotNull(result);
         Assert.assertEquals(result.getOrderColumn(), orderColumn);
     }
+
+    @Test
+    public void testGetNotApprovedQuestions() {
+        testQuestionEntries[0].setApproved(false);
+        questionEntries[0].setApproved(false);
+        questionEntryHandler.updateQuestionEntry(testQuestionEntries[0]);
+        questionEntryHandler.updateQuestionEntry(questionEntries[0]);
+        List<AbstractQuestionEntry> result = questionEntryHandler.getNotApprovedQuestions();
+        Assert.assertNotNull(result);
+        Assert.assertEquals(result.size(), 2);
+
+        testQuestionEntries[0].setApproved(true);
+        questionEntries[0].setApproved(true);
+        questionEntryHandler.updateQuestionEntry(testQuestionEntries[0]);
+        questionEntryHandler.updateQuestionEntry(questionEntries[0]);
+        result = questionEntryHandler.getNotApprovedQuestions();
+        Assert.assertNotNull(result);
+        Assert.assertEquals(result.size(), 0);
+    }
+
+    @Test
+    public void testGetPersonQuestions() {
+        List<AbstractQuestionEntry> result = questionEntryHandler.getPersonQuestions(persons[2]);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(result.size(), 5);
+    }
 }
 

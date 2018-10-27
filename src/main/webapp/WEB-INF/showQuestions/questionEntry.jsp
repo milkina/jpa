@@ -12,8 +12,9 @@
        </qe:answer></div>
      </qe:answers>
      <aside>
-       <c:if test="${person.sysadmin}">
+           <c:if test="${param.TYPE.equals('TEST') || param.TYPE.equals('QUESTION')}">
              <a href="<qe:up/>&TEST_PATH=${param.TEST_PATH}&TYPE=${param.TYPE}" class="showAnswer">Up</a>
+           </c:if>
              <a href="<qe:show/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer" name="editQuestion">Edit</a>
              <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&TEST_PATH=${param.TEST_PATH}"
              class="showAnswer" name="goToQuestion">Go To</a>
@@ -21,7 +22,11 @@
              class="showAnswer" name="showPicture">Show picture</a>
              <a href="#" class="showAnswer" name="deleteQuestion"
              onclick="deleteQuestion('${pageContext.request.contextPath}',<qe:id/>,'<category:pathName/>','${param.TEST_PATH}');">Delete</a>
-        </c:if>
+            <c:if test="${param.TYPE.equals('NOT_APPROVED')}">
+               <a href="#" class="showAnswer" name="approveQuestion"
+              onclick="approveQuestion('${pageContext.request.contextPath}',<qe:id/>);">Approve</a>
+            </c:if>
        <input type="button" value="Read Answer" onclick="showAnswer('<qe:number/>');" id="a<qe:number/>">
+       <qe:createdDate/>&nbsp;<qe:author/>&nbsp;<qe:approved/>
        </aside>
 </div>

@@ -2,6 +2,7 @@ package tags.category;
 
 import model.Category;
 import util.CategoryUtility;
+import util.GeneralUtility;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.JspWriter;
@@ -26,13 +27,10 @@ public class CategoryTag extends BodyTagSupport {
     }
 
     public int doStartTag() {
-        if (categoryPath != null) {
+        if (!GeneralUtility.isEmpty(categoryPath)) {
             getCategoryFromServletContext(pageContext.getRequest());
         }
 
-        if (category == null) {
-            return SKIP_BODY;
-        }
         return EVAL_BODY_TAG;
     }
 
@@ -46,7 +44,7 @@ public class CategoryTag extends BodyTagSupport {
         try {
             JspWriter out = body.getEnclosingWriter();
             out.println(body.getString());
-            body.clearBody(); // Clear for next evaluation
+            body.clearBody();
         } catch (IOException ioe) {
             System.out.println("Error in CategoryTag: " + ioe);
         }

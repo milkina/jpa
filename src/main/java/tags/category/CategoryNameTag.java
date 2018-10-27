@@ -17,7 +17,9 @@ public class CategoryNameTag extends TagSupport {
                     (CategoryTag) findAncestorWithClass(this, CategoryTag.class);
             if (parent != null) {
                 Category category = parent.getCategory();
-                name = category.getName();
+                if (category != null) {
+                    name = category.getName();
+                }
             }
             JspWriter out = pageContext.getOut();
             out.print(name);

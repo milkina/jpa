@@ -88,5 +88,22 @@
         <bodycontent>empty</bodycontent>
         <info>Number of Question Entry in the current list.</info>
     </tag>
-
+    <tag>
+        <name>createdDate</name>
+        <tagclass>tags.questionEntry.QuestionEntryCreatedDateTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Question Entry created Date.</info>
+    </tag>
+    <tag>
+        <name>author</name>
+        <tagclass>tags.questionEntry.QuestionEntryAuthorTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Question Entry author.</info>
+    </tag>
+    <tag>
+        <name>approved</name>
+        <tagclass>tags.questionEntry.QuestionEntryApprovedTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Question Entry approved tag.</info>
+    </tag>
 </taglib>

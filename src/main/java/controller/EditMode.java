@@ -8,5 +8,5 @@ package controller;
  * To change this template use File | Settings | File Templates.
  */
 public enum EditMode {
-    SHOW, SAVE, UP, UP_FROM_EDIT, DELETE, MOVE_BATCH, EDIT
+    SHOW, SAVE, UP, UP_FROM_EDIT, DELETE, MOVE_BATCH, EDIT, APPROVE
 }

@@ -20,14 +20,14 @@ import java.util.stream.Stream;
 @NamedQueries({
         @NamedQuery(name = "GET_ALL_QUESTION_ENTRIES",
                 query = "SELECT DISTINCT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.category=:param ORDER BY qe.orderColumn, qe.id"),
+                        + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES",
                 query = "SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
                         + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.id IN "
                         + "(select aq.id FROM Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id"),
         @NamedQuery(name = "QuestionEntry.GET_NOT_ANSWERED_QUESTION_ENTRIES",
                 query = "SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.id NOT IN "
+                        + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.approved=true AND qe.id NOT IN "
                         + "(SELECT aq.id FROM Person p JOIN p.answeredQuestions aq WHERE p=:person) ORDER BY qe.orderColumn,qe.id"),
 
 })
@@ -42,5 +42,10 @@ public class QuestionEntry extends AbstractQuestionEntry implements Serializable
         List<Answer> set = new ArrayList<>();
         set.add(answer);
         setAnswers(set);
+    }
+
+    public void changeCategoryCount(int i) {
+        int count = getCategory().getQuestionsCount();
+        getCategory().setQuestionsCount(count + i);
     }
 }

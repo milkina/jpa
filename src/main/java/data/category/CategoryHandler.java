@@ -1,5 +1,7 @@
 package data.category;
 
+import data.questionEntry.QuestionEntryBeanI;
+import data.questionEntry.QuestionEntryHandler;
 import data.test.TestBeanI;
 import data.test.TestHandler;
 import model.Category;
@@ -27,9 +29,11 @@ public class CategoryHandler {
     private CategoryBeanI categoryBean;
     private Context ct;
     private TestHandler testHandler;
+    private QuestionEntryHandler questionEntryHandler;
 
     public CategoryHandler() {
         testHandler = new TestHandler();
+        questionEntryHandler = new QuestionEntryHandler();
         try {
             ct = new InitialContext();
             categoryBean = (CategoryBeanI) ct.lookup(CATEGORY_BEAN_NAME);
@@ -38,9 +42,10 @@ public class CategoryHandler {
         }
     }
 
-    public CategoryHandler(CategoryBeanI categoryBean, TestBeanI testBean) {
+    public CategoryHandler(CategoryBeanI categoryBean, TestBeanI testBean, QuestionEntryBeanI questionEntryBean) {
         this.categoryBean = categoryBean;
         testHandler = new TestHandler(testBean);
+        questionEntryHandler = new QuestionEntryHandler(questionEntryBean);
     }
 
     public void updateCategory(Category c) {
@@ -93,7 +98,7 @@ public class CategoryHandler {
     }
 
     public Map<String, Category> getDuplicateCategories() {
-        Map<String, Category> result = new HashMap<String, Category>();
+        Map<String, Category> result = new HashMap<>();
         List<Category> categories = categoryBean.getDuplicateCategories();
         for (Category category : categories) {
             result.put(category.getPathName(), category);
@@ -115,6 +120,14 @@ public class CategoryHandler {
         c2.setOrderId(id1);
         updateCategory(c1);
         updateCategory(c2);
+    }
+
+    public void updateCategoryCounts(Category category) {
+        int questionCount = questionEntryHandler.getAllQuestions(category).size();
+        int testQuestionCount = questionEntryHandler.getAllTestQuestions(category).size();
+        category.setTestsCount(testQuestionCount);
+        category.setQuestionsCount(questionCount);
+        categoryBean.updateCategory(category);
     }
 }
 

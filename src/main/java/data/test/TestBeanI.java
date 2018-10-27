@@ -1,5 +1,6 @@
 package data.test;
 
+import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
 
@@ -28,4 +29,6 @@ public interface TestBeanI {
     void removeCategoryFromTest(Test test, Category category);
 
     boolean deleteTest(Test test);
+
+    Test getTestByQuestion(AbstractQuestionEntry questionEntry);
 }

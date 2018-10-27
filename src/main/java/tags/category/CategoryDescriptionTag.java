@@ -17,7 +17,9 @@ public class CategoryDescriptionTag extends TagSupport {
                     (CategoryTag) findAncestorWithClass(this, CategoryTag.class);
             if (parent != null) {
                 Category category = parent.getCategory();
-                description = category.getArticle().getDescription();
+                if (category != null) {
+                    description = category.getArticle().getDescription();
+                }
             }
             JspWriter out = pageContext.getOut();
             out.print(description);

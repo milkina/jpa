@@ -2,6 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 <t:wrapper>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
@@ -30,7 +31,10 @@
               </c:forEach>
              ${CURRENT_EXAM_ATTRIBUTE.percent>=70?"Test is passed.":"Test is not passed."}<BR>
              ${CURRENT_EXAM_ATTRIBUTE.percent}% answers are correct.<BR>
-              Answered ${CURRENT_EXAM_ATTRIBUTE.rightQuestionsCount} from ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
+              Answered
+              <fmt:parseNumber var="intValue" integerOnly="true" type="number" value="${CURRENT_EXAM_ATTRIBUTE.rightQuestionsCount}"/>
+              <c:out value = "${intValue}" />
+              from ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
         </main>
       </div>
  </jsp:body>

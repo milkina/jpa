@@ -14,7 +14,7 @@
             <input type="hidden" value="1" id="answerNumber" name="answerNumber">
             <%@ include file="/edit/select-test-category-new.jsp" %>
             <strong>Question:</strong>
-            <textarea name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM">
+            <textarea name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM" rows="20" cols="80">
             </textarea> <BR> <BR>
             <strong>Answers:</strong>
             <div id="answersDiv" class="answerBlockDiv">

@@ -20,7 +20,7 @@
          &nbsp;  <a href="${pageContext.request.contextPath}/servlet/EditQuestionEntryServlet?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${param.TEST_PATH}&EDIT_MODE_PARAM=UP_FROM_EDIT"
           class="showAnswer" name="up">Up</a> <br> <br>
            <strong> Question:</strong>
-            <textarea  name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM">${QUESTION_ENTRY_ATTRIBUTE.question.text}
+            <textarea  name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM" rows="20" cols="80">${QUESTION_ENTRY_ATTRIBUTE.question.text}
             </textarea>   <BR> <BR>
           <strong>  Answers:&nbsp;&nbsp;</strong><BR>
           <c:set var="count" value="${0}"/>
@@ -30,7 +30,7 @@
             <div id="answerblock${count}">
                  <input type="checkbox" name = "checkbox${count}" <c:if test="${answer.correct==true}">checked</c:if>>
                  <div class="answerDiv">
-                    <textarea  name="ANSWER_TEXT_PARAM${count}" id="ANSWER_TEXT_PARAM${count}">${answer.text}</textarea>
+                    <textarea  name="ANSWER_TEXT_PARAM${count}" id="ANSWER_TEXT_PARAM${count}" rows="2" cols="80">${answer.text}</textarea>
                  </div>
                  <input type="button" onclick="deleteAnswer('${count}')" value="Delete" id="deleteAnswer${count}"><BR><BR>
             </div>

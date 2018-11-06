@@ -6,6 +6,7 @@
         <META NAME="Description"
                        CONTENT="Free online Java Tutorial for preparation to Oracle Java Certifications. Practice questions will help to be prepared and pass Oracle exams.">
         <title>Free Oracle Java Certification Tutorial on ExamClouds</title>
+            <jsp:include page="/WEB-INF/google-ads-header.jsp" />
     </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

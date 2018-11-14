@@ -17,7 +17,11 @@
 <jsp:body>
      <div class="mainArea">
        <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
-        <h2 class="header2">${CATEGORY_ATTRIBUTE.name}
+        <h2 class="header2">
+        <c:if test="${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory!=null}">
+            ${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory.name}.
+        </c:if>
+        ${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.name}
            <span class="questionEntryNumber" id="questionEntryNumber"><exam:number/>/<exam:size/></span>
         </h2>
         <form ACTION="${pageContext.request.contextPath}/add-user-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"

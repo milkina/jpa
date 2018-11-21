@@ -7,6 +7,7 @@ import utils.BaseIT;
 import utils.TestUtils;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -140,5 +141,13 @@ public class TestHandlerIT extends BaseIT {
         model.Test result = testHandler.getTestByQuestion(testQuestionEntries[0]);
         Assert.assertNotNull(result);
         Assert.assertEquals(result, tests[0]);
+    }
+
+    @Test
+    public void testGetAllTestsWithNotEmptyTests() {
+        List<model.Test> result = testHandler.getAllTestsWithNotEmptyTests();
+        Assert.assertNotNull(result);
+        Assert.assertEquals(result.size(), 1);
+        Assert.assertEquals(result.get(0), tests[0]);
     }
 }

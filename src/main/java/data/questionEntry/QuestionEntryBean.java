@@ -134,14 +134,11 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         query.executeUpdate();
     }
 
-    public List<TestQuestionEntry> getQuestionsForExam(Category category, int count) {
+    public List<TestQuestionEntry> getQuestionsForExam(String categoryPath) {
         Query query = entityManager.createNamedQuery(
                 "TestQuestionEntry.getAllQuestionsForExam");
-        query.setParameter("param", category);
-        List<TestQuestionEntry> list = query.getResultList();
-        Collections.shuffle(list);
-        count = list.size() < count ? list.size() : count;
-        return list.subList(0, count);
+        query.setParameter("param", categoryPath);
+        return query.getResultList();
     }
 
     public List<AbstractQuestionEntry> getNotApprovedQuestions() {

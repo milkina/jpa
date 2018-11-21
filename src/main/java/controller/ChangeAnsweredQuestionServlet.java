@@ -48,7 +48,6 @@ public class ChangeAnsweredQuestionServlet extends HttpServlet {
         person.setAnsweredQuestions(answeredQuestions);
         PersonHandler personHandler = new PersonHandler();
         personHandler.updatePerson(person);
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

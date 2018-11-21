@@ -22,6 +22,6 @@ public class ExamHandlerIT extends BaseIT {
     public void testGetExams() {
         List<TestExam> result = examHandler.getExams(persons[0]);
         Assert.assertNotNull(result);
-        Assert.assertEquals(result.size(), 2);
+        Assert.assertEquals(result.size(), 1);
     }
 }

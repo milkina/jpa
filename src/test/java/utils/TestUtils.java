@@ -149,6 +149,7 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
         category.setName(name);
         category.setPathName(pathName);
         category.setArticle(article);
+        category.setSubCategories(new ArrayList<>());
         return category;
     }
 
@@ -164,6 +165,7 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
 
     public static TestExam createTestExam(Category category, Person person, int percent) {
         TestExam exam = new TestExam();
+
         exam.setCategory(category);
         exam.setPercent(percent);
         exam.setPerson(person);

@@ -1,9 +1,7 @@
 package controller.exam;
 
 import data.exam.ExamHandler;
-import model.Category;
 import model.TestExam;
-import util.CategoryUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,17 +18,15 @@ public class FinishExamServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
-        Category category = CategoryUtility.getCategoryByPath(request);
 
         String url = "/show-test-result.jsp";
-        createExam(exam, category);
+        createExam(exam);
         response.sendRedirect(request.getContextPath() + url);
     }
 
-    private void createExam(TestExam exam, Category category) {
+    private void createExam(TestExam exam) {
         exam.setPercent(exam.getRightQuestionsCount() / exam.getQuestionEntries().size() * 100.0);
         exam.setDate(new Date());
-        exam.setCategory(category);
         new ExamHandler().createExam(exam);
     }
 

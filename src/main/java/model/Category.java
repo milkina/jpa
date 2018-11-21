@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -196,24 +197,31 @@ public class Category implements Serializable, Comparable<Category> {
         return this.getId() - c.getId();
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Category category = (Category) o;
-
-        if (getId() != category.getId()) return false;
-        if (!getName().equals(category.getName())) return false;
-        return getPathName().equals(category.getPathName());
-
+        if (category.getSubCategories() == null && subCategories != null) {
+            return false;
+        }
+        if (category.getSubCategories() != null && category.getSubCategories().isEmpty()
+                && this.getSubCategories() != null && !subCategories.isEmpty()) {
+            return false;
+        }
+        return id == category.id &&
+                hidden == category.hidden &&
+                orderId == category.orderId &&
+                questionsCount == category.questionsCount &&
+                testsCount == category.testsCount &&
+                Objects.equals(name, category.name) &&
+                Objects.equals(pathName, category.pathName) &&
+                Objects.equals(parentCategory, category.parentCategory) &&
+                Objects.equals(subCategories, category.getSubCategories());
     }
 
     @Override
     public int hashCode() {
-        int result = getId();
-        result = 31 * result + getName().hashCode();
-        return result;
+        return Objects.hash(id, name, pathName, parentCategory, hidden, orderId, questionsCount, testsCount);
     }
 }

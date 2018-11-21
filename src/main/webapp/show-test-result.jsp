@@ -33,8 +33,7 @@
              ${CURRENT_EXAM_ATTRIBUTE.percent}% answers are correct.<BR>
               Answered
               <fmt:parseNumber var="intValue" integerOnly="true" type="number" value="${CURRENT_EXAM_ATTRIBUTE.rightQuestionsCount}"/>
-              <c:out value = "${intValue}" />
-              from ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
+              <c:out value = "${intValue}" /> from ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
         </main>
       </div>
  </jsp:body>

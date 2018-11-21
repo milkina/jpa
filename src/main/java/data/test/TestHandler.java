@@ -128,7 +128,11 @@ public class TestHandler {
         return testBean.deleteTest(test);
     }
 
-    public Test getTestByQuestion(AbstractQuestionEntry questionEntry){
+    public Test getTestByQuestion(AbstractQuestionEntry questionEntry) {
         return testBean.getTestByQuestion(questionEntry);
+    }
+
+    public List<Test> getAllTestsWithNotEmptyTests() {
+        return testBean.getAllTestsWithNotEmptyTests();
     }
 }

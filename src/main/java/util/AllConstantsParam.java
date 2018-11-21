@@ -71,4 +71,5 @@ public interface AllConstantsParam {
     String PAGE_PARAM = "PAGE";
     String PAGE_VALUE = "EDIT";
     String DELETE_COMMENT = "deleteComment";
+    String NUMBER_OF_QUESTIONS = "NUMBER_OF_QUESTIONS";
 }

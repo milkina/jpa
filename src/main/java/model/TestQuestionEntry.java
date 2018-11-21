@@ -12,8 +12,8 @@ import java.util.List;
                         + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "TestQuestionEntry.getAllQuestionsForExam",
                 query = "SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.approved=true AND (qe.category=:param OR qe.category IN "
-                        + "(SELECT c FROM Category c WHERE c.parentCategory=:param))")
+                        + "JOIN FETCH qe.category WHERE qe.approved=true AND (qe.category.pathName=:param OR qe.category IN "
+                        + "(SELECT c FROM Category c WHERE c.parentCategory.pathName=:param))")
 })
 @DiscriminatorValue("TEST")
 public class TestQuestionEntry extends AbstractQuestionEntry implements Serializable {

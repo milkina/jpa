@@ -74,4 +74,9 @@ public class TestBean implements TestBeanI {
         List<Test> tests = query.getResultList();
         return tests.get(0);
     }
+
+    public List<Test> getAllTestsWithNotEmptyTests() {
+        Query query = entityManager.createNamedQuery("Test.findAllWithNotEmptyTests");
+        return query.getResultList();
+    }
 }

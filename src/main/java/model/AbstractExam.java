@@ -4,6 +4,7 @@ import model.person.Person;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,16 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
 
     private double percent;
 
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     public double getPercent() {
         return Math.round(percent);
     }
@@ -38,9 +49,13 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
 
     @Transient
     private Integer currentNumber;
-    @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category category;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "exam_category",
+            joinColumns = {@JoinColumn(name = "exam_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")})
+    private List<Category> categories;
+
     @Transient
     private T currentQuestionEntry;
 
@@ -84,12 +99,17 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
         this.currentNumber = currentNumber;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public void setCategory(Category category) {
-        this.category = category;
+        this.categories = new ArrayList<>();
+        this.categories.add(category);
     }
 
     public T getCurrentQuestionEntry() {
@@ -112,18 +132,20 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractExam that = (AbstractExam) o;
+        AbstractExam<?> that = (AbstractExam<?>) o;
         return id == that.id &&
+                Double.compare(that.percent, percent) == 0 &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(person, that.person) &&
+                Objects.equals(questionEntries, that.questionEntries) &&
                 Objects.equals(currentNumber, that.currentNumber) &&
-                Objects.equals(category, that.category) &&
+                Objects.equals(categories, that.categories) &&
                 Objects.equals(currentQuestionEntry, that.currentQuestionEntry);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, person, currentNumber, category, currentQuestionEntry);
+        return Objects.hash(id, date, person, percent, questionEntries, currentNumber, categories, currentQuestionEntry);
     }
 }
 

@@ -12,6 +12,8 @@ import util.article.ArticleUtility;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import static util.AllConstantsAttribute.*;
@@ -153,5 +155,24 @@ public class CategoryUtility {
             previousCategory = c.getValue();
         }
         return previousCategory;
+    }
+
+    public static void selectCategoriesWithTests(List<Category> categories) {
+        categories.removeIf(Category::getHidden);
+        categories.removeIf(category -> category.getParentCategory() != null);
+        selectSubCategoriesWithTests(categories);
+        categories.removeIf(c -> c.getParentCategory() == null
+                && (c.getSubCategories() == null
+                || c.getSubCategories().isEmpty()) && c.getTestsCount() < 1);
+    }
+
+    private static void selectSubCategoriesWithTests(List<Category> categories) {
+        for (Category category : categories) {
+            Collection<Category> subCategories = category.getSubCategories();
+            if (subCategories != null && !subCategories.isEmpty()) {
+                subCategories.removeIf(Category::getHidden);
+                subCategories.removeIf(c -> c.getTestsCount() < 1);
+            }
+        }
     }
 }

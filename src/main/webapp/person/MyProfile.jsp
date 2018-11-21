@@ -41,18 +41,23 @@
         <h2 class="header2">History</h2>
         <table width="100%">
         <tr>
-                        <td width="10%"><B>Date</B></td>
-                        <td width="10%"><B>Percent</B></td>
-                        <td width="80%"><B>Category</B></td>
+                        <td width="8%"><B>Date</B></td>
+                        <td width="8%"><B>Percent</B></td>
+                        <td width="8%"><B>Number of Questions</B></td>
+                        <td width="76%"><B>Category</B></td>
         </tr>
         <c:forEach var="exam" items="${USER_TEST_EXAMS}">
            <tr>
-                <td width="10%">${exam.formattedDate}</td>
-                <td width="10%">${exam.percent}%</td>
-                <td width="80%">
-                  <c:if test="${exam.category!=null && exam.category.parentCategory!=null}">
-                        ${exam.category.parentCategory.name}.</c:if>
-                  ${exam.category.name}
+                <td width="8%">${exam.formattedDate}</td>
+                <td width="8%">${exam.percent}%</td>
+                <td width="8%">${exam.amount}</td>
+                <td width="76%">
+                  <c:forEach var="category" items="${exam.categories}">
+                     <c:if test="${category!=null && category.parentCategory!=null}">
+                        ${category.parentCategory.name}.
+                     </c:if>
+                     ${category.name}&nbsp;&nbsp;&nbsp;
+                  </c:forEach>
                 </td>
            </tr>
         </c:forEach>

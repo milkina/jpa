@@ -29,7 +29,12 @@ import java.util.Map;
                 query = "select t.id,t.pathName from Test t"),
         @NamedQuery(name = "Test.getTestByQuestion",
                 query = "SELECT t FROM Test t INNER JOIN t.categories c INNER JOIN c.questionEntries q" +
-                        " WHERE q=:param")
+                        " WHERE q=:param"),
+        @NamedQuery(name = "Test.findAllWithNotEmptyTests",
+                query = "SELECT distinct t FROM Test t "
+                        + "left join t.categories c WHERE "
+                        + "c.hidden=false AND c.testsCount>0 "
+                        + "ORDER BY t.orderId")
 })
 public class Test implements Serializable, Comparable<Test> {
     @Id

@@ -6,10 +6,7 @@ import model.person.Person;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import static util.AllBeanNameConstants.QUESTION_ENTRY_BEAN_NAME;
 
@@ -176,8 +173,19 @@ public class QuestionEntryHandler {
         questionEntryBean.changeQuestionType(id, QuestionType.QUESTION.toString());
     }
 
-    public List<TestQuestionEntry> getQuestionsForExam(Category category, int count) {
-        return questionEntryBean.getQuestionsForExam(category, count);
+
+    public List<TestQuestionEntry> getQuestionsForExam(String[] categoryPaths, int count) {
+        List<TestQuestionEntry> result = new ArrayList<>();
+        for (String pathName : categoryPaths) {
+            result.addAll(questionEntryBean.getQuestionsForExam(pathName));
+        }
+        Collections.shuffle(result);
+        count = result.size() < count ? result.size() : count;
+        return result.subList(0, count);
+    }
+
+    public List<TestQuestionEntry> getQuestionsForExam(Category category) {
+        return questionEntryBean.getQuestionsForExam(category.getPathName());
     }
 
     public List<AbstractQuestionEntry> getNotApprovedQuestions() {

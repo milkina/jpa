@@ -31,4 +31,6 @@ public interface TestBeanI {
     boolean deleteTest(Test test);
 
     Test getTestByQuestion(AbstractQuestionEntry questionEntry);
+
+    List<Test> getAllTestsWithNotEmptyTests();
 }

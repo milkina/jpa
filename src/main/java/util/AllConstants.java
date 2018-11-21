@@ -47,4 +47,5 @@ public interface AllConstants {
     String REGISTER_PAGE = "/Register.jsp";
     String WELCOME_REGISTER_PAGE = "/person/welcome.jsp";
     String SITE_NAME = "http://www.examclouds.com/";
+    String TESTS_PAGE = "/tests.jsp";
 }

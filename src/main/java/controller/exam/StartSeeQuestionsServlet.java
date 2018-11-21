@@ -4,7 +4,6 @@ import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Category;
-import model.QuestionEntry;
 import model.QuestionExam;
 import model.person.Person;
 

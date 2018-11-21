@@ -5,8 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <t:wrapper3>
 <jsp:attribute name="header">
-    <title>${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}</title>
-    <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
+    <title>${TESTS[param.TEST_PATH].name} Test</title>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <meta name="robots" content="noindex">
@@ -16,7 +15,6 @@
 </jsp:attribute>
 <jsp:body>
      <div class="mainArea">
-       <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
         <h2 class="header2">
         <c:if test="${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory!=null}">
             ${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory.name}.
@@ -60,13 +58,13 @@
          <BR>
          <input type="submit" value="Answer" class="submitButton" name="answerBtn">
          </form>
-         <form ACTION="${pageContext.request.contextPath}/finish-exam?CATEGORY_PATH=${param.CATEGORY_PATH}"
+         <form ACTION="${pageContext.request.contextPath}/finish-exam"
          method="POST">
                <input type="submit" value="Finish" class="submitButton" name="finishBtn">
          </form>
          <BR>
          <div style="display:inline">
-              <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=<exam:number/>"
+              <form ACTION="${pageContext.request.contextPath}/show-exam-question?TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=<exam:number/>"
                         method="POST">
                           <exam:previousButton><input type="submit" value="Previous" name="PREVIOUS" class="submitButton" ></exam:previousButton>
                           <exam:nextButton><input type="submit" value="Next" name="NEXT" class="submitButton" style="float:right"></exam:nextButton>

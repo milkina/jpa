@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <t:wrapper>
   <jsp:attribute name="header">
     <title>My Profile on ExamClouds</title>
@@ -51,7 +52,7 @@
                 <td width="8%">${exam.formattedDate}</td>
                 <td width="8%">${exam.percent}%</td>
                 <td width="8%">${exam.amount}</td>
-                <td width="76%">
+                <td width="76%">(${fn:length(exam.categories)})
                   <c:forEach var="category" items="${exam.categories}">
                      <c:if test="${category!=null && category.parentCategory!=null}">
                         ${category.parentCategory.name}.

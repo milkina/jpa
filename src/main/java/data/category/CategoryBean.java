@@ -85,4 +85,22 @@ public class CategoryBean implements CategoryBeanI {
                 "Category.findDuplicateCategories");
         return query.getResultList();
     }
+
+    public Category getPreviousCategory(String testPath, String categoryPath) {
+        Query query = entityManager.createNamedQuery(
+                "Category.getPreviousCategory");
+        query.setParameter("testPath", testPath);
+        query.setParameter("categoryPath", categoryPath);
+        List<Category> result = query.getResultList();
+        return result.get(result.size() - 2);
+    }
+
+    public Category getNextCategory(String testPath, String categoryPath) {
+        Query query = entityManager.createNamedQuery(
+                "Category.getNextCategory");
+        query.setParameter("testPath", testPath);
+        query.setParameter("categoryPath", categoryPath);
+        List<Category> result = query.getResultList();
+        return result.get(1);
+    }
 }

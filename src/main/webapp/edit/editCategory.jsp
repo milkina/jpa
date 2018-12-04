@@ -12,9 +12,6 @@
        <div class="mainArea">
         <form action="${pageContext.request.contextPath}/servlet/EditCategoryServlet" method="POST" id="editCategoryForm" >
             <span class="adminLabel">Category Id:</span><span name="categoryId">${CATEGORY_ATTRIBUTE.id}</span>
-            <a href="${pageContext.request.contextPath}/servlet/UpCategoryServlet?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}&PAGE=EDIT"
-              name="up${param.CATEGORY_PATH}">Up</a>
-
             <input type="hidden" name="CATEGORY_PATH" value="${param.CATEGORY_PATH}">
             <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">
             <BR>

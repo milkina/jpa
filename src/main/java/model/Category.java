@@ -30,7 +30,17 @@ import java.util.Objects;
                 query = "select c from Test t join t.categories c where t.pathName=:p"),
         @NamedQuery(name = "Category.findDuplicateCategories",
                 query = "select c from Category c join fetch c.tests where c.id in " +
-                        "(select cc.id from Category cc join cc.tests t group by cc having count(t)>1)")
+                        "(select cc.id from Category cc join cc.tests t group by cc having count(t)>1)"),
+        @NamedQuery(name = "Category.getPreviousCategory",
+                query = "SELECT c FROM Test t JOIN t.categories c " +
+                        "WHERE t.pathName=:testPath AND c.orderId<= " +
+                        "(SELECT c1.orderId FROM Category c1 WHERE c1.pathName=:categoryPath)" +
+                        " ORDER BY c.orderId,c.id"),
+        @NamedQuery(name = "Category.getNextCategory",
+                query = "SELECT c FROM Test t JOIN t.categories c " +
+                        "WHERE t.pathName=:testPath AND c.orderId>= " +
+                        "(SELECT c1.orderId FROM Category c1 WHERE c1.pathName=:categoryPath)" +
+                        " ORDER BY c.orderId,c.id")
 })
 public class Category implements Serializable, Comparable<Category> {
     @Id

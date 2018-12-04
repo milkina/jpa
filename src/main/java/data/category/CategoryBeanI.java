@@ -34,4 +34,8 @@ public interface CategoryBeanI {
     Category addCategoryToTest(Test test, Category category);
 
     List<Category> getDuplicateCategories();
+
+    Category getPreviousCategory(String testPath, String categoryPath);
+
+    Category getNextCategory(String testPath, String categoryPath);
 }

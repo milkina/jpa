@@ -158,8 +158,8 @@
         <servlet-class>controller.category.DeleteFromTestServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpCategoryServlet</servlet-name>
-        <servlet-class>controller.category.UpCategoryServlet</servlet-class>
+        <servlet-name>MoveCategoryServlet</servlet-name>
+        <servlet-class>controller.category.MoveCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteTestServlet</servlet-name>
@@ -316,8 +316,8 @@
         <url-pattern>/servlet/DeleteFromTestServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpCategoryServlet</servlet-name>
-        <url-pattern>/servlet/UpCategoryServlet</url-pattern>
+        <servlet-name>MoveCategoryServlet</servlet-name>
+        <url-pattern>/servlet/MoveCategoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpTestServlet</servlet-name>

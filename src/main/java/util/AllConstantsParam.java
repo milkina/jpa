@@ -46,6 +46,7 @@ public interface AllConstantsParam {
     String COMMENT_ID = "COMMENT_ID";
     String COMMENT_BODY = "COMMENT_BODY";
     String CATEGORY_PATH = "CATEGORY_PATH";
+    String PREVIOUS_CATEGORY_PATH = "PREVIOUS_CATEGORY_PATH";
     String TEST_PATH = "TEST_PATH";
     String TEST_TAGS = "TEST_TAGS";
     String TEST_ICON_TEXT = "ICON_TEXT";

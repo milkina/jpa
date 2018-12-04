@@ -17,3 +17,32 @@ function deleteTest(contextPath, test){
        window.location.href  = contextPath + "/servlet/DeleteTestServlet?TEST_PATH="+test;
     }
 }
+ function newXMLHttpRequest() {
+     var xmlreq = false;
+     if (window.XMLHttpRequest) {
+         xmlreq = new XMLHttpRequest();
+     } else if (window.ActiveXObject) {
+         try {
+             xmlreq = new ActiveXObject("Msxml2.XMLHTTP");
+         } catch (e1) {
+             try {
+                 xmlreq = new ActiveXObject("Microsoft.XMLHTTP");
+             } catch (e2) {
+             }
+         }
+     }
+     return xmlreq;
+ }
+ var req = newXMLHttpRequest();
+ function moveCategoryUp(category, previousCategory, contextPath, testPath) {
+     var url = contextPath + "/servlet/MoveCategoryServlet";
+
+     req.open("POST", url, true);
+     req.setRequestHeader("Content-Type",
+             "application/x-www-form-urlencoded");
+
+     req.send("CATEGORY_PATH=" + category
+              + "&PREVIOUS_CATEGORY_PATH=" + previousCategory
+              + "&TEST_PATH=" + testPath);
+ }
+

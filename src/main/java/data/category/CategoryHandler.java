@@ -113,6 +113,26 @@ public class CategoryHandler {
         }
     }
 
+    public void moveCategoryUp(Category category, String stopCategoryPath, String testPath) {
+        Category previousCategory = getPreviousCategory(testPath, category.getPathName());
+        String previousCategoryPath = previousCategory.getPathName();
+        if (stopCategoryPath.equals(previousCategoryPath)) {
+            return;
+        }
+        swapCategories(category, previousCategory);
+        moveCategoryUp(category, stopCategoryPath, testPath);
+    }
+
+    public void moveCategoryDown(Category category, String stopCategoryPath, String testPath) {
+        Category nextCategory = getNextCategory(testPath, category.getPathName());
+        String nextCategoryPath = nextCategory.getPathName();
+        swapCategories(category, nextCategory);
+        if (stopCategoryPath.equals(nextCategoryPath)) {
+            return;
+        }
+        moveCategoryDown(category, stopCategoryPath, testPath);
+    }
+
     public void swapCategories(Category c1, Category c2) {
         int id1 = c1.getOrderId();
         int id2 = c2.getOrderId();
@@ -128,6 +148,14 @@ public class CategoryHandler {
         category.setTestsCount(testQuestionCount);
         category.setQuestionsCount(questionCount);
         categoryBean.updateCategory(category);
+    }
+
+    public Category getPreviousCategory(String testPath, String categoryPath) {
+        return categoryBean.getPreviousCategory(testPath, categoryPath);
+    }
+
+    public Category getNextCategory(String testPath, String categoryPath) {
+        return categoryBean.getNextCategory(testPath, categoryPath);
     }
 }
 

@@ -73,7 +73,7 @@ public class CategoryHandler {
     }
 
     public Map<String, Integer> getPathName() {
-        Map<String, Integer> result = new HashMap<String, Integer>();
+        Map<String, Integer> result = new HashMap<>();
         List<Object[]> list = categoryBean.getPathName();
         for (Object[] r : list) {
             result.put(r[1].toString(), (Integer) r[0]);
@@ -114,23 +114,11 @@ public class CategoryHandler {
     }
 
     public void moveCategoryUp(Category category, String stopCategoryPath, String testPath) {
-        Category previousCategory = getPreviousCategory(testPath, category.getPathName());
-        String previousCategoryPath = previousCategory.getPathName();
-        if (stopCategoryPath.equals(previousCategoryPath)) {
-            return;
-        }
-        swapCategories(category, previousCategory);
-        moveCategoryUp(category, stopCategoryPath, testPath);
+        categoryBean.moveCategoryUp(category, stopCategoryPath, testPath);
     }
 
     public void moveCategoryDown(Category category, String stopCategoryPath, String testPath) {
-        Category nextCategory = getNextCategory(testPath, category.getPathName());
-        String nextCategoryPath = nextCategory.getPathName();
-        swapCategories(category, nextCategory);
-        if (stopCategoryPath.equals(nextCategoryPath)) {
-            return;
-        }
-        moveCategoryDown(category, stopCategoryPath, testPath);
+        categoryBean.moveCategoryDown(category, stopCategoryPath, testPath);
     }
 
     public void swapCategories(Category c1, Category c2) {
@@ -148,14 +136,6 @@ public class CategoryHandler {
         category.setTestsCount(testQuestionCount);
         category.setQuestionsCount(questionCount);
         categoryBean.updateCategory(category);
-    }
-
-    public Category getPreviousCategory(String testPath, String categoryPath) {
-        return categoryBean.getPreviousCategory(testPath, categoryPath);
-    }
-
-    public Category getNextCategory(String testPath, String categoryPath) {
-        return categoryBean.getNextCategory(testPath, categoryPath);
     }
 }
 

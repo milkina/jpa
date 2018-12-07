@@ -35,7 +35,11 @@ public interface CategoryBeanI {
 
     List<Category> getDuplicateCategories();
 
-    Category getPreviousCategory(String testPath, String categoryPath);
+    List<Category> getPreviousCategories(String testPath, String categoryPath);
 
-    Category getNextCategory(String testPath, String categoryPath);
+    List<Category> getNextCategories(String testPath, String categoryPath);
+
+    void moveCategoryUp(Category category, String stopCategoryPath, String testPath);
+
+    void moveCategoryDown(Category category, String stopCategoryPath, String testPath);
 }

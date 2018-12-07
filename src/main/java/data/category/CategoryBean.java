@@ -86,21 +86,55 @@ public class CategoryBean implements CategoryBeanI {
         return query.getResultList();
     }
 
-    public Category getPreviousCategory(String testPath, String categoryPath) {
+    public List<Category> getPreviousCategories(String testPath, String categoryPath) {
         Query query = entityManager.createNamedQuery(
                 "Category.getPreviousCategory");
         query.setParameter("testPath", testPath);
         query.setParameter("categoryPath", categoryPath);
         List<Category> result = query.getResultList();
-        return result.get(result.size() - 2);
+        return result;
     }
 
-    public Category getNextCategory(String testPath, String categoryPath) {
+    public List<Category> getNextCategories(String testPath, String categoryPath) {
         Query query = entityManager.createNamedQuery(
                 "Category.getNextCategory");
         query.setParameter("testPath", testPath);
         query.setParameter("categoryPath", categoryPath);
-        List<Category> result = query.getResultList();
-        return result.get(1);
+        return query.getResultList();
+    }
+
+    public void moveCategoryUp(Category category, String stopCategoryPath, String testPath) {
+        List<Category> categories = getPreviousCategories(testPath, category.getPathName());
+        for (int i = categories.size() - 1; i > 0; i--) {
+            if (stopCategoryPath.equals(categories.get(i - 1).getPathName())) {
+                break;
+            }
+            swapCategories(categories.get(i), categories.get(i - 1));
+
+            Category tmp = categories.get(i);
+            categories.set(i, categories.get(i - 1));
+            categories.set(i - 1, tmp);
+        }
+    }
+
+    public void moveCategoryDown(Category category, String stopCategoryPath, String testPath) {
+        List<Category> categories = getNextCategories(testPath, category.getPathName());
+        for (int i = 0; i < categories.size() - 1; i++) {
+            swapCategories(categories.get(i), categories.get(i + 1));
+
+            Category tmp = categories.get(i);
+            categories.set(i, categories.get(i + 1));
+            categories.set(i + 1, tmp);
+            if (stopCategoryPath.equals(categories.get(i).getPathName())) {
+                break;
+            }
+        }
+    }
+
+    private void swapCategories(Category c1, Category c2) {
+        int id1 = c1.getOrderId();
+        int id2 = c2.getOrderId();
+        c1.setOrderId(id2);
+        c2.setOrderId(id1);
     }
 }

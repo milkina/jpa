@@ -226,8 +226,7 @@ public class Category implements Serializable, Comparable<Category> {
                 testsCount == category.testsCount &&
                 Objects.equals(name, category.name) &&
                 Objects.equals(pathName, category.pathName) &&
-                Objects.equals(parentCategory, category.parentCategory) &&
-                Objects.equals(subCategories, category.getSubCategories());
+                Objects.equals(parentCategory, category.parentCategory);
     }
 
     @Override

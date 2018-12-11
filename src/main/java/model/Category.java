@@ -27,7 +27,7 @@ import java.util.Objects;
         @NamedQuery(name = "Category.findCategories",
                 query = "select c from Test t join t.categories c where t.id=:p"),
         @NamedQuery(name = "Category.findCategoriesByTestPath",
-                query = "select c from Test t join t.categories c where t.pathName=:p"),
+                query = "select c from Test t join t.categories c where t.pathName=:p order by c.orderId"),
         @NamedQuery(name = "Category.findDuplicateCategories",
                 query = "select c from Category c join fetch c.tests where c.id in " +
                         "(select cc.id from Category cc join cc.tests t group by cc having count(t)>1)"),

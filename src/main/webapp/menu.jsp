@@ -29,7 +29,7 @@
             </c:when>
             <c:otherwise>
                <span id="personLogin">${person.login}</span><br>
-                <a href="<%=request.getContextPath()%>/servlet/LogoutServlet" id="isLogin" class="menuHref">log out</a>
+               <a href="<%=request.getContextPath()%>/logout" id="isLogin" class="menuHref">log out</a>
             </c:otherwise>
         </c:choose>
         </div>

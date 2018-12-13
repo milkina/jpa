@@ -1,14 +1,10 @@
 package controller;
 
-import  util.AllConstants;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+
+import static util.AllConstants.COOKIE_VALUE;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,9 +19,11 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.invalidate();
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(AllConstants.INDEX_PAGE);
-        dispatcher.forward(request, response);
+        Cookie cookie = new Cookie(COOKIE_VALUE, "");
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        response.sendRedirect(request.getContextPath());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

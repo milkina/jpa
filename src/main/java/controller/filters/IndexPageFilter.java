@@ -62,7 +62,6 @@ public class IndexPageFilter implements Filter {
 
     public Person getPerson(HttpServletRequest request) throws Exception {
         String personId = "";
-        //get Cookie
         if (!CookieUtilities.getCookieValue(request, COOKIE_VALUE, "")
                 .equals("")) {
             personId =

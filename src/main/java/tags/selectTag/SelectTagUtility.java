@@ -14,11 +14,11 @@ public class SelectTagUtility {
     }
 
     public static String createOptionTags(Object[] options, Object selected) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (Object option : options) {
-            result = result + createOptionTag(option, selected);
+            result.append(createOptionTag(option, selected));
         }
-        return result;
+        return result.toString();
     }
 
     public static String createOptionTag(Object option, Object selected) {

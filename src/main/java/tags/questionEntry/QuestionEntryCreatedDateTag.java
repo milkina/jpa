@@ -19,6 +19,6 @@ public class QuestionEntryCreatedDateTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in QuestionEntryCreatedDateTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

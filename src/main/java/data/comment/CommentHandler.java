@@ -4,12 +4,13 @@ import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
 
-import static util.AllBeanNameConstants.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.util.List;
+
+import static util.AllBeanNameConstants.COMMENT_BEAN_NAME;
 
 /**
  * Created by IntelliJ IDEA.

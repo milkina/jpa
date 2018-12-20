@@ -3,7 +3,6 @@ package data.category;
 import data.questionEntry.QuestionEntryBeanI;
 import data.questionEntry.QuestionEntryHandler;
 import data.test.TestBeanI;
-import data.test.TestHandler;
 import model.Category;
 import model.Test;
 import util.CategoryUtility;
@@ -28,11 +27,9 @@ public class CategoryHandler {
 
     private CategoryBeanI categoryBean;
     private Context ct;
-    private TestHandler testHandler;
     private QuestionEntryHandler questionEntryHandler;
 
     public CategoryHandler() {
-        testHandler = new TestHandler();
         questionEntryHandler = new QuestionEntryHandler();
         try {
             ct = new InitialContext();
@@ -44,7 +41,6 @@ public class CategoryHandler {
 
     public CategoryHandler(CategoryBeanI categoryBean, TestBeanI testBean, QuestionEntryBeanI questionEntryBean) {
         this.categoryBean = categoryBean;
-        testHandler = new TestHandler(testBean);
         questionEntryHandler = new QuestionEntryHandler(questionEntryBean);
     }
 

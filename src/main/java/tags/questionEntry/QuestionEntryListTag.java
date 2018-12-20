@@ -19,8 +19,8 @@ import static util.AllConstantsParam.TYPE;
  * Created by Tatyana on 05.06.2016.
  */
 public class QuestionEntryListTag extends BodyTagSupport {
-    QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-    CategoryHandler categoryHandler = new CategoryHandler();
+    private QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+    private CategoryHandler categoryHandler = new CategoryHandler();
     private List<AbstractQuestionEntry> questionEntries;
 
     public List<AbstractQuestionEntry> getQuestionEntries() {

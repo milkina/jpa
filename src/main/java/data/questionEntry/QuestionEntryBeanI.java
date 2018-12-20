@@ -1,6 +1,11 @@
 package data.questionEntry;
 
-import model.*;
+import model.AbstractQuestionEntry;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.Test;
+import model.TestQuestionEntry;
 import model.person.Person;
 
 import javax.ejb.Local;

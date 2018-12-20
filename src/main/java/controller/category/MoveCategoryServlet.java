@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static util.AllConstantsParam.*;
+import static util.AllConstantsParam.PREVIOUS_CATEGORY_PATH;
+import static util.AllConstantsParam.TEST_PATH;
+
 
 /**
  * Created by Tatyana on 25.12.2016.

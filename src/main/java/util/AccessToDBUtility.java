@@ -2,7 +2,12 @@ package util;
 
 import model.Category;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,13 +23,12 @@ public class AccessToDBUtility {
     private String password;
     private Connection connection;
 
-    public AccessToDBUtility(String driver, String url, String username,
-                             String password) {
+   /* public AccessToDBUtility() {
         this.driver = "com.mysql.jdbc.jdbc2.optional.MysqlXADataSource";
         this.url = "jdbc:mysql://127.12.113.1:3306/quiz";
         this.username = "admin";
         this.password = "csmdZfsVzBr6";
-    }
+    }*/
 
     public AccessToDBUtility() {
         this.driver = "com.mysql.jdbc.jdbc2.optional.MysqlXADataSource";
@@ -41,28 +45,19 @@ public class AccessToDBUtility {
         try {
             Class.forName(driver);
             connection = DriverManager.getConnection(url, username, password);
-            //	System.out.println("Connection is created "+this);
-
         } catch (SQLException e) {
             System.out.println("SQLException in createConnection" + e);
         } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException in createConnection " + e);
         }
-
     }
 
     public synchronized void closeConnection() {
         try {
             connection.close();
-            //	System.out.println("Connection is closed "+this);
         } catch (SQLException e) {
             System.out.println("SQLException in closeConnection" + e);
         }
-
-    }
-
-    public static void main(String[] args) {
-
 
     }
 
@@ -94,7 +89,6 @@ public class AccessToDBUtility {
             throw e;
         }
         return categoryID;
-
     }
 
     public int addQuestionText(String question) throws SQLException {

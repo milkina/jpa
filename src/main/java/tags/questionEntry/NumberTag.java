@@ -1,7 +1,5 @@
 package tags.questionEntry;
 
-import model.QuestionEntry;
-
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -20,6 +18,6 @@ public class NumberTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in NumberTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

@@ -33,8 +33,9 @@ public class ChangeAnsweredQuestionServlet extends HttpServlet {
                 : request.getParameter(UNCHECKED_PARAM);
         HttpSession session = request.getSession();
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(
-                Integer.valueOf(idString));
+        int id = Integer.parseInt(idString);
+        AbstractQuestionEntry questionEntry =
+                questionEntryHandler.getQuestionEntry(id);
 
         List<AbstractQuestionEntry> answeredQuestions =
                 PersonUtility.getAnsweredQuestions(session);

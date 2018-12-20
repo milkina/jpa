@@ -2,7 +2,19 @@ package model.person;
 
 import model.AbstractQuestionEntry;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +42,7 @@ public class Person implements Comparable<Person> {
     private String login = "";
 
     @Column(name = "password")
-    String password = "";
+    private String password = "";
 
     @Column(name = "sysadmin")
     private Boolean sysadmin = false;

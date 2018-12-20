@@ -22,7 +22,7 @@ public class Question implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="question")
+    @Column(name = "question")
     private String text;
 
     public int getId() {

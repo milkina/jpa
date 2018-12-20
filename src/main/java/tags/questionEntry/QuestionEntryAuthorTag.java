@@ -1,11 +1,8 @@
 package tags.questionEntry;
 
-import util.GeneralUtility;
-
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
-import java.util.Date;
 
 public class QuestionEntryAuthorTag extends TagSupport {
 
@@ -19,6 +16,6 @@ public class QuestionEntryAuthorTag extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in QuestionEntryAuthorTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

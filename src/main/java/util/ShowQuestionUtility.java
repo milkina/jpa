@@ -2,7 +2,9 @@ package util;
 
 import model.AbstractQuestionEntry;
 
-import static util.AllConstantsParam.*;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.EDIT_MODE_PARAM;
+import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
 
 /**
  * Created by Tatyana on 29.12.2015.

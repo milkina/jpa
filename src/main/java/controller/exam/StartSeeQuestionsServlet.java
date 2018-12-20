@@ -17,8 +17,13 @@ import java.util.List;
 
 import static util.AllConstants.MESSAGE_PAGE;
 import static util.AllConstants.SHOW_EXAM_QUESTION;
-import static util.AllConstantsAttribute.*;
-import static util.AllConstantsParam.*;
+import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
+import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.QUESTION_NUMBER;
+import static util.AllConstantsParam.TEST_PATH;
 import static util.AllMessage.EXAM_EMPTY;
 
 public class StartSeeQuestionsServlet extends HttpServlet {

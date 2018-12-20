@@ -3,7 +3,11 @@ package controller;
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import data.test.TestHandler;
-import model.*;
+import model.AbstractQuestionEntry;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.Test;
 import model.person.Person;
 import util.CategoryUtility;
 import util.GeneralUtility;
@@ -18,11 +22,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static util.AllConstants.*;
+import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
+import static util.AllConstants.EDIT_QUESTION_ENTRY_SERVLET;
+import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstants.MOVE_QUESTIONS_PAGE;
+import static util.AllConstants.SHOW_QUESTIONS_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
-import static util.AllConstantsParam.*;
-import static util.AllMessage.*;
+import static util.AllConstantsParam.ANSWER_NUMBER;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.EDIT_MODE_PARAM;
+import static util.AllConstantsParam.FROM_NUMBER;
+import static util.AllConstantsParam.OLD_CATEGORY_PATH;
+import static util.AllConstantsParam.OLD_TEST_PATH;
+import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
+import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TO_NUMBER;
+import static util.AllConstantsParam.TYPE;
+import static util.AllMessage.INVALID_NUMBERS_MESSAGE;
+import static util.AllMessage.QUESTIONS_MOVED;
+import static util.AllMessage.QUESTION_APPROVED;
+import static util.AllMessage.QUESTION_CHANGED_MESSAGE;
+import static util.AllMessage.QUESTION_REMOVE_MESSAGE;
+import static util.AllMessage.SELECT_DIFFERENT_CATEGORY;
 
 /**
  * Created by IntelliJ IDEA.
@@ -151,7 +174,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
     private AbstractQuestionEntry findQuestionEntry(HttpServletRequest request) {
         String questionEntryId = request.getParameter(QUESTION_ENTRY_ID_PARAM);
         return new QuestionEntryHandler().getQuestionEntry(
-                Integer.valueOf(questionEntryId));
+                Integer.parseInt(questionEntryId));
     }
 
     private void moveQuestionEntryUp(HttpServletRequest request,
@@ -196,7 +219,7 @@ public class EditQuestionEntryServlet extends HttpServlet {
                 QUESTION_ENTRY_ID_PARAM);
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        Category category = updateCategory(questionEntryId, questionEntryHandler);
+        updateCategory(questionEntryId, questionEntryHandler);
         questionEntryHandler.deleteQuestionEntry(questionEntryId);
 
         RequestDispatcher dispatcher =

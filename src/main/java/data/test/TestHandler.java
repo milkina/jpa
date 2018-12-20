@@ -1,6 +1,5 @@
 package data.test;
 
-import data.category.CategoryBeanI;
 import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
@@ -8,9 +7,13 @@ import model.Test;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.*;
 
-import static util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import static util.AllBeanNameConstants.TEST_BEAN_NAME;
 
 /**
@@ -22,14 +25,12 @@ import static util.AllBeanNameConstants.TEST_BEAN_NAME;
  */
 public class TestHandler {
     private TestBeanI testBean;
-    private CategoryBeanI categoryBean;
     private Context ct;
 
     public TestHandler() {
         try {
             ct = new InitialContext();
             testBean = (TestBeanI) ct.lookup(TEST_BEAN_NAME);
-            categoryBean = (CategoryBeanI) ct.lookup(CATEGORY_BEAN_NAME);
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -53,7 +54,7 @@ public class TestHandler {
     }
 
     public Map<Integer, Test> getAllTests() {
-        Map<Integer, Test> map = new TreeMap<Integer, Test>();
+        Map<Integer, Test> map = new TreeMap<>();
         List<Object[]> list = testBean.getAllTests();
         if (list != null) {
             for (Object[] object : list) {
@@ -78,7 +79,7 @@ public class TestHandler {
     }
 
     public Map<String, Integer> getPathName() {
-        Map<String, Integer> result = new HashMap<String, Integer>();
+        Map<String, Integer> result = new HashMap<>();
         List<Object[]> list = testBean.getPathName();
         for (Object[] r : list) {
             result.put(r[1].toString(), (Integer) r[0]);

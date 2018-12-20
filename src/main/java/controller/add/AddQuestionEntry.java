@@ -1,7 +1,11 @@
 package controller.add;
 
 import data.questionEntry.QuestionEntryHandler;
-import model.*;
+import model.AbstractQuestionEntry;
+import model.Category;
+import model.Question;
+import model.QuestionEntry;
+import model.TestQuestionEntry;
 import model.person.Person;
 import util.CategoryUtility;
 import util.GeneralUtility;

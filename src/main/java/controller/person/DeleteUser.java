@@ -16,7 +16,9 @@ import java.util.List;
 import static util.AllConstants.MESSAGE_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsParam.USER_ID;
-import static util.AllMessage.*;
+import static util.AllMessage.USER_HAS_ADDED_QUESTIONS;
+import static util.AllMessage.USER_NOT_REMOVED;
+import static util.AllMessage.USER_REMOVED;
 
 /**
  * Created by Tatyana on 25.05.2016.

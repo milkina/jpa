@@ -1,13 +1,18 @@
 package data.questionEntry;
 
-import model.*;
+import model.AbstractQuestionEntry;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.QuestionEntry;
+import model.Test;
+import model.TestQuestionEntry;
 import model.person.Person;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Collections;
 import java.util.List;
 
 import static util.AllConstants.GET_ALL_QUESTION_ENTRIES;
@@ -43,7 +48,6 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
     }
 
     public List<AbstractQuestionEntry> getAnsweredQuestions(Category category, Person person) {
-        List<AbstractQuestionEntry> list;
         Query query = entityManager.createNamedQuery(
                 "QuestionEntry.GET_ANSWERED_QUESTION_ENTRIES");
         query.setParameter("category", category);

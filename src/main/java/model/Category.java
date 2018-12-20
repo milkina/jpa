@@ -3,7 +3,23 @@ package model;
 
 import model.article.Article;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,11 +83,11 @@ public class Category implements Serializable, Comparable<Category> {
 
     @ManyToOne
     @JoinColumn(name = "parent_category")
-    public Category parentCategory;
+    private Category parentCategory;
 
     @OneToMany(mappedBy = "parentCategory", fetch = FetchType.EAGER)
     @OrderBy("orderId,id")
-    public List<Category> subCategories;
+    private List<Category> subCategories;
 
     private boolean hidden = false;
     private int orderId;

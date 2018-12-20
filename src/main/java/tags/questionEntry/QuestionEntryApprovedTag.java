@@ -16,6 +16,6 @@ public class QuestionEntryApprovedTag  extends TagSupport {
         } catch (IOException ioe) {
             System.out.println("Error in QuestionEntryApprovedTag: " + ioe);
         }
-        return (SKIP_BODY);
+        return SKIP_BODY;
     }
 }

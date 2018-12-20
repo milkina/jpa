@@ -2,7 +2,23 @@ package model;
 
 import model.person.Person;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -32,30 +48,30 @@ public abstract class AbstractQuestionEntry {
     @Id
     @Column(name = "entry_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
-    protected Category category;
+    private Category category;
 
     @OneToOne(cascade = {CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "question_id", referencedColumnName = "id")
-    protected Question question;
+    private Question question;
 
     @OneToMany(mappedBy = "questionEntry", fetch = FetchType.EAGER,
             cascade = {CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REMOVE})
-    protected List<Answer> answers;
+    private List<Answer> answers;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    protected Person person;
+    private Person person;
 
     @Column(name = "CREATED_DATE")
-    protected Date createdDate;
+    private Date createdDate;
 
-    protected int orderColumn;
+    private int orderColumn;
 
     @Column(name = "QTYPE", insertable = false, updatable = false)
     private String type;

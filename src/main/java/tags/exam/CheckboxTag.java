@@ -29,12 +29,12 @@ public class CheckboxTag extends TagSupport {
                 String isCheckedQuestion = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions) ? "checked" : "";
                 String contextPath = pageContext.getServletContext().getContextPath();
                 String str = String.format("<input type='checkbox' id='%s' name='isAnswered'" +
-                                "title='%s' %s onchange=\"markAnswered('%s',%d);\">"
-                        , checkboxId
-                        , MARK_QUESTION_HINT
-                        , isCheckedQuestion
-                        , contextPath
-                        , questionEntryId);
+                                "title='%s' %s onchange=\"markAnswered('%s',%d);\">",
+                        checkboxId,
+                        MARK_QUESTION_HINT,
+                        isCheckedQuestion,
+                        contextPath,
+                        questionEntryId);
                 out.print(str);
             }
         } catch (IOException ioe) {

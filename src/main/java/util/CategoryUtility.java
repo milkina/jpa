@@ -16,8 +16,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static util.AllConstantsAttribute.*;
-import static util.AllConstantsParam.*;
+import static util.AllConstantsAttribute.DUPLICATE_CATEGORIES;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsParam.CATEGORY_HIDDEN;
+import static util.AllConstantsParam.CATEGORY_NAME;
+import static util.AllConstantsParam.CATEGORY_PARENT;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.CATEGORY_PATH_NAME;
+import static util.AllConstantsParam.TEST_PATH;
 
 /**
  * Created by IntelliJ IDEA.

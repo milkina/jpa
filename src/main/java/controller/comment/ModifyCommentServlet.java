@@ -20,7 +20,6 @@ import static util.AllConstantsParam.COMMENT_BODY;
 import static util.AllConstantsParam.COMMENT_TYPE;
 import static util.AllConstantsParam.REFERENCE_ID;
 import static util.AllMessage.COMMENT_CHANGED;
-import static util.AllMessage.COMMENT_REMOVED;
 import static util.GeneralUtility.getIntegerValue;
 
 /**

@@ -25,7 +25,7 @@ public class ExamUtility {
     public static boolean isQuestionChecked(int questionNumber, QuestionExam exam,
                                             List<AbstractQuestionEntry> ansQuestions) {
         AbstractQuestionEntry questionEntry =
-                (AbstractQuestionEntry)exam.getQuestionEntries().get(questionNumber);
+                (AbstractQuestionEntry) exam.getQuestionEntries().get(questionNumber);
         Person person = exam.getPerson();
         if (person == null) {
             return false;
@@ -47,7 +47,7 @@ public class ExamUtility {
                 || exam.getCurrentNumber() == null) {
             return null;
         }
-        return (AbstractQuestionEntry)exam.getQuestionEntries().get(exam.getCurrentNumber());
+        return (AbstractQuestionEntry) exam.getQuestionEntries().get(exam.getCurrentNumber());
     }
 
 

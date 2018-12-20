@@ -1,6 +1,8 @@
 package controller.exam;
 
-import model.*;
+import model.AbstractExam;
+import model.AbstractQuestionEntry;
+import model.QuestionExam;
 import util.GeneralUtility;
 
 import javax.servlet.RequestDispatcher;

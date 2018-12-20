@@ -8,5 +8,5 @@ package model.person;
  * To change this template use File | Settings | File Templates.
  */
 public enum PhoneType {
-    HOME,WORK, MOBILE
+    HOME, WORK, MOBILE
 }

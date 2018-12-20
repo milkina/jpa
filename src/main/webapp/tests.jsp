@@ -5,7 +5,7 @@
     <jsp:attribute name="header">
         <META NAME="Keywords" CONTENT="java tests">
         <META NAME="Description"
-                       CONTENT="Free online Java Tests.">
+                       CONTENT="Free online Java Tests">
         <title>Tests</title>
             <jsp:include page="/WEB-INF/google-ads-header.jsp" />
     </jsp:attribute>

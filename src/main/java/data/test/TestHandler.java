@@ -4,17 +4,11 @@ import data.category.CategoryBeanI;
 import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
-import util.TestUtility;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.HashMap;
+import java.util.*;
 
 import static util.AllBeanNameConstants.CATEGORY_BEAN_NAME;
 import static util.AllBeanNameConstants.TEST_BEAN_NAME;
@@ -108,13 +102,6 @@ public class TestHandler {
         testBean.removeCategoryFromTest(test, category);
     }
 
-    public void moveTestUp(Test test, Map<String, Test> testMap) {
-        Test previousTest = TestUtility.getPreviousTest(test, testMap);
-        if (previousTest != null) {
-            swapTests(test, previousTest);
-        }
-    }
-
     public void swapTests(Test test1, Test test2) {
         int id1 = test1.getOrderId();
         int id2 = test2.getOrderId();
@@ -134,5 +121,13 @@ public class TestHandler {
 
     public List<Test> getAllTestsWithNotEmptyTests() {
         return testBean.getAllTestsWithNotEmptyTests();
+    }
+
+    public void moveTest(Test test, Test stopTest) {
+        if (test.getOrderId() > stopTest.getOrderId()) {
+            testBean.moveTestUp(test.getPathName(), stopTest.getPathName());
+        } else {
+            testBean.moveTestDown(test.getPathName(), stopTest.getPathName());
+        }
     }
 }

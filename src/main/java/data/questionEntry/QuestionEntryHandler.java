@@ -192,7 +192,7 @@ public class QuestionEntryHandler {
         return questionEntryBean.getNotApprovedQuestions();
     }
 
-    public List<AbstractQuestionEntry> getPersonQuestions(Person person) {
+    public List<AbstractQuestionEntry> getPersonQuestions(int person) {
         return questionEntryBean.getPersonQuestions(person);
     }
 }

@@ -147,7 +147,7 @@ public class QuestionEntryBean implements QuestionEntryBeanI {
         return query.getResultList();
     }
 
-    public List<AbstractQuestionEntry> getPersonQuestions(Person person) {
+    public List<AbstractQuestionEntry> getPersonQuestions(int person) {
         Query query = entityManager.createNamedQuery(
                 "AbstractQuestionEntry.getPersonQuestions");
         query.setParameter("param", person);

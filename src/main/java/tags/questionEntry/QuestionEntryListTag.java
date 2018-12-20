@@ -38,7 +38,7 @@ public class QuestionEntryListTag extends BodyTagSupport {
             questionEntries = questionEntryHandler.getNotApprovedQuestions();
         } else if (QuestionType.MY_QUESTIONS.toString().equals(type)) {
             Person person = (Person) pageContext.getSession().getAttribute(PERSON_ATTRIBUTE);
-            questionEntries = questionEntryHandler.getPersonQuestions(person);
+            questionEntries = questionEntryHandler.getPersonQuestions(person.getID());
         }
         return EVAL_BODY_INCLUDE;
     }

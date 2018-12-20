@@ -22,7 +22,8 @@
          <div class="adminUserCell">
             <a href="${pageContext.request.contextPath}/servlet/DeleteUser?USER_ID=<%=p.getID()%>">Delete</a></div>
          <div class="adminUserCell">
-                     <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>">See History</a></div>
+            <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>"
+             id="seeHistory<%=p.getLogin()%>">See History</a></div>
        </div>
        <%}%>
 </div>

@@ -41,7 +41,7 @@
     <li><a href="<%=request.getContextPath()%>/ocjp-ocpjp.jsp" id="ocjp-ocpjp">OCJP/OCPJP</a></li>
     <li><a href="<%=request.getContextPath()%>/jpa" id="jpa">OCEJPAD 6</a></li>
     <li><a href="<%=request.getContextPath()%>/web-services" id="web-services">OCEJWSD 6</a></li>
-    <li><a href="<%=request.getContextPath()%>/exam/java-core-russian" id="java-core-russian">Java Basics (Russian)</a></li>
+    <li><a href="<%=request.getContextPath()%>/exam/java-core-russian" id="java-core-russian">Java Core</a></li>
     <c:if test="${person!=null}">
        <li><a href="<%=request.getContextPath()%>/show-user-profile">My Profile</a></li>
     </c:if>

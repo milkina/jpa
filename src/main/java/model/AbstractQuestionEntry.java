@@ -16,7 +16,7 @@ import java.util.List;
                         + "JOIN FETCH qe.category WHERE qe.approved=false ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "AbstractQuestionEntry.getPersonQuestions",
                 query = "SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.person=:param ORDER BY qe.orderColumn, qe.id"),
+                        + "JOIN FETCH qe.category WHERE qe.person.ID=:param ORDER BY qe.orderColumn, qe.id"),
         @NamedQuery(name = "QuestionEntry.getPreviousQuestionEntry",
                 query = "SELECT qe1 FROM AbstractQuestionEntry qe1 "
                         + "WHERE qe1.orderColumn = (SELECT max(qe2.orderColumn) "

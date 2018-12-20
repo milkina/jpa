@@ -282,7 +282,7 @@ public class QuestionEntryHandlerIT extends BaseIT {
 
     @Test
     public void testGetPersonQuestions() {
-        List<AbstractQuestionEntry> result = questionEntryHandler.getPersonQuestions(persons[2]);
+        List<AbstractQuestionEntry> result = questionEntryHandler.getPersonQuestions(persons[2].getID());
         Assert.assertNotNull(result);
         Assert.assertEquals(result.size(), 5);
     }

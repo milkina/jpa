@@ -33,4 +33,8 @@ public interface TestBeanI {
     Test getTestByQuestion(AbstractQuestionEntry questionEntry);
 
     List<Test> getAllTestsWithNotEmptyTests();
+
+    void moveTestUp(String testPath, String stopTestPath);
+
+    void moveTestDown(String testPath, String stopTestPath);
 }

@@ -34,7 +34,13 @@ import java.util.Map;
                 query = "SELECT distinct t FROM Test t "
                         + "left join t.categories c WHERE "
                         + "c.hidden=false AND c.testsCount>0 "
-                        + "ORDER BY t.orderId")
+                        + "ORDER BY t.orderId"),
+        @NamedQuery(name = "Test.getPreviousTests",
+                query = "SELECT t FROM Test t WHERE t.orderId<= "
+                        + " (SELECT tt.orderId FROM Test tt WHERE tt.pathName=:param) ORDER BY t.orderId"),
+        @NamedQuery(name = "Test.getNextTests",
+                query = "SELECT t FROM Test t WHERE t.orderId>= "
+                        + " (SELECT tt.orderId FROM Test tt WHERE tt.pathName=:param) ORDER BY t.orderId")
 })
 public class Test implements Serializable, Comparable<Test> {
     @Id

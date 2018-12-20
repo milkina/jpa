@@ -115,20 +115,6 @@ public class TestUtility {
         return test;
     }
 
-    public static Test getPreviousTest(Test test, Map<String, Test> testMap) {
-        Test previousTest = null;
-        if (testMap == null || testMap.isEmpty() || test == null) {
-            return null;
-        }
-        for (Map.Entry<String, Test> testEntry : testMap.entrySet()) {
-            if (test.equals(testEntry.getValue())) {
-                break;
-            }
-            previousTest = testEntry.getValue();
-        }
-        return previousTest;
-    }
-
     public static void setArticleData(Test test, HttpServletRequest request) {
         Article article = test.getArticle();
         if (article != null) {

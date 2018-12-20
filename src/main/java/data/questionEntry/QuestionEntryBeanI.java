@@ -56,5 +56,5 @@ public interface QuestionEntryBeanI {
 
     List<AbstractQuestionEntry> getNotApprovedQuestions();
 
-    List<AbstractQuestionEntry> getPersonQuestions(Person person);
+    List<AbstractQuestionEntry> getPersonQuestions(int person);
 }

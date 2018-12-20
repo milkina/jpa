@@ -79,4 +79,51 @@ public class TestBean implements TestBeanI {
         Query query = entityManager.createNamedQuery("Test.findAllWithNotEmptyTests");
         return query.getResultList();
     }
+
+    private List<Test> getPreviousTests(String testPath) {
+        Query query = entityManager.createNamedQuery("Test.getPreviousTests");
+        query.setParameter("param", testPath);
+        return query.getResultList();
+    }
+
+    private List<Test> getNextTests(String testPath) {
+        Query query = entityManager.createNamedQuery("Test.getNextTests");
+        query.setParameter("param", testPath);
+        return query.getResultList();
+    }
+
+    public void moveTestUp(String testPath, String stopTestPath) {
+        List<Test> tests = getPreviousTests(testPath);
+        for (int i = tests.size() - 1; i > 0; i--) {
+            if (stopTestPath.equals(tests.get(i - 1).getPathName())) {
+                break;
+            }
+            swapTests(tests.get(i), tests.get(i - 1));
+
+            Test tmp = tests.get(i);
+            tests.set(i, tests.get(i - 1));
+            tests.set(i - 1, tmp);
+        }
+    }
+
+    public void moveTestDown(String testPath, String stopTestPath) {
+        List<Test> tests = getNextTests(testPath);
+        for (int i = 0; i < tests.size() - 1; i++) {
+            swapTests(tests.get(i), tests.get(i + 1));
+
+            Test tmp = tests.get(i);
+            tests.set(i, tests.get(i + 1));
+            tests.set(i + 1, tmp);
+            if (stopTestPath.equals(tests.get(i).getPathName())) {
+                break;
+            }
+        }
+    }
+
+    private void swapTests(Test test1, Test test2) {
+        int id1 = test1.getOrderId();
+        int id2 = test2.getOrderId();
+        test1.setOrderId(id2);
+        test2.setOrderId(id1);
+    }
 }

@@ -46,3 +46,14 @@ function deleteTest(contextPath, test){
               + "&TEST_PATH=" + testPath);
  }
 
+ function moveTestUp(testPath, previousTest, contextPath) {
+     var url = contextPath + "/servlet/UpTestServlet";
+
+     req.open("POST", url, true);
+     req.setRequestHeader("Content-Type",
+             "application/x-www-form-urlencoded");
+
+     req.send("PREVIOUS_TEST_PATH=" + previousTest
+              + "&TEST_PATH=" + testPath);
+ }
+

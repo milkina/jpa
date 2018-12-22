@@ -1,5 +1,7 @@
 package utils;
 
+import controller.language.LanguageBeanI;
+import controller.language.LanguageHandler;
 import data.article.ArticleBeanI;
 import data.article.ArticleHandler;
 import data.category.CategoryBeanI;
@@ -8,6 +10,7 @@ import data.comment.CommentBeanI;
 import data.comment.CommentHandler;
 import data.exam.ExamBeanI;
 import data.exam.ExamHandler;
+import data.language.Language;
 import data.person.PersonBeanI;
 import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryBeanI;
@@ -37,6 +40,7 @@ public class BaseIT {
     protected static CommentBeanI commentBean;
     protected static ArticleBeanI articleBean;
     protected static ExamBeanI examBean;
+    protected static LanguageBeanI languageBean;
 
     protected static TestHandler testHandler;
     protected static CategoryHandler categoryHandler;
@@ -45,6 +49,7 @@ public class BaseIT {
     protected static CommentHandler commentHandler;
     protected static ArticleHandler articleHandler;
     protected static ExamHandler examHandler;
+    protected static LanguageHandler languageHandler;
 
     protected static model.Test[] tests;
     protected static Person[] persons;
@@ -55,6 +60,7 @@ public class BaseIT {
     protected static Comment[] comments;
     protected static Article[] articles;
     protected static AbstractExam[] exams;
+    protected static Language[] languages;
 
     static {
         prepareBeans();
@@ -70,6 +76,7 @@ public class BaseIT {
 
         prepareArticles();
         prepareExams();
+        prepareLanguages();
     }
 
     private static void prepareExams() {
@@ -78,6 +85,14 @@ public class BaseIT {
         exams[1] = createQuestionExam(categories[1], persons[0], 50);
         examHandler.createExam(exams[0]);
         examHandler.createExam(exams[1]);
+    }
+
+    private static void prepareLanguages() {
+        languages = new Language[2];
+        languages[0] = createLanguage(0);
+        languages[1] = createLanguage(1);
+        languageHandler.createLanguage(languages[0]);
+        languageHandler.createLanguage(languages[1]);
     }
 
     private static void prepareArticles() {
@@ -154,6 +169,7 @@ public class BaseIT {
         commentHandler = new CommentHandler(commentBean);
         articleHandler = new ArticleHandler(articleBean);
         examHandler = new ExamHandler(examBean);
+        languageHandler = new LanguageHandler(languageBean);
     }
 
     private static void prepareBeans() {
@@ -164,6 +180,7 @@ public class BaseIT {
         commentBean = InitialContextHandler.getCommentBean();
         articleBean = InitialContextHandler.getArticleBean();
         examBean = InitialContextHandler.getExamBean();
+        languageBean = InitialContextHandler.getLanguageBean();
     }
 
     private static void prepareCategories() {

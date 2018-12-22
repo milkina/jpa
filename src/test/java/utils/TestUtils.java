@@ -1,5 +1,6 @@
 package utils;
 
+import data.language.Language;
 import model.*;
 import model.article.Article;
 import model.comment.Comment;
@@ -195,7 +196,12 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
         return article;
     }
 
-
+    public static Language createLanguage(int i) {
+        Language language = new Language();
+        language.setCode(LANGUAGE_CODE[i]);
+        language.setDescription(LANGUAGE_DESCRIPTION[i]);
+        return language;
+    }
 
    /*
     public static UserTest createUserTest(int ansQuestions, boolean isPassed, Date date, int totalQuestion, Person person, List<UserAnswer> userAnswers) {

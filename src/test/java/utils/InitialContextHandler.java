@@ -1,5 +1,6 @@
 package utils;
 
+import controller.language.LanguageBeanI;
 import data.article.ArticleBeanI;
 import data.category.CategoryBeanI;
 import data.comment.CommentBeanI;
@@ -29,6 +30,7 @@ public class InitialContextHandler {
     protected static String COMMENT_BEAN_NAME = "CommentBeanLocal";
     protected static String ARTICLE_BEAN_NAME = "ArticleBeanLocal";
     protected static String EXAM_BEAN_NAME = "ExamBeanLocal";
+    protected static String LANGUAGE_BEAN_NAME = "LanguageBeanLocal";
 
     public static InitialContext initialContext = createInitialContext();
 
@@ -114,5 +116,11 @@ public class InitialContextHandler {
         Object object = getBean(EXAM_BEAN_NAME);
         Assert.assertTrue(object instanceof ExamBeanI);
         return (ExamBeanI) object;
+    }
+
+    public static LanguageBeanI getLanguageBean() {
+        Object object = getBean(LANGUAGE_BEAN_NAME);
+        Assert.assertTrue(object instanceof LanguageBeanI);
+        return (LanguageBeanI) object;
     }
 }

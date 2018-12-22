@@ -1,6 +1,7 @@
 package util;
 
 import data.category.CategoryHandler;
+import data.language.Language;
 import data.test.TestHandler;
 import model.Category;
 import model.Test;
@@ -16,9 +17,18 @@ import java.util.Date;
 import java.util.Map;
 
 import static util.AllConstants.TEST_NAME_PARAM;
-import static util.AllConstantsAttribute.*;
-import static util.AllConstantsParam.*;
-import static util.GeneralUtility.*;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
+import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsAttribute.TEST_PATHS_ATTRIBUTE;
+import static util.AllConstantsParam.CATEGORY_ID_PARAMETER;
+import static util.AllConstantsParam.LANGUAGE;
+import static util.AllConstantsParam.TEST_ICON_TEXT;
+import static util.AllConstantsParam.TEST_ID_PARAM;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TEST_TAGS;
+import static util.GeneralUtility.decodeRussianCharacters;
+import static util.GeneralUtility.getIntegerValue;
+import static util.GeneralUtility.roundTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -133,10 +143,13 @@ public class TestUtility {
         String newPathName = request.getParameter(TEST_PATH);
         String newTags = request.getParameter(TEST_TAGS);
         String iconText = request.getParameter(TEST_ICON_TEXT);
+        String languageCode = request.getParameter(LANGUAGE);
 
         test.setName(decodeRussianCharacters(newName));
         test.setPathName(newPathName);
         test.setTags(decodeRussianCharacters(newTags));
         test.setIconText(decodeRussianCharacters(iconText));
+        Language language = LanguageUtility.findLanguageInContext(request.getServletContext(), languageCode);
+        test.setLanguage(language);
     }
 }

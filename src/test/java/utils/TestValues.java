@@ -45,6 +45,9 @@ public class TestValues {
     public static String ARTICLE_DESC[] = createArray("desc", CATEGORY_LENGTH);
     public static String ARTICLE_KEYWORDS[] = createArray("keywords", CATEGORY_LENGTH);
 
+    public static String LANGUAGE_CODE[] = createArray("code",2);
+    public static String LANGUAGE_DESCRIPTION[] = createArray("description",2);
+
     public static String[] createArray(String value, int length) {
         String[] result = new String[length];
         for (int i = 0; i < length; i++) {

@@ -1,8 +1,10 @@
 package controller.test;
 
 import util.CategoryUtility;
+import util.LanguageUtility;
 import util.TestUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -12,8 +14,10 @@ import javax.servlet.ServletContextListener;
 public class LoadTestServlet implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
-        TestUtility.loadTestsToServletContext(event.getServletContext());
-        CategoryUtility.setDuplicateCategories(event.getServletContext());
+        ServletContext servletContext = event.getServletContext();
+        TestUtility.loadTestsToServletContext(servletContext);
+        CategoryUtility.setDuplicateCategories(servletContext);
+        LanguageUtility.loadLanguages(servletContext);
     }
 
     @Override

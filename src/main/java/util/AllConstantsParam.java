@@ -53,6 +53,7 @@ public interface AllConstantsParam {
     String TEST_ICON_TEXT = "ICON_TEXT";
     String USER_ID = "USER_ID";
     String TYPE = "TYPE";
+    String LANGUAGE = "LANGUAGE";
 
     String CATEGORY_NAME = "categoryName";
     String CATEGORY_PATH_NAME = "categoryPathName";
@@ -64,11 +65,11 @@ public interface AllConstantsParam {
     String ARTICLE_KEYWORDS = "keywords";
     String ARTICLE_IMAGE = "ARTICLE_IMAGE";
 
-    String ARTICLE_ID ="ARTICLE_ID";
-    String ARTICLE_TEXT ="ARTICLE_TEXT";
-    String TITLE ="TITLE";
-    String QUESTION_NUMBER ="QUESTION_NUMBER";
-    String MODE ="MODE";
+    String ARTICLE_ID = "ARTICLE_ID";
+    String ARTICLE_TEXT = "ARTICLE_TEXT";
+    String TITLE = "TITLE";
+    String QUESTION_NUMBER = "QUESTION_NUMBER";
+    String MODE = "MODE";
 
     String PAGE_PARAM = "PAGE";
     String PAGE_VALUE = "EDIT";

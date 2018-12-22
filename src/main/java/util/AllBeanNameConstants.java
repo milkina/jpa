@@ -15,4 +15,5 @@ public interface AllBeanNameConstants {
     String PERSON_BEAN_NAME = AllConstants.LOCAL_NAME + "/PersonBean";
     String COMMENT_BEAN_NAME = AllConstants.LOCAL_NAME + "/CommentBean";
     String EXAM_BEAN_NAME = AllConstants.LOCAL_NAME + "/ExamBean";
+    String LANGUAGE_BEAN_NAME = AllConstants.LOCAL_NAME + "/LanguageBean";
 }

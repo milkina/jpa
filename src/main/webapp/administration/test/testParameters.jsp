@@ -1,7 +1,16 @@
  <strong class="adminLabel">Test Name:</strong>
-              <input name="testName" type="text" maxlength="70" required value="${TESTS[param.TEST_PATH].name}"> <br>
+             <input name="testName" type="text" maxlength="70" required value="${TESTS[param.TEST_PATH].name}"> <br>
              <strong class="adminLabel" >Test Path Name:</strong>
              <input name="TEST_PATH" type="text" maxlength="70" required value="${TESTS[param.TEST_PATH].pathName}"> <br>
+             <strong class="adminLabel">Language:</strong>
+             <select name="LANGUAGE">
+                <c:forEach var="language" items="${LANGUAGES}">
+                    <option value="${language.value.code}"
+                      <c:if test="${TESTS[param.TEST_PATH].language.code==language.value.code}">selected</c:if>
+                    >${language.value.description}
+                    </option>
+                </c:forEach>
+             </select><BR>
              <strong class="adminLabel">Tags:</strong>
              <input name="TEST_TAGS" type="text" maxlength="70" required value="${TESTS[param.TEST_PATH].tags}"> <br>
              <span class="adminLabel">Image Url:</span>

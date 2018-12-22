@@ -2,7 +2,6 @@ package ejb.article;
 
 import junit.framework.Assert;
 import model.article.Article;
-import util.article.ArticleUtility;
 import org.testng.annotations.Test;
 import utils.BaseIT;
 import utils.TestUtils;

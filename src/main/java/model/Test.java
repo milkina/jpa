@@ -1,9 +1,26 @@
 package model;
 
 
+import data.language.Language;
 import model.article.Article;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapKey;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -70,6 +87,18 @@ public class Test implements Serializable, Comparable<Test> {
     private Article article;
 
     private String iconText;
+
+    @ManyToOne
+    @JoinColumn(name = "language")
+    private Language language;
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 
     public Article getArticle() {
         return article;
@@ -199,7 +228,13 @@ public class Test implements Serializable, Comparable<Test> {
                 ", name='" + name + '\'' +
                 ", questionsNumber=" + questionsNumber +
                 ", updatedDate=" + updatedDate +
+                ", categories=" + categories +
                 ", pathName='" + pathName + '\'' +
+                ", tags='" + tags + '\'' +
+                ", orderId=" + orderId +
+                ", article=" + article +
+                ", iconText='" + iconText + '\'' +
+                ", language=" + language +
                 '}';
     }
 }

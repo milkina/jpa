@@ -3,6 +3,7 @@ package controller.person;
 import data.person.PersonHandler;
 import model.person.Person;
 import util.AllConstants;
+import util.GeneralUtility;
 import util.ServletUtilities;
 
 import static util.AllConstantsParam.PASSWORD_PARAMETER;
@@ -28,7 +29,7 @@ public class ChangePassword extends HttpServlet {
         HttpSession session = request.getSession();
         String password = "";
         if (request.getParameter(PASSWORD_PARAMETER) != null) {
-            password = request.getParameter(PASSWORD_PARAMETER).trim();
+            password = GeneralUtility.decodeRussianCharacters(request.getParameter(PASSWORD_PARAMETER).trim());
         }
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         person.setPassword(ServletUtilities.getMD5(password));

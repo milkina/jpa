@@ -3,6 +3,7 @@ package controller.person;
 import data.person.PersonHandler;
 import model.person.Person;
 import model.person.PersonInfo;
+import util.GeneralUtility;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,9 +36,9 @@ public class ChangeUserSettings extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        String login = request.getParameter(LOGIN_PARAMETER).trim();
-        String firstName = request.getParameter(FIRST_NAME_PARAM).trim();
-        String lastName = request.getParameter(LAST_NAME_PARAM).trim();
+        String login = GeneralUtility.decodeRussianCharacters(request.getParameter(LOGIN_PARAMETER).trim());
+        String firstName = GeneralUtility.decodeRussianCharacters(request.getParameter(FIRST_NAME_PARAM).trim());
+        String lastName = GeneralUtility.decodeRussianCharacters(request.getParameter(LAST_NAME_PARAM).trim());
         String email = request.getParameter(EMAIL_PARAM).trim();
 
         PersonHandler personHandler = new PersonHandler();

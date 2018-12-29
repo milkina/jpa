@@ -1,9 +1,12 @@
 package util;
 
 import model.person.Person;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -11,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 /**
@@ -153,5 +157,15 @@ public class GeneralUtility {
             System.out.println(e.getMessage());
         }
         return result;
+    }
+
+    public static HttpSession getSession(boolean allowCreate) {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        return attr.getRequest().getSession(allowCreate); // true == allow create
+    }
+
+    public static String getResourceValue(Locale locale, String key, String basename) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(basename, locale);
+        return GeneralUtility.decodeRussianCharacters(resourceBundle.getString(key));
     }
 }

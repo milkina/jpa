@@ -2,6 +2,7 @@ package data.person;
 
 import model.AbstractQuestionEntry;
 import model.person.Person;
+import util.ServletUtilities;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -63,6 +64,7 @@ public class PersonHandler {
         if (person == null) {
             return null;
         }
+        person.setPassword(ServletUtilities.getMD5(person.getPassword()));
         person.setCreatedDate(new Date());
         return personBean.addPerson(person);
     }

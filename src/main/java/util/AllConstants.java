@@ -44,8 +44,8 @@ public interface AllConstants {
     String SHOW_QUESTION_SERVLET_PAGE = "show-question";
     String SHOW_EXAM_QUESTION = "show-exam-question";
     String GROUP_NAME = "java";
-    String REGISTER_PAGE = "/Register.jsp";
-    String WELCOME_REGISTER_PAGE = "/person/welcome.jsp";
+    String REGISTER_PAGE = "person/register";
+    String WELCOME_REGISTER_PAGE = "/person/welcome";
     String SITE_NAME = "http://www.examclouds.com/";
     String TESTS_PAGE = "/tests.jsp";
 }

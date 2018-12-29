@@ -52,10 +52,6 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>CreatePerson</servlet-name>
-        <servlet-class>controller.CreatePerson</servlet-class>
-    </servlet>
      <servlet>
         <servlet-name>SaveComment</servlet-name>
         <servlet-class>controller.SaveComment</servlet-class>
@@ -214,10 +210,6 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/servlet/LoginServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>CreatePerson</servlet-name>
-        <url-pattern>/servlet/CreatePerson</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SaveComment</servlet-name>
         <url-pattern>/servlet/SaveComment</url-pattern>
@@ -278,6 +270,11 @@
         <servlet-name>ModifyCommentServlet</servlet-name>
         <url-pattern>/modify-comment</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>DeleteUser</servlet-name>
@@ -362,6 +359,10 @@
     <servlet-mapping>
         <servlet-name>ShowCoursesWithTests</servlet-name>
         <url-pattern>/tests</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <error-page>

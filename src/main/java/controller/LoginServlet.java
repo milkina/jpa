@@ -2,6 +2,7 @@ package controller;
 
 import data.person.PersonHandler;
 import model.person.Person;
+import util.GeneralUtility;
 import util.ServletUtilities;
 
 import static util.AllConstantsParam.LOGIN_PARAMETER;
@@ -21,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
 /**
  * Created by IntelliJ IDEA.
  * User: TanyaM
@@ -35,12 +35,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {   //If Register
         String address;
 
-        // If Enter in the system
         PersonHandler personHandler = new PersonHandler();
+        String login = GeneralUtility.decodeRussianCharacters(request.getParameter(LOGIN_PARAMETER));
+        String password = ServletUtilities.getMD5(
+                GeneralUtility.decodeRussianCharacters(request.getParameter(PASSWORD_PARAMETER)));
         Person person = personHandler.getPersonByLoginAndPassword(
-                request.getParameter(LOGIN_PARAMETER),
-                ServletUtilities.getMD5(
-                        request.getParameter(PASSWORD_PARAMETER)));
+                login, password);
 
         if (person != null) {
             Cookie cookie;

@@ -9,8 +9,6 @@ package util;
  */
 public interface AllMessage {
     String WRONG_LOGIN_MESSAGE = "Wrong Login or Password";
-    String PASS_AND_CONF_PASS_DIFFERENT_MESSAGE =
-            "Password and Confirm Password should be the same. Please re-enter.";
     String LOGIN_EXIST_MESSAGE = "Such login already exists.";
     String ENTER_REQ_FIELDS_MESSAGE = "Please enter all required fields.";
     String QUESTION_ADDED_MESSAGE = "The question is added.";

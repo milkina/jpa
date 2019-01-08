@@ -31,7 +31,12 @@
                <span id="personLogin">${person.login}</span><br>
                <a href="<%=request.getContextPath()%>/logout" id="isLogin" class="menuHref">log out</a>
             </c:otherwise>
-        </c:choose>
+        </c:choose><BR>
+        <span class="menuHref">
+            <a href="?lang=en">en</a>
+            |
+            <a href="?lang=ru">ru</a>
+        </span>
         </div>
   </div>
 <div class="indentmenu">

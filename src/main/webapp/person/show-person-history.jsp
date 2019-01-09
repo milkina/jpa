@@ -15,13 +15,15 @@
         <tr>
                         <td width="10%"><B>Date</B></td>
                         <td width="10%"><B>Percent</B></td>
-                        <td width="80%"><B>Category</B></td>
+                        <td width="10%"><B>Number of Questions</B></td>
+                        <td width="70%"><B>Category</B></td>
         </tr>
         <c:forEach var="exam" items="${USER_TEST_EXAMS}">
            <tr>
                 <td width="10%">${exam.formattedDate}</td>
                 <td width="10%">${exam.percent}%</td>
-                <td width="80%">(${fn:length(exam.categories)})
+                <td width="10%">${exam.amount}</td>
+                <td width="70%">(${fn:length(exam.categories)})
                    <c:forEach var="category" items="${exam.categories}">
                       <c:if test="${category!=null && category.parentCategory!=null}">
                          ${category.parentCategory.name}.

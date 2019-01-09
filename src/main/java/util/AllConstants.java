@@ -25,7 +25,7 @@ public interface AllConstants {
     String INDEX_PAGE = "/main.jsp";
     String MESSAGE_PAGE = "/messagePage.jsp";
     String MOVE_QUESTIONS_PAGE = "/edit/move-questions.jsp?TEST_PATH=%s&CATEGORY_PATH=%s";
-    String MY_PROFILE_PAGE = "/person/MyProfile.jsp";
+    String MY_PROFILE_PAGE = "/person/my-profile";
     String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
     String EDIT_ARTICLE = "/article/editArticle.jsp";
     String SHOW_ARTICLE_PAGE = "/article/showArticle.jsp";

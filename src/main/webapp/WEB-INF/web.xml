@@ -5,7 +5,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
-     <filter>
+    <filter>
         <filter-name>IndexPageFilter</filter-name>
         <filter-class>controller.filters.IndexPageFilter</filter-class>
     </filter>
@@ -44,15 +44,15 @@
         <servlet-name>CreateCategoryServlet</servlet-name>
         <servlet-class>controller.add.CreateCategoryServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>AddTestServlet</servlet-name>
         <servlet-class>controller.add.AddTestServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>SaveComment</servlet-name>
         <servlet-class>controller.SaveComment</servlet-class>
     </servlet>
@@ -64,19 +64,12 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>EditQuestionEntryServlet</servlet-name>
         <servlet-class>controller.EditQuestionEntryServlet</servlet-class>
     </servlet>
-     <servlet>
-        <servlet-name>ChangeUserSettings</servlet-name>
-        <servlet-class>controller.person.ChangeUserSettings</servlet-class>
-    </servlet>
-      <servlet>
-        <servlet-name>ChangePassword</servlet-name>
-        <servlet-class>controller.person.ChangePassword</servlet-class>
-    </servlet>
-      <servlet>
+
+    <servlet>
         <servlet-name>AddQuestionEntry</servlet-name>
         <servlet-class>controller.add.AddQuestionEntry</servlet-class>
     </servlet>
@@ -178,10 +171,6 @@
         <servlet-class>controller.exam.AddUserAnswerServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShowPersonProfile</servlet-name>
-        <servlet-class>controller.person.ShowPersonProfile</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ShowPersonHistoryServlet</servlet-name>
         <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
     </servlet>
@@ -202,7 +191,7 @@
         <servlet-name>CreateCategoryServlet</servlet-name>
         <url-pattern>/servlet/CreateCategoryServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddTestServlet</servlet-name>
         <url-pattern>/servlet/AddTestServlet</url-pattern>
     </servlet-mapping>
@@ -227,14 +216,6 @@
         <url-pattern>/servlet/EditQuestionEntryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ChangeUserSettings</servlet-name>
-        <url-pattern>/servlet/ChangeUserSettings</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangePassword</servlet-name>
-        <url-pattern>/servlet/ChangePassword</url-pattern>
-    </servlet-mapping>
-     <servlet-mapping>
         <servlet-name>AddQuestionEntry</servlet-name>
         <url-pattern>/servlet/AddQuestionEntry</url-pattern>
     </servlet-mapping>
@@ -339,10 +320,6 @@
     <servlet-mapping>
         <servlet-name>AddUserAnswerServlet</servlet-name>
         <url-pattern>/add-user-answer</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowPersonProfile</servlet-name>
-        <url-pattern>/show-user-profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowPersonHistoryServlet</servlet-name>

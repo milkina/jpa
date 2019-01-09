@@ -74,4 +74,11 @@ public class PersonUtility {
         PersonHandler personHandler = new PersonHandler();
         return personHandler.findAnsweredQuestions(person.getID());
     }
+
+    public static void decodeRussianCharacters(Person person) {
+        person.setLogin(GeneralUtility.decodeRussianCharacters(person.getLogin().trim()));
+        person.setPassword(GeneralUtility.decodeRussianCharacters(person.getPassword().trim()));
+        person.getPersonInfo().setFirstName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getFirstName().trim()));
+        person.getPersonInfo().setLastName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getLastName().trim()));
+    }
 }

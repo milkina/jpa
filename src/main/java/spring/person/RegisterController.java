@@ -34,7 +34,7 @@ public class RegisterController {
                                   @RequestParam("confPassword") String confPassword,
                                   ModelMap model, Locale locale) {
         String url = REGISTER_PAGE;
-        decodeRussianCharacters(person);
+        PersonUtility.decodeRussianCharacters(person);
         confPassword = GeneralUtility.decodeRussianCharacters(confPassword.trim());
         if (isValidData(model, person, confPassword, locale)) {
             PersonHandler personHandler = new PersonHandler();
@@ -52,13 +52,6 @@ public class RegisterController {
             model.addAttribute("email", person.getPersonInfo().getEmail());
         }
         return new ModelAndView(url, "command", person);
-    }
-
-    private void decodeRussianCharacters(Person person) {
-        person.setLogin(GeneralUtility.decodeRussianCharacters(person.getLogin().trim()));
-        person.setPassword(GeneralUtility.decodeRussianCharacters(person.getPassword().trim()));
-        person.getPersonInfo().setFirstName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getFirstName().trim()));
-        person.getPersonInfo().setLastName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getLastName().trim()));
     }
 
     private boolean isValidData(ModelMap modelMap, Person person,

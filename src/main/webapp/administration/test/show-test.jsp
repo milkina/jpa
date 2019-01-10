@@ -48,7 +48,7 @@
                                 name="delete${category.value.pathName}">
                              </td>
                              <td>
-                                 <a href="${pageContext.request.contextPath}/addQuestion.jsp?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
+                                 <a href="${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
                                  name="addQuestion${category.value.pathName}">Add Question</a>
                              </td>
                              <td>

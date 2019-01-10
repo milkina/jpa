@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
     <jsp:attribute name="header">
                 <title>
@@ -38,11 +39,11 @@
                     </c:if>
                     <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" value="Start Test" class="submitButton" id="startTest"
+                       <input type="button" value="<spring:message code="start.test"/>" id="startTest"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
                      <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
-                       <input type="button" value="See Questions" id="startQuiz"
+                       <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
                     onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                    </c:if>
                     ${CATEGORY_ATTRIBUTE.article.text}
@@ -59,17 +60,17 @@
                        </ol>
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" value="Start Test" class="submitButton" id="startTest"
+                       <input type="button" value="<spring:message code="start.test"/>" id="startTest"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
-                      <input type="button" value="See Questions" id="startQuiz"
+                      <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
               </article>
             </main><BR>
-            <input type="button" value="Add Question" id="AddQuestion"
-             onclick="window.location.href='${pageContext.request.contextPath}/addQuestion.jsp?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
+            <input type="button" value="<spring:message code="add.question.button"/>" id="AddQuestion"
+             onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
             <%@ include file="/WEB-INF/socialButtons.jsp" %>
             <jsp:include page="/WEB-INF/comment/comments.jsp">
                 <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}" />

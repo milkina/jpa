@@ -61,7 +61,7 @@ function changeTest(contextPath) {
     form.submit();
 }
 
-function addNextAnswer() {
+function addNextAnswer(buttonName) {
     var numberElement = document.getElementById('answerNumber');
     var number = Number(numberElement.value) + 1;
     var answersDiv= document.getElementById('answersDiv');
@@ -79,7 +79,7 @@ function addNextAnswer() {
 
     addCheckBox(answerBlock, number);
     addTextArea(answerBlock, number);
-    addDeleteButton(answerBlock, number);
+    addDeleteButton(answerBlock, number, buttonName);
 
     addWYSIWG();
     numberElement.value = number;
@@ -104,10 +104,10 @@ function addTextArea(answersDiv,number){
     answersDiv.appendChild(divElement);
 }
 
-function addDeleteButton(answersDiv, number){
+function addDeleteButton(answersDiv, number, addDeleteButton){
     var buttonElement = document.createElement('input');
     buttonElement.setAttribute("type", "button");
-    buttonElement.setAttribute("value", "Delete");
+    buttonElement.setAttribute("value", addDeleteButton);
     buttonElement.setAttribute("onclick", "deleteAnswer("+number+")");
     buttonElement.setAttribute("id", "deleteAnswer" + number);
 

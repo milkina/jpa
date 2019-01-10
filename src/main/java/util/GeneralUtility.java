@@ -161,7 +161,12 @@ public class GeneralUtility {
 
     public static HttpSession getSession(boolean allowCreate) {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        return attr.getRequest().getSession(allowCreate); // true == allow create
+        return attr.getRequest().getSession(allowCreate);
+    }
+
+    public static HttpServletRequest getRequest() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        return attr.getRequest();
     }
 
     public static String getResourceValue(Locale locale, String key, String basename) {

@@ -18,7 +18,7 @@
           <%@ include file="/administration/users.jsp" %>
           <%@ include file="/administration/comments/comments.jsp" %>
           <%@ include file="/administration/articles.jsp" %>
-          <a href="${pageContext.request.contextPath}/addQuestion.jsp" name="addQuestion">Add Question</a>
+          <a href="${pageContext.request.contextPath}/add-question" name="addQuestion">Add Question</a>
      </c:if>
     </div>
  </jsp:body>

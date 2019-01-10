@@ -1,4 +1,4 @@
-package controller.add;
+package spring.question;
 
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
@@ -7,50 +7,48 @@ import model.Question;
 import model.QuestionEntry;
 import model.TestQuestionEntry;
 import model.person.Person;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.TestUtility;
 import util.question.QuestionEntryUtility;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Date;
+import java.util.Locale;
 
-import static util.AllConstants.MESSAGE_PAGE;
+import static util.AllConstants.ADD_QUESTION_PAGE;
+import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
-import static util.AllConstantsParam.ANSWER_NUMBER;
 import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
-import static util.AllMessage.QUESTION_ADDED_MESSAGE;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Tatyana
- * Date: 21.10.2012
- * Time: 22:17:26
- * To change this template use File | Settings | File Templates.
- */
+@Controller
+public class QuestionController {
 
-public class AddQuestionEntry extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        addQuestionEntry(request, response);
+    @RequestMapping(value = "/add-question", method = RequestMethod.GET)
+    public ModelAndView addQuestion() {
+        return new ModelAndView(ADD_QUESTION_PAGE);
+    }
+
+    @RequestMapping(value = "/save-question", method = RequestMethod.POST)
+    public ModelAndView saveQuestion(@RequestParam("answerNumber") int answerNumber, ModelMap model, Locale locale) {
+        HttpServletRequest request = GeneralUtility.getRequest();
+        addQuestionEntry(answerNumber, request);
+
+        String message = GeneralUtility.getResourceValue(locale, "question.added", "messages");
+        model.addAttribute(MESSAGE_ATTRIBUTE, message);
+
         TestUtility.loadTestsToServletContext(request.getServletContext());
+        return new ModelAndView(SPRING_MESSAGE_PAGE);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    private void addQuestionEntry(HttpServletRequest request,
-                                  HttpServletResponse response)
-            throws ServletException, IOException {
-        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+    private void addQuestionEntry(int answerNumber, HttpServletRequest request) {
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
 
@@ -63,11 +61,6 @@ public class AddQuestionEntry extends HttpServlet {
 
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         questionEntryHandler.addQuestionEntry(newQuestionEntry);
-
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(MESSAGE_PAGE);
-        request.setAttribute(MESSAGE_ATTRIBUTE, QUESTION_ADDED_MESSAGE);
-        dispatcher.forward(request, response);
     }
 
     private void setPerson(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {

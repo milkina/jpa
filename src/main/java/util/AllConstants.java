@@ -24,6 +24,7 @@ public interface AllConstants {
     String EDIT_QUESTION_ENTRY_SERVLET = "/servlet/EditQuestionEntryServlet";
     String INDEX_PAGE = "/main.jsp";
     String MESSAGE_PAGE = "/messagePage.jsp";
+    String SPRING_MESSAGE_PAGE = "/message-page";
     String MOVE_QUESTIONS_PAGE = "/edit/move-questions.jsp?TEST_PATH=%s&CATEGORY_PATH=%s";
     String MY_PROFILE_PAGE = "/person/my-profile";
     String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
@@ -35,7 +36,7 @@ public interface AllConstants {
     String COOKIE_VALUE = "ID";
     String UNKNOWN_USER = "unknown";
     String MARK_QUESTION_HINT = "Mark question as answered and filter questions";
-    String ADD_QUESTION_PAGE = "/addQuestion.jsp";
+    String ADD_QUESTION_PAGE = "/question/add-question";
     String ADMINISTRATION_WELCOME_PAGE = "/administration/welcome.jsp";
     String SHOW_QUESTION_PAGE = "/WEB-INF/showQuestions/show-question.jsp";
     String SHOW_QUESTION_PICTURE_PAGE = "/WEB-INF/showQuestions/show-question-picture.jsp";

@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import util.CategoryUtility;
 import util.GeneralUtility;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import static util.AllConstants.SHOW_EXAM_QUESTION;
 import static util.AllConstants.SHOW_QUIZ_QUESTION_PAGE;
 import static util.AllConstants.SHOW_TEST_QUESTION_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstantsAttribute.CATEGORIES;
 import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
 import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
@@ -124,6 +127,15 @@ public class ExamController {
 
         createExam(exam);
         return "/exam/show-test-result";
+    }
+
+    @RequestMapping(value = "/select-category-for-exam")
+    public String selectCategoriesForTest(@RequestParam(TEST_PATH) String testPath) {
+        List<Category> categories = categoryHandler.getCategories(testPath);
+        CategoryUtility.selectCategoriesWithTests(categories);
+        HttpServletRequest request = GeneralUtility.getRequest();
+        request.setAttribute(CATEGORIES, categories);
+        return "/exam/start-exam";
     }
 
     private void createExam(TestExam exam) {

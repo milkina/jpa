@@ -163,14 +163,6 @@
         <servlet-name>ShowPersonHistoryServlet</servlet-name>
         <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>SelectCategoryForExamServlet</servlet-name>
-        <servlet-class>controller.exam.SelectCategoryForExamServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShowCoursesWithTests</servlet-name>
-        <servlet-class>controller.test.ShowCoursesWithTests</servlet-class>
-    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateCategoryServlet</servlet-name>
@@ -289,14 +281,6 @@
     <servlet-mapping>
         <servlet-name>ShowPersonHistoryServlet</servlet-name>
         <url-pattern>/show-person-history</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SelectCategoryForExamServlet</servlet-name>
-        <url-pattern>/select-category-for-exam</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowCoursesWithTests</servlet-name>
-        <url-pattern>/tests</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>

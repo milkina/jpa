@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
@@ -13,7 +14,7 @@
         <cache:cacheTag/>
         <div class="mainArea">
          <main>
-          <h1 class="indexH1"><strong>Start Test ${TESTS[param.TEST_PATH].name}</strong></h1>
+          <h1 class="indexH1"><strong><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</strong></h1>
           <div>
           <form ACTION="${pageContext.request.contextPath}/start-test?TEST_PATH=${param.TEST_PATH}"  method="POST">
           <select name="CATEGORY_PATH" id="CATEGORY_PATH" multiple="multiple" class="2col active">
@@ -37,15 +38,15 @@
           <script>
           $('select[multiple]').multiselect({
               columns: 2,
-              placeholder: 'Select categories',
+              placeholder: '<spring:message code="select.categories"/>',
               selectAll : true,
               selectGroup:true,
               search:true
           });
           </script>
           </div>
-         Number of Questions <input type="text" value="20" name="NUMBER_OF_QUESTIONS"><BR><BR>
-         <input type="submit" value="Start Test" name="startTest">
+         <spring:message code="number.questions.label"/> <input type="text" value="20" name="NUMBER_OF_QUESTIONS"><BR><BR>
+         <input type="submit" value="<spring:message code="start.test"/>" name="startTest">
          </form>
          </main>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>

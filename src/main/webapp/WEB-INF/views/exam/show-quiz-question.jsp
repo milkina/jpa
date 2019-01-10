@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
 <jsp:attribute name="header">
     <title>${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}</title>
     <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
-    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
+    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <meta name="robots" content="noindex">
 </jsp:attribute>
@@ -24,15 +25,17 @@
               </div>
               <div class="questionEntryBody">
                        <div class="questionText"><exam:number/>.&nbsp;${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.question.text}</div>
-                       <input type="button" value="Read Answer" onclick="showAnswer('1');" id="a1"  class="wideSubmitButton">
+                       <input type="button" value="<spring:message code="read.answer"/>"
+                        onclick="showAnswer('1','<spring:message code="read.answer"/>','<spring:message code="hide.answer"/>');"
+                        id="a1" class="wideSubmitButton">
                        <div class="answer" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
                </div>
          </div><BR>
          <div style="display:inline">
               <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
                         method="POST">
-                          <exam:previousButton><input type="submit" value="Previous" name="PREVIOUS" class="submitButton" ></exam:previousButton>
-                          <exam:nextButton><input type="submit" value="Next" name="NEXT" class="submitButton" style="float:right"></exam:nextButton>
+                          <exam:previousButton><input type="submit" value="<spring:message code="previous"/>" name="PREVIOUS" ></exam:previousButton>
+                          <exam:nextButton><input type="submit" value="<spring:message code="next"/>" name="NEXT" style="float:right"></exam:nextButton>
               </form>
          </div>
      <jsp:include page="/WEB-INF/comment/comments.jsp">

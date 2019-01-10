@@ -3,6 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} Test</title>
@@ -56,18 +57,18 @@
          </div>
 
          <BR>
-         <input type="submit" value="Answer" class="submitButton" name="answerBtn">
+         <input type="submit" value="<spring:message code="answer"/>" name="answerBtn">
          </form>
          <form ACTION="${pageContext.request.contextPath}/finish-exam"
          method="POST">
-               <input type="submit" value="Finish" class="submitButton" name="finishBtn">
+               <input type="submit" value="<spring:message code="finish"/>" name="finishBtn">
          </form>
          <BR>
          <div style="display:inline">
               <form ACTION="${pageContext.request.contextPath}/show-exam-question?TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=<exam:number/>"
                         method="POST">
-                          <exam:previousButton><input type="submit" value="Previous" name="PREVIOUS" class="submitButton" ></exam:previousButton>
-                          <exam:nextButton><input type="submit" value="Next" name="NEXT" class="submitButton" style="float:right"></exam:nextButton>
+                          <exam:previousButton><input type="submit" value="<spring:message code="previous"/>" name="PREVIOUS"></exam:previousButton>
+                          <exam:nextButton><input type="submit" value="<spring:message code="next"/>" name="NEXT" style="float:right"></exam:nextButton>
               </form>
          </div>
      <jsp:include page="/WEB-INF/comment/comments.jsp">

@@ -10,10 +10,7 @@ package util;
 public interface AllConstants {
     String LOCAL_NAME = "java:module/";
 
-
-
     String TEST_NAME_PARAM = "testName";
-
     String MODE_PARAM = "mode";
     String SERIALIZE_PARAM = "serialize";
     String DESERIALIZE_PARAM = "deserialize";
@@ -40,8 +37,8 @@ public interface AllConstants {
     String ADMINISTRATION_WELCOME_PAGE = "/administration/welcome.jsp";
     String SHOW_QUESTION_PAGE = "/WEB-INF/showQuestions/show-question.jsp";
     String SHOW_QUESTION_PICTURE_PAGE = "/WEB-INF/showQuestions/show-question-picture.jsp";
-    String SHOW_EXAM_QUESTION_PAGE = "/WEB-INF/showQuestions/show-exam-question.jsp";
-    String SHOW_EXAM_TEST_QUESTION = "/WEB-INF/showQuestions/show-exam-test-question.jsp";
+    String SHOW_QUIZ_QUESTION_PAGE = "/exam/show-quiz-question";
+    String SHOW_TEST_QUESTION_PAGE = "/exam/show-test-question";
     String SHOW_QUESTION_SERVLET_PAGE = "show-question";
     String SHOW_EXAM_QUESTION = "show-exam-question";
     String GROUP_NAME = "java";

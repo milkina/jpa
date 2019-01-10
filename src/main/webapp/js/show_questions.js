@@ -61,15 +61,15 @@ function getElementsByClassName(node, classname) {
         if (re.test(els[i].className))a.push(els[i]);
     return a;
 }
- function showAnswer(i) {
+ function showAnswer(i,readMessage,hideMessage) {
            var element = document.getElementById("a" + i);
            var answerElement = document.getElementById("answer" + i);
             if (answerElement.style.display == "block"){
                answerElement.style.display = "none";
-               element.value = "Read Answer";
+               element.value = readMessage;
             }else{
                 answerElement.style.display = "block";
-                element.value = "Hide Answer";
+                element.value = hideMessage;
             }
        }
 

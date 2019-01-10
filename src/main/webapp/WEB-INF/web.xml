@@ -91,14 +91,6 @@
         <servlet-class>controller.edit.ChangeTestServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>StartExamServlet</servlet-name>
-        <servlet-class>controller.exam.StartExamServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShowExamQuestionServlet</servlet-name>
-        <servlet-class>controller.exam.ShowExamQuestionServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ShowQuestionServlet</servlet-name>
         <servlet-class>controller.exam.ShowQuestionServlet</servlet-class>
     </servlet>
@@ -164,10 +156,6 @@
         <servlet-class>controller.comment.DeleteCommentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>StartSeeQuestionsServlet</servlet-name>
-        <servlet-class>controller.exam.StartSeeQuestionsServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddUserAnswerServlet</servlet-name>
         <servlet-class>controller.exam.AddUserAnswerServlet</servlet-class>
     </servlet>
@@ -227,14 +215,6 @@
     <servlet-mapping>
         <servlet-name>ChangeTestServlet</servlet-name>
         <url-pattern>/servlet/ChangeTestServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StartExamServlet</servlet-name>
-        <url-pattern>/start-test</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowExamQuestionServlet</servlet-name>
-        <url-pattern>/show-exam-question</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowQuestionServlet</servlet-name>
@@ -305,10 +285,6 @@
     <servlet-mapping>
         <servlet-name>DeleteCommentServlet</servlet-name>
         <url-pattern>/delete-comment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StartSeeQuestionsServlet</servlet-name>
-        <url-pattern>/see-questions</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddUserAnswerServlet</servlet-name>

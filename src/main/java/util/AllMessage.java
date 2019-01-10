@@ -31,8 +31,6 @@ public interface AllMessage {
             "'From' and 'To' should be less than total number of questions in the current category.";
     String QUESTIONS_MOVED = "%s questions moved.";
     String SELECT_DIFFERENT_CATEGORY = "Please select different category.";
-    String EXAM_EMPTY = "There are no questions selected. " +
-            "Either you have already answered all the questions or the selected category is empty.";
     String COMMENT_CHANGED = "Comment is updated.";
     String COMMENT_REMOVED = "Comments are removed.";
     String USER_REMOVED = "User is removed.";

@@ -2,6 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/tld/categoryjsp-taglib.tld" prefix="category"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
     <jsp:attribute name="header">
                 <category:category categoryPath="${param.CATEGORY_PATH}">
@@ -26,7 +27,7 @@
                   <c:if test="${person != null}">
                       <%@ include file="/WEB-INF/showQuestions/selectOptionsPanel.jsp" %>
                   </c:if>
-                  <input type="submit" value="Start" id="startQuiz" class="submitButton">
+                  <input type="submit" value="<spring:message code="start"/>" id="startQuiz" class="submitButton">
               </form>
             </main>
          </div>

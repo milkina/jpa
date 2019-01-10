@@ -44,7 +44,7 @@
                     </c:if>
                      <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
                        <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
-                    onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                    onclick="window.location.href='${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                    </c:if>
                     ${CATEGORY_ATTRIBUTE.article.text}
                     <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
@@ -65,7 +65,7 @@
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
                       <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
-                                        onclick="window.location.href='${pageContext.request.contextPath}/start-quiz.jsp?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                                        onclick="window.location.href='${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
               </article>
             </main><BR>

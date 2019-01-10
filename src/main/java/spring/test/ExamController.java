@@ -1,6 +1,7 @@
 package spring.test;
 
 import data.category.CategoryHandler;
+import data.exam.ExamHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractExam;
 import model.AbstractQuestionEntry;
@@ -18,6 +19,7 @@ import util.GeneralUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -113,6 +115,21 @@ public class ExamController {
                     TEST_PATH, testPath,
                     QUESTION_NUMBER, 0);
         }
+    }
+
+    @RequestMapping(value = "/finish-exam")
+    public String finishExam() {
+        HttpSession session = GeneralUtility.getSession(true);
+        TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
+
+        createExam(exam);
+        return "/exam/show-test-result";
+    }
+
+    private void createExam(TestExam exam) {
+        exam.setPercent(exam.getRightQuestionsCount() / exam.getQuestionEntries().size() * 100.0);
+        exam.setDate(new Date());
+        new ExamHandler().createExam(exam);
     }
 
     private List<Category> getCategories(String[] categoryPaths) {

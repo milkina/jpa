@@ -3,17 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
-        <title>${person.login} Test Result</title>
+        <title>${person.login} | <spring:message code="test.result"/></title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/prism_min.css">
         <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
    </jsp:attribute>
    <jsp:body>
      <div class="mainArea">
         <main>
-             <h1 class="header1">${person.login} Test Result</h1>
+             <h1 class="header1">${person.login} | <spring:message code="test.result"/></h1>
               <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
                  <ul class="showQuestionsList">
                      <li>
@@ -29,11 +30,18 @@
                      </li>
                  </ul>
               </c:forEach>
-             ${CURRENT_EXAM_ATTRIBUTE.percent>=70?"Test is passed.":"Test is not passed."}<BR>
-             ${CURRENT_EXAM_ATTRIBUTE.percent}% answers are correct.<BR>
-              Answered
+              <c:choose>
+                 <c:when test="${CURRENT_EXAM_ATTRIBUTE.percent>=70}">
+                    <spring:message code="test.passed"/>
+                 </c:when>
+                 <c:otherwise>
+                    <spring:message code="test.not.passed"/>
+                 </c:otherwise>
+              </c:choose><BR>
+             ${CURRENT_EXAM_ATTRIBUTE.percent}% <spring:message code="answers.correct"/><BR>
+              <spring:message code="answered"/>
               <fmt:parseNumber var="intValue" integerOnly="true" type="number" value="${CURRENT_EXAM_ATTRIBUTE.rightQuestionsCount}"/>
-              <c:out value = "${intValue}" /> from ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
+              <c:out value = "${intValue}" /> <spring:message code="from"/> ${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}
         </main>
       </div>
  </jsp:body>

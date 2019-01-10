@@ -164,10 +164,6 @@
         <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FinishExamServlet</servlet-name>
-        <servlet-class>controller.exam.FinishExamServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SelectCategoryForExamServlet</servlet-name>
         <servlet-class>controller.exam.SelectCategoryForExamServlet</servlet-class>
     </servlet>
@@ -293,10 +289,6 @@
     <servlet-mapping>
         <servlet-name>ShowPersonHistoryServlet</servlet-name>
         <url-pattern>/show-person-history</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FinishExamServlet</servlet-name>
-        <url-pattern>/finish-exam</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SelectCategoryForExamServlet</servlet-name>

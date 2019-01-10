@@ -169,6 +169,11 @@ public class GeneralUtility {
         return attr.getRequest();
     }
 
+    public static HttpServletResponse getResponse() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        return attr.getResponse();
+    }
+
     public static String getResourceValue(Locale locale, String key, String basename) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(basename, locale);
         return GeneralUtility.decodeRussianCharacters(resourceBundle.getString(key));

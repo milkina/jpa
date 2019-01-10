@@ -8,7 +8,7 @@ package util;
  * To change this template use File | Settings | File Templates.
  */
 public interface AllMessage {
-    String WRONG_LOGIN_MESSAGE = "Wrong Login or Password";
+
     String CATEGORY_CREATED_MESSAGE = "The category is created.";
     String CATEGORY_ADDED_MESSAGE = "The category is added.";
     String CATEGORY_NOT_ADDED_MESSAGE = "The test already contains selected category.";

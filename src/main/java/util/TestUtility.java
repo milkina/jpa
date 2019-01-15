@@ -20,12 +20,18 @@ import static util.AllConstants.TEST_NAME_PARAM;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsAttribute.TEST_PATHS_ATTRIBUTE;
+import static util.AllConstantsParam.ARTICLE_DESCRIPTION;
+import static util.AllConstantsParam.ARTICLE_IMAGE;
+import static util.AllConstantsParam.ARTICLE_KEYWORDS;
+import static util.AllConstantsParam.ARTICLE_TEXT;
 import static util.AllConstantsParam.CATEGORY_ID_PARAMETER;
 import static util.AllConstantsParam.LANGUAGE;
 import static util.AllConstantsParam.TEST_ICON_TEXT;
 import static util.AllConstantsParam.TEST_ID_PARAM;
 import static util.AllConstantsParam.TEST_PATH;
 import static util.AllConstantsParam.TEST_TAGS;
+import static util.AllConstantsParam.TITLE;
+import static util.AllConstantsParam.URL_PARAM;
 import static util.GeneralUtility.decodeRussianCharacters;
 import static util.GeneralUtility.getIntegerValue;
 import static util.GeneralUtility.roundTime;
@@ -137,19 +143,12 @@ public class TestUtility {
         test.setArticle(article);
     }
 
-    public static void setTestData(Test test,
-                                   HttpServletRequest request) {
-        String newName = request.getParameter(TEST_NAME_PARAM);
-        String newPathName = request.getParameter(TEST_PATH);
-        String newTags = request.getParameter(TEST_TAGS);
-        String iconText = request.getParameter(TEST_ICON_TEXT);
-        String languageCode = request.getParameter(LANGUAGE);
-
-        test.setName(decodeRussianCharacters(newName));
-        test.setPathName(newPathName);
-        test.setTags(decodeRussianCharacters(newTags));
-        test.setIconText(decodeRussianCharacters(iconText));
-        Language language = LanguageUtility.findLanguageInContext(request.getServletContext(), languageCode);
+    public static void setTestData(Test test,Test newTest, String languageCode, ServletContext servletContext) {
+        test.setName(decodeRussianCharacters(newTest.getName()));
+        test.setTags(decodeRussianCharacters(newTest.getTags()));
+        test.setIconText(decodeRussianCharacters(newTest.getIconText()));
+        test.setPathName(decodeRussianCharacters(newTest.getPathName()));
+        Language language = LanguageUtility.findLanguageInContext(servletContext, languageCode);
         test.setLanguage(language);
     }
 }

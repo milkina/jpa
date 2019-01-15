@@ -14,7 +14,7 @@
                        ${test.value.name}</a></td>
               <td>${test.value.questionsNumber}</td>
               <td>
-               <a href="${pageContext.request.contextPath}/administration/test/edit-test.jsp?TEST_PATH=${test.value.pathName}"
+               <a href="${pageContext.request.contextPath}/show-edit-course?TEST_PATH=${test.value.pathName}"
                name="editTest${test.value.pathName}">
                   Edit Test</a>
              </td>
@@ -36,5 +36,5 @@
                  });
               });
               </script>
-      <a href="${pageContext.request.contextPath}/addTest.jsp" name="addTest">Add Test</a>
+      <a href="${pageContext.request.contextPath}/show-add-course" name="addTest">Add Course</a>
       </form>

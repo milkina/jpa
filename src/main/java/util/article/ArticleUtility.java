@@ -41,6 +41,33 @@ public class ArticleUtility {
         return article;
     }
 
+    public static Article createArticle(Article article,
+                                        Person author) {
+        article.setText(decodeRussianCharacters(article.getText()));
+        article.setUrl(decodeRussianCharacters(article.getUrl()));
+        article.setImage(decodeRussianCharacters(article.getImage()));
+        article.setDescription(decodeRussianCharacters(article.getDescription()));
+        article.setKeywords(decodeRussianCharacters(article.getKeywords()));
+        article.setTitle(decodeRussianCharacters(article.getTitle()));
+        article.setAuthor(author);
+        article.setCreatedDate(new Date());
+
+        article = articleHandler.addArticle(article);
+        return article;
+    }
+
+    public static void setArticleData(Article article,Article newArticle) {
+        article.setText(decodeRussianCharacters(newArticle.getText()));
+        article.setUrl(decodeRussianCharacters(newArticle.getUrl()));
+        article.setImage(decodeRussianCharacters(newArticle.getImage()));
+        article.setDescription(decodeRussianCharacters(newArticle.getDescription()));
+        article.setKeywords(decodeRussianCharacters(newArticle.getKeywords()));
+        article.setTitle(decodeRussianCharacters(newArticle.getTitle()));
+
+        articleHandler.updateArticle(article);
+    }
+
+
     public static void setArticleData(Article article,
                                       HttpServletRequest request) {
         String url = request.getParameter(URL_PARAM);

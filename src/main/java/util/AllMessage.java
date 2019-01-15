@@ -20,8 +20,6 @@ public interface AllMessage {
     String ARTICLE_UPDATED_MESSAGE = "The article is added/updated.";
     String CATEGORY_NOT_REMOVED_MESSAGE =
             "The category cannot be removed - it contains questions.";
-    String TEST_ADDED_MESSAGE = "The test is added.";
-    String TEST_UPDATED_MESSAGE = "The test is changed.";
     String TEST_DELETED_MESSAGE = "The test is deleted.";
     String TEST_NOT_DELETED_MESSAGE =
             "The test cannot be deleted. Make sure it doesn't contain categories.";

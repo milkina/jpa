@@ -49,14 +49,9 @@
         <listener-class>controller.test.LoadTestServlet</listener-class>
     </listener>
 
-
     <servlet>
         <servlet-name>CreateCategoryServlet</servlet-name>
         <servlet-class>controller.add.CreateCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddTestServlet</servlet-name>
-        <servlet-class>controller.add.AddTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SaveComment</servlet-name>
@@ -73,10 +68,6 @@
     <servlet>
         <servlet-name>EditCategoryServlet</servlet-name>
         <servlet-class>controller.edit.EditCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditTestServlet</servlet-name>
-        <servlet-class>controller.test.EditTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeTestServlet</servlet-name>
@@ -161,10 +152,6 @@
         <url-pattern>/servlet/CreateCategoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddTestServlet</servlet-name>
-        <url-pattern>/servlet/AddTestServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>SaveComment</servlet-name>
         <url-pattern>/servlet/SaveComment</url-pattern>
     </servlet-mapping>
@@ -179,10 +166,6 @@
     <servlet-mapping>
         <servlet-name>EditCategoryServlet</servlet-name>
         <url-pattern>/servlet/EditCategoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditTestServlet</servlet-name>
-        <url-pattern>/servlet/EditTestServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeTestServlet</servlet-name>

@@ -5,4 +5,10 @@
         <from>^/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>
+    <rule>
+        <from>^/publications/(.*)$</from>
+        <to type="passthrough">/servlet/ShowArticleServlet?URL_PARAM=$1</to>
+    </rule>
 </urlrewrite>
+
+

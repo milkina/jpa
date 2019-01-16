@@ -28,7 +28,7 @@
                                 ${category.value.name}
                                 </a>
                              </td>
-                             <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
+                             <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
                              name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION">
                                       Show Q-s ${category.value.questionsCount}
                                  </a>

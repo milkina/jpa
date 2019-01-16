@@ -31,4 +31,5 @@ public interface AllConstantsAttribute {
     String USER_TEST_EXAMS = "USER_TEST_EXAMS";
     String SOME_USER = "SOME_USER";
     String LANGUAGES = "LANGUAGES";
+    String LOCALE = "LOCALE";
 }

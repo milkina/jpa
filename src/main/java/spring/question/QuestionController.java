@@ -24,6 +24,7 @@ import java.util.Locale;
 
 import static util.AllConstants.ADD_QUESTION_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstantsAttribute.LOCALE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
@@ -46,6 +47,13 @@ public class QuestionController {
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         return new ModelAndView(SPRING_MESSAGE_PAGE);
+    }
+
+    @RequestMapping(value = "/show-questions")
+    public String showQuestions(Locale locale) {
+        HttpServletRequest request = GeneralUtility.getRequest();
+        request.setAttribute(LOCALE, locale);
+        return "/question/show-questions";
     }
 
     private void addQuestionEntry(int answerNumber, HttpServletRequest request) {

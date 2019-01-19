@@ -16,13 +16,13 @@ public interface AllConstants {
     String DESERIALIZE_PARAM = "deserialize";
     String ALL_CATEGORIES = "ALL_CATEGORIES";
     String ALL_TESTS = "ALL_TESTS";
-    String SHOW_QUESTIONS_PAGE = "/ShowQuestions.jsp";
-    String EDIT_QUESTION_ENTRY_PAGE = "/EditQuestionEntry.jsp";
+    String SHOW_QUESTIONS_PAGE = "/show-questions";
+    String EDIT_QUESTION_ENTRY_PAGE = "/question/edit-question";
     String EDIT_QUESTION_ENTRY_SERVLET = "/servlet/EditQuestionEntryServlet";
     String INDEX_PAGE = "/main.jsp";
     String MESSAGE_PAGE = "/messagePage.jsp";
     String SPRING_MESSAGE_PAGE = "/message-page";
-    String MOVE_QUESTIONS_PAGE = "/edit/move-questions.jsp?TEST_PATH=%s&CATEGORY_PATH=%s";
+    String MOVE_QUESTIONS_PAGE = "redirect:show-move-batch?TEST_PATH=%s&CATEGORY_PATH=%s&message=%s";
     String MY_PROFILE_PAGE = "/person/my-profile";
     String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
     String EDIT_ARTICLE = "/article/editArticle.jsp";

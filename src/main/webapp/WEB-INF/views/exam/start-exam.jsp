@@ -17,7 +17,7 @@
           <h1 class="indexH1"><strong><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</strong></h1>
           <div>
           <form ACTION="${pageContext.request.contextPath}/start-test?TEST_PATH=${param.TEST_PATH}"  method="POST">
-          <select name="CATEGORY_PATH" id="CATEGORY_PATH" multiple="multiple" class="2col active">
+          <select name="CATEGORY_PATH" id="CATEGORY_PATH" multiple="multiple" class="2col active" required>
           <c:forEach var="category" items="${CATEGORIES}">
           <c:choose>
              <c:when test="${not empty category.subCategories}">

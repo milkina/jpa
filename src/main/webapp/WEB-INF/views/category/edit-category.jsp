@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
  <jsp:attribute name="header">
     <meta name="robots" content="noindex">
@@ -10,12 +11,12 @@
  </jsp:attribute>
  <jsp:body>
        <div class="mainArea">
-        <form action="${pageContext.request.contextPath}/servlet/EditCategoryServlet" method="POST" id="editCategoryForm" >
-            <span class="adminLabel">Category Id:</span><span name="categoryId">${CATEGORY_ATTRIBUTE.id}</span>
+        <form action="${pageContext.request.contextPath}/edit-category" method="POST" id="editCategoryForm" >
+            <span class="adminLabel"><spring:message code="category.id"/>:</span><span name="categoryId">${CATEGORY_ATTRIBUTE.id}</span>
             <input type="hidden" name="CATEGORY_PATH" value="${param.CATEGORY_PATH}">
             <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">
             <BR>
-            <span class="adminLabel">Assigned Tests:</span>
+            <span class="adminLabel"><spring:message code="courses"/>:</span>
              <c:choose>
                  <c:when test="${DUPLICATE_CATEGORIES[param.CATEGORY_PATH]!=null}">
                      <c:forEach var="test" items="${DUPLICATE_CATEGORIES[param.CATEGORY_PATH].tests}">
@@ -28,9 +29,8 @@
              </c:choose>
              <BR>
             <%@ include file="/edit/categoryParameters.jsp" %>
-            <input type="submit" value="Save" name="Save"
-             id="save" class="submitButton">
-
+            <input type="submit" value="<spring:message code="save.button"/>" name="Save"
+             id="save">
                <br>
         </form>
       </div>

@@ -11,7 +11,7 @@ import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
  */
 public class ShowQuestionUtility {
     public static final String STRING =
-            "%s/servlet/EditQuestionEntryServlet?%s=%d&%s=%s&%s=";
+            "%s/up-question?%s=%d&%s=%s&%s=";
 
     public static String createPath(AbstractQuestionEntry questionEntry,
                                     String contextPath) {

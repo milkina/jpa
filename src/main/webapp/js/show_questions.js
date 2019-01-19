@@ -75,7 +75,7 @@ function getElementsByClassName(node, classname) {
 
 function deleteQuestion(contextPath, questionId,categoryPath,testPath) {
     if (confirm("Are you sure you want to delete the question?")) {
-        window.location.href  = contextPath + '/servlet/EditQuestionEntryServlet?'+
+        window.location.href  = contextPath + '/delete-question?'+
         'QUESTION_ENTRY_ID_PARAM='+questionId+'&CATEGORY_PATH='+categoryPath+
         '&TEST_PATH='+testPath+'&EDIT_MODE_PARAM=DELETE';
     }
@@ -83,8 +83,8 @@ function deleteQuestion(contextPath, questionId,categoryPath,testPath) {
 
 function approveQuestion(contextPath, questionId) {
     if (confirm("Are you sure you want to approve the question?")) {
-        window.location.href  = contextPath + '/servlet/EditQuestionEntryServlet?'+
-        'QUESTION_ENTRY_ID_PARAM=' + questionId + '&EDIT_MODE_PARAM=APPROVE';
+        window.location.href  = contextPath + '/approve-question?'+
+        'QUESTION_ENTRY_ID_PARAM=' + questionId;
     }
 }
  function newXMLHttpRequest() {

@@ -20,7 +20,7 @@
               <c:forEach var="category" items="${TESTS[param.TEST_PATH].categories}">
                         <tr id="${category.value.pathName}">
                              <td>
-                               <a href="${pageContext.request.contextPath}/servlet/EditCategoryServlet?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}"
+                               <a href="${pageContext.request.contextPath}/show-edit-category?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}"
                                name="edit${category.value.pathName}">
                                 <c:if test="${category.value.parentCategory!=null}">
                                      ${category.value.parentCategory.name}.
@@ -33,13 +33,13 @@
                                       Show Q-s ${category.value.questionsCount}
                                  </a>
                              </td>
-                             <td><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
+                             <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
                              name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST">
                                       Show Test Q-s ${category.value.testsCount}
                                  </a>
                              </td>
                              <td>
-                                 <a href="${pageContext.request.contextPath}/edit/move-questions.jsp?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
+                                 <a href="${pageContext.request.contextPath}/show-move-batch?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
                                  name="moveQuestions${category.value.pathName}">
                                  Move Questions</a>
                              </td>
@@ -68,7 +68,7 @@
            });
         });
         </script>
-        <a href="${pageContext.request.contextPath}/createCategory.jsp?TEST_PATH=${param.TEST_PATH}" name="createCategory">
+        <a href="${pageContext.request.contextPath}/show-create-category?TEST_PATH=${param.TEST_PATH}" name="createCategory">
           Create Category
         </a><br>
         <a href="${pageContext.request.contextPath}/administration/category/addCategory.jsp?TEST_PATH=${param.TEST_PATH}" name="addCategory">

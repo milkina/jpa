@@ -1,23 +1,42 @@
 package util.question;
 
+import controller.EditMode;
+import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Answer;
+import model.Category;
+import model.Question;
+import model.QuestionEntry;
 import model.QuestionExam;
+import model.TestQuestionEntry;
+import model.person.Person;
 import util.AllConstants;
 import util.AllConstantsAttribute;
 import util.AllConstantsParam;
+import util.CategoryUtility;
 import util.GeneralUtility;
+import util.ServletUtilities;
 import util.exam.ExamUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.NavigableSet;
 
+import static util.AllConstants.EDIT_QUESTION_ENTRY_SERVLET;
+import static util.AllConstants.SHOW_QUESTIONS_PAGE;
+import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsParam.ANSWER_TEXT_PARAM;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.EDIT_MODE_PARAM;
+import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
+import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TYPE;
 
 /**
  * Created by Tatyana on 27.03.2016.
@@ -80,5 +99,90 @@ public class QuestionEntryUtility {
                 AllConstants.SHOW_QUESTION_SERVLET_PAGE,
                 AllConstantsParam.QUESTION_ENTRY_ID_PARAM,
                 questionId);
+    }
+
+
+    public static AbstractQuestionEntry findQuestionEntry(String questionEntryId) {
+        return new QuestionEntryHandler().getQuestionEntry(
+                Integer.parseInt(questionEntryId));
+    }
+
+    public static void fixTinyMCEIssue(AbstractQuestionEntry questionEntry) {
+        Question question = questionEntry.getQuestion();
+        question.setText(ServletUtilities.fixTinyMceIssue(question.getText()));
+        for (Answer answer : questionEntry.getAnswers()) {
+            answer.setText(ServletUtilities.fixTinyMceIssue(answer.getText()));
+        }
+    }
+
+    public static void addQuestionEntry(int answerNumber, HttpServletRequest request) {
+        Category category =
+                CategoryUtility.getCategoryFromServletContext(request);
+
+        AbstractQuestionEntry newQuestionEntry = answerNumber > 1 ? new TestQuestionEntry() : new QuestionEntry();
+        newQuestionEntry.setCategory(category);
+        QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);
+        setQuestionText(request, newQuestionEntry);
+        newQuestionEntry.setCreatedDate(new Date());
+        setPerson(request, newQuestionEntry);
+
+        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        questionEntryHandler.addQuestionEntry(newQuestionEntry);
+    }
+
+    public static void setPerson(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
+        if (request.getSession().getAttribute(PERSON_ATTRIBUTE) != null) {
+            Person person = (Person)
+                    request.getSession().getAttribute(PERSON_ATTRIBUTE);
+            newQuestionEntry.setPerson(person);
+            newQuestionEntry.setApproved(person.isSysadmin());
+        }
+    }
+
+    public static void setQuestionText(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
+        String newQuestionText = GeneralUtility.decodeRussianCharacters(
+                request.getParameter(QUESTION_TEXT_PARAM).trim());
+        Question question = new Question();
+        question.setText(newQuestionText);
+        newQuestionEntry.setQuestion(question);
+    }
+
+
+    public static void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler) {
+        int id = questionEntry.getId();
+        int size = questionEntry.getAnswers().size();
+        if (oldAnswersSize == 1 && size > 1) {
+            questionEntryHandler.changeQuestionToTestQuestion(id);
+        } else if (oldAnswersSize > 1 && size == 1) {
+            questionEntryHandler.changeTestQuestionToQuestion(id);
+        }
+    }
+
+    public static String createShowQuestionPageUrl(HttpServletRequest request) {
+        return String.format("redirect:%s?%s=%s&%s=%s&%s=%s",
+                SHOW_QUESTIONS_PAGE,
+                CATEGORY_PATH, request.getParameter(CATEGORY_PATH),
+                TEST_PATH, request.getParameter(TEST_PATH),
+                TYPE, request.getParameter(TYPE));
+    }
+
+    public static String createEditQuestionPageUrl(HttpServletRequest request,
+                                                   Integer questionId) {
+        return String.format("redirect:/show-edit-question?%s=%s&%s=%s&%s=%d&%s=%s",
+                CATEGORY_PATH, request.getParameter(CATEGORY_PATH),
+                TEST_PATH, request.getParameter(TEST_PATH),
+                QUESTION_ENTRY_ID_PARAM, questionId,
+                EDIT_MODE_PARAM, EditMode.SHOW);
+    }
+
+    public static Category updateCategory(int questionEntryId, QuestionEntryHandler questionEntryHandler) {
+        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(questionEntryId);
+        Category category = null;
+        if (questionEntry.getApproved()) {
+            category = questionEntry.getCategory();
+            questionEntry.changeCategoryCount(-1);
+            new CategoryHandler().updateCategory(category);
+        }
+        return category;
     }
 }

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
  <jsp:attribute name="header">
     <meta name="robots" content="noindex">
@@ -8,7 +9,7 @@
  </jsp:attribute>
  <jsp:body>
   <div class="mainArea">
-        <form id="addCategoryForm" action="${pageContext.request.contextPath}/servlet/AddCategoryServlet" method="POST">
+        <form id="addCategoryForm" action="${pageContext.request.contextPath}/add-category" method="POST">
             <strong class="adminLabel">Add Category to:</strong>
             <strong class="adminLabel">${TESTS[param.TEST_PATH].name}</strong>
              <br>

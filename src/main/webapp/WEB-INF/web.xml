@@ -50,24 +50,12 @@
     </listener>
 
     <servlet>
-        <servlet-name>CreateCategoryServlet</servlet-name>
-        <servlet-class>controller.add.CreateCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SaveComment</servlet-name>
         <servlet-class>controller.SaveComment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
         <servlet-class>controller.ChangeAnsweredQuestionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditQuestionEntryServlet</servlet-name>
-        <servlet-class>controller.EditQuestionEntryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditCategoryServlet</servlet-name>
-        <servlet-class>controller.edit.EditCategoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeTestServlet</servlet-name>
@@ -115,10 +103,6 @@
         <servlet-class>controller.article.ShowArticleServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddCategoryServlet</servlet-name>
-        <servlet-class>controller.category.AddCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeleteFromTestServlet</servlet-name>
         <servlet-class>controller.category.DeleteFromTestServlet</servlet-class>
     </servlet>
@@ -148,24 +132,12 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>CreateCategoryServlet</servlet-name>
-        <url-pattern>/servlet/CreateCategoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>SaveComment</servlet-name>
         <url-pattern>/servlet/SaveComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
         <url-pattern>/servlet/ChangeAnsweredQuestionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditQuestionEntryServlet</servlet-name>
-        <url-pattern>/servlet/EditQuestionEntryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditCategoryServlet</servlet-name>
-        <url-pattern>/servlet/EditCategoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeTestServlet</servlet-name>
@@ -212,10 +184,6 @@
     <servlet-mapping>
         <servlet-name>ShowArticleServlet</servlet-name>
         <url-pattern>/servlet/ShowArticleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddCategoryServlet</servlet-name>
-        <url-pattern>/servlet/AddCategoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteFromTestServlet</servlet-name>

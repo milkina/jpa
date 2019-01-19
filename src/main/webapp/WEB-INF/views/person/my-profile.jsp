@@ -64,7 +64,7 @@
         </table>
         <a href="${pageContext.request.contextPath}/add-question" name="addQuestion">
            <spring:message code="add.question.button"/></a>
-        <BR><a href="${pageContext.request.contextPath}/ShowQuestions.jsp?TYPE=MY_QUESTIONS" name="myQuestions">
+        <BR><a href="${pageContext.request.contextPath}/show-questions?TYPE=MY_QUESTIONS" name="myQuestions">
            <spring:message code="my.questions.button"/></a>
     </div>
     <BR>

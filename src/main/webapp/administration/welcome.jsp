@@ -13,7 +13,7 @@
     <div class="mainArea">
     <c:if test="${person.sysadmin}">
           <%@ include file="/administration/test.jsp" %>
-          <a href="${pageContext.request.contextPath}/ShowQuestions.jsp?TYPE=NOT_APPROVED" name="viewNotApprovedQuestions">
+          <a href="${pageContext.request.contextPath}/show-questions?TYPE=NOT_APPROVED" name="viewNotApprovedQuestions">
           View Not Approved Questions</a>
           <%@ include file="/administration/users.jsp" %>
           <%@ include file="/administration/comments/comments.jsp" %>

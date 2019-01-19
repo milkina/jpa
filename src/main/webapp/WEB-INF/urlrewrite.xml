@@ -2,6 +2,16 @@
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
     <rule>
+        <name>Ensure HTTPS</name>
+        <condition name="host" operator="notequal">examclouds.com</condition>
+        <from>^/(.*)$</from>
+        <to type="redirect">http://www.examclouds.com/$1</to>
+    </rule>
+<!--    <rule>
+        <from>^/</from>
+        <to type="passthrough">/main.jsp</to>
+    </rule>-->
+    <rule>
         <from>^/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>

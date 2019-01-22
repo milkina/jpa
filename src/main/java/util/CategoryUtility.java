@@ -167,7 +167,6 @@ public class CategoryUtility {
 
     public static void selectCategories(List<Category> categories,
                                                  Predicate<Category> filter) {
-        categories.removeIf(Category::getHidden);
         categories.removeIf(category -> category.getParentCategory() != null);
         selectSubCategories(categories, filter);
         Predicate<Category> removeFilter = c -> c.getParentCategory() == null
@@ -181,7 +180,6 @@ public class CategoryUtility {
         for (Category category : categories) {
             Collection<Category> subCategories = category.getSubCategories();
             if (subCategories != null && !subCategories.isEmpty()) {
-                subCategories.removeIf(Category::getHidden);
                 subCategories.removeIf(filter);
             }
         }

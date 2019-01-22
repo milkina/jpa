@@ -49,12 +49,12 @@ import java.util.Map;
         @NamedQuery(name = "Test.findAllWithNotEmptyTests",
                 query = "SELECT distinct t FROM Test t "
                         + "left join t.categories c WHERE "
-                        + "c.hidden=false AND c.testsCount>0 "
+                        + "c.testsCount>0 "
                         + "ORDER BY t.orderId"),
         @NamedQuery(name = "Course.findAllWithNotEmptyQuestions",
                 query = "SELECT distinct t FROM Test t "
                         + "left join t.categories c WHERE "
-                        + "c.hidden=false AND c.questionsCount>0 "
+                        + "c.questionsCount>0 "
                         + "ORDER BY t.orderId"),
         @NamedQuery(name = "Test.getPreviousTests",
                 query = "SELECT t FROM Test t WHERE t.orderId<= "

@@ -5,10 +5,10 @@
 <%  PersonHandler personHandler = new PersonHandler();
     List<Person> personList = personHandler.getAllPersonsList();
 %>
-<h3>Users(<%=personList.size()%>)</h3>
+<h3><spring:message	code="users"/>(<%=personList.size()%>)</h3>
 <div class="adminUserHead">
-  <div class="adminUserCellHead">Login</div>
-  <div class="adminUserCellHead">Created Date</div>
+  <div class="adminUserCellHead"><spring:message code="login"/></div>
+  <div class="adminUserCellHead"><spring:message code="created.date"/></div>
   <div class="adminUserCellHead">&nbsp;</div>
   <div class="adminUserCellHead">&nbsp;</div>
 </div>
@@ -20,10 +20,11 @@
          <div class="adminUserCell"><%=p.getLogin()%>&nbsp;</div>
          <div class="adminUserCell"><%=createdDate%></div>
          <div class="adminUserCell">
-            <a href="${pageContext.request.contextPath}/servlet/DeleteUser?USER_ID=<%=p.getID()%>">Delete</a></div>
+            <a href="${pageContext.request.contextPath}/servlet/DeleteUser?USER_ID=<%=p.getID()%>">
+               <spring:message code="delete"/></a></div>
          <div class="adminUserCell">
             <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>"
-             id="seeHistory<%=p.getLogin()%>">See History</a></div>
+             id="seeHistory<%=p.getLogin()%>"><spring:message code="see.history"/></a></div>
        </div>
        <%}%>
 </div>

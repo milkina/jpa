@@ -1,7 +1,7 @@
 package util;
 
-import controller.language.LanguageHandler;
-import data.language.Language;
+import data.language.LanguageHandler;
+import model.Language;
 
 import javax.servlet.ServletContext;
 

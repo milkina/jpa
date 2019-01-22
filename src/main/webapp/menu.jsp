@@ -42,7 +42,7 @@
 <div class="indentmenu">
 <ul>
     <li><a href="<%=request.getContextPath()%>/" id="home">Home</a></li>
-    <li><a href="<%=request.getContextPath()%>/tests" id="tests">Tests</a></li>
+    <li><a href="<%=request.getContextPath()%>/tests" id="tests">Tests&Questions</a></li>
     <li><a href="<%=request.getContextPath()%>/ocjp-ocpjp.jsp" id="ocjp-ocpjp">OCJP/OCPJP</a></li>
     <li><a href="<%=request.getContextPath()%>/jpa" id="jpa">OCEJPAD 6</a></li>
     <li><a href="<%=request.getContextPath()%>/web-services" id="web-services">OCEJWSD 6</a></li>
@@ -51,7 +51,7 @@
        <li><a href="<%=request.getContextPath()%>/show-user-profile">My Profile</a></li>
     </c:if>
     <c:if test="${person.sysadmin}">
-            <li><a href="<%=request.getContextPath()%>/administration/welcome.jsp">Administration</a></li>
+            <li><a href="<%=request.getContextPath()%>/show-administration">Administration</a></li>
     </c:if>
     <li><a href="<%=request.getContextPath()%>/articles.jsp">Articles</a></li>
 </ul>

@@ -1,9 +1,11 @@
 package data.questionEntry;
 
+import data.category.CategoryHandler;
 import model.AbstractQuestionEntry;
 import model.Answer;
 import model.Category;
 import model.Question;
+import model.QuestionEntry;
 import model.QuestionType;
 import model.Test;
 import model.TestQuestionEntry;
@@ -30,7 +32,6 @@ import static util.AllBeanNameConstants.QUESTION_ENTRY_BEAN_NAME;
  * To change this template use File | Settings | File Templates.
  */
 public class QuestionEntryHandler {
-
     private QuestionEntryBeanI questionEntryBean;
     private Context ct;
 
@@ -59,6 +60,21 @@ public class QuestionEntryHandler {
 
     public List<AbstractQuestionEntry> getAllQuestions(Category category) {
         return questionEntryBean.getAllQuestions(category);
+    }
+
+    public List<AbstractQuestionEntry> getQuestionsForQuiz(String[] categoryPaths,
+                                                   Person person,
+                                                   String questionType,
+                                                   int count) {
+        CategoryHandler categoryHandler = new CategoryHandler();
+        List<AbstractQuestionEntry> result = new ArrayList<>();
+        for (String pathName : categoryPaths) {
+            Category category = categoryHandler.getCategory(pathName);
+            result.addAll(getQuestions(category, person, questionType));
+        }
+        Collections.shuffle(result);
+        count = result.size() < count ? result.size() : count;
+        return result.subList(0, count);
     }
 
     public List<AbstractQuestionEntry> getQuestions(Category category,
@@ -186,8 +202,8 @@ public class QuestionEntryHandler {
     }
 
 
-    public List<TestQuestionEntry> getQuestionsForExam(String[] categoryPaths, int count) {
-        List<TestQuestionEntry> result = new ArrayList<>();
+    public List<AbstractQuestionEntry> getQuestionsForExam(String[] categoryPaths, int count) {
+        List<AbstractQuestionEntry> result = new ArrayList<>();
         for (String pathName : categoryPaths) {
             result.addAll(questionEntryBean.getQuestionsForExam(pathName));
         }

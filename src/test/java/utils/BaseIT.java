@@ -1,7 +1,7 @@
 package utils;
 
-import controller.language.LanguageBeanI;
-import controller.language.LanguageHandler;
+import data.language.LanguageBeanI;
+import data.language.LanguageHandler;
 import data.article.ArticleBeanI;
 import data.article.ArticleHandler;
 import data.category.CategoryBeanI;
@@ -10,7 +10,7 @@ import data.comment.CommentBeanI;
 import data.comment.CommentHandler;
 import data.exam.ExamBeanI;
 import data.exam.ExamHandler;
-import data.language.Language;
+import model.Language;
 import data.person.PersonBeanI;
 import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryBeanI;

@@ -124,6 +124,10 @@ public class TestHandler {
         return testBean.getAllTestsWithNotEmptyTests();
     }
 
+    public List<Test> getAllCoursesWithNotEmptyQuestions() {
+        return testBean.getAllCoursesWithNotEmptyQuestions();
+    }
+
     public void moveTest(Test test, Test stopTest) {
         if (test.getOrderId() > stopTest.getOrderId()) {
             testBean.moveTestUp(test.getPathName(), stopTest.getPathName());

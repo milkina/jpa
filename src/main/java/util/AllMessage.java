@@ -9,17 +9,8 @@ package util;
  */
 public interface AllMessage {
 
-
-      String CATEGORY_REMOVED_MESSAGE = "The category is removed.";
-    String CATEGORY_REMOVED_FROM_TEST_MESSAGE =
-            "The category is removed from the selected test.";
-    String ARTICLE_REMOVED_MESSAGE = "The article is removed.";
+     String ARTICLE_REMOVED_MESSAGE = "The article is removed.";
     String ARTICLE_UPDATED_MESSAGE = "The article is added/updated.";
-    String CATEGORY_NOT_REMOVED_MESSAGE =
-            "The category cannot be removed - it contains questions.";
-    String TEST_DELETED_MESSAGE = "The test is deleted.";
-    String TEST_NOT_DELETED_MESSAGE =
-            "The test cannot be deleted. Make sure it doesn't contain categories.";
     String QUESTIONS_MOVED = "%s questions moved.";
         String COMMENT_CHANGED = "Comment is updated.";
     String COMMENT_REMOVED = "Comments are removed.";

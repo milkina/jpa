@@ -24,21 +24,25 @@ import java.util.Map;
 
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstants.TESTS_PAGE;
+import static util.AllConstantsAttribute.COURSES_WITH_QUESTIONS;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsAttribute.TESTS_WITH_TESTS;
 import static util.AllConstantsParam.OLD_TEST_PATH;
+import static util.GeneralUtility.getResourceValue;
 
 @Controller
 public class CourseController {
     private static TestHandler testHandler = new TestHandler();
 
     @RequestMapping(value = "/tests")
-    public String selectCoursesWithTests() {
-        List<Test> testMap = testHandler.getAllTestsWithNotEmptyTests();
-        HttpServletRequest request = GeneralUtility.getRequest();
-        request.setAttribute(TESTS_WITH_TESTS, testMap);
+    public String selectCoursesWithTestsAndQuestions(HttpServletRequest request) {
+        List<Test> coursesWithTests = testHandler.getAllTestsWithNotEmptyTests();
+        request.setAttribute(TESTS_WITH_TESTS, coursesWithTests);
+
+        List<Test> coursesWithQuestions = testHandler.getAllCoursesWithNotEmptyQuestions();
+        request.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);
         return TESTS_PAGE;
     }
 
@@ -67,7 +71,7 @@ public class CourseController {
         testHandler.addTest(newTest);
 
         TestUtility.loadTestsToServletContext(servletContext);
-        model.addAttribute(MESSAGE_ATTRIBUTE, GeneralUtility.getResourceValue(locale, "course.added", "messages"));
+        model.addAttribute(MESSAGE_ATTRIBUTE, getResourceValue(locale, "course.added", "messages"));
         return SPRING_MESSAGE_PAGE;
     }
 
@@ -99,8 +103,32 @@ public class CourseController {
         testHandler.updateTest(test);
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
-        String message = GeneralUtility.getResourceValue(locale, "course.updated", "messages");
+        String message = getResourceValue(locale, "course.updated", "messages");
         model.addAttribute(MESSAGE_ATTRIBUTE, message);
         return SPRING_MESSAGE_PAGE;
+    }
+
+    @RequestMapping(value = "show-course")
+    public String showCourse() {
+        return "course/show-course";
+    }
+
+    @RequestMapping(value = "/delete-course")
+    public ModelAndView deleteCourse(Locale locale) {
+        ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
+        HttpServletRequest request = GeneralUtility.getRequest();
+        Test test = TestUtility.getTestFromServletContext(request);
+        TestHandler testHandler = new TestHandler();
+        if (testHandler.deleteTest(test)) {
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "course.deleted", "messages"));
+        } else {
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "course.not.deleted", "messages"));
+        }
+
+        TestUtility.loadTestsToServletContext(request.getServletContext());
+
+        return modelAndView;
     }
 }

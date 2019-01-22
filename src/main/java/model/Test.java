@@ -1,7 +1,6 @@
 package model;
 
 
-import data.language.Language;
 import model.article.Article;
 
 import javax.persistence.CascadeType;
@@ -51,6 +50,11 @@ import java.util.Map;
                 query = "SELECT distinct t FROM Test t "
                         + "left join t.categories c WHERE "
                         + "c.hidden=false AND c.testsCount>0 "
+                        + "ORDER BY t.orderId"),
+        @NamedQuery(name = "Course.findAllWithNotEmptyQuestions",
+                query = "SELECT distinct t FROM Test t "
+                        + "left join t.categories c WHERE "
+                        + "c.hidden=false AND c.questionsCount>0 "
                         + "ORDER BY t.orderId"),
         @NamedQuery(name = "Test.getPreviousTests",
                 query = "SELECT t FROM Test t WHERE t.orderId<= "

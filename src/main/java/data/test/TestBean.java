@@ -80,6 +80,11 @@ public class TestBean implements TestBeanI {
         return query.getResultList();
     }
 
+    public List<Test> getAllCoursesWithNotEmptyQuestions() {
+        Query query = entityManager.createNamedQuery("Course.findAllWithNotEmptyQuestions");
+        return query.getResultList();
+    }
+
     private List<Test> getPreviousTests(String testPath) {
         Query query = entityManager.createNamedQuery("Test.getPreviousTests");
         query.setParameter("param", testPath);

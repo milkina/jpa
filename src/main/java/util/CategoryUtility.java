@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import static util.AllConstantsAttribute.DUPLICATE_CATEGORIES;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
@@ -164,21 +165,24 @@ public class CategoryUtility {
         return previousCategory;
     }
 
-    public static void selectCategoriesWithTests(List<Category> categories) {
+    public static void selectCategories(List<Category> categories,
+                                                 Predicate<Category> filter) {
         categories.removeIf(Category::getHidden);
         categories.removeIf(category -> category.getParentCategory() != null);
-        selectSubCategoriesWithTests(categories);
-        categories.removeIf(c -> c.getParentCategory() == null
+        selectSubCategories(categories, filter);
+        Predicate<Category> removeFilter = c -> c.getParentCategory() == null
                 && (c.getSubCategories() == null
-                || c.getSubCategories().isEmpty()) && c.getTestsCount() < 1);
+                || c.getSubCategories().isEmpty());
+        removeFilter = removeFilter.and(filter);
+        categories.removeIf(removeFilter);
     }
 
-    private static void selectSubCategoriesWithTests(List<Category> categories) {
+    private static void selectSubCategories(List<Category> categories, Predicate<Category> filter) {
         for (Category category : categories) {
             Collection<Category> subCategories = category.getSubCategories();
             if (subCategories != null && !subCategories.isEmpty()) {
                 subCategories.removeIf(Category::getHidden);
-                subCategories.removeIf(c -> c.getTestsCount() < 1);
+                subCategories.removeIf(filter);
             }
         }
     }

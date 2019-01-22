@@ -20,6 +20,12 @@
              <a href="${pageContext.request.contextPath}/select-category-for-exam?TEST_PATH=${test.pathName}"
              id="${test.name}">${test.name}</a><BR>
           </c:forEach>
+
+           <h1 class="indexH1"><strong><spring:message code="questions"/></strong></h1>
+          <c:forEach var="test" items="${COURSES_WITH_QUESTIONS}">
+             <a href="${pageContext.request.contextPath}/select-categories-to-see-questions?TEST_PATH=${test.pathName}"
+             id="${test.name}">${test.name}</a><BR>
+          </c:forEach>
          </main>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>
         </div>

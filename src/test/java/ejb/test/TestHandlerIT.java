@@ -150,4 +150,11 @@ public class TestHandlerIT extends BaseIT {
         Assert.assertEquals(result.size(), 1);
         Assert.assertEquals(result.get(0), tests[0]);
     }
+
+    @Test
+    public void testGetAllCoursesWithNotEmptyQuestions() {
+        List<model.Test> result = testHandler.getAllCoursesWithNotEmptyQuestions();
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.size() > 3);
+    }
 }

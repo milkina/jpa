@@ -20,6 +20,14 @@
                <span class="questionsNumber">${TESTS[param.TEST_PATH].questionsNumber} questions</span>
                <br>
             </div>
+            <form action="${pageContext.request.contextPath}/select-category-for-exam">
+               <input type="submit" value="Start Test">
+               <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
+            </form>
+            <form action="${pageContext.request.contextPath}/select-categories-to-see-questions">
+                 <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
+               <input type="submit" value="Questions">
+            </form>
             ${TESTS[param.TEST_PATH].article.text}
         </article></main>
         <%@ include file="/WEB-INF/socialButtons.jsp" %>

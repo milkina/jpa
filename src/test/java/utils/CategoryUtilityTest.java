@@ -93,7 +93,7 @@ public class CategoryUtilityTest {
 
     @Test(dataProvider = "dataForSelect")
     public void selectCategoriesWithTestsTest(List<Category> categories, List<Category> result) {
-        CategoryUtility.selectCategoriesWithTests(categories);
+        CategoryUtility.selectCategories(categories, c -> c.getTestsCount() < 1);
         Assert.assertEquals(categories, result);
     }
 }

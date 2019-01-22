@@ -5,7 +5,7 @@
            // add these two lines for absolute urls
             remove_script_host : false,
             convert_urls : false,
-            selector: 'textarea#ARTICLE_TEXT',
+            selector: 'textarea#article.text',
             plugins: 'code codesample image imagetools link table',
             toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | codesample | code | image | link | table",
             code_dialog_height: 300,
@@ -16,7 +16,7 @@
            // add these two lines for absolute urls
             remove_script_host : false,
             convert_urls : false,
-            selector: 'textarea#ICON_TEXT',
+            selector: 'textarea#iconText',
             plugins: 'code codesample',
             toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | codesample | code ",
             code_dialog_height: 300,

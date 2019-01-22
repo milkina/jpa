@@ -1,20 +1,20 @@
-function deleteCategory(contextPath, test, category){
-    if (confirm("Do you want to delete " + category + " permanently?")) {
-       window.location.href  = contextPath + "/servlet/DeleteCategoryServlet?TEST_PATH="+
-       test+"&CATEGORY_PATH="+category;
+function deleteCategory(contextPath, test, category, message){
+    if (confirm(message +" " + category + "?")) {
+       window.location.href  = contextPath + "/delete-category?TEST_PATH="+
+       test + "&CATEGORY_PATH="+category;
     }
 
 }
-function deleteFromTest(contextPath, test, category){
-    if (confirm("Do you want to delete " + category + " category from " + test +" test?")) {
-       window.location.href  = contextPath + "/servlet/DeleteFromTestServlet?TEST_PATH="+
+function deleteFromTest(contextPath, test, category, message1, message2){
+    if (confirm(message1 + " " + category +" "+ message2+" " + test +"?")) {
+       window.location.href  = contextPath + "/delete-from-course?TEST_PATH="+
        test+"&CATEGORY_PATH="+category;
     }
 }
 
-function deleteTest(contextPath, test){
-    if (confirm("Do you want to delete " + test +" test?")) {
-       window.location.href  = contextPath + "/servlet/DeleteTestServlet?TEST_PATH="+test;
+function deleteCourse(contextPath, test, message){
+    if (confirm(message + " " + test + "?")) {
+       window.location.href  = contextPath + "/delete-course?TEST_PATH="+test;
     }
 }
  function newXMLHttpRequest() {
@@ -35,7 +35,7 @@ function deleteTest(contextPath, test){
  }
  var req = newXMLHttpRequest();
  function moveCategoryUp(category, previousCategory, contextPath, testPath) {
-     var url = contextPath + "/servlet/MoveCategoryServlet";
+     var url = contextPath + "/move-category";
 
      req.open("POST", url, true);
      req.setRequestHeader("Content-Type",

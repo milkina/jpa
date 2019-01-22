@@ -3,7 +3,7 @@ Disallow: /ShowQuestions.jsp
 Disallow: /administration/
 Disallow: /edit/
 Disallow: /person/
-Disallow: /servlet/ChangeTestServlet
+Disallow: /change-course
 Disallow: /servlet/SaveComment
 Disallow: /person/login.jsp
 Host: www.examclouds.com

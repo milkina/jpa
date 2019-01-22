@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
  <jsp:attribute name="header">
     <title>Edit Test</title>
@@ -13,10 +14,8 @@
     <div class="mainArea">
     <main>
     <c:if test="${person.sysadmin}">
-    <h1>Test Name - ${TESTS[param.TEST_PATH].name}</h1>
-    <h2>Categories:</h2>
+    <h1 class="header1"><spring:message	code="course"/> ${TESTS[param.TEST_PATH].name}</h1>
         <table class="table-striped" id="table-1">
-            <thead><tr><td>Topic</td></tr></thead>
               <c:forEach var="category" items="${TESTS[param.TEST_PATH].categories}">
                         <tr id="${category.value.pathName}">
                              <td>
@@ -30,29 +29,32 @@
                              </td>
                              <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
                              name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION">
-                                      Show Q-s ${category.value.questionsCount}
+                                      <spring:message code="questions"/> ${category.value.questionsCount}
                                  </a>
                              </td>
                              <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
                              name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST">
-                                      Show Test Q-s ${category.value.testsCount}
+                                      <spring:message code="tests"/> ${category.value.testsCount}
                                  </a>
                              </td>
                              <td>
                                  <a href="${pageContext.request.contextPath}/show-move-batch?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
                                  name="moveQuestions${category.value.pathName}">
-                                 Move Questions</a>
+                                 <spring:message code="move.questions"/></a>
                              </td>
                              <td>
-                                <input type="button" value="Delete" onclick="deleteCategory('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}');"
+                                <input type="button" value="<spring:message	code="delete"/>"
+                                onclick="deleteCategory('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}','<spring:message 	code="want.delete"/>');"
                                 name="delete${category.value.pathName}">
                              </td>
                              <td>
                                  <a href="${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
-                                 name="addQuestion${category.value.pathName}">Add Question</a>
+                                 name="addQuestion${category.value.pathName}">
+                                    <spring:message	code="add.question.button"/></a>
                              </td>
                              <td>
-                                 <input type="button" value="Delete from Test" onclick="deleteFromTest('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}');"
+                                 <input type="button" value="<spring:message code="delete.from.course"/>"
+                                  onclick="deleteFromTest('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}','<spring:message	code="want.delete"/>','<spring:message	code="from"/>');"
                                   name="removeFromTest${category.value.pathName}">
                              </td>
                         </tr>
@@ -69,10 +71,10 @@
         });
         </script>
         <a href="${pageContext.request.contextPath}/show-create-category?TEST_PATH=${param.TEST_PATH}" name="createCategory">
-          Create Category
+          <spring:message	code="create.category"/>
         </a><br>
-        <a href="${pageContext.request.contextPath}/administration/category/addCategory.jsp?TEST_PATH=${param.TEST_PATH}" name="addCategory">
-          Add Category
+        <a href="${pageContext.request.contextPath}/show-add-category?TEST_PATH=${param.TEST_PATH}" name="addCategory">
+          <spring:message	code="add.category"/>
         </a><br>
     </c:if>
     </main>

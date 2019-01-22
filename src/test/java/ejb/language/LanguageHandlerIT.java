@@ -1,11 +1,10 @@
 package ejb.language;
 
-import data.language.Language;
+import model.Language;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseIT;
 
-import java.util.List;
 import java.util.Map;
 
 public class LanguageHandlerIT extends BaseIT {

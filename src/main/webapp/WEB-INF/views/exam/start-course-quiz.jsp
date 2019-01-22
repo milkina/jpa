@@ -5,7 +5,7 @@
 <t:wrapper>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
-        <title><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</title>
+        <title>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/> </title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet" type="text/css">
     </jsp:attribute>
@@ -14,9 +14,12 @@
         <cache:cacheTag/>
         <div class="mainArea">
          <main>
-          <h1 class="indexH1"><strong><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</strong></h1>
+          <h1 class="indexH1"><strong>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/> </strong></h1>
           <div>
-          <form ACTION="${pageContext.request.contextPath}/start-test?TEST_PATH=${param.TEST_PATH}"  method="POST">
+          <form ACTION="${pageContext.request.contextPath}/see-questions?TEST_PATH=${param.TEST_PATH}"  method="POST">
+          <c:if test="${person != null}">
+              <%@ include file="/WEB-INF/showQuestions/selectOptionsPanel.jsp" %>
+          </c:if>
           <select name="CATEGORY_PATH" id="CATEGORY_PATH" multiple="multiple" class="2col active" required>
           <c:forEach var="category" items="${CATEGORIES}">
           <c:choose>
@@ -46,7 +49,7 @@
           </script>
           </div>
          <spring:message code="number.questions.label"/> <input type="text" value="20" name="NUMBER_OF_QUESTIONS"><BR><BR>
-         <input type="submit" value="<spring:message code="start.test"/>" name="startTest">
+         <input type="submit" value="<spring:message code="start"/>" name="startTest">
          </form>
          </main>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>

@@ -1,26 +1,26 @@
      <form action="" id="editTest">
-       <h3>Tests</h3>
+       <h3 class="header3"><spring:message	code="courses"/></h3>
        <table class="table-striped" id="table-1">
        <thead><tr>
-                <td>Name</td>
-                <td>Questions Number</td>
+                <td><spring:message	code="course.name"/></td>
+                <td><spring:message	code="number.questions.label"/></td>
                 <td>&nbsp;</td>
                </tr>
        </thead>
         <c:forEach var="test" items="${TESTS}">
           <tr id="${test.value.pathName}">
-              <td><a href="${pageContext.request.contextPath}/administration/test/show-test.jsp?TEST_PATH=${test.value.pathName}"
+              <td><a href="${pageContext.request.contextPath}/show-course?TEST_PATH=${test.value.pathName}"
                      name="${test.value.pathName}Admin">
                        ${test.value.name}</a></td>
               <td>${test.value.questionsNumber}</td>
               <td>
                <a href="${pageContext.request.contextPath}/show-edit-course?TEST_PATH=${test.value.pathName}"
                name="editTest${test.value.pathName}">
-                  Edit Test</a>
+                  <spring:message	code="edit.course"/></a>
              </td>
              <td>
-               <input type="button" value="Delete" name="delete${test.value.pathName}"
-               onclick="deleteTest('${pageContext.request.contextPath}','${test.value.pathName}');">
+               <input type="button" value="<spring:message	code="delete"/>" name="delete${test.value.pathName}"
+               onclick="deleteCourse('${pageContext.request.contextPath}','${test.value.pathName}','<spring:message	code="want.delete"/>');">
              </td>
           </tr>
          </c:forEach>
@@ -36,5 +36,5 @@
                  });
               });
               </script>
-      <a href="${pageContext.request.contextPath}/show-add-course" name="addTest">Add Course</a>
+      <a href="${pageContext.request.contextPath}/show-add-course" name="addTest"><spring:message	code="add.course"/></a>
       </form>

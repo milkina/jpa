@@ -1,6 +1,7 @@
 package spring.category;
 
 import data.category.CategoryHandler;
+import data.test.TestHandler;
 import model.Category;
 import model.Test;
 import model.article.Article;
@@ -15,6 +16,7 @@ import util.TestUtility;
 import util.article.ArticleUtility;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
 
@@ -25,6 +27,7 @@ import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.OLD_TEST_PATH;
+import static util.AllConstantsParam.PREVIOUS_CATEGORY_PATH;
 import static util.AllConstantsParam.TEST_PATH;
 import static util.GeneralUtility.getRequest;
 import static util.GeneralUtility.getResourceValue;
@@ -128,5 +131,72 @@ public class CategoryController {
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
         modelAndView.addObject(MESSAGE_ATTRIBUTE, message);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete-category")
+    public ModelAndView deleteCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
+                                       Locale locale) {
+        ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
+        CategoryHandler categoryHandler = new CategoryHandler();
+
+        Category category = categoryHandler.getCategory(categoryPath);
+        if (CategoryUtility.containQuestionEntries(category)) {
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "category.not.removed1", "messages"));
+        } else if (!category.getSubCategories().isEmpty()) {
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "category.not.removed2", "messages"));
+        } else {
+            categoryHandler.removeCategory(category);
+            HttpServletRequest request = getRequest();
+            Collection<Category> categoryList =
+                    CategoryUtility.getCategoriesFromServletContext(request)
+                            .values();
+            categoryList.remove(category);
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "category.removed", "messages"));
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete-from-course")
+    public ModelAndView deleteFromCourse(@RequestParam(CATEGORY_PATH) String categoryPath,
+                                         Locale locale) {
+        HttpServletRequest request = getRequest();
+        Test test = TestUtility.getTestFromServletContext(request);
+        Map<String, Category> categories = test.getCategories();
+        Category category = categories.get(categoryPath);
+        ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
+        if (!category.getSubCategories().isEmpty()) {
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "category.not.removed2", "messages"));
+        } else {
+            TestHandler testHandler = new TestHandler();
+            testHandler.removeCategoryFromTest(test, category);
+
+            TestUtility.loadTestsToServletContext(request.getServletContext());
+            CategoryUtility.setDuplicateCategories(request.getServletContext());
+            modelAndView.addObject(MESSAGE_ATTRIBUTE,
+                    getResourceValue(locale, "category.removed.from.course", "messages"));
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/move-category")
+    public void moveCategory(@RequestParam(PREVIOUS_CATEGORY_PATH) String previousCategoryPath,
+                             @RequestParam(TEST_PATH) String testPath) {
+        HttpServletRequest request = getRequest();
+        Category category = CategoryUtility.getCategoryByPath(request);
+        CategoryHandler categoryHandler = new CategoryHandler();
+        Category previousCategory = categoryHandler.getCategory(previousCategoryPath);
+
+        if (category.getOrderId() > previousCategory.getOrderId()) {
+            categoryHandler.moveCategoryUp(category, previousCategoryPath, testPath);
+        } else {
+            categoryHandler.moveCategoryDown(category, previousCategoryPath, testPath);
+        }
+        TestUtility.loadTestsToServletContext(request.getServletContext());
     }
 }

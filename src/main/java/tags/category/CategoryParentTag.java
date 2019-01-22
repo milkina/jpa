@@ -16,7 +16,10 @@ public class CategoryParentTag extends TagSupport {
                     (CategoryTag) findAncestorWithClass(this, CategoryTag.class);
             Category category = parent.getCategory();
             JspWriter out = pageContext.getOut();
-            Category parentCategory = category.getParentCategory();
+            Category parentCategory = null;
+            if (category != null) {
+                parentCategory = category.getParentCategory();
+            }
             String result = parentCategory == null ? "" : parentCategory.getName() + ".";
             out.print(result);
         } catch (IOException ioe) {

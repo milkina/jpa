@@ -1,6 +1,6 @@
 package utils;
 
-import data.language.Language;
+import model.Language;
 import model.*;
 import model.article.Article;
 import model.comment.Comment;

@@ -1,15 +1,15 @@
 <%@ page import="controller.EditMode" %>
 <%@ taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
-<h3>Comments</h3>
+<h3 class="header3"><spring:message	code="comments"/></h3>
 <form ACTION="${pageContext.request.contextPath}/delete-comment"
     method="POST">
 <h4>
-<input type="submit" value="Delete Comments" name="DeleteCommentButton">
+<input type="submit" value="<spring:message	code="delete.comments"/>" name="DeleteCommentButton">
 <div style="padding-left:20px;padding-right:20px;margin-left:10px;margin-right:10px">
-  <div class="adminComment" style="width:10%">Created Date</div>
-  <div class="adminComment" style="width:14%">Author</div>
-  <div class="adminComment" style="width:60%">Comment</div>
-  <div class="adminComment" style="width:10%">Type</div>
+  <div class="adminComment" style="width:10%"><spring:message	code="created.date"/></div>
+  <div class="adminComment" style="width:14%"><spring:message	code="author"/></div>
+  <div class="adminComment" style="width:60%"><spring:message	code="comment"/></div>
+  <div class="adminComment" style="width:10%"><spring:message code="type"/></div>
   </div>
 </h4>
 <div>
@@ -26,7 +26,7 @@
                          <div class="adminComment" style="width:10%"><a href="<comment:url/>"><comment:type/></a></div>
                          <div>
                            <a href="${pageContext.request.contextPath}/administration/comments/edit-comment.jsp?COMMENT_ID=<comment:id/>" id="Edit<comment:id/>">
-                              Edit</a>&nbsp;
+                              <spring:message code="edit"/></a>&nbsp;
                          </div>
                   </div>
                 </li>

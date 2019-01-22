@@ -1,6 +1,6 @@
-package controller.language;
+package data.language;
 
-import data.language.Language;
+import model.Language;
 
 import java.util.List;
 

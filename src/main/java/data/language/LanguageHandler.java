@@ -1,12 +1,11 @@
-package controller.language;
+package data.language;
 
-import data.language.Language;
+import model.Language;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;

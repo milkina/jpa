@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
 <jsp:attribute name="header">
-    <title>${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}</title>
+    <title>${TESTS[param.TEST_PATH].name} Quiz</title>
     <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
@@ -15,8 +15,7 @@
 </jsp:attribute>
 <jsp:body>
      <div class="mainArea">
-       <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
-        <h2 class="header2">${CATEGORY_ATTRIBUTE.name}
+        <h2 class="header2">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.name}
            <span class="questionEntryNumber" id="questionEntryNumber"><exam:number/>/<exam:size/></span>
         </h2>
          <div class="questionEntryDiv">

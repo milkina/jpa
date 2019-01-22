@@ -87,10 +87,6 @@
         <servlet-class>controller.person.ClearHistoryServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteCategoryServlet</servlet-name>
-        <servlet-class>controller.category.DeleteCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeleteArticleServlet</servlet-name>
         <servlet-class>controller.article.DeleteArticleServlet</servlet-class>
     </servlet>
@@ -101,18 +97,6 @@
     <servlet>
         <servlet-name>ShowArticleServlet</servlet-name>
         <servlet-class>controller.article.ShowArticleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteFromTestServlet</servlet-name>
-        <servlet-class>controller.category.DeleteFromTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>MoveCategoryServlet</servlet-name>
-        <servlet-class>controller.category.MoveCategoryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteTestServlet</servlet-name>
-        <servlet-class>controller.test.DeleteTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiteMapServlet</servlet-name>
@@ -170,10 +154,6 @@
         <url-pattern>/servlet/ClearHistoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteCategoryServlet</servlet-name>
-        <url-pattern>/servlet/DeleteCategoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DeleteArticleServlet</servlet-name>
         <url-pattern>/servlet/DeleteArticleServlet</url-pattern>
     </servlet-mapping>
@@ -186,20 +166,8 @@
         <url-pattern>/servlet/ShowArticleServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteFromTestServlet</servlet-name>
-        <url-pattern>/servlet/DeleteFromTestServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MoveCategoryServlet</servlet-name>
-        <url-pattern>/servlet/MoveCategoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>UpTestServlet</servlet-name>
         <url-pattern>/servlet/UpTestServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteTestServlet</servlet-name>
-        <url-pattern>/servlet/DeleteTestServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SiteMapServlet</servlet-name>

@@ -1,6 +1,6 @@
 package utils;
 
-import controller.language.LanguageBeanI;
+import data.language.LanguageBeanI;
 import data.article.ArticleBeanI;
 import data.category.CategoryBeanI;
 import data.comment.CommentBeanI;

@@ -1,8 +1,8 @@
 <%@ taglib uri="/WEB-INF/tld/articlejsp-taglib.tld" prefix="article"%>
-<h3>Articles</h3>
+<h3 class="header3"><spring:message code="articles"/></h3>
 <h4>
   <div style="width:40%;display:inline-block">Id</div>
-  <div style="width:40%;display:inline-block">Url</div>
+  <div style="width:40%;display:inline-block"><spring:message code="url"/></div>
   <div style="width:15%;display:inline-block"></div>
 </h4>
 <div>
@@ -19,11 +19,11 @@
                          </div>
                          <div style="width:10%;display:inline-block">
                            <a href="${pageContext.request.contextPath}/servlet/DeleteArticleServlet?ARTICLE_ID=<article:articleId/>"
-                             name="deleteArticle<article:articleUrl/>">Delete</a>
+                             name="deleteArticle<article:articleUrl/>"><spring:message code="delete"/></a>
                          </div>
                          <div style="width:10%;display:inline-block">
                            <a href="${pageContext.request.contextPath}/servlet/LoadEditArticleServlet?ARTICLE_ID=<article:articleId/>"
-                             name="editArticle<article:articleUrl/>">Edit</a>
+                             name="editArticle<article:articleUrl/>"><spring:message code="edit"/></a>
                          </div>
                 </li>
                 </article:article>
@@ -31,4 +31,6 @@
             </article:articleList>
        </div>
 </div>
-<a href="${pageContext.request.contextPath}/article/editArticle.jsp" name="addArticle">Add Article</a><BR>
+<a href="${pageContext.request.contextPath}/article/editArticle.jsp" name="addArticle">
+   <spring:message code="add.article"/>
+</a><BR>

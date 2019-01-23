@@ -21,7 +21,8 @@
                                                                       <h2>OCPJP 8 (1Z0-809)<br>
                                                                             <span>Oracle Certified Professional, Java SE 8 Programmer</span>
                                                                       </h2>
-                                                                      <span class="questionsNumber">${TESTS["ocpjp8"].questionsNumber} questions</span>
+                                                                      <span class="questionsNumber">
+                                                                      ${TESTS["ocpjp8"].questionsNumber+TESTS["ocpjp8"].testsNumber} questions</span>
                                                                       <br>
                                                                   </a>
                                                               </div>
@@ -31,7 +32,8 @@
                                   <h2>OCEJPAD 6 (1Z0-898)<br>
                                         <span>Oracle Certified Expert, EE 6 Java Persistence API Developer</span>
                                   </h2>
-                                  <span class="questionsNumber">${TESTS["jpa"].questionsNumber} questions</span>
+                                  <span class="questionsNumber">
+                                  ${TESTS["jpa"].questionsNumber+TESTS["jpa"].testsNumber} questions</span>
                                   <br>
                               </a>
                           </div>
@@ -40,7 +42,8 @@
                                   <h2>OCEJWSD 6 (1Z0-897)<br>
                                           <span>Oracle Certified Expert, Java EE 6 Web Services Developer</span>
                                   </h2>
-                                  <span class="questionsNumber">${TESTS["web-services"].questionsNumber} questions</span>
+                                  <span class="questionsNumber">
+                                  ${TESTS["web-services"].questionsNumber+ TESTS["web-services"].testsNumber} questions</span>
                                   <br>
                                </a>
                           </div>
@@ -49,7 +52,8 @@
                                                  <h2>OCJP 6 (1Z0-851)<br>
                                                        <span>Oracle Certified Professional, Java Se 6 Programmer</span>
                                                  </h2>
-                                                 <span class="questionsNumber">${TESTS["ocjp"].questionsNumber} questions</span>
+                                                 <span class="questionsNumber">
+                                                   ${TESTS["ocjp"].questionsNumber+TESTS["ocjp"].testsNumber} questions</span>
                                                  <BR>
                                              </a>
                                         </div>
@@ -58,7 +62,8 @@
                                                             <h2>OCPJP 8 Upgrade (1Z0-813)<br>
                                                                     <span>Upgrade to Java SE 8 OCP (Java SE 6 and prior versions)</span>
                                                             </h2>
-                                                            <span class="questionsNumber">${TESTS["ocpjp8-update-from-java6"].questionsNumber} questions</span>
+                                                            <span class="questionsNumber">
+                                                              ${TESTS["ocpjp8-update-from-java6"].questionsNumber+TESTS["ocpjp8-update-from-java6"].testsNumber} questions</span>
                                                             <br>
                                                          </a>
                                                     </div>
@@ -67,7 +72,8 @@
                                                             <h2>OCPJP 8 Upgrade (1Z0-810)<br>
                                                                     <span>Upgrade Java SE 7 to Java SE 8 OCP Programmer</span>
                                                             </h2>
-                                                            <span class="questionsNumber">${TESTS["ocpjp8-update-from-java7"].questionsNumber} questions</span>
+                                                            <span class="questionsNumber">
+                                                               ${TESTS["ocpjp8-update-from-java7"].questionsNumber+TESTS["ocpjp8-update-from-java7"].testsNumber} questions</span>
                                                             <br>
                                                          </a>
                                                     </div>

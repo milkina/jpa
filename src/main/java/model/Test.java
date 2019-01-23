@@ -36,10 +36,9 @@ import java.util.Map;
 @Table(name = "TESTS")
 @NamedQueries({
         @NamedQuery(name = "Test.findAllTests",
-                query = "select t,count(q) from Test t "
+                query = "SELECT t,sum(c.questionsCount),sum(c.testsCount) FROM Test t "
                         + "left join t.categories c "
-                        + "left join c.questionEntries q "
-                        + " group by t order by t.orderId"),
+                        + "GROUP BY t ORDER BY t.orderId "),
         @NamedQuery(name = "Test.findPathName",
                 query = "select t.id,t.pathName from Test t"),
         @NamedQuery(name = "Test.getTestByQuestion",
@@ -72,6 +71,9 @@ public class Test implements Serializable, Comparable<Test> {
 
     @Transient
     private Long questionsNumber = 0L;
+
+    @Transient
+    private Long testsNumber = 0L;
 
     private Date updatedDate;
 
@@ -149,6 +151,14 @@ public class Test implements Serializable, Comparable<Test> {
 
     public void setQuestionsNumber(Long questionsNumber) {
         this.questionsNumber = questionsNumber;
+    }
+
+    public Long getTestsNumber() {
+        return testsNumber;
+    }
+
+    public void setTestsNumber(Long testNumber) {
+        this.testsNumber = testNumber;
     }
 
     public Date getUpdatedDate() {

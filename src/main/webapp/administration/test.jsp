@@ -9,7 +9,7 @@
        </thead>
         <c:forEach var="test" items="${TESTS}">
           <tr id="${test.value.pathName}">
-              <td><a href="${pageContext.request.contextPath}/show-course?TEST_PATH=${test.value.pathName}"
+              <td><a href="${pageContext.request.contextPath}/show-course-admin?TEST_PATH=${test.value.pathName}"
                      name="${test.value.pathName}Admin">
                        ${test.value.name}</a></td>
               <td>${test.value.questionsNumber}</td>

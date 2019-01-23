@@ -13,14 +13,14 @@
                            <div class="testList" style="width:210px">
                                                          <a href="${pageContext.request.contextPath}/exam/ocajp7">
                                                             <h4>OCAJP 7 (1Z0-803)</h4>
-                                                            <span class="questionsNumber">${TESTS["ocajp7"].questionsNumber} questions</span>
+                                                            <span class="questionsNumber">${TESTS["ocajp7"].questionsNumber+TESTS["ocajp7"].testsNumber} questions</span>
                                                             <br>
                                                          </a>
                                                     </div>
                                                     <div class="testList" style="width:210px">
                                                          <a href="${pageContext.request.contextPath}/exam/ocajp8">
                                                             <h4>OCAJP 8 (1Z0-808)</h4>
-                                                            <span class="questionsNumber">${TESTS["ocajp8"].questionsNumber} questions</span>
+                                                            <span class="questionsNumber">${TESTS["ocajp8"].questionsNumber+TESTS["ocajp8"].testsNumber} questions</span>
                                                             <br>
                                                          </a>
                                                     </div>
@@ -30,35 +30,36 @@
                                           <div class="testList" style="width:210px">
                                               <a href="${pageContext.request.contextPath}/exam/ocpjp8">
                                                   <h4>OCPJP 8 (1Z0-809)</h4>
-                                                  <span class="questionsNumber">${TESTS["ocpjp8"].questionsNumber} questions</span>
+                                                  <span class="questionsNumber">${TESTS["ocpjp8"].questionsNumber+TESTS["ocpjp8"].testsNumber} questions</span>
                                                   <br>
                                               </a>
                                           </div>
                                           <div class="testList" style="width:210px">
                                                               <a href="${pageContext.request.contextPath}/ocpjp8-update-from-java6">
                                                                  <h4>OCPJP 8 Upgrade 6<BR>(1Z0-813)</h4>
-                                                                 <span class="questionsNumber">${TESTS["ocpjp8-update-from-java6"].questionsNumber} questions</span>
+                                                                 <span class="questionsNumber">
+                                                                  ${TESTS["ocpjp8-update-from-java6"].questionsNumber+TESTS["ocpjp8-update-from-java6"].testsNumber} questions</span>
                                                                  <br>
                                                               </a>
                                                          </div>
                                           <div class="testList" style="width:210px">
                                                <a href="${pageContext.request.contextPath}/exam/ocpjp8-update-from-java7">
                                                   <h4>OCPJP 8 Upgrade 7<BR>(1Z0-810)</h4>
-                                                  <span class="questionsNumber">${TESTS["ocpjp8-update-from-java7"].questionsNumber} questions</span>
+                                                  <span class="questionsNumber">${TESTS["ocpjp8-update-from-java7"].questionsNumber+TESTS["ocpjp8-update-from-java7"].testsNumber} questions</span>
                                                   <br>
                                                </a>
                                           </div>
                                            <div class="testList" style="width:210px">
                                                                         <a href="${pageContext.request.contextPath}/exam/ocpjp7">
                                                                             <h4>OCPJP 7 (1Z0-804)</h4>
-                                                                            <span class="questionsNumber">${TESTS["ocpjp7"].questionsNumber} questions</span>
+                                                                            <span class="questionsNumber">${TESTS["ocpjp7"].questionsNumber+TESTS["ocpjp7"].testsNumber} questions</span>
                                                                             <br>
                                                                         </a>
                                                                     </div>
                                <div class="testList" style="width:210px">
                                                              <a href="${pageContext.request.contextPath}/ocjp">
                                                                  <h4>OCJP 6 (1Z0-851)</h4>
-                                                                 <span class="questionsNumber">${TESTS["ocjp"].questionsNumber} questions</span>
+                                                                 <span class="questionsNumber">${TESTS["ocjp"].questionsNumber+TESTS["ocjp"].testsNumber} questions</span>
                                                                  <BR>
                                                              </a>
                                                         </div>

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import util.GeneralUtility;
 import util.LanguageUtility;
 import util.TestUtility;
 import util.article.ArticleUtility;
@@ -106,9 +105,9 @@ public class CourseController {
         return SPRING_MESSAGE_PAGE;
     }
 
-    @RequestMapping(value = "show-course")
-    public String showCourse() {
-        return "course/show-course";
+    @RequestMapping(value = "show-course-admin")
+    public String showCourseAdmin() {
+        return "course/show-course-admin";
     }
 
     @RequestMapping(value = "/delete-course")
@@ -127,5 +126,10 @@ public class CourseController {
         TestUtility.loadTestsToServletContext(request.getServletContext());
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "show-course")
+    public String showCourse() {
+        return "/course/show-course";
     }
 }

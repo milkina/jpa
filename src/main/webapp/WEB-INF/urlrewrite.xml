@@ -19,6 +19,41 @@
         <from>^/publications/(.*)$</from>
         <to type="passthrough">/servlet/ShowArticleServlet?URL_PARAM=$1</to>
     </rule>
+    <rule>
+        <from>^/ocjp$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocjp</to>
+    </rule>
+    <rule>
+        <from>^/jpa$</from>
+        <to type="passthrough">/show-course?TEST_PATH=jpa</to>
+    </rule>
+    <rule>
+        <from>^/web-services$</from>
+        <to type="passthrough">/show-course?TEST_PATH=web-services</to>
+    </rule>
+    <rule>
+        <from>^/ocpjp8-update-from-java6$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocpjp8-update-from-java6</to>
+    </rule>
+    <rule>
+        <from>^/ocajp7$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocajp7</to>
+    </rule>
+    <rule>
+        <from>^/ocajp8$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocajp8</to>
+    </rule>
+    <rule>
+        <from>^/ocpjp8-update-from-java7$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocpjp8-update-from-java7</to>
+    </rule>
+    <rule>
+        <from>^/ocpjp7$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocpjp7</to>
+    </rule>
+    <rule>
+        <from>^/exam/(.*)$</from>
+        <to type="passthrough">/show-course?TEST_PATH=$1</to>
+    </rule>
 </urlrewrite>
-
 

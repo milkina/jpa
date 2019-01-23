@@ -47,6 +47,7 @@ public class TestHandler {
             for (Object[] object : list) {
                 Test test = (Test) object[0];
                 test.setQuestionsNumber((Long) object[1]);
+                test.setTestsNumber((Long) object[2]);
                 map.put(test.getPathName(), test);
             }
         }
@@ -60,6 +61,7 @@ public class TestHandler {
             for (Object[] object : list) {
                 Test test = (Test) object[0];
                 test.setQuestionsNumber((Long) object[1]);
+                test.setTestsNumber((Long) object[2]);
                 map.put(test.getId(), test);
             }
         }

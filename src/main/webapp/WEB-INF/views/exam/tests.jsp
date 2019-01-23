@@ -6,7 +6,7 @@
     <jsp:attribute name="header">
         <META NAME="Keywords" CONTENT="java tests">
         <META NAME="Description"
-                       CONTENT="Бесплатные online Java тесты для подготовки к сертификациям и собеседованиям.">
+                       CONTENT="Бесплатные online Java тесты и вопросы для подготовки к сертификациям и собеседованиям.">
         <title><spring:message code="tests"/></title>
             <jsp:include page="/WEB-INF/google-ads-header.jsp" />
     </jsp:attribute>

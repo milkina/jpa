@@ -1,13 +1,20 @@
 package util.article;
 
 import data.article.ArticleHandler;
+import data.category.CategoryHandler;
+import data.test.TestHandler;
+import model.Category;
+import model.Test;
 import model.article.Article;
 import model.person.Person;
+import util.CategoryUtility;
 import util.ServletUtilities;
+import util.TestUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+import static util.AllConstants.GROUP_NAME;
 import static util.AllConstantsParam.ARTICLE_TEXT;
 import static util.AllConstantsParam.ARTICLE_IMAGE;
 import static util.AllConstantsParam.ARTICLE_KEYWORDS;
@@ -27,6 +34,12 @@ public class ArticleUtility {
         ArticleHandler articleHandler = new ArticleHandler();
         Article article = articleHandler.getArticle(articleId);
         String url = article.getUrl();
+        if (url == null) {
+            Category category = article.getCategory();
+            Test course = new TestHandler().getCourse(category);
+            url = String.format("%s/%s/%s"
+                    , GROUP_NAME, course.getPathName(), category.getPathName());
+        }
         return url;
     }
 
@@ -56,7 +69,7 @@ public class ArticleUtility {
         return article;
     }
 
-    public static void setArticleData(Article article,Article newArticle) {
+    public static void setArticleData(Article article, Article newArticle) {
         article.setText(decodeRussianCharacters(newArticle.getText()));
         article.setUrl(decodeRussianCharacters(newArticle.getUrl()));
         article.setImage(decodeRussianCharacters(newArticle.getImage()));

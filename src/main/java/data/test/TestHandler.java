@@ -41,7 +41,7 @@ public class TestHandler {
     }
 
     public Map<String, Test> getAllTestsWithPath() {
-        Map<String, Test> map = new LinkedHashMap<String, Test>();
+        Map<String, Test> map = new LinkedHashMap<>();
         List<Object[]> list = testBean.getAllTests();
         if (list != null) {
             for (Object[] object : list) {
@@ -134,5 +134,9 @@ public class TestHandler {
         } else {
             testBean.moveTestDown(test.getPathName(), stopTest.getPathName());
         }
+    }
+
+    public Test getCourse(Category category) {
+        return testBean.getCourse(category);
     }
 }

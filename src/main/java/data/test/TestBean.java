@@ -131,4 +131,9 @@ public class TestBean implements TestBeanI {
         test1.setOrderId(id2);
         test2.setOrderId(id1);
     }
+
+    public Test getCourse(Category category) {
+        category = entityManager.merge(category);
+        return category.getTests().get(0);
+    }
 }

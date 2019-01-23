@@ -38,8 +38,7 @@ import java.util.Map;
         @NamedQuery(name = "Test.findAllTests",
                 query = "select t,count(q) from Test t "
                         + "left join t.categories c "
-                        + "left join c.questionEntries q where "
-                        + "(c.hidden=false or t.categories is empty)"
+                        + "left join c.questionEntries q "
                         + " group by t order by t.orderId"),
         @NamedQuery(name = "Test.findPathName",
                 query = "select t.id,t.pathName from Test t"),

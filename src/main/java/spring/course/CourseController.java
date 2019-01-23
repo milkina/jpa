@@ -47,20 +47,19 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/show-add-course")
-    public ModelAndView showAddCourse() {
+    public ModelAndView showAddCourse(HttpServletRequest request) {
         Test newTest = new Test();
         newTest.setArticle(new Article());
         ModelAndView modelAndView = new ModelAndView("/course/add-course", "command", newTest);
 
-        Map<String, String> languages = LanguageUtility.getLanguagesMap(GeneralUtility.getRequest().getServletContext());
+        Map<String, String> languages = LanguageUtility.getLanguagesMap(request.getServletContext());
         modelAndView.addObject("languagesMap", languages);
         return modelAndView;
     }
 
     @RequestMapping(value = "/add-course")
     public String addCourse(Model model, Locale locale, @RequestParam("LANGUAGE") String languageCode,
-                            @ModelAttribute("SpringWeb") Test newTest) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+                            @ModelAttribute("SpringWeb") Test newTest, HttpServletRequest request) {
         ServletContext servletContext = request.getServletContext();
         Person person = (Person)
                 request.getSession().getAttribute(PERSON_ATTRIBUTE);
@@ -76,12 +75,12 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/show-edit-course")
-    public ModelAndView showEditCourse(@RequestParam("TEST_PATH") String testPath) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public ModelAndView showEditCourse(@RequestParam("TEST_PATH") String testPath,
+                                       HttpServletRequest request) {
         Map<String, Test> testMap = (Map<String, Test>)
                 request.getServletContext().getAttribute(TESTS);
         Test test = testMap.get(testPath);
-        Map<String, String> languages = LanguageUtility.getLanguagesMap(GeneralUtility.getRequest().getServletContext());
+        Map<String, String> languages = LanguageUtility.getLanguagesMap(request.getServletContext());
         ModelAndView modelAndView = new ModelAndView("/course/edit-course", "command", test);
         modelAndView.addObject("languagesMap", languages);
         return modelAndView;
@@ -91,8 +90,7 @@ public class CourseController {
     public String editCourse(@RequestParam(OLD_TEST_PATH) String testPath,
                              @ModelAttribute("SpringWeb") Test newTest,
                              @RequestParam("LANGUAGE") String languageCode,
-                             Model model, Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+                             Model model, Locale locale, HttpServletRequest request) {
         Map<String, Test> testMap = (Map<String, Test>)
                 request.getServletContext().getAttribute(TESTS);
         Test test = testMap.get(testPath);
@@ -114,9 +112,8 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/delete-course")
-    public ModelAndView deleteCourse(Locale locale) {
+    public ModelAndView deleteCourse(Locale locale, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
-        HttpServletRequest request = GeneralUtility.getRequest();
         Test test = TestUtility.getTestFromServletContext(request);
         TestHandler testHandler = new TestHandler();
         if (testHandler.deleteTest(test)) {

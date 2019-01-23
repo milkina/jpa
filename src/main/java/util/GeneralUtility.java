@@ -164,11 +164,6 @@ public class GeneralUtility {
         return attr.getRequest().getSession(allowCreate);
     }
 
-    public static HttpServletRequest getRequest() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        return attr.getRequest();
-    }
-
     public static HttpServletResponse getResponse() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         return attr.getResponse();

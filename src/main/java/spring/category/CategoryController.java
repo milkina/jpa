@@ -29,7 +29,6 @@ import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.OLD_TEST_PATH;
 import static util.AllConstantsParam.PREVIOUS_CATEGORY_PATH;
 import static util.AllConstantsParam.TEST_PATH;
-import static util.GeneralUtility.getRequest;
 import static util.GeneralUtility.getResourceValue;
 
 /**
@@ -39,8 +38,7 @@ import static util.GeneralUtility.getResourceValue;
 public class CategoryController {
     @RequestMapping(value = "/show-category")
     public ModelAndView showCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
-                                     Model model) {
-        HttpServletRequest request = getRequest();
+                                     Model model, HttpServletRequest request) {
         Map<String, Category> categoryMap =
                 CategoryUtility.getCategoriesFromServletContext(request);
         Category category = categoryMap.get(categoryPath);
@@ -55,9 +53,9 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/create-category")
-    public ModelAndView createCategory(@RequestParam(TEST_PATH) String testPath, Locale locale) {
+    public ModelAndView createCategory(@RequestParam(TEST_PATH) String testPath, Locale locale,
+                                       HttpServletRequest request) {
         //TODO Return error if category with such name or pathName already exists
-        HttpServletRequest request = getRequest();
         Map<String, Test> testMap =
                 (Map<String, Test>) request.getServletContext()
                         .getAttribute(TESTS);
@@ -90,11 +88,10 @@ public class CategoryController {
 
     @RequestMapping(value = "/edit-category", method = RequestMethod.POST)
     public ModelAndView editCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
-                                     Locale locale) {
+                                     Locale locale, HttpServletRequest request) {
         //TODO Return error if category with such name or pathName
         // already exists
         Category category = new CategoryHandler().getCategory(categoryPath);
-        HttpServletRequest request = getRequest();
         CategoryUtility.updateCategory(request, category);
 
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
@@ -109,8 +106,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/add-category", method = RequestMethod.POST)
-    public ModelAndView addCategory(@RequestParam(OLD_TEST_PATH) String oldTestPath, Locale locale) {
-        HttpServletRequest request = getRequest();
+    public ModelAndView addCategory(@RequestParam(OLD_TEST_PATH) String oldTestPath,
+                                    Locale locale, HttpServletRequest request) {
         Category category =
                 CategoryUtility.getCategoryFromServletContext(request);
 
@@ -135,7 +132,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/delete-category")
     public ModelAndView deleteCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
-                                       Locale locale) {
+                                       Locale locale, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
         CategoryHandler categoryHandler = new CategoryHandler();
 
@@ -148,7 +145,6 @@ public class CategoryController {
                     getResourceValue(locale, "category.not.removed2", "messages"));
         } else {
             categoryHandler.removeCategory(category);
-            HttpServletRequest request = getRequest();
             Collection<Category> categoryList =
                     CategoryUtility.getCategoriesFromServletContext(request)
                             .values();
@@ -162,8 +158,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/delete-from-course")
     public ModelAndView deleteFromCourse(@RequestParam(CATEGORY_PATH) String categoryPath,
-                                         Locale locale) {
-        HttpServletRequest request = getRequest();
+                                         Locale locale, HttpServletRequest request) {
         Test test = TestUtility.getTestFromServletContext(request);
         Map<String, Category> categories = test.getCategories();
         Category category = categories.get(categoryPath);
@@ -186,8 +181,8 @@ public class CategoryController {
 
     @RequestMapping(value = "/move-category")
     public void moveCategory(@RequestParam(PREVIOUS_CATEGORY_PATH) String previousCategoryPath,
-                             @RequestParam(TEST_PATH) String testPath) {
-        HttpServletRequest request = getRequest();
+                             @RequestParam(TEST_PATH) String testPath,
+                             HttpServletRequest request) {
         Category category = CategoryUtility.getCategoryByPath(request);
         CategoryHandler categoryHandler = new CategoryHandler();
         Category previousCategory = categoryHandler.getCategory(previousCategoryPath);

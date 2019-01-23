@@ -29,5 +29,5 @@
 <span class="adminLabel"><spring:message code="meta.description"/>:<span class="wrongMessage">*</span></span>
 <textarea rows="4" cols="40" maxlength="160" name="description" required id="description">${CATEGORY_ATTRIBUTE.article.description}</textarea>  <BR>
 <span class="adminLabel"><spring:message code="text"/>:</span>
-<textarea rows="25" cols="80" name="ARTICLE_TEXT" id="ARTICLE_TEXT">${CATEGORY_ATTRIBUTE.article.text}</textarea> <BR>
+<textarea rows="25" cols="80" name="article.text" id="ARTICLE_TEXT">${CATEGORY_ATTRIBUTE.article.text}</textarea> <BR>
 

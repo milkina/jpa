@@ -59,8 +59,8 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/save-question", method = RequestMethod.POST)
-    public ModelAndView saveQuestion(@RequestParam("answerNumber") int answerNumber, ModelMap model, Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public ModelAndView saveQuestion(@RequestParam("answerNumber") int answerNumber,
+                                     ModelMap model, Locale locale, HttpServletRequest request) {
         addQuestionEntry(answerNumber, request);
 
         String message = getResourceValue(locale, "question.added", "messages");
@@ -71,8 +71,7 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/show-questions")
-    public String showQuestions(Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public String showQuestions(Locale locale, HttpServletRequest request) {
         request.setAttribute(LOCALE, locale);
         return "/question/show-questions";
     }
@@ -97,10 +96,9 @@ public class QuestionController {
                                      @RequestParam(CATEGORY_PATH) String categoryPath,
                                      @RequestParam(OLD_CATEGORY_PATH) String oldCategoryPath,
                                      @RequestParam(QUESTION_ENTRY_ID_PARAM) String questionEntryId,
-                                     Locale locale) {
+                                     Locale locale, HttpServletRequest request) {
         newQuestionText = GeneralUtility.decodeRussianCharacters(newQuestionText.trim());
         AbstractQuestionEntry questionEntry = findQuestionEntry(questionEntryId);
-        HttpServletRequest request = GeneralUtility.getRequest();
         Person person = TestUtility.getPersonFromSession(request.getSession());
         questionEntry.setApproved(person.isSysadmin());
         Category category =
@@ -137,9 +135,9 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/up-question")
-    public String up(@RequestParam("EDIT_MODE_PARAM") String modeParam) {
+    public String up(@RequestParam("EDIT_MODE_PARAM") String modeParam,
+                     HttpServletRequest request) {
         EditMode mode = EditMode.valueOf(modeParam);
-        HttpServletRequest request = GeneralUtility.getRequest();
         Integer questionId = GeneralUtility.getIntegerValue(
                 request, QUESTION_ENTRY_ID_PARAM);
 
@@ -151,8 +149,7 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/delete-question")
-    public ModelAndView delete(Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public ModelAndView delete(Locale locale, HttpServletRequest request) {
         int questionEntryId = GeneralUtility.getIntegerValue(request,
                 QUESTION_ENTRY_ID_PARAM);
 
@@ -166,8 +163,7 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/approve-question")
-    public ModelAndView approve(Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public ModelAndView approve(Locale locale, HttpServletRequest request) {
         int questionEntryId = GeneralUtility.getIntegerValue(request,
                 QUESTION_ENTRY_ID_PARAM);
 
@@ -188,9 +184,8 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/move-batch", method = RequestMethod.POST)
-    public ModelAndView moveBatch(Locale locale) {
+    public ModelAndView moveBatch(Locale locale, HttpServletRequest request) {
         CategoryHandler categoryHandler = new CategoryHandler();
-        HttpServletRequest request = GeneralUtility.getRequest();
         Category category = CategoryUtility.getCategoryByPath(request);
         String oldTestPath = request.getParameter(OLD_TEST_PATH).trim();
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);

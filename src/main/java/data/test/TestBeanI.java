@@ -39,4 +39,6 @@ public interface TestBeanI {
     void moveTestDown(String testPath, String stopTestPath);
 
     List<Test> getAllCoursesWithNotEmptyQuestions();
+
+    Test getCourse(Category category);
 }

@@ -40,8 +40,8 @@ public class ExamController {
     private static CategoryHandler categoryHandler = new CategoryHandler();
 
     @RequestMapping(value = "/start-test")
-    public String startExam(@RequestParam(TEST_PATH) String testPath, Model model, Locale locale) {
-        HttpServletRequest request = GeneralUtility.getRequest();
+    public String startExam(@RequestParam(TEST_PATH) String testPath, Model model,
+                            Locale locale, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         String[] categoryPaths = request.getParameterValues(CATEGORY_PATH);
@@ -65,9 +65,8 @@ public class ExamController {
     }
 
     @RequestMapping(value = "/show-exam-question")
-    public String showExamQuestion() {
+    public String showExamQuestion(HttpServletRequest request) {
         HttpSession session = GeneralUtility.getSession(true);
-        HttpServletRequest request = GeneralUtility.getRequest();
         int i = 0;
         if (request.getParameter("PREVIOUS") != null) {
             i = -1;

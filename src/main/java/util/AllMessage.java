@@ -8,11 +8,8 @@ package util;
  * To change this template use File | Settings | File Templates.
  */
 public interface AllMessage {
-
-     String ARTICLE_REMOVED_MESSAGE = "The article is removed.";
-    String ARTICLE_UPDATED_MESSAGE = "The article is added/updated.";
     String QUESTIONS_MOVED = "%s questions moved.";
-        String COMMENT_CHANGED = "Comment is updated.";
+    String COMMENT_CHANGED = "Comment is updated.";
     String COMMENT_REMOVED = "Comments are removed.";
     String USER_REMOVED = "User is removed.";
     String USER_HAS_ADDED_QUESTIONS = "User cannot be removed, because he has added questions.";

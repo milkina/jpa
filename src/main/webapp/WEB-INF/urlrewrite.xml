@@ -8,17 +8,13 @@
         <from>^/(.*)$</from>
         <to type="redirect">http://www.examclouds.com/$1</to>
     </rule>
-<!--    <rule>
-        <from>^/</from>
-        <to type="passthrough">/main.jsp</to>
-    </rule>-->
     <rule>
         <from>^/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>
     <rule>
         <from>^/publications/(.*)$</from>
-        <to type="passthrough">/servlet/ShowArticleServlet?URL_PARAM=$1</to>
+        <to type="passthrough">/show-article?URL_PARAM=$1</to>
     </rule>
     <rule>
         <from>^/ocjp$</from>

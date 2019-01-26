@@ -53,7 +53,7 @@
     <c:if test="${person.sysadmin}">
             <li><a href="<%=request.getContextPath()%>/show-administration">Administration</a></li>
     </c:if>
-    <li><a href="<%=request.getContextPath()%>/articles.jsp">Articles</a></li>
+    <li><a href="<%=request.getContextPath()%>/show-all-articles">Articles</a></li>
 </ul>
 </div>
 </div>

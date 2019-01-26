@@ -4,7 +4,7 @@
  <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem">
     &gt;
-    <a itemprop="item" href="${pageContext.request.contextPath}/articles.jsp">
+    <a itemprop="item" href="${pageContext.request.contextPath}/show-all-articles">
       <span itemprop="name">Articles</span></a>
     <meta itemprop="position" content="2" />
   </li>

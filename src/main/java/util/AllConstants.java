@@ -25,8 +25,8 @@ public interface AllConstants {
     String MOVE_QUESTIONS_PAGE = "redirect:show-move-batch?TEST_PATH=%s&CATEGORY_PATH=%s&message=%s";
     String MY_PROFILE_PAGE = "/person/my-profile";
     String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
-    String EDIT_ARTICLE = "/article/editArticle.jsp";
-    String SHOW_ARTICLE_PAGE = "/article/showArticle.jsp";
+    String EDIT_ARTICLE = "article/edit-article";
+    String SHOW_ARTICLE_PAGE = "article/show-article";
 
     String ALL_QUESTIONS = "ALL_QUESTIONS";
     String GET_ALL_QUESTION_ENTRIES = "GET_ALL_QUESTION_ENTRIES";

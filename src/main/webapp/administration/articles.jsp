@@ -18,11 +18,11 @@
                            </a>
                          </div>
                          <div style="width:10%;display:inline-block">
-                           <a href="${pageContext.request.contextPath}/servlet/DeleteArticleServlet?ARTICLE_ID=<article:articleId/>"
+                           <a href="${pageContext.request.contextPath}/delete-article?ARTICLE_ID=<article:articleId/>"
                              name="deleteArticle<article:articleUrl/>"><spring:message code="delete"/></a>
                          </div>
                          <div style="width:10%;display:inline-block">
-                           <a href="${pageContext.request.contextPath}/servlet/LoadEditArticleServlet?ARTICLE_ID=<article:articleId/>"
+                           <a href="${pageContext.request.contextPath}/edit-article?ARTICLE_ID=<article:articleId/>"
                              name="editArticle<article:articleUrl/>"><spring:message code="edit"/></a>
                          </div>
                 </li>
@@ -31,6 +31,6 @@
             </article:articleList>
        </div>
 </div>
-<a href="${pageContext.request.contextPath}/article/editArticle.jsp" name="addArticle">
+<a href="${pageContext.request.contextPath}/add-article" name="addArticle">
    <spring:message code="add.article"/>
 </a><BR>

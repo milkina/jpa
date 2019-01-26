@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/articlejsp-taglib.tld" prefix="article"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
   <jsp:attribute name="header">
     <meta name="robots" content="noindex">

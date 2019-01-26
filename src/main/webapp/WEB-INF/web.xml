@@ -65,11 +65,7 @@
         <servlet-name>ShowQuestionServlet</servlet-name>
         <servlet-class>controller.exam.ShowQuestionServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>EditArticleServlet</servlet-name>
-        <servlet-class>controller.article.EditArticleServlet</servlet-class>
-    </servlet>
-    <servlet>
+      <servlet>
         <servlet-name>ModifyCommentServlet</servlet-name>
         <servlet-class>controller.comment.ModifyCommentServlet</servlet-class>
     </servlet>
@@ -85,18 +81,6 @@
     <servlet>
         <servlet-name>ClearHistoryServlet</servlet-name>
         <servlet-class>controller.person.ClearHistoryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteArticleServlet</servlet-name>
-        <servlet-class>controller.article.DeleteArticleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LoadEditArticleServlet</servlet-name>
-        <servlet-class>controller.article.LoadEditArticleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShowArticleServlet</servlet-name>
-        <servlet-class>controller.article.ShowArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiteMapServlet</servlet-name>
@@ -132,10 +116,6 @@
         <url-pattern>/show-question</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditArticleServlet</servlet-name>
-        <url-pattern>/EditArticleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ModifyCommentServlet</servlet-name>
         <url-pattern>/modify-comment</url-pattern>
     </servlet-mapping>
@@ -152,18 +132,6 @@
     <servlet-mapping>
         <servlet-name>ClearHistoryServlet</servlet-name>
         <url-pattern>/servlet/ClearHistoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteArticleServlet</servlet-name>
-        <url-pattern>/servlet/DeleteArticleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoadEditArticleServlet</servlet-name>
-        <url-pattern>/servlet/LoadEditArticleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowArticleServlet</servlet-name>
-        <url-pattern>/servlet/ShowArticleServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpTestServlet</servlet-name>

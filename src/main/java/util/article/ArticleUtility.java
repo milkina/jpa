@@ -122,4 +122,14 @@ public class ArticleUtility {
             article.setText(articleText);
         }
     }
+
+    public static void removeArticleFromCategory(Article article) {
+        Category category = article.getCategory();
+        if (category != null) {
+            category.setArticle(null);
+            CategoryHandler categoryHandler = new CategoryHandler();
+            categoryHandler.updateCategory(category);
+        }
+        article.setCategory(null);
+    }
 }

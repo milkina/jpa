@@ -25,14 +25,14 @@
             </div>
             <c:if test="${TESTS[param.TEST_PATH].testsNumber>0}">
               <form action="${pageContext.request.contextPath}/select-category-for-exam">
-                 <input type="submit" value="<spring:message	code="start.test"/>">
+                 <input type="submit" value="<spring:message code="start.test"/>">
                  <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
               </form>
             </c:if>
             <c:if test="${TESTS[param.TEST_PATH].questionsNumber>0}">
               <form action="${pageContext.request.contextPath}/select-categories-to-see-questions">
                  <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
-                 <input type="submit" value="<spring:message	code="questions"/>">
+                 <input type="submit" value="<spring:message code="questions"/>" id="startQuiz">
               </form>
             </c:if>
             ${TESTS[param.TEST_PATH].article.text}

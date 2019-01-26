@@ -4,6 +4,7 @@
     <rule>
         <name>Ensure HTTPS</name>
         <condition name="host" operator="notequal">examclouds.com</condition>
+        <condition name="host" operator="notequal">localhost</condition>
         <from>^/(.*)$</from>
         <to type="redirect">http://www.examclouds.com/$1</to>
     </rule>

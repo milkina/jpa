@@ -49,7 +49,7 @@
           </script>
           </div>
          <spring:message code="number.questions.label"/> <input type="text" value="20" name="NUMBER_OF_QUESTIONS"><BR><BR>
-         <input type="submit" value="<spring:message code="start"/>" name="startTest">
+         <input type="submit" value="<spring:message code="start"/>" name="startTest" id="startQuiz">
          </form>
          </main>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>

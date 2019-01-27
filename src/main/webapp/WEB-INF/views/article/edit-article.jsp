@@ -23,7 +23,7 @@
             <span class="adminLabel"><spring:message code="meta.description"/>:<span class="wrongMessage">*</span></span>
             <textarea rows="4" cols="40" maxlength="160" name="description" required id="description">${ARTICLE_ATTRIBUTE.description}</textarea>  <BR>
             <span class="adminLabel"><spring:message code="text"/>:<span class="wrongMessage">*</span></span>
-            <textarea rows="25" cols="80" name="ARTICLE_TEXT" id="ARTICLE_TEXT">${ARTICLE_ATTRIBUTE.text}</textarea> <BR>
+            <textarea rows="25" cols="80" name="article.text" id="ARTICLE_TEXT">${ARTICLE_ATTRIBUTE.text}</textarea> <BR>
             <input type="submit" value="<spring:message code="save.button"/>" name="Save" id="save"><br>
         </form>
       </div>

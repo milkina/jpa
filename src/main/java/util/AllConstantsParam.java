@@ -66,7 +66,7 @@ public interface AllConstantsParam {
     String ARTICLE_IMAGE = "ARTICLE_IMAGE";
 
     String ARTICLE_ID = "ARTICLE_ID";
-    String ARTICLE_TEXT = "ARTICLE_TEXT";
+    String ARTICLE_TEXT = "article.text";
     String TITLE = "TITLE";
     String QUESTION_NUMBER = "QUESTION_NUMBER";
     String MODE = "MODE";

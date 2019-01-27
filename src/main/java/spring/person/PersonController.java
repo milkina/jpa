@@ -145,7 +145,7 @@ public class PersonController {
         List<TestExam> exams = examHandler.getExams(person);
         session.setAttribute(USER_TEST_EXAMS, exams);
         session.setAttribute(SOME_USER, person);
-        return "redirect:" + SHOW_PERSON_HISTORY_PAGE;
+        return SHOW_PERSON_HISTORY_PAGE;
     }
 
     @RequestMapping(value = "/change-answered-question")

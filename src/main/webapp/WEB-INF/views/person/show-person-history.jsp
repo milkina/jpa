@@ -1,22 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <t:wrapper>
   <jsp:attribute name="header">
-    <title>My Profile on ExamClouds</title>
+    <title>${SOME_USER.login} <spring:message code="history.label"/> | ExamClouds</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my_profile_min.js"></script>
     <meta name="robots" content="noindex">
  </jsp:attribute>
  <jsp:body>
     <div class="mainArea">
-        <h2 class="header2">${SOME_USER.login} History</h2>
+        <h2 class="header2">${SOME_USER.login} <spring:message code="history.label"/></h2>
         <table width="100%">
         <tr>
-                        <td width="10%"><B>Date</B></td>
-                        <td width="10%"><B>Percent</B></td>
-                        <td width="10%"><B>Number of Questions</B></td>
-                        <td width="70%"><B>Category</B></td>
+                        <td width="10%"><B><spring:message code="date.label"/></B></td>
+                        <td width="10%"><B><spring:message code="percent.label"/></B></td>
+                        <td width="10%"><B><spring:message code="number.questions.label"/></B></td>
+                        <td width="70%"><B><spring:message code="category.label"/></B></td>
         </tr>
         <c:forEach var="exam" items="${USER_TEST_EXAMS}">
            <tr>

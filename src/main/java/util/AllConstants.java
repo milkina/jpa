@@ -24,7 +24,7 @@ public interface AllConstants {
     String SPRING_MESSAGE_PAGE = "/message-page";
     String MOVE_QUESTIONS_PAGE = "redirect:show-move-batch?TEST_PATH=%s&CATEGORY_PATH=%s&message=%s";
     String MY_PROFILE_PAGE = "/person/my-profile";
-    String SHOW_PERSON_HISTORY_PAGE = "/person/show-person-history.jsp";
+    String SHOW_PERSON_HISTORY_PAGE = "person/show-person-history";
     String EDIT_ARTICLE = "article/edit-article";
     String SHOW_ARTICLE_PAGE = "article/show-article";
 

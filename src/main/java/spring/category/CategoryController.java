@@ -44,6 +44,9 @@ public class CategoryController {
         Category category = categoryMap.get(categoryPath);
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
         model.addAttribute(ARTICLE_ATTRIBUTE, category.getArticle());
+        if (category.getHidden()) {
+            return new ModelAndView("redirect:/");
+        }
         return new ModelAndView("/category/show-category");
     }
 

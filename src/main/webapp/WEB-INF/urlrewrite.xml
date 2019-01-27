@@ -52,5 +52,9 @@
         <from>^/exam/(.*)$</from>
         <to type="passthrough">/show-course?TEST_PATH=$1</to>
     </rule>
+    <rule>
+        <from>^/ocjp-ocpjp.jsp$</from>
+        <to type="passthrough">/ocjp-ocpjp</to>
+    </rule>
 </urlrewrite>
 

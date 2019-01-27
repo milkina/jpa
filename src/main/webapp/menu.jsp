@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="menuDiv">
   <div style="display:inline-block;width:100%">
         <div id="sprite-examclouds" class="menuImageDiv"></div>
@@ -29,7 +30,8 @@
             </c:when>
             <c:otherwise>
                <span id="personLogin">${person.login}</span><br>
-               <a href="<%=request.getContextPath()%>/logout" id="isLogin" class="menuHref">log out</a>
+               <a href="<%=request.getContextPath()%>/logout" id="isLogin" class="menuHref">
+                  <spring:message code="logout"/></a>
             </c:otherwise>
         </c:choose><BR>
         <span class="menuHref">
@@ -41,19 +43,20 @@
   </div>
 <div class="indentmenu">
 <ul>
-    <li><a href="<%=request.getContextPath()%>/" id="home">Home</a></li>
-    <li><a href="<%=request.getContextPath()%>/tests" id="tests">Tests&Questions</a></li>
+    <li><a href="<%=request.getContextPath()%>/" id="home"><spring:message code="home"/></a></li>
+    <li><a href="<%=request.getContextPath()%>/tests" id="tests"><spring:message code="tests.questions"/></a></li>
     <li><a href="<%=request.getContextPath()%>/ocjp-ocpjp.jsp" id="ocjp-ocpjp">OCJP/OCPJP</a></li>
     <li><a href="<%=request.getContextPath()%>/jpa" id="jpa">OCEJPAD 6</a></li>
     <li><a href="<%=request.getContextPath()%>/web-services" id="web-services">OCEJWSD 6</a></li>
     <li><a href="<%=request.getContextPath()%>/exam/java-core-russian" id="java-core-russian">Java Core</a></li>
     <c:if test="${person!=null}">
-       <li><a href="<%=request.getContextPath()%>/show-user-profile">My Profile</a></li>
+       <li><a href="<%=request.getContextPath()%>/show-user-profile"><spring:message code="my.profile.label"/></a></li>
     </c:if>
     <c:if test="${person.sysadmin}">
-            <li><a href="<%=request.getContextPath()%>/show-administration">Administration</a></li>
+            <li><a href="<%=request.getContextPath()%>/show-administration">
+            <spring:message code="administration.panel"/></a></li>
     </c:if>
-    <li><a href="<%=request.getContextPath()%>/show-all-articles">Articles</a></li>
+    <li><a href="<%=request.getContextPath()%>/show-all-articles"><spring:message code="articles"/></a></li>
 </ul>
 </div>
 </div>

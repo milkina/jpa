@@ -1,6 +1,6 @@
 <div class="socialIconDiv">
 <span>Copyright &#169; 2012-2019 ExamClouds</span>
-<span class="contactUs">Contact Us:&nbsp;</span>
+<span class="contactUs">&nbsp;</span>
     <a href="http://www.facebook.com/Examclouds" target="_blank" rel="nofollow">
          <div id="sprite-icon_facebook" class="socialIcon"></div>
     </a><a href="http://vk.com/club44323672"  target="_blank" rel="nofollow">

@@ -81,7 +81,12 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/add-article")
-    public String addArticle(){
+    public String addArticle() {
         return EDIT_ARTICLE;
+    }
+
+    @RequestMapping(value = "/ocjp-ocpjp")
+    public String showOCJPPage() {
+        return "ocjp-ocpjp";
     }
 }

@@ -50,10 +50,6 @@
     </listener>
 
     <servlet>
-        <servlet-name>SaveComment</servlet-name>
-        <servlet-class>controller.SaveComment</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
         <servlet-class>controller.ChangeAnsweredQuestionServlet</servlet-class>
     </servlet>
@@ -64,10 +60,6 @@
     <servlet>
         <servlet-name>ShowQuestionServlet</servlet-name>
         <servlet-class>controller.exam.ShowQuestionServlet</servlet-class>
-    </servlet>
-      <servlet>
-        <servlet-name>ModifyCommentServlet</servlet-name>
-        <servlet-class>controller.comment.ModifyCommentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpTestServlet</servlet-name>
@@ -87,10 +79,6 @@
         <servlet-class>controller.sitemap.SiteMapServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteCommentServlet</servlet-name>
-        <servlet-class>controller.comment.DeleteCommentServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddUserAnswerServlet</servlet-name>
         <servlet-class>controller.exam.AddUserAnswerServlet</servlet-class>
     </servlet>
@@ -99,10 +87,6 @@
         <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>SaveComment</servlet-name>
-        <url-pattern>/servlet/SaveComment</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
         <url-pattern>/servlet/ChangeAnsweredQuestionServlet</url-pattern>
@@ -115,10 +99,7 @@
         <servlet-name>ShowQuestionServlet</servlet-name>
         <url-pattern>/show-question</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyCommentServlet</servlet-name>
-        <url-pattern>/modify-comment</url-pattern>
-    </servlet-mapping>
+
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -140,10 +121,6 @@
     <servlet-mapping>
         <servlet-name>SiteMapServlet</servlet-name>
         <url-pattern>/sitemap.xml</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteCommentServlet</servlet-name>
-        <url-pattern>/delete-comment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddUserAnswerServlet</servlet-name>

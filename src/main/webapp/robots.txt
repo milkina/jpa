@@ -3,7 +3,7 @@ Disallow: /administration/
 Disallow: /edit/
 Disallow: /person/
 Disallow: /change-course
-Disallow: /servlet/SaveComment
+Disallow: /save-comment
 Disallow: /person/login.jsp
 Host: www.examclouds.com
 Sitemap: http://www.examclouds.com/sitemap.xml

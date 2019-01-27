@@ -1,7 +1,7 @@
 <%@ taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <BR>
 <div class="commentDiv" id="commentDiv">
-<form action="<%=request.getContextPath()%>/servlet/SaveComment" name="addCommentForm" id="addCommentForm">
+<form action="<%=request.getContextPath()%>/save-comment" name="addCommentForm" id="addCommentForm">
 <input type="hidden" name="COMMENT_TYPE" value="${param.commentType}">
 <input type="hidden" name="REFERENCE_ID" value="${param.referenceId}">
    <BR>
@@ -27,7 +27,7 @@
                            return;
                        }
                        var form = document.getElementById("addCommentForm");
-                       form.action = contextPath + "/servlet/SaveComment";
+                       form.action = contextPath + "/save-comment";
                        form.method = "POST";
                        form.submit();
                    }

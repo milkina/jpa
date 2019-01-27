@@ -25,7 +25,7 @@
                          <div class="adminComment" style="width:60%" id="commentBody<comment:id/>"><comment:body/></div>
                          <div class="adminComment" style="width:10%"><a href="<comment:url/>"><comment:type/></a></div>
                          <div>
-                           <a href="${pageContext.request.contextPath}/administration/comments/edit-comment.jsp?COMMENT_ID=<comment:id/>" id="Edit<comment:id/>">
+                           <a href="${pageContext.request.contextPath}/show-edit-comment?COMMENT_ID=<comment:id/>" id="Edit<comment:id/>">
                               <spring:message code="edit"/></a>&nbsp;
                          </div>
                   </div>

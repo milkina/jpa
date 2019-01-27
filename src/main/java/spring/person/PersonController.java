@@ -35,8 +35,10 @@ import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.SOME_USER;
 import static util.AllConstantsAttribute.USER_TEST_EXAMS;
 import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.CHECKED_PARAM;
 import static util.AllConstantsParam.TEST_PATH;
 import static util.AllConstantsParam.TYPE;
+import static util.AllConstantsParam.UNCHECKED_PARAM;
 import static util.AllConstantsParam.USER_ID;
 import static util.GeneralUtility.getResourceValue;
 
@@ -144,5 +146,30 @@ public class PersonController {
         session.setAttribute(USER_TEST_EXAMS, exams);
         session.setAttribute(SOME_USER, person);
         return "redirect:" + SHOW_PERSON_HISTORY_PAGE;
+    }
+
+    @RequestMapping(value = "/change-answered-question")
+    public void changeAnsweredQuestion(HttpServletRequest request) {
+        boolean checked = request.getParameter(CHECKED_PARAM) != null;
+        String idString = checked ? request.getParameter(CHECKED_PARAM)
+                : request.getParameter(UNCHECKED_PARAM);
+        HttpSession session = request.getSession();
+        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        int id = Integer.parseInt(idString);
+        AbstractQuestionEntry questionEntry =
+                questionEntryHandler.getQuestionEntry(id);
+
+        List<AbstractQuestionEntry> answeredQuestions =
+                PersonUtility.getAnsweredQuestions(session);
+        if (checked && !answeredQuestions.contains(questionEntry)) {
+            answeredQuestions.add(questionEntry);
+        } else if (!checked) {
+            answeredQuestions.remove(questionEntry);
+        }
+
+        Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
+        person.setAnsweredQuestions(answeredQuestions);
+        PersonHandler personHandler = new PersonHandler();
+        personHandler.updatePerson(person);
     }
 }

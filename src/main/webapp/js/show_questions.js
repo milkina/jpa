@@ -8,7 +8,7 @@ function markAnswered(contextPath, id) {
         return;
     }
    var liElementId = document.getElementById("li" + id);
-    var url = contextPath + "/servlet/ChangeAnsweredQuestionServlet";
+    var url = contextPath + "/change-answered-question";
     var param = "";
     if (changeElement.checked) {
         param = param + "Checked=" + id;

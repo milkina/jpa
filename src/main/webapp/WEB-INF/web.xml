@@ -50,26 +50,14 @@
     </listener>
 
     <servlet>
-        <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
-        <servlet-class>controller.ChangeAnsweredQuestionServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ChangeTestServlet</servlet-name>
         <servlet-class>controller.edit.ChangeTestServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpTestServlet</servlet-name>
-        <servlet-class>controller.test.UpTestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiteMapServlet</servlet-name>
         <servlet-class>controller.sitemap.SiteMapServlet</servlet-class>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ChangeAnsweredQuestionServlet</servlet-name>
-        <url-pattern>/servlet/ChangeAnsweredQuestionServlet</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeTestServlet</servlet-name>
         <url-pattern>/servlet/ChangeTestServlet</url-pattern>
@@ -81,10 +69,6 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>UpTestServlet</servlet-name>
-        <url-pattern>/servlet/UpTestServlet</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SiteMapServlet</servlet-name>
         <url-pattern>/sitemap.xml</url-pattern>

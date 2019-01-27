@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import util.CategoryUtility;
 import util.LanguageUtility;
 import util.TestUtility;
 import util.article.ArticleUtility;
@@ -29,6 +30,8 @@ import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsAttribute.TESTS_WITH_TESTS;
 import static util.AllConstantsParam.OLD_TEST_PATH;
+import static util.AllConstantsParam.PREVIOUS_TEST_PATH;
+import static util.AllConstantsParam.TEST_PATH;
 import static util.GeneralUtility.getResourceValue;
 
 @Controller
@@ -131,5 +134,22 @@ public class CourseController {
     @RequestMapping(value = "show-course")
     public String showCourse() {
         return "/course/show-course";
+    }
+
+    @RequestMapping(value = "/up-course")
+    public String upCourse(HttpServletRequest request) {
+        String testPath = request.getParameter(TEST_PATH);
+        String stopTestPath = request.getParameter(PREVIOUS_TEST_PATH);
+        Map<String, Test> testMap = (Map<String, Test>)
+                request.getServletContext().getAttribute(TESTS);
+        Test test = testMap.get(testPath);
+        Test stopTest = testMap.get(stopTestPath);
+
+        TestHandler testHandler = new TestHandler();
+        testHandler.moveTest(test, stopTest);
+
+        TestUtility.loadTestsToServletContext(request.getServletContext());
+        CategoryUtility.setDuplicateCategories(request.getServletContext());
+        return "redirect:/show-administration";
     }
 }

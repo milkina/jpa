@@ -47,7 +47,7 @@ function deleteCourse(contextPath, test, message){
  }
 
  function moveTestUp(testPath, previousTest, contextPath) {
-     var url = contextPath + "/servlet/UpTestServlet";
+     var url = contextPath + "/up-course";
 
      req.open("POST", url, true);
      req.setRequestHeader("Content-Type",

@@ -1,8 +1,10 @@
-package controller.sitemap;
+package util;
 
 import model.Category;
 import model.Test;
 import model.article.Article;
+import model.sitemap.UrlEntity;
+import model.sitemap.UrlSet;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

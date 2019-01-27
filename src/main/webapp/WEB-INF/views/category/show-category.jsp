@@ -18,7 +18,7 @@
                       <link rel="canonical"
                       href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
                 </c:if>
-                <c:if test="${CATEGORY_ATTRIBUTE.hidden || not empty CATEGORY_ATTRIBUTE.subCategories}">
+                <c:if test="${CATEGORY_ATTRIBUTE.hidden || CATEGORY_ATTRIBUTE.indexStatus || not empty CATEGORY_ATTRIBUTE.subCategories}">
                      <meta name="robots" content="noindex">
                 </c:if>
     </jsp:attribute>

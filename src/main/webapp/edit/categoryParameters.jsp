@@ -22,6 +22,10 @@
 <span class="adminLabel"><spring:message code="hidden"/>?</span>
 <input type="checkbox" name="hidden" <c:if test="${CATEGORY_ATTRIBUTE.hidden}">checked</c:if>>
 <BR>
+<span class="adminLabel"><spring:message code="index"/>?</span>
+<input type="checkbox" name="index"
+ <c:if test="${CATEGORY_ATTRIBUTE==null || CATEGORY_ATTRIBUTE.article.indexStatus}">checked</c:if>>
+<BR>
 <span class="adminLabel"><spring:message code="image.url"/>:</span>
 <input type="text" name="ARTICLE_IMAGE" maxlength="150" value="${CATEGORY_ATTRIBUTE.article.image}" size="70"> <BR>
 <span class="adminLabel"><spring:message code="keywords"/>:<span class="wrongMessage">*</span></span>

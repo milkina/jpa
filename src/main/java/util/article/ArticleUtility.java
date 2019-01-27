@@ -7,14 +7,13 @@ import model.Category;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
-import util.CategoryUtility;
 import util.ServletUtilities;
-import util.TestUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 import static util.AllConstants.GROUP_NAME;
+import static util.AllConstantsParam.ARTICLE_INDEX;
 import static util.AllConstantsParam.ARTICLE_TEXT;
 import static util.AllConstantsParam.ARTICLE_IMAGE;
 import static util.AllConstantsParam.ARTICLE_KEYWORDS;
@@ -94,6 +93,7 @@ public class ArticleUtility {
         String keywords = decodeRussianCharacters(
                 request.getParameter(ARTICLE_KEYWORDS));
         String title = decodeRussianCharacters(request.getParameter(TITLE));
+        String index = request.getParameter(ARTICLE_INDEX);
 
         article.setText(text);
         article.setUrl(url);
@@ -101,6 +101,7 @@ public class ArticleUtility {
         article.setDescription(description);
         article.setKeywords(keywords);
         article.setTitle(title);
+        article.setIndexStatus("on".equals(index));
     }
 
     public static void updateArticle(Article article,

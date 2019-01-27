@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <t:wrapper>
  <jsp:attribute name="header">
     <meta name="robots" content="noindex">
@@ -18,6 +19,10 @@
             <input type="text" name="TITLE" maxlength="70" required value="${ARTICLE_ATTRIBUTE.title}" size="70"><BR>
             <span class="adminLabel"><spring:message code="image.url"/>:</span>
             <input type="text" name="ARTICLE_IMAGE" maxlength="70" value="${ARTICLE_ATTRIBUTE.image}"><BR>
+            <span class="adminLabel"><spring:message code="index"/>?</span>
+            <input type="checkbox" name="index"
+              <c:if test="${ARTICLE_ATTRIBUTE==null || ARTICLE_ATTRIBUTE.indexStatus}">checked</c:if>>
+            <BR>
             <span class="adminLabel"><spring:message code="keywords"/>:<span class="wrongMessage">*</span></span>
             <textarea rows="4" cols="40" maxlength="160" name="keywords" required id="keywords">${ARTICLE_ATTRIBUTE.keywords}</textarea>  <BR>
             <span class="adminLabel"><spring:message code="meta.description"/>:<span class="wrongMessage">*</span></span>

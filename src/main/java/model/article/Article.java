@@ -52,6 +52,7 @@ public class Article {
     private String title;
 
     private boolean hidden = false;
+    private boolean indexStatus = true;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "reference_id")
@@ -159,6 +160,14 @@ public class Article {
         this.hidden = hidden;
     }
 
+    public boolean isIndexStatus() {
+        return indexStatus;
+    }
+
+    public void setIndexStatus(boolean indexStatus) {
+        this.indexStatus = indexStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -178,7 +187,6 @@ public class Article {
         if (getTitle() != null ? !getTitle().equals(article.getTitle()) : article.getTitle() != null) return false;
         if (getAuthor() != null ? !getAuthor().equals(article.getAuthor()) : article.getAuthor() != null) return false;
         return !(getCategory() != null ? !getCategory().equals(article.getCategory()) : article.getCategory() != null);
-
     }
 
     @Override

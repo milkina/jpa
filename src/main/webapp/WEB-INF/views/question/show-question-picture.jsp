@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
 <jsp:attribute name="header">
      <title>${QUESTION_ENTRY_ATTRIBUTE.category.parentCategory.name} ${QUESTION_ENTRY_ATTRIBUTE.category.name} - ${TESTS[param.TEST_PATH].name}</title>
     <META NAME="Description" CONTENT="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
-    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
+    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js?v=4"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <c:choose>
        <c:when test="${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName]!=null && DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName!=param.TEST_PATH}">
@@ -38,7 +39,7 @@
       </div>
       <div>
          ${TESTS[param.TEST_PATH].tags}<br>
-         Read answer on <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${param.TEST_PATH}"
+         <spring:message code="read.answer.on"/> <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${param.TEST_PATH}"
                class="showAnswer" name="readAnswer">http://www.examclouds.com/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${param.TEST_PATH}</a>
       </div>
     </jsp:body>

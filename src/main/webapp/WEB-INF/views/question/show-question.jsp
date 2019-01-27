@@ -2,11 +2,12 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
 <jsp:attribute name="header">
     <title>${QUESTION_ENTRY_ATTRIBUTE.category.parentCategory.name} ${QUESTION_ENTRY_ATTRIBUTE.category.name} - ${TESTS[param.TEST_PATH].name}</title>
     <META NAME="Description" CONTENT="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
-    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
+    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js?v=4"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <c:choose>
        <c:when test="${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName]!=null && DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName!=param.TEST_PATH}">
@@ -34,7 +35,8 @@
          <div class="questionEntryDiv">
               <div class="questionEntryBody">
                        <div class="questionText">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
-                       <input type="button" value="Read Answer" onclick="showAnswer('1');" id="a1">
+                       <input type="button" value="<spring:message code="read.answer"/>"
+                       onclick="showAnswer('1','<spring:message code="read.answer"/>','<spring:message code="hide.answer"/>');" id="a1">
                        <c:set var="count" value="${1}"/>
                        <div class="answer" id="answer1">
                           <c:forEach var="answer" items="${QUESTION_ENTRY_ATTRIBUTE.answers}">
@@ -48,7 +50,7 @@
          </div><BR>
           <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${param.TEST_PATH}"
           name="seeOtherQuestions">
-          See other questions</a><BR>
+          <spring:message code="see.other.questions"/></a><BR>
               <jsp:include page="/WEB-INF/comment/comments.jsp">
                     <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}" />
                     <jsp:param name="commentType" value="QUESTION" />

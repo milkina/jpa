@@ -14,22 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import util.AllConstantsParam;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.TestUtility;
 import util.question.QuestionEntryUtility;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 import static util.AllConstants.ADD_QUESTION_PAGE;
 import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
-import static util.AllConstants.MESSAGE_PAGE;
 import static util.AllConstants.MOVE_QUESTIONS_PAGE;
+import static util.AllConstants.SHOW_QUESTION_PAGE;
+import static util.AllConstants.SHOW_QUESTION_PICTURE_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.LOCALE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
+import static util.AllConstantsParam.*;
 import static util.AllConstantsParam.ANSWER_NUMBER;
 import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.FROM_NUMBER;
@@ -39,7 +43,7 @@ import static util.AllConstantsParam.QUESTION_ENTRY_ID_PARAM;
 import static util.AllConstantsParam.QUESTION_TEXT_PARAM;
 import static util.AllConstantsParam.TEST_PATH;
 import static util.AllConstantsParam.TO_NUMBER;
-import static util.AllMessage.QUESTIONS_MOVED;
+import static util.GeneralUtility.getIntegerValue;
 import static util.GeneralUtility.getResourceValue;
 import static util.question.QuestionEntryUtility.addQuestionEntry;
 import static util.question.QuestionEntryUtility.changeQuestionType;
@@ -198,7 +202,7 @@ public class QuestionController {
         Integer to = GeneralUtility.getIntegerValue(request, TO_NUMBER);
         String page = SPRING_MESSAGE_PAGE;
         int amount = to - from + 1;
-        String message = String.format(QUESTIONS_MOVED, amount);
+        String message = amount + " " + getResourceValue(locale, "questions.moved", "messages");
         if (oldCategory.getId() == category.getId()) {
             message = getResourceValue(locale, "select.different.category", "messages");
             page = String.format(MOVE_QUESTIONS_PAGE,
@@ -217,5 +221,18 @@ public class QuestionController {
         ModelAndView modelAndView = new ModelAndView(page);
         modelAndView.addObject(MESSAGE_ATTRIBUTE, message);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/show-question")
+    public String showQuestion(HttpServletRequest request) {
+        Integer questionEntryId = getIntegerValue(request,
+                QUESTION_ENTRY_ID_PARAM);
+        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+        AbstractQuestionEntry questionEntry =
+                questionEntryHandler.getQuestionEntry(questionEntryId);
+        request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
+        String mode = request.getParameter(MODE);
+        return mode == null ? SHOW_QUESTION_PAGE
+                : SHOW_QUESTION_PICTURE_PAGE;
     }
 }

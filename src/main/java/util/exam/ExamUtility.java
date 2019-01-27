@@ -6,11 +6,13 @@ import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractExam;
 import model.AbstractQuestionEntry;
+import model.Answer;
 import model.Category;
 import model.QuestionExam;
 import model.TestExam;
 import model.TestQuestionEntry;
 import model.person.Person;
+import util.GeneralUtility;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import java.util.function.Function;
 import static util.AllConstants.SHOW_QUIZ_QUESTION_PAGE;
 import static util.AllConstants.SHOW_TEST_QUESTION_PAGE;
 import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
+import static util.AllConstantsParam.ANSWER_NUMBER;
 import static util.AllConstantsParam.NUMBER_OF_QUESTIONS;
 
 /**
@@ -144,5 +147,16 @@ public class ExamUtility {
         exam.setAmount(count);
         session.setAttribute(CURRENT_EXAM_ATTRIBUTE, exam);
         return exam;
+    }
+
+    public static void setUserAnswer(HttpServletRequest request, TestQuestionEntry currentQuestionEntry) {
+        int answerNumber = GeneralUtility.getIntegerValue(request, ANSWER_NUMBER);
+        List<Answer> userAnswers = currentQuestionEntry.getUserAnswers();
+        for (int i = 0; i < answerNumber; i++) {
+            String checkbox = request.getParameter("checkbox" + i);
+            Answer answer = userAnswers.get(i);
+            answer.setCorrect(checkbox != null);
+        }
+        currentQuestionEntry.setAnswered(true);
     }
 }

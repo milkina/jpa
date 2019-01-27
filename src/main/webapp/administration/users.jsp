@@ -20,7 +20,7 @@
          <div class="adminUserCell"><%=p.getLogin()%>&nbsp;</div>
          <div class="adminUserCell"><%=createdDate%></div>
          <div class="adminUserCell">
-            <a href="${pageContext.request.contextPath}/servlet/DeleteUser?USER_ID=<%=p.getID()%>">
+            <a href="${pageContext.request.contextPath}/delete-person?USER_ID=<%=p.getID()%>">
                <spring:message code="delete"/></a></div>
          <div class="adminUserCell">
             <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>"

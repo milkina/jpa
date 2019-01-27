@@ -1,6 +1,11 @@
 package spring.person;
 
+import data.exam.ExamHandler;
 import data.person.PersonHandler;
+import data.questionEntry.QuestionEntryHandler;
+import model.AbstractQuestionEntry;
+import model.QuestionType;
+import model.TestExam;
 import model.person.Person;
 import model.person.PersonInfo;
 import org.springframework.stereotype.Controller;
@@ -15,16 +20,28 @@ import util.GeneralUtility;
 import util.PersonUtility;
 import util.ServletUtilities;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Locale;
 
 import static util.AllConstants.MY_PROFILE_PAGE;
+import static util.AllConstants.SHOW_PERSON_HISTORY_PAGE;
+import static util.AllConstants.SHOW_QUESTIONS_PAGE;
+import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.PERSON_ANSWERED_QUESTIONS;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
-import static util.AllConstantsParam.PASSWORD_PARAMETER;
+import static util.AllConstantsAttribute.SOME_USER;
+import static util.AllConstantsAttribute.USER_TEST_EXAMS;
+import static util.AllConstantsParam.CATEGORY_PATH;
+import static util.AllConstantsParam.TEST_PATH;
+import static util.AllConstantsParam.TYPE;
+import static util.AllConstantsParam.USER_ID;
+import static util.GeneralUtility.getResourceValue;
 
 @Controller
-public class ChangeUserSettingsController {
+public class PersonController {
     @RequestMapping(value = "/change-user-settings", method = RequestMethod.POST)
     public ModelAndView changeUserSettings(@ModelAttribute("SpringWeb") Person changedPerson,
                                            ModelMap model, Locale locale) {
@@ -38,7 +55,7 @@ public class ChangeUserSettingsController {
                 personHandler.getPersonByLoginViaCriteria(changedPerson.getLogin());
         if (receivedPerson != null
                 && !changedPerson.getLogin().equalsIgnoreCase(person.getLogin())) {
-            String message = GeneralUtility.getResourceValue(locale, "login.exist", "messages");
+            String message = getResourceValue(locale, "login.exist", "messages");
             model.addAttribute(MESSAGE_ATTRIBUTE, message);
         } else {
             person.setLogin(changedPerson.getLogin());
@@ -68,7 +85,7 @@ public class ChangeUserSettingsController {
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         String url = AllConstants.MY_PROFILE_PAGE;
         if (!password.equals(confPassword)) {
-            String message = GeneralUtility.getResourceValue(locale, "password.and.conf.password.different", "messages");
+            String message = getResourceValue(locale, "password.and.conf.password.different", "messages");
             model.addAttribute(MESSAGE_ATTRIBUTE, message);
             url = "/person/change-password";
         } else {
@@ -79,5 +96,53 @@ public class ChangeUserSettingsController {
         }
 
         return new ModelAndView(url, "command", person);
+    }
+
+    @RequestMapping(value = "/delete-person")
+    public ModelAndView deletePerson(@RequestParam(USER_ID) Integer userId, Locale locale) {
+        String result = getResourceValue(locale, "person.not.removed", "messages");
+        ;
+        if (userId != null) {
+            QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
+            List<AbstractQuestionEntry> questionEntries = questionEntryHandler.getPersonQuestions(userId);
+            if (questionEntries.size() == 0) {
+                PersonHandler personHandler = new PersonHandler();
+                personHandler.removePerson(userId);
+                result = getResourceValue(locale, "person.removed", "messages");
+            } else {
+                result = getResourceValue(locale, "person.has.questions", "messages");
+            }
+        }
+        ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
+        modelAndView.addObject(MESSAGE_ATTRIBUTE, result);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/clear-history")
+    public String clearHistory(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
+        String categoryPath = request.getParameter(CATEGORY_PATH);
+        String testPath = request.getParameter(TEST_PATH);
+
+        PersonHandler personHandler = new PersonHandler();
+        personHandler.removeAnsweredQuestions(person);
+
+        session.setAttribute(PERSON_ANSWERED_QUESTIONS, null);
+        return String.format("redirect:%s?%s=%s&%s=%s&%s=%s",
+                SHOW_QUESTIONS_PAGE, CATEGORY_PATH, categoryPath, TEST_PATH,
+                testPath, TYPE, QuestionType.QUESTION);
+    }
+
+    @RequestMapping(value = "/show-person-history")
+    public String showPersonHistory(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int personId = GeneralUtility.getIntegerValue(request, USER_ID);
+        Person person = new PersonHandler().getPersonById(personId);
+        ExamHandler examHandler = new ExamHandler();
+        List<TestExam> exams = examHandler.getExams(person);
+        session.setAttribute(USER_TEST_EXAMS, exams);
+        session.setAttribute(SOME_USER, person);
+        return "redirect:" + SHOW_PERSON_HISTORY_PAGE;
     }
 }

@@ -58,33 +58,12 @@
         <servlet-class>controller.edit.ChangeTestServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShowQuestionServlet</servlet-name>
-        <servlet-class>controller.exam.ShowQuestionServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>UpTestServlet</servlet-name>
         <servlet-class>controller.test.UpTestServlet</servlet-class>
-    </servlet>
-
-    <servlet>
-        <servlet-name>DeleteUser</servlet-name>
-        <servlet-class>controller.person.DeleteUser</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClearHistoryServlet</servlet-name>
-        <servlet-class>controller.person.ClearHistoryServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiteMapServlet</servlet-name>
         <servlet-class>controller.sitemap.SiteMapServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddUserAnswerServlet</servlet-name>
-        <servlet-class>controller.exam.AddUserAnswerServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShowPersonHistoryServlet</servlet-name>
-        <servlet-class>controller.person.ShowPersonHistoryServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -95,10 +74,6 @@
         <servlet-name>ChangeTestServlet</servlet-name>
         <url-pattern>/servlet/ChangeTestServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowQuestionServlet</servlet-name>
-        <url-pattern>/show-question</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
@@ -107,28 +82,12 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>DeleteUser</servlet-name>
-        <url-pattern>/servlet/DeleteUser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ClearHistoryServlet</servlet-name>
-        <url-pattern>/servlet/ClearHistoryServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>UpTestServlet</servlet-name>
         <url-pattern>/servlet/UpTestServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SiteMapServlet</servlet-name>
         <url-pattern>/sitemap.xml</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddUserAnswerServlet</servlet-name>
-        <url-pattern>/add-user-answer</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowPersonHistoryServlet</servlet-name>
-        <url-pattern>/show-person-history</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>

@@ -23,7 +23,7 @@
         ${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.name}
            <span class="questionEntryNumber" id="questionEntryNumber"><exam:number/>/<exam:size/></span>
         </h2>
-        <form ACTION="${pageContext.request.contextPath}/add-user-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
+        <form ACTION="${pageContext.request.contextPath}/add-person-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
               method="POST">
         <div class="examNumbers">
                       <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">

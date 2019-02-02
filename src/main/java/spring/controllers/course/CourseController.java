@@ -1,4 +1,4 @@
-package spring.course;
+package spring.controllers.course;
 
 import com.google.gson.Gson;
 import data.test.TestHandler;

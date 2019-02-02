@@ -1,4 +1,4 @@
-package spring.category;
+package spring.controllers.category;
 
 import data.category.CategoryHandler;
 import data.test.TestHandler;

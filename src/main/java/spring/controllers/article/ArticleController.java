@@ -1,4 +1,4 @@
-package spring.article;
+package spring.controllers.article;
 
 import data.article.ArticleHandler;
 import model.article.Article;

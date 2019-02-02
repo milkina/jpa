@@ -1,4 +1,4 @@
-package spring.question;
+package spring.controllers.question;
 
 import util.EditMode;
 import data.category.CategoryHandler;

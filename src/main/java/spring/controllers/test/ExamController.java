@@ -1,4 +1,4 @@
-package spring.test;
+package spring.controllers.test;
 
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;

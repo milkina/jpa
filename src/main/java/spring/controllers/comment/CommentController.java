@@ -1,4 +1,4 @@
-package spring.comment;
+package spring.controllers.comment;
 
 import util.EditMode;
 import data.comment.CommentHandler;

@@ -1,4 +1,4 @@
-package spring.person;
+package spring.controllers.person;
 
 import data.article.ArticleHandler;
 import data.exam.ExamHandler;

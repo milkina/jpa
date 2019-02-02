@@ -1,6 +1,7 @@
 package data.article;
 
 import model.article.Article;
+import model.person.Person;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -27,6 +28,12 @@ public class ArticleBean implements ArticleBeanI {
 
     public List<Article> getArticles() {
         Query query = entityManager.createNamedQuery("Article.getAllArticles");
+        return query.getResultList();
+    }
+
+    public List<Article> getArticles(Person person) {
+        Query query = entityManager.createNamedQuery("Article.getPersonArticles");
+        query.setParameter("param", person);
         return query.getResultList();
     }
 

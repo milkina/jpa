@@ -1,6 +1,7 @@
 package data.article;
 
 import model.article.Article;
+import model.person.Person;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -63,5 +64,9 @@ public class ArticleHandler {
 
     public Article getArticleByUrl(String url) {
         return articleBean.getArticleByUrl(url);
+    }
+
+    public List<Article> getArticles(Person person) {
+        return articleBean.getArticles(person);
     }
 }

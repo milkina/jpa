@@ -1,6 +1,7 @@
 package data.article;
 
 import model.article.Article;
+import model.person.Person;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -21,4 +22,6 @@ public interface ArticleBeanI {
     void deleteArticle(Article article);
 
     Article getArticleByUrl(String url);
+
+    List<Article> getArticles(Person person);
 }

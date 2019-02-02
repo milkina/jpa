@@ -66,6 +66,27 @@
            <spring:message code="add.question.button"/></a>
         <BR><a href="${pageContext.request.contextPath}/show-questions?TYPE=MY_QUESTIONS" name="myQuestions">
            <spring:message code="my.questions.button"/></a>
+        <h2 class="header2"><spring:message code="my.articles"/></h2>
+        <ol class="commentList">
+        <c:forEach var="article" items="${ARTICLES}">
+             <li>
+                <div style="width:38%;display:inline-block">${article.id}</div>
+                <div style="width:38%;display:inline-block">
+                   <a href="${pageContext.request.contextPath}${article.url}">
+                                       ${article.url}
+                   </a>
+                </div>
+                <div style="width:10%;display:inline-block">
+                   <a href="${pageContext.request.contextPath}/delete-article?ARTICLE_ID=${article.id}"
+                                      name="deleteArticle${article.url}"><spring:message code="delete"/></a>
+                </div>
+                <div style="width:10%;display:inline-block">
+                     <a href="${pageContext.request.contextPath}/edit-article?ARTICLE_ID=${article.id}"
+                                      name="editArticle${article.url}"><spring:message code="edit"/></a>
+                </div>
+             </li>
+        </c:forEach>
+        </ol>
         <BR><a href="${pageContext.request.contextPath}/add-article" name="addArticle">
                       <spring:message code="add.article"/>
              </a>

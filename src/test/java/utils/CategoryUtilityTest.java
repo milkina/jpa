@@ -79,7 +79,7 @@ public class CategoryUtilityTest {
         return new Object[][]
                 {{new ArrayList<Category>(), new ArrayList<Category>()},
                         {createArrayList(category1, category2, category3, category4, category5Parent, category6, category7),
-                                createArrayList(category4, category5ParentCopy)}
+                                createArrayList(category3,category4, category5ParentCopy)}
                 };
     }
 

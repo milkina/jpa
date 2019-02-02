@@ -1,14 +1,17 @@
 package spring.person;
 
+import data.article.ArticleHandler;
 import data.exam.ExamHandler;
 import data.person.PersonHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.QuestionType;
 import model.TestExam;
+import model.article.Article;
 import model.person.Person;
 import model.person.PersonInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
 
+import static util.AllConstants.ARTICLES;
 import static util.AllConstants.MY_PROFILE_PAGE;
 import static util.AllConstants.SHOW_PERSON_HISTORY_PAGE;
 import static util.AllConstants.SHOW_QUESTIONS_PAGE;
@@ -171,5 +175,18 @@ public class PersonController {
         person.setAnsweredQuestions(answeredQuestions);
         PersonHandler personHandler = new PersonHandler();
         personHandler.updatePerson(person);
+    }
+
+    @RequestMapping(value = "/show-user-profile", method = RequestMethod.GET)
+    public ModelAndView showUserProfile(Model model) {
+        HttpSession session = GeneralUtility.getSession(true);
+        Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
+        ExamHandler examHandler = new ExamHandler();
+        List<TestExam> exams = examHandler.getExams(person);
+        session.setAttribute(USER_TEST_EXAMS, exams);
+        ArticleHandler articleHandler = new ArticleHandler();
+        List<Article> articles = articleHandler.getArticles(person);
+        model.addAttribute(ARTICLES, articles);
+        return new ModelAndView(MY_PROFILE_PAGE, "command", person);
     }
 }

@@ -35,6 +35,13 @@ public class ArticleHandlerIT extends BaseIT {
     }
 
     @Test
+    public void testGetPersonArticles() {
+        List<Article> result = articleHandler.getArticles(persons[0]);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.size() >= 2);
+    }
+
+    @Test
     public void testUpdateArticle() {
         String newArticleText = "newArticleText";
         Article article = TestUtils.createArticle(4, persons[0]);

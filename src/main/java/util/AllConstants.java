@@ -46,4 +46,5 @@ public interface AllConstants {
     String WELCOME_REGISTER_PAGE = "/person/welcome";
     String SITE_NAME = "http://www.examclouds.com/";
     String TESTS_PAGE = "/exam/tests";
+    String ARTICLES = "ARTICLES";
 }

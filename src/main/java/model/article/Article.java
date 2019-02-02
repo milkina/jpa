@@ -28,6 +28,8 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Article.getAllArticles", query = "SELECT a from Article a where a.hidden=false and " +
                 "a.url is not null and a.title is not null order by a.createdDate desc"),
+        @NamedQuery(name = "Article.getPersonArticles", query = "SELECT a from Article a where a.hidden=false and " +
+                "a.url is not null and a.title is not null AND a.author=:param order by a.createdDate desc"),
         @NamedQuery(name = "Article.getArticleByUrl", query = "SELECT a from Article a where a.url=:param"),
         @NamedQuery(name = "Article.getCategory", query = "SELECT c from Category c where c.article.id=:article_id")})
 public class Article {

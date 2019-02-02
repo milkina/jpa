@@ -99,7 +99,7 @@ public class BaseIT {
         articles = new Article[3];
         articles[0] = createArticle(0, persons[0]);
         articles[1] = createArticle(1, persons[0]);
-        articles[2] = createArticle(2, persons[0]);
+        articles[2] = createArticle(2, persons[1]);
         articles = articleHandler.addArticles(articles);
     }
 

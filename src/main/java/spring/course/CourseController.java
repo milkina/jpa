@@ -152,4 +152,9 @@ public class CourseController {
         CategoryUtility.setDuplicateCategories(request.getServletContext());
         return "redirect:/show-administration";
     }
+
+    @RequestMapping(value = "/show-all-courses")
+    public String showAllCourses() {
+        return "course/show-all-courses";
+    }
 }

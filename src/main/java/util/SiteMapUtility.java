@@ -57,19 +57,21 @@ public class SiteMapUtility {
         return links;
     }
 
-    public void setArticleLinks() {
+    private void setArticleLinks() {
         for (Article article : articles) {
-            double priority = NORM_PRIORITY;
-            if (article.getUrl().trim().isEmpty()) {
-                priority = 1;
+            if (article.isIndexStatus()) {
+                double priority = NORM_PRIORITY;
+                if (article.getUrl().trim().isEmpty()) {
+                    priority = 1;
+                }
+                UrlEntity urlEntity = createUrlEntity(SITE_NAME
+                        + article.getUrl(), priority, "monthly");
+                links.addUrlEntity(urlEntity);
             }
-            UrlEntity urlEntity = createUrlEntity(SITE_NAME
-                    + article.getUrl(), priority, "monthly");
-            links.addUrlEntity(urlEntity);
         }
     }
 
-    public void setTestLinks() {
+    private void setTestLinks() {
         for (Test test : testMap.values()) {
             setTestLink(test);
         }
@@ -118,15 +120,12 @@ public class SiteMapUtility {
     }
 
     private boolean isCategoryLinkable(Test test, Category category) {
-        if (category.getHidden() || (category.getSubCategories() != null
+        if (category.getHidden() || !category.getArticle().isIndexStatus() || (category.getSubCategories() != null
                 && !category.getSubCategories().isEmpty())) {
             return false;
         }
-        if (isDuplicateCategory(
-                duplicateCategories.get(category.getPathName()), test)) {
-            return false;
-        }
-        return true;
+        return !isDuplicateCategory(
+                duplicateCategories.get(category.getPathName()), test);
     }
 
     private boolean isDuplicateCategory(Category category, Test test) {

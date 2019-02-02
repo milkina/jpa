@@ -66,6 +66,9 @@
            <spring:message code="add.question.button"/></a>
         <BR><a href="${pageContext.request.contextPath}/show-questions?TYPE=MY_QUESTIONS" name="myQuestions">
            <spring:message code="my.questions.button"/></a>
+        <BR><a href="${pageContext.request.contextPath}/add-article" name="addArticle">
+                      <spring:message code="add.article"/>
+             </a>
     </div>
     <BR>
  </jsp:body>

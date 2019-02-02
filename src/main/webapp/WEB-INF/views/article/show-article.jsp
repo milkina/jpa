@@ -18,6 +18,9 @@
     <meta property = "og:description" content = "${ARTICLE_ATTRIBUTE.description}" />
     <meta property = "og:site_name" content="http://www.examclouds.com">
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <c:if test="${!ARTICLE_ATTRIBUTE.indexStatus}">
+        <meta name="robots" content="noindex">
+    </c:if>
  </jsp:attribute>
  <jsp:body>
    <div class="mainArea">

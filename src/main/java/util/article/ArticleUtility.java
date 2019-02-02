@@ -18,6 +18,7 @@ import static util.AllConstantsParam.ARTICLE_TEXT;
 import static util.AllConstantsParam.ARTICLE_IMAGE;
 import static util.AllConstantsParam.ARTICLE_KEYWORDS;
 import static util.AllConstantsParam.ARTICLE_DESCRIPTION;
+import static util.AllConstantsParam.ARTICLE_URL_PREFIX;
 import static util.AllConstantsParam.URL_PARAM;
 import static util.AllConstantsParam.TITLE;
 import static util.GeneralUtility.decodeRussianCharacters;
@@ -48,6 +49,7 @@ public class ArticleUtility {
         setArticleData(article, request);
         article.setAuthor(author);
         article.setCreatedDate(new Date());
+        article.setUrl(ARTICLE_URL_PREFIX + request.getParameter(URL_PARAM));
 
         article = articleHandler.addArticle(article);
         return article;
@@ -82,7 +84,6 @@ public class ArticleUtility {
 
     public static void setArticleData(Article article,
                                       HttpServletRequest request) {
-        String url = request.getParameter(URL_PARAM);
         String text = decodeRussianCharacters(
                 request.getParameter(ARTICLE_TEXT));
 
@@ -96,7 +97,6 @@ public class ArticleUtility {
         String index = request.getParameter(ARTICLE_INDEX);
 
         article.setText(text);
-        article.setUrl(url);
         article.setImage(image);
         article.setDescription(description);
         article.setKeywords(keywords);
@@ -107,6 +107,7 @@ public class ArticleUtility {
     public static void updateArticle(Article article,
                                      HttpServletRequest request) {
         setArticleData(article, request);
+        article.setUrl(request.getParameter(URL_PARAM));
         articleHandler.updateArticle(article);
     }
 

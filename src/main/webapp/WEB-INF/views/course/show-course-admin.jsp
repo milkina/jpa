@@ -38,7 +38,7 @@
                                  </a>
                              </td>
                              <td>
-                                 <a href="${pageContext.request.contextPath}/show-move-batch?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
+                                 <a href="${pageContext.request.contextPath}/show-move-batch?OLD_TEST_PATH=${param.TEST_PATH}&OLD_CATEGORY_PATH=${category.value.pathName}"
                                  name="moveQuestions${category.value.pathName}">
                                  <spring:message code="move.questions"/></a>
                              </td>

@@ -22,7 +22,7 @@ public interface AllConstants {
     String INDEX_PAGE = "/main.jsp";
     String MESSAGE_PAGE = "/messagePage.jsp";
     String SPRING_MESSAGE_PAGE = "/message-page";
-    String MOVE_QUESTIONS_PAGE = "redirect:show-move-batch?TEST_PATH=%s&CATEGORY_PATH=%s&message=%s";
+    String MOVE_QUESTIONS_PAGE = "question/move-questions";
     String MY_PROFILE_PAGE = "/person/my-profile";
     String SHOW_PERSON_HISTORY_PAGE = "person/show-person-history";
     String EDIT_ARTICLE = "article/edit-article";

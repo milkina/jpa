@@ -44,11 +44,9 @@
 <div class="indentmenu">
 <ul>
     <li><a href="<%=request.getContextPath()%>/" id="home"><spring:message code="home"/></a></li>
+    <li><a href="<%=request.getContextPath()%>/show-all-courses" id="courses"><spring:message code="courses"/></a></li>
     <li><a href="<%=request.getContextPath()%>/tests" id="tests"><spring:message code="tests.questions"/></a></li>
-    <li><a href="<%=request.getContextPath()%>/ocjp-ocpjp.jsp" id="ocjp-ocpjp">OCJP/OCPJP</a></li>
-    <li><a href="<%=request.getContextPath()%>/jpa" id="jpa">OCEJPAD 6</a></li>
-    <li><a href="<%=request.getContextPath()%>/web-services" id="web-services">OCEJWSD 6</a></li>
-    <li><a href="<%=request.getContextPath()%>/exam/java-core-russian" id="java-core-russian">Java Core</a></li>
+    <li><a href="<%=request.getContextPath()%>/show-all-articles"><spring:message code="articles"/></a></li>
     <c:if test="${person!=null}">
        <li><a href="<%=request.getContextPath()%>/show-user-profile"><spring:message code="my.profile.label"/></a></li>
     </c:if>
@@ -56,7 +54,7 @@
             <li><a href="<%=request.getContextPath()%>/show-administration">
             <spring:message code="administration.panel"/></a></li>
     </c:if>
-    <li><a href="<%=request.getContextPath()%>/show-all-articles"><spring:message code="articles"/></a></li>
+
 </ul>
 </div>
 </div>

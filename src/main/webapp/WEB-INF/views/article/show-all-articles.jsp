@@ -6,12 +6,16 @@
   <jsp:attribute name="header">
     <meta name="robots" content="noindex">
     <META NAME="Description" CONTENT="Articles about Java news, preparation for examination.">
-    <title>Java Tutorial Articles</title>
+    <title><spring:message code="articles"/> | ExamClouds</title>
   </jsp:attribute>
   <jsp:body>
   <div class="mainArea">
     <main>
         <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
+        <BR>
+        <a href="${pageContext.request.contextPath}/add-article" name="addArticle">
+           <spring:message code="add.article"/>
+        </a><BR>
         <article:articleList>
            <div>
               <article:article>
@@ -19,7 +23,7 @@
                 <article:articleImg/>
                  <h2 class="header2"><article:articleTitle/></h2>
                  <article:articleDescription/><br>
-                  <a href="${pageContext.request.contextPath}<article:articleUrl/>">Read more</a>
+                  <a href="${pageContext.request.contextPath}<article:articleUrl/>"><spring:message code="read.more"/></a>
                 </div>
                 <br>
               </article:article>

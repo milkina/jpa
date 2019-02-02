@@ -65,6 +65,7 @@ public interface AllConstantsParam {
     String ARTICLE_KEYWORDS = "keywords";
     String ARTICLE_IMAGE = "ARTICLE_IMAGE";
     String ARTICLE_INDEX = "index";
+    String ARTICLE_URL_PREFIX = "publications/";
 
     String ARTICLE_ID = "ARTICLE_ID";
     String ARTICLE_TEXT = "article.text";

@@ -9,6 +9,7 @@ import model.Category;
 import model.Test;
 import model.person.Person;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,7 @@ import util.question.QuestionEntryUtility;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
+import java.util.Map;
 
 import static util.AllConstants.ADD_QUESTION_PAGE;
 import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
@@ -30,9 +32,11 @@ import static util.AllConstants.MOVE_QUESTIONS_PAGE;
 import static util.AllConstants.SHOW_QUESTION_PAGE;
 import static util.AllConstants.SHOW_QUESTION_PICTURE_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
 import static util.AllConstantsAttribute.LOCALE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.QUESTION_ENTRY_ATTRIBUTE;
+import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsParam.*;
 import static util.AllConstantsParam.ANSWER_NUMBER;
 import static util.AllConstantsParam.CATEGORY_PATH;
@@ -183,15 +187,22 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/show-move-batch")
-    public String showMoveBatch() {
+    public String showMoveBatch(Model model, HttpServletRequest request,
+                                @RequestParam(OLD_CATEGORY_PATH) String oldCategoryPath,
+                                @RequestParam(OLD_TEST_PATH) String testPath) {
+        Map<String, Test> testMap = (Map<String, Test>)
+                request.getServletContext().getAttribute(TESTS);
+        Test test = testMap.get(testPath);
+        Map<String, Category> categories = test.getCategories();
+        Category category = categories.get(oldCategoryPath);
+        model.addAttribute(CATEGORY_ATTRIBUTE, category);
         return "/question/move-questions";
     }
 
     @RequestMapping(value = "/move-batch", method = RequestMethod.POST)
-    public ModelAndView moveBatch(Locale locale, HttpServletRequest request) {
+    public ModelAndView moveBatch(Locale locale, HttpServletRequest request, Model model) {
         CategoryHandler categoryHandler = new CategoryHandler();
         Category category = CategoryUtility.getCategoryByPath(request);
-        String oldTestPath = request.getParameter(OLD_TEST_PATH).trim();
         String oldCategoryPath = request.getParameter(OLD_CATEGORY_PATH);
         Category oldCategory = categoryHandler.getCategory(oldCategoryPath);
         QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
@@ -205,8 +216,8 @@ public class QuestionController {
         String message = amount + " " + getResourceValue(locale, "questions.moved", "messages");
         if (oldCategory.getId() == category.getId()) {
             message = getResourceValue(locale, "select.different.category", "messages");
-            page = String.format(MOVE_QUESTIONS_PAGE,
-                    oldTestPath, oldCategoryPath, message);
+            model.addAttribute("message", message);
+            page = MOVE_QUESTIONS_PAGE;
         } else if (QuestionEntryUtility.isValidNumbers(
                 from, to, oldCategoryQuestionsNumber)) {
             questionEntryHandler.moveBatch(oldCategory, category, from, to);
@@ -214,8 +225,8 @@ public class QuestionController {
             categoryHandler.updateCategoryCounts(oldCategory);
         } else {
             message = getResourceValue(locale, "invalid.numbers", "messages");
-            page = String.format(MOVE_QUESTIONS_PAGE, oldTestPath,
-                    oldCategoryPath, message);
+            model.addAttribute("message", message);
+            page = MOVE_QUESTIONS_PAGE;
         }
         TestUtility.loadTestsToServletContext(request.getServletContext());
         ModelAndView modelAndView = new ModelAndView(page);
@@ -232,7 +243,20 @@ public class QuestionController {
                 questionEntryHandler.getQuestionEntry(questionEntryId);
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
         String mode = request.getParameter(MODE);
+        String testPathName = request.getParameter(TEST_PATH);
+        if (GeneralUtility.isEmpty(testPathName)) {
+            Test test = questionEntryHandler.getFirstQuestionEntryTest(
+                    questionEntry.getId());
+            testPathName = test.getPathName();
+        }
+        request.setAttribute(TEST_PATH, testPathName);
         return mode == null ? SHOW_QUESTION_PAGE
                 : SHOW_QUESTION_PICTURE_PAGE;
+    }
+
+    @RequestMapping(value = "/show-question-picture")
+    public String showQuestionPicture(@RequestParam("QUESTION_ENTRY_ID_PARAM") String questionId, Model model) {
+        model.addAttribute(QUESTION_ENTRY_ATTRIBUTE, questionId);
+        return "question/show-question-picture";
     }
 }

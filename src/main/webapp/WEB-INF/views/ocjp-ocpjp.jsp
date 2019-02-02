@@ -35,7 +35,7 @@
                                               </a>
                                           </div>
                                           <div class="testList" style="width:210px">
-                                                              <a href="${pageContext.request.contextPath}/ocpjp8-update-from-java6">
+                                                              <a href="${pageContext.request.contextPath}/exam/ocpjp8-update-from-java6">
                                                                  <h4>OCPJP 8 Upgrade 6<BR>(1Z0-813)</h4>
                                                                  <span class="questionsNumber">
                                                                   ${TESTS["ocpjp8-update-from-java6"].questionsNumber+TESTS["ocpjp8-update-from-java6"].testsNumber} questions</span>

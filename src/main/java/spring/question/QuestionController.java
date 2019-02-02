@@ -1,6 +1,6 @@
 package spring.question;
 
-import controller.EditMode;
+import util.EditMode;
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import data.test.TestHandler;
@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import util.AllConstantsParam;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.TestUtility;
 import util.question.QuestionEntryUtility;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 import java.util.Map;

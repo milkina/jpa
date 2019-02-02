@@ -1,6 +1,6 @@
 package spring.comment;
 
-import controller.EditMode;
+import util.EditMode;
 import data.comment.CommentHandler;
 import model.comment.Comment;
 import model.comment.CommentType;

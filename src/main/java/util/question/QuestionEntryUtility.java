@@ -1,6 +1,6 @@
 package util.question;
 
-import controller.EditMode;
+import util.EditMode;
 import data.category.CategoryHandler;
 import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
@@ -27,7 +27,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.NavigableSet;
 
-import static util.AllConstants.EDIT_QUESTION_ENTRY_SERVLET;
 import static util.AllConstants.SHOW_QUESTIONS_PAGE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsParam.ANSWER_TEXT_PARAM;

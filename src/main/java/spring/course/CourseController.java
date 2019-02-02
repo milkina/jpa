@@ -1,6 +1,8 @@
 package spring.course;
 
+import com.google.gson.Gson;
 import data.test.TestHandler;
+import model.Category;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import util.CategoryUtility;
 import util.LanguageUtility;
@@ -21,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstants.TESTS_PAGE;
@@ -156,5 +160,21 @@ public class CourseController {
     @RequestMapping(value = "/show-all-courses")
     public String showAllCourses() {
         return "course/show-all-courses";
+    }
+
+    @RequestMapping(value = "/change-course", produces = "application/json;charset=UTF-8")
+    public @ResponseBody
+    String
+    doPost(HttpServletRequest request) {
+        String testPath = request.getParameter(TEST_PATH);
+        Map<String, Test> tests =
+                (Map) request.getServletContext().getAttribute(TESTS);
+        Test test = tests.get(testPath);
+
+        Map<String, String> categoryMap = new TreeMap<>();
+        for (Category category : test.getCategories().values()) {
+            categoryMap.put(category.getPathName(), category.getName());
+        }
+        return new Gson().toJson(categoryMap);
     }
 }

@@ -1,6 +1,6 @@
 package tags.questionEntry;
 
-import controller.EditMode;
+import util.EditMode;
 import model.AbstractQuestionEntry;
 import util.ShowQuestionUtility;
 

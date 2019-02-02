@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 /**
  * Created by IntelliJ IDEA.

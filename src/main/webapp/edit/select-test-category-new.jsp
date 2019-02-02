@@ -1,7 +1,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
 <script>
    $(document).on("change", "#TEST_PATH", function() {
-       $.get("${pageContext.request.contextPath}/servlet/ChangeTestServlet",{TEST_PATH: $("select#TEST_PATH").val()}, function(responseJson) {
+       $.get("${pageContext.request.contextPath}/change-course",{TEST_PATH: $("select#TEST_PATH").val()}, function(responseJson) {
            var $select = $("#CATEGORY_PATH");
            $select.find("option").remove();
            $.each(responseJson, function(key, value) {

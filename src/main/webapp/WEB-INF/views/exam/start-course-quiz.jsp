@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
     <jsp:attribute name="header">
-        <meta name="robots" content="noindex">
+        <link rel="canonical" href="http://www.examclouds.com/exam/${param.TEST_PATH}"/>
         <title>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/> </title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet" type="text/css">

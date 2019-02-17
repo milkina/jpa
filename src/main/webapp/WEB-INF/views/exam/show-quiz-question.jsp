@@ -8,7 +8,7 @@
     <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
-    <meta name="robots" content="noindex">
+    <link rel="canonical" href="http://www.examclouds.com/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}" />
 </jsp:attribute>
 <jsp:attribute name="left">
       <jsp:include page="/WEB-INF/categoryMenu.jsp"/>

@@ -10,7 +10,7 @@
                     <category:parentCategory/> <category:name/> - ${TESTS[param.TEST_PATH].name}
                 </title>
                 </category:category>
-                <meta name="robots" content="noindex">
+                <link rel="canonical" href="http://www.examclouds.com/java/${param.TEST_PATH}/${param.CATEGORY_PATH}"/>
                 <%@ include file="/edit/categoryOL.jsp" %>
                 <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     </jsp:attribute>

@@ -4,7 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
   <jsp:attribute name="header">
-    <meta name="robots" content="noindex">
     <META NAME="Description" CONTENT="Articles about Java news, preparation for examination.">
     <title><spring:message code="articles"/> | ExamClouds</title>
   </jsp:attribute>

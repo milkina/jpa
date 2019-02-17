@@ -1,4 +1,4 @@
-<%@ page import="controller.EditMode" %>
+<%@ page import="util.EditMode" %>
 <%@ taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <h3 class="header3"><spring:message	code="comments"/></h3>
 <form ACTION="${pageContext.request.contextPath}/delete-comment"

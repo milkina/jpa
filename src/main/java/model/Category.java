@@ -34,34 +34,10 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "Category")
-@NamedQueries({
-        @NamedQuery(name = "Category.findPathName",
-                query = "select c.id,c.pathName from Category c"),
-        @NamedQuery(name = "Category.findByPathName",
-                query = "select c from Category c  " +
-                        "where c.pathName=:p"),
-        @NamedQuery(name = "Category.findCategories",
-                query = "select c from Test t join t.categories c where t.id=:p"),
-        @NamedQuery(name = "Category.findCategoriesByTestPath",
-                query = "select c from Test t join t.categories c where t.pathName=:p order by c.orderId"),
-        @NamedQuery(name = "Category.findDuplicateCategories",
-                query = "select c from Category c join fetch c.tests where c.id in " +
-                        "(select cc.id from Category cc join cc.tests t group by cc having count(t)>1)"),
-        @NamedQuery(name = "Category.getPreviousCategory",
-                query = "SELECT c FROM Test t JOIN t.categories c " +
-                        "WHERE t.pathName=:testPath AND c.orderId<= " +
-                        "(SELECT c1.orderId FROM Category c1 WHERE c1.pathName=:categoryPath)" +
-                        " ORDER BY c.orderId,c.id"),
-        @NamedQuery(name = "Category.getNextCategory",
-                query = "SELECT c FROM Test t JOIN t.categories c " +
-                        "WHERE t.pathName=:testPath AND c.orderId>= " +
-                        "(SELECT c1.orderId FROM Category c1 WHERE c1.pathName=:categoryPath)" +
-                        " ORDER BY c.orderId,c.id")
-})
 public class Category implements Serializable, Comparable<Category> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -98,11 +74,11 @@ public class Category implements Serializable, Comparable<Category> {
     @Column(name = "tcount")
     private int testsCount;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -213,6 +189,9 @@ public class Category implements Serializable, Comparable<Category> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", pathName='" + pathName + '\'' +
+                ", hidden='" + hidden + '\'' +
+                ", orderId='" + orderId + '\'' +
+                ", questionsCount='" + questionsCount + '\'' +
                 '}';
     }
 
@@ -235,12 +214,10 @@ public class Category implements Serializable, Comparable<Category> {
                 && this.getSubCategories() != null && !subCategories.isEmpty()) {
             return false;
         }
-        return id == category.id &&
-                hidden == category.hidden &&
+        return hidden == category.hidden &&
                 orderId == category.orderId &&
-                questionsCount == category.questionsCount &&
-                testsCount == category.testsCount &&
                 Objects.equals(name, category.name) &&
+                Objects.equals(id, category.id) &&
                 Objects.equals(pathName, category.pathName) &&
                 Objects.equals(parentCategory, category.parentCategory);
     }

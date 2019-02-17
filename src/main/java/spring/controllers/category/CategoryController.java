@@ -1,16 +1,17 @@
 package spring.controllers.category;
 
-import data.category.CategoryHandler;
-import data.test.TestHandler;
 import model.Category;
 import model.Test;
 import model.article.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.category.CategoryService;
+import spring.services.course.CourseService;
 import util.CategoryUtility;
 import util.TestUtility;
 import util.article.ArticleUtility;
@@ -36,6 +37,12 @@ import static util.GeneralUtility.getResourceValue;
  */
 @Controller
 public class CategoryController {
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/show-category")
     public ModelAndView showCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
                                      Model model, HttpServletRequest request) {
@@ -68,9 +75,8 @@ public class CategoryController {
         CategoryUtility.setCategoryData(request, category);
 
         CategoryUtility.setCategoryArticle(request, category);
-        CategoryHandler categoryHandler = new CategoryHandler();
-        category = categoryHandler.createCategory(category);
-        categoryHandler.addCategoryToTest(test, category);
+        category = categoryService.create(category);
+        categoryService.addCategoryToCourse(test, category);
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
@@ -80,7 +86,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/show-edit-category")
     public ModelAndView showEditCategory(@RequestParam(CATEGORY_PATH) String categoryPath) {
-        Category category = new CategoryHandler().getCategory(categoryPath);
+        Category category = categoryService.getCategory(categoryPath);
         Article article = category.getArticle();
         ArticleUtility.fixTinyMceIssue(article);
 
@@ -94,7 +100,7 @@ public class CategoryController {
                                      Locale locale, HttpServletRequest request) {
         //TODO Return error if category with such name or pathName
         // already exists
-        Category category = new CategoryHandler().getCategory(categoryPath);
+        Category category = categoryService.getCategory(categoryPath);
         CategoryUtility.updateCategory(request, category);
 
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
@@ -123,8 +129,7 @@ public class CategoryController {
             message = getResourceValue(locale, "category.not.added", "messages");
         } else {
             test.addCategory(category);
-            CategoryHandler categoryHandler = new CategoryHandler();
-            categoryHandler.addCategoryToTest(test, category);
+            categoryService.addCategoryToCourse(test, category);
         }
         CategoryUtility.setDuplicateCategories(request.getServletContext());
 
@@ -137,17 +142,16 @@ public class CategoryController {
     public ModelAndView deleteCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
                                        Locale locale, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
-        CategoryHandler categoryHandler = new CategoryHandler();
 
-        Category category = categoryHandler.getCategory(categoryPath);
-        if (CategoryUtility.containQuestionEntries(category)) {
+        Category category = categoryService.getCategory(categoryPath);
+        if (CategoryUtility.containQuestionEntries(category, request.getServletContext())) {
             modelAndView.addObject(MESSAGE_ATTRIBUTE,
                     getResourceValue(locale, "category.not.removed1", "messages"));
         } else if (!category.getSubCategories().isEmpty()) {
             modelAndView.addObject(MESSAGE_ATTRIBUTE,
                     getResourceValue(locale, "category.not.removed2", "messages"));
         } else {
-            categoryHandler.removeCategory(category);
+            categoryService.removeCategory(category);
             Collection<Category> categoryList =
                     CategoryUtility.getCategoriesFromServletContext(request)
                             .values();
@@ -170,8 +174,7 @@ public class CategoryController {
             modelAndView.addObject(MESSAGE_ATTRIBUTE,
                     getResourceValue(locale, "category.not.removed2", "messages"));
         } else {
-            TestHandler testHandler = new TestHandler();
-            testHandler.removeCategoryFromTest(test, category);
+            courseService.removeCategoryFromCourse(test, category);
 
             TestUtility.loadTestsToServletContext(request.getServletContext());
             CategoryUtility.setDuplicateCategories(request.getServletContext());
@@ -187,13 +190,12 @@ public class CategoryController {
                              @RequestParam(TEST_PATH) String testPath,
                              HttpServletRequest request) {
         Category category = CategoryUtility.getCategoryByPath(request);
-        CategoryHandler categoryHandler = new CategoryHandler();
-        Category previousCategory = categoryHandler.getCategory(previousCategoryPath);
+        Category previousCategory = categoryService.getCategory(previousCategoryPath);
 
         if (category.getOrderId() > previousCategory.getOrderId()) {
-            categoryHandler.moveCategoryUp(category, previousCategoryPath, testPath);
+            categoryService.moveCategoryUp(category, previousCategoryPath, testPath);
         } else {
-            categoryHandler.moveCategoryDown(category, previousCategoryPath, testPath);
+            categoryService.moveCategoryDown(category, previousCategoryPath, testPath);
         }
         TestUtility.loadTestsToServletContext(request.getServletContext());
     }

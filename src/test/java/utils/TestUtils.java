@@ -120,8 +120,8 @@ public class TestUtils {
         return question;
     }
 
-    public static Comment createComment(int i, Person person, CommentType type) {
-        return createComment(TestValues.COMMENTS[i], person, type, i + 1);
+    public static Comment createComment(int i, Person person, CommentType type, int referenceId) {
+        return createComment(TestValues.COMMENTS[i], person, type, referenceId);
     }
     /*
 
@@ -151,14 +151,15 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
         category.setPathName(pathName);
         category.setArticle(article);
         category.setSubCategories(new ArrayList<>());
+  //      category.setHidden(false);
         return category;
     }
 
     public static Comment createComment(String commentText, Person user, CommentType type, int referenceId) {
         Comment comment = new Comment();
         comment.setComment(commentText);
-        comment.setDate(new Date());
-        comment.setType(type);
+        comment.setCreatedDate(new Date());
+        comment.setCommentType(type);
         comment.setUser(user);
         comment.setReferenceId(referenceId);
         return comment;

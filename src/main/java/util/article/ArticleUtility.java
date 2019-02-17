@@ -1,42 +1,39 @@
 package util.article;
 
-import data.article.ArticleHandler;
-import data.category.CategoryHandler;
-import data.test.TestHandler;
 import model.Category;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
 import util.ServletUtilities;
+import util.SpringUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 import static util.AllConstants.GROUP_NAME;
-import static util.AllConstantsParam.ARTICLE_INDEX;
-import static util.AllConstantsParam.ARTICLE_TEXT;
-import static util.AllConstantsParam.ARTICLE_IMAGE;
-import static util.AllConstantsParam.ARTICLE_KEYWORDS;
 import static util.AllConstantsParam.ARTICLE_DESCRIPTION;
+import static util.AllConstantsParam.ARTICLE_IMAGE;
+import static util.AllConstantsParam.ARTICLE_INDEX;
+import static util.AllConstantsParam.ARTICLE_KEYWORDS;
+import static util.AllConstantsParam.ARTICLE_TEXT;
 import static util.AllConstantsParam.ARTICLE_URL_PREFIX;
-import static util.AllConstantsParam.URL_PARAM;
 import static util.AllConstantsParam.TITLE;
+import static util.AllConstantsParam.URL_PARAM;
 import static util.GeneralUtility.decodeRussianCharacters;
 import static util.GeneralUtility.isEmpty;
 
 /**
  * Created by Tatyana on 08.05.2016.
  */
-public class ArticleUtility {
-    private static ArticleHandler articleHandler = new ArticleHandler();
+public class ArticleUtility extends SpringUtility {
 
-    public static String getArticleUrl(int articleId) {
-        ArticleHandler articleHandler = new ArticleHandler();
-        Article article = articleHandler.getArticle(articleId);
+    public static String getArticleUrl(int articleId, ServletContext servletContext) {
+        Article article = getArticleService(servletContext).getArticle(articleId);
         String url = article.getUrl();
         if (url == null) {
             Category category = article.getCategory();
-            Test course = new TestHandler().getCourse(category);
+            Test course = getCourseService(servletContext).getCourse(category);
             url = String.format("%s/%s/%s"
                     , GROUP_NAME, course.getPathName(), category.getPathName());
         }
@@ -51,12 +48,13 @@ public class ArticleUtility {
         article.setCreatedDate(new Date());
         article.setUrl(ARTICLE_URL_PREFIX + request.getParameter(URL_PARAM));
 
-        article = articleHandler.addArticle(article);
+        article = getArticleService(request.getServletContext()).addArticle(article);
         return article;
     }
 
     public static Article createArticle(Article article,
-                                        Person author) {
+                                        Person author,
+                                        ServletContext servletContext) {
         article.setText(decodeRussianCharacters(article.getText()));
         article.setUrl(decodeRussianCharacters(article.getUrl()));
         article.setImage(decodeRussianCharacters(article.getImage()));
@@ -65,12 +63,11 @@ public class ArticleUtility {
         article.setTitle(decodeRussianCharacters(article.getTitle()));
         article.setAuthor(author);
         article.setCreatedDate(new Date());
-
-        article = articleHandler.addArticle(article);
+        getArticleService(servletContext).addArticle(article);
         return article;
     }
 
-    public static void setArticleData(Article article, Article newArticle) {
+    public static void setArticleData(Article article, Article newArticle, ServletContext servletContexts) {
         article.setText(decodeRussianCharacters(newArticle.getText()));
         article.setUrl(decodeRussianCharacters(newArticle.getUrl()));
         article.setImage(decodeRussianCharacters(newArticle.getImage()));
@@ -78,7 +75,7 @@ public class ArticleUtility {
         article.setKeywords(decodeRussianCharacters(newArticle.getKeywords()));
         article.setTitle(decodeRussianCharacters(newArticle.getTitle()));
 
-        articleHandler.updateArticle(article);
+        getArticleService(servletContexts).update(article);
     }
 
 
@@ -108,12 +105,12 @@ public class ArticleUtility {
                                      HttpServletRequest request) {
         setArticleData(article, request);
         article.setUrl(request.getParameter(URL_PARAM));
-        articleHandler.updateArticle(article);
+        getArticleService(request.getServletContext()).update(article);
     }
 
     public static void updateArticle(int articleId,
                                      HttpServletRequest request) {
-        Article article = articleHandler.getArticle(articleId);
+        Article article = getArticleService(request.getServletContext()).getArticle(articleId);
         updateArticle(article, request);
     }
 
@@ -125,12 +122,11 @@ public class ArticleUtility {
         }
     }
 
-    public static void removeArticleFromCategory(Article article) {
+    public static void removeArticleFromCategory(Article article, ServletContext servletContext) {
         Category category = article.getCategory();
         if (category != null) {
             category.setArticle(null);
-            CategoryHandler categoryHandler = new CategoryHandler();
-            categoryHandler.updateCategory(category);
+            getCategoryService(servletContext).update(category);
         }
         article.setCategory(null);
     }

@@ -29,7 +29,6 @@ public interface AllConstants {
     String SHOW_ARTICLE_PAGE = "article/show-article";
 
     String ALL_QUESTIONS = "ALL_QUESTIONS";
-    String GET_ALL_QUESTION_ENTRIES = "GET_ALL_QUESTION_ENTRIES";
     String COOKIE_VALUE = "ID";
     String UNKNOWN_USER = "unknown";
     String MARK_QUESTION_HINT = "Mark question as answered and filter questions";
@@ -45,6 +44,6 @@ public interface AllConstants {
     String REGISTER_PAGE = "person/register";
     String WELCOME_REGISTER_PAGE = "/person/welcome";
     String SITE_NAME = "http://www.examclouds.com/";
-    String TESTS_PAGE = "/exam/tests";
+    String TESTS_PAGE = "/exam/show-tests";
     String ARTICLES = "ARTICLES";
 }

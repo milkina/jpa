@@ -4,6 +4,8 @@ import util.TestUtility;
 import util.article.ArticleUtility;
 import util.question.QuestionEntryUtility;
 
+import javax.servlet.ServletContext;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Tatyana
@@ -14,23 +16,23 @@ import util.question.QuestionEntryUtility;
 public enum CommentType {
     ALL,
     QUESTION {
-        public String getUrl(int referenceId) {
+        public String getUrl(int referenceId, ServletContext servletContext) {
             return QuestionEntryUtility.getQuestionUrl(referenceId);
         }
     },
     ARTICLE {
-        public String getUrl(int referenceId) {
-            return ArticleUtility.getArticleUrl(referenceId);
+        public String getUrl(int referenceId, ServletContext servletContext) {
+            return ArticleUtility.getArticleUrl(referenceId, servletContext);
         }
     },
     TEST {
-        public String getUrl(int referenceId) {
-            return TestUtility.getTestUrl(referenceId);
+        public String getUrl(int referenceId, ServletContext servletContext) {
+            return TestUtility.getTestUrl(referenceId, servletContext);
         }
     };
 
     //TODO
-    public String getUrl(int referenceId) {
+    public String getUrl(int referenceId, ServletContext servletContext) {
         return "";
     }
 }

@@ -29,7 +29,7 @@ import java.util.Objects;
 public class AbstractExam<T extends AbstractQuestionEntry> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private Date date;
 
@@ -80,11 +80,11 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
         this.questionEntries = questionEntries;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -146,7 +146,7 @@ public class AbstractExam<T extends AbstractQuestionEntry> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractExam<?> that = (AbstractExam<?>) o;
-        return id == that.id &&
+        return Objects.equals(id, that.id) &&
                 Double.compare(that.percent, percent) == 0 &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(person, that.person) &&

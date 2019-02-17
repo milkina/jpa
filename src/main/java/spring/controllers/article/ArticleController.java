@@ -1,12 +1,13 @@
 package spring.controllers.article;
 
-import data.article.ArticleHandler;
 import model.article.Article;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.article.ArticleService;
 import util.GeneralUtility;
 import util.article.ArticleUtility;
 
@@ -24,14 +25,16 @@ import static util.AllConstantsParam.URL_PARAM;
 
 @Controller
 public class ArticleController {
+    @Autowired
+    private ArticleService articleService;
 
     @RequestMapping(value = "/delete-article")
     public ModelAndView deleteArticle(Locale locale,
-                                      @RequestParam(ARTICLE_ID) int id) {
-        ArticleHandler articleHandler = new ArticleHandler();
-        Article article = articleHandler.getArticle(id);
-        ArticleUtility.removeArticleFromCategory(article);
-        articleHandler.deleteArticle(article);
+                                      @RequestParam(ARTICLE_ID) int id,
+                                      HttpServletRequest request) {
+        Article article = articleService.getArticle(id);
+        ArticleUtility.removeArticleFromCategory(article, request.getServletContext());
+        articleService.deleteArticle(article.getId());
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
         modelAndView.addObject(MESSAGE_ATTRIBUTE,
                 GeneralUtility.getResourceValue(locale, "article.removed", "messages"));
@@ -41,9 +44,8 @@ public class ArticleController {
 
     @RequestMapping(value = "/show-article")
     public ModelAndView showArticle(@RequestParam(URL_PARAM) String articleUrl) {
-        ArticleHandler articleHandler = new ArticleHandler();
         Article article =
-                articleHandler.getArticleByUrl("publications/" + articleUrl);
+                articleService.getArticleByUrl("publications/" + articleUrl);
         ModelAndView modelAndView = new ModelAndView(SHOW_ARTICLE_PAGE);
         modelAndView.addObject(ARTICLE_ATTRIBUTE, article);
         return modelAndView;
@@ -56,8 +58,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/edit-article")
     public ModelAndView editArticle(@RequestParam(ARTICLE_ID) int id) {
-        ArticleHandler articleHandler = new ArticleHandler();
-        Article article = articleHandler.getArticle(id);
+        Article article = articleService.getArticle(id);
         ArticleUtility.fixTinyMceIssue(article);
         ModelAndView modelAndView = new ModelAndView(EDIT_ARTICLE);
         modelAndView.addObject(ARTICLE_ATTRIBUTE, article);

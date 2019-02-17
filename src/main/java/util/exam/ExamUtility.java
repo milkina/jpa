@@ -1,9 +1,5 @@
 package util.exam;
 
-import data.category.CategoryHandler;
-import data.exam.ExamHandler;
-import data.person.PersonHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractExam;
 import model.AbstractQuestionEntry;
 import model.Answer;
@@ -13,7 +9,9 @@ import model.TestExam;
 import model.TestQuestionEntry;
 import model.person.Person;
 import util.GeneralUtility;
+import util.SpringUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -30,18 +28,7 @@ import static util.AllConstantsParam.NUMBER_OF_QUESTIONS;
 /**
  * Created by Tatyana on 30.04.2016.
  */
-public class ExamUtility {
-    private static PersonHandler personHandler = new PersonHandler();
-    private static CategoryHandler categoryHandler = new CategoryHandler();
-
-    public static PersonHandler getPersonHandler() {
-        return personHandler;
-    }
-
-    public static void setPersonHandler(PersonHandler personHandler) {
-        ExamUtility.personHandler = personHandler;
-    }
-
+public class ExamUtility extends SpringUtility {
     public static boolean isQuestionChecked(int questionNumber, QuestionExam exam,
                                             List<AbstractQuestionEntry> ansQuestions) {
         AbstractQuestionEntry questionEntry =
@@ -75,16 +62,16 @@ public class ExamUtility {
         return exam.getCurrentNumber() == exam.getQuestionEntries().size() - 1;
     }
 
-    public static void createExam(TestExam exam) {
+    public static void createExam(TestExam exam, ServletContext servletContext) {
         exam.setPercent(exam.getRightQuestionsCount() / exam.getQuestionEntries().size() * 100.0);
         exam.setDate(new Date());
-        new ExamHandler().createExam(exam);
+        getExamService(servletContext).createExam(exam);
     }
 
-    public static List<Category> getCategories(String[] categoryPaths) {
+    public static List<Category> getCategories(String[] categoryPaths, ServletContext servletContext) {
         List<Category> categories = new ArrayList<>();
         for (String categoryPath : categoryPaths) {
-            categories.add(categoryHandler.getCategory(categoryPath));
+            categories.add(getCategoryService(servletContext).getCategory(categoryPath));
         }
         return categories;
     }
@@ -95,7 +82,7 @@ public class ExamUtility {
         if (countString != null && !countString.isEmpty()) {
             count = Integer.parseInt(countString);
         } else if (categoryPaths.length == 1) {
-            Category category = getCategory(categoryPaths[0]);
+            Category category = getCategoryService(request.getServletContext()).getCategory(categoryPaths[0]);
             count = function.apply(category) != 0 ? function.apply(category) : 20;
         }
         return count;
@@ -103,7 +90,7 @@ public class ExamUtility {
 
     public static TestExam setTestExam(HttpSession session, Person person,
                                        List<AbstractQuestionEntry> questionEntries, String[] categoryPaths, int count) {
-        List<Category> categories = getCategories(categoryPaths);
+        List<Category> categories = getCategories(categoryPaths, session.getServletContext());
         TestExam exam = new TestExam();
         exam.setPerson(person);
         exam.setQuestionEntries(questionEntries);
@@ -113,11 +100,6 @@ public class ExamUtility {
         exam.setAmount(count);
         session.setAttribute(CURRENT_EXAM_ATTRIBUTE, exam);
         return exam;
-    }
-
-    public static Category getCategory(String categoryPath) {
-        CategoryHandler categoryHandler = new CategoryHandler();
-        return categoryHandler.getCategory(categoryPath);
     }
 
     public static String updateCurrentQuestionEntry(int currentNumber, AbstractExam exam) {
@@ -137,7 +119,7 @@ public class ExamUtility {
     public static QuestionExam setQuestionExam(HttpSession session, Person person,
                                                List<AbstractQuestionEntry> questionEntries,
                                                String[] categoryPaths, int count) {
-        List<Category> categories = getCategories(categoryPaths);
+        List<Category> categories = getCategories(categoryPaths, session.getServletContext());
         QuestionExam exam = new QuestionExam();
         exam.setPerson(person);
         exam.setQuestionEntries(questionEntries);

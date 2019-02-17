@@ -1,8 +1,5 @@
 package util.question;
 
-import util.EditMode;
-import data.category.CategoryHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Answer;
 import model.Category;
@@ -15,10 +12,13 @@ import util.AllConstants;
 import util.AllConstantsAttribute;
 import util.AllConstantsParam;
 import util.CategoryUtility;
+import util.EditMode;
 import util.GeneralUtility;
 import util.ServletUtilities;
+import util.SpringUtility;
 import util.exam.ExamUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import static util.AllConstantsParam.TYPE;
 /**
  * Created by Tatyana on 27.03.2016.
  */
-public class QuestionEntryUtility {
+public class QuestionEntryUtility extends SpringUtility {
     public static Integer[] getQuestionsId(NavigableSet<Integer> set,
                                            Integer from, Integer to) {
         if (set == null || set.isEmpty()) {
@@ -61,7 +61,7 @@ public class QuestionEntryUtility {
         if (questionEntryId == null) {
             return getQuestionEntryFromExam(request.getSession());
         } else {
-            return getQuestionEntry(questionEntryId);
+            return getQuestionService(request.getServletContext()).getQuestionEntry(questionEntryId);
         }
     }
 
@@ -88,10 +88,6 @@ public class QuestionEntryUtility {
         return ExamUtility.getCurrentQuestionEntry(exam);
     }
 
-    public static AbstractQuestionEntry getQuestionEntry(Integer questionEntryId) {
-        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        return questionEntryHandler.getQuestionEntry(questionEntryId);
-    }
 
     public static String getQuestionUrl(int questionId) {
         return String.format("%s?%s=%d",
@@ -100,11 +96,6 @@ public class QuestionEntryUtility {
                 questionId);
     }
 
-
-    public static AbstractQuestionEntry findQuestionEntry(String questionEntryId) {
-        return new QuestionEntryHandler().getQuestionEntry(
-                Integer.parseInt(questionEntryId));
-    }
 
     public static void fixTinyMCEIssue(AbstractQuestionEntry questionEntry) {
         Question question = questionEntry.getQuestion();
@@ -122,11 +113,9 @@ public class QuestionEntryUtility {
         newQuestionEntry.setCategory(category);
         QuestionEntryUtility.setAnswers(request, answerNumber, newQuestionEntry);
         setQuestionText(request, newQuestionEntry);
-        newQuestionEntry.setCreatedDate(new Date());
         setPerson(request, newQuestionEntry);
 
-        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-        questionEntryHandler.addQuestionEntry(newQuestionEntry);
+        getQuestionService(request.getServletContext()).addQuestionEntry(newQuestionEntry);
     }
 
     public static void setPerson(HttpServletRequest request, AbstractQuestionEntry newQuestionEntry) {
@@ -147,13 +136,14 @@ public class QuestionEntryUtility {
     }
 
 
-    public static void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize, QuestionEntryHandler questionEntryHandler) {
+    public static void changeQuestionType(AbstractQuestionEntry questionEntry, int oldAnswersSize,
+                                          ServletContext servletContext) {
         int id = questionEntry.getId();
         int size = questionEntry.getAnswers().size();
         if (oldAnswersSize == 1 && size > 1) {
-            questionEntryHandler.changeQuestionToTestQuestion(id);
+            getQuestionService(servletContext).changeQuestionToTestQuestion(id);
         } else if (oldAnswersSize > 1 && size == 1) {
-            questionEntryHandler.changeTestQuestionToQuestion(id);
+            getQuestionService(servletContext).changeTestQuestionToQuestion(id);
         }
     }
 
@@ -174,13 +164,14 @@ public class QuestionEntryUtility {
                 EDIT_MODE_PARAM, EditMode.SHOW);
     }
 
-    public static Category updateCategory(int questionEntryId, QuestionEntryHandler questionEntryHandler) {
-        AbstractQuestionEntry questionEntry = questionEntryHandler.getQuestionEntry(questionEntryId);
+    public static Category updateCategory(int questionEntryId,
+                                          ServletContext servletContext) {
+        AbstractQuestionEntry questionEntry = getQuestionService(servletContext).getQuestionEntry(questionEntryId);
         Category category = null;
         if (questionEntry.getApproved()) {
             category = questionEntry.getCategory();
             questionEntry.changeCategoryCount(-1);
-            new CategoryHandler().updateCategory(category);
+            getCategoryService(servletContext).update(category);
         }
         return category;
     }

@@ -10,11 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,15 +24,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "user_comments")
-@NamedQueries({
-        @NamedQuery(name = "Comment.getComments",
-                query = "SELECT c FROM Comment c WHERE c.type=:typeParam AND c.referenceId=:referenceParam order by c.date"),
-        @NamedQuery(name = "Comment.getLastComments",
-                query = "SELECT c FROM Comment c order by c.date desc"),
-        @NamedQuery(name = "Comment.updateAuthor",
-                query = "UPDATE Comment c SET c.user=NULL WHERE c.user.ID =:id")
-}
-)
 public class Comment implements Comparable {
     @Column(name = "comment")
     private String comment;
@@ -41,19 +31,18 @@ public class Comment implements Comparable {
     @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "entered_date")
-    private Date date;
-
+    private Date createdDate;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "ID")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Person user;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    private CommentType type;
+    private CommentType commentType;
 
     @Column(name = "reference_id")
     private int referenceId;
@@ -74,20 +63,20 @@ public class Comment implements Comparable {
         comment = c;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDate(Date d) {
-        date = d;
+    public void setCreatedDate(Date d) {
+        createdDate = d;
     }
 
     public Person getUser() {
@@ -98,19 +87,19 @@ public class Comment implements Comparable {
         user = u;
     }
 
-    public CommentType getType() {
-        return type;
+    public CommentType getCommentType() {
+        return commentType;
     }
 
-    public void setType(CommentType type) {
-        this.type = type;
+    public void setCommentType(CommentType type) {
+        this.commentType = type;
     }
 
     public int compareTo(Object c) {
         Comment b = (Comment) c;
-        if (this.getDate().before(b.getDate()))
+        if (this.getCreatedDate().before(b.getCreatedDate()))
             return 1;
-        else if (this.getDate().after(b.getDate()))
+        else if (this.getCreatedDate().after(b.getCreatedDate()))
             return -1;
         else
             return b.getId() - this.getId();
@@ -119,23 +108,17 @@ public class Comment implements Comparable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         Comment comment1 = (Comment) o;
-
-        if (comment != null ? !comment.equals(comment1.comment) : comment1.comment != null) return false;
-        if (date != null ? !date.equals(comment1.date) : comment1.date != null) return false;
-        if (user != null ? !user.equals(comment1.user) : comment1.user != null) return false;
-
-        return true;
+        return referenceId == comment1.referenceId &&
+                Objects.equals(comment, comment1.comment) &&
+                Objects.equals(id, comment1.id) &&
+                Objects.equals(user, comment1.user) &&
+                commentType == comment1.commentType;
     }
 
     @Override
     public int hashCode() {
-        int result = comment != null ? comment.hashCode() : 0;
-        result = 31 * result + id;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (user != null ? user.hashCode() : 0);
-        return result;
+        return Objects.hash(comment, id, user, commentType, referenceId);
     }
 }

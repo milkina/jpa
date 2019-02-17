@@ -1,9 +1,7 @@
 package util;
 
-import data.category.CategoryHandler;
-import model.Language;
-import data.test.TestHandler;
 import model.Category;
+import model.Language;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
@@ -33,19 +31,14 @@ import static util.GeneralUtility.roundTime;
  * Time: 20:53:09
  * To change this template use File | Settings | File Templates.
  */
-public class TestUtility {
-    private static TestHandler testHandler = new TestHandler();
-    private static CategoryHandler categoryHandler = new CategoryHandler();
-
-
+public class TestUtility extends SpringUtility {
     public static Category getCategoryByParam(HttpServletRequest request) {
         Integer categoryId =
                 getIntegerValue(request, CATEGORY_ID_PARAMETER);
         if (categoryId == null) {
             return null;
         }
-        categoryHandler.getCategory(categoryId);
-        return categoryHandler.getCategory(categoryId);
+        return getCategoryService(request.getServletContext()).findOne(categoryId);
     }
 
     public static Test getTestByParam(HttpServletRequest request) {
@@ -53,7 +46,7 @@ public class TestUtility {
         if (testId == null) {
             return null;
         }
-        return testHandler.getTest(testId);
+        return getCourseService(request.getServletContext()).getCourse(testId);
     }
 
     public static Person getPersonFromSession(HttpSession session) {
@@ -67,7 +60,7 @@ public class TestUtility {
         Object testPathsObj = servletContext.getAttribute(
                 TEST_PATHS_ATTRIBUTE);
         if (testPathsObj == null) {
-            testPaths = testHandler.getPathName();
+            testPaths = getCourseService(servletContext).getPathName();
             servletContext.setAttribute(TEST_PATHS_ATTRIBUTE, testPaths);
         } else {
             testPaths = (Map<String, Integer>) testPathsObj;
@@ -98,18 +91,18 @@ public class TestUtility {
                 getUpdatedDate(test));
     }
 
-    public static String getTestUrl(int testId) {
-        Test test = testHandler.getTest(testId);
+    public static String getTestUrl(int testId, ServletContext servletContext) {
+        Test test = getCourseService(servletContext).getCourse(testId);
         return test.getPathName();
     }
 
-    public static Map<Integer, Test> getAllTests() {
-        return testHandler.getAllTests();
+    public static Map<Integer, Test> getAllTests(ServletContext servletContext) {
+        return getCourseService(servletContext).getAllCourses();
     }
 
     public static void loadTestsToServletContext(
             ServletContext servletContext) {
-        Map<String, Test> testMap = testHandler.getAllTestsWithPath();
+        Map<String, Test> testMap = getCourseService(servletContext).getAllCoursesWithPath();
         servletContext.setAttribute(TESTS, testMap);
     }
 
@@ -133,7 +126,7 @@ public class TestUtility {
         test.setArticle(article);
     }
 
-    public static void setTestData(Test test,Test newTest, String languageCode, ServletContext servletContext) {
+    public static void setTestData(Test test, Test newTest, String languageCode, ServletContext servletContext) {
         test.setName(decodeRussianCharacters(newTest.getName()));
         test.setTags(decodeRussianCharacters(newTest.getTags()));
         test.setIconText(decodeRussianCharacters(newTest.getIconText()));

@@ -1,14 +1,15 @@
 package spring.controllers.comment;
 
-import util.EditMode;
-import data.comment.CommentHandler;
 import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.comment.CommentService;
 import util.CommentUtility;
+import util.EditMode;
 import util.GeneralUtility;
 import util.TestUtility;
 
@@ -28,13 +29,15 @@ import static util.GeneralUtility.getIntegerValue;
 
 @Controller
 public class CommentController {
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping(value = "/delete-comment")
     public ModelAndView deleteComment(HttpServletRequest request, Locale locale) {
-        CommentHandler commentHandler = new CommentHandler();
         String[] values = request.getParameterValues(DELETE_COMMENT);
         if (values != null) {
             for (String param : values) {
-                commentHandler.deleteComment(Integer.parseInt(param));
+                commentService.deleteComment(Integer.parseInt(param));
             }
         }
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
@@ -49,9 +52,7 @@ public class CommentController {
                 request.getSession().getAttribute(PERSON_ATTRIBUTE);
         if (person != null) {
             Comment commentEntity = CommentUtility.createComment(request);
-
-            CommentHandler commentHandler = new CommentHandler();
-            commentHandler.addComment(commentEntity);
+            commentService.save(commentEntity);
         }
         TestUtility.loadTestsToServletContext(request.getServletContext());
         String referrerUrl = request.getHeader("Referer");
@@ -62,20 +63,19 @@ public class CommentController {
     public ModelAndView modifyComment(HttpServletRequest request, Locale locale) {
         String editMode = request.getParameter(EDIT_MODE_PARAM);
         Integer commentId = getIntegerValue(request, COMMENT_ID);
-        CommentHandler commentHandler = new CommentHandler();
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
         if (EditMode.EDIT.toString().equals(editMode)) {
             String commentBody = request.getParameter(COMMENT_BODY);
             String commentType = request.getParameter(COMMENT_TYPE);
             Integer referenceId = getIntegerValue(request, REFERENCE_ID);
 
-            Comment comment = commentHandler.getComment(commentId);
+            Comment comment = commentService.getComment(commentId);
 
             comment.setComment(commentBody);
-            comment.setType(CommentType.valueOf(commentType));
+            comment.setCommentType(CommentType.valueOf(commentType));
             comment.setReferenceId(referenceId);
 
-            commentHandler.updateComment(comment);
+            commentService.save(comment);
 
             modelAndView.addObject(MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "comment.changed", "messages"));

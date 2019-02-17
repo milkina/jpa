@@ -1,11 +1,11 @@
 package util;
 
-import data.person.PersonHandler;
 import model.AbstractQuestionEntry;
 import model.comment.Comment;
 import model.person.Person;
 import model.person.PersonInfo;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -15,7 +15,9 @@ import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 /**
  * Created by Tatyana on 29.12.2015.
  */
-public class PersonUtility {
+
+public class PersonUtility extends SpringUtility{
+
     public static boolean isSysadmin(Person person) {
         return person != null && person.isSysadmin();
     }
@@ -54,11 +56,12 @@ public class PersonUtility {
     }
 
     public static List<AbstractQuestionEntry> getAnsweredQuestions(
-            HttpSession session) {
+            HttpServletRequest request) {
+        HttpSession session = request.getSession();
         List<AbstractQuestionEntry> answeredQuestions = (List<AbstractQuestionEntry>)
                 session.getAttribute(PERSON_ANSWERED_QUESTIONS);
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
-            answeredQuestions = getAnsweredQuestionsFromDB(session);
+            answeredQuestions = getAnsweredQuestionsFromDB(request);
             session.setAttribute(PERSON_ANSWERED_QUESTIONS,
                     answeredQuestions);
         }
@@ -66,13 +69,12 @@ public class PersonUtility {
     }
 
     private static List<AbstractQuestionEntry> getAnsweredQuestionsFromDB(
-            HttpSession session) {
-        Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
+            HttpServletRequest request) {
+        Person person = (Person) request.getSession().getAttribute(PERSON_ATTRIBUTE);
         if (person == null) {
             return null;
         }
-        PersonHandler personHandler = new PersonHandler();
-        return personHandler.findAnsweredQuestions(person.getID());
+        return getPersonService(request.getServletContext()).findAnsweredQuestions(person.getId());
     }
 
     public static void decodeRussianCharacters(Person person) {

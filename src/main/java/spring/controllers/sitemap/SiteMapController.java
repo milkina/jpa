@@ -1,13 +1,14 @@
 package spring.controllers.sitemap;
 
-import data.article.ArticleHandler;
 import model.Category;
 import model.Test;
 import model.article.Article;
 import model.sitemap.UrlSet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import spring.services.article.ArticleService;
 import util.SiteMapUtility;
 
 import javax.servlet.ServletContext;
@@ -23,8 +24,10 @@ import static util.AllConstantsAttribute.TESTS;
  */
 @Controller
 public class SiteMapController {
-    @RequestMapping(value = "/sitemap.xml")
+    @Autowired
+    private ArticleService articleService;
 
+    @RequestMapping(value = "/sitemap.xml")
     public @ResponseBody
     UrlSet getSiteMap(HttpServletRequest request) {
         ServletContext servletContext = request.getServletContext();
@@ -33,8 +36,7 @@ public class SiteMapController {
         Map<String, Test> testMap = (Map<String, Test>)
                 servletContext.getAttribute(TESTS);
 
-        ArticleHandler articleHandler = new ArticleHandler();
-        List<Article> articles = articleHandler.getArticles();
+        List<Article> articles = articleService.getArticles();
 
         SiteMapUtility siteMapUtility = new SiteMapUtility(duplicateCategories,
                 testMap, articles);

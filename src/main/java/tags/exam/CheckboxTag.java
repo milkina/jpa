@@ -5,6 +5,7 @@ import model.QuestionExam;
 import util.PersonUtility;
 import util.exam.ExamUtility;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class CheckboxTag extends TagSupport {
             if (exam != null) {
                 int questionEntryId = getQuestionEntryId(exam);
                 String checkboxId = "isAnswered" + questionEntryId;
-                List<AbstractQuestionEntry> answeredQuestions = PersonUtility.getAnsweredQuestions(pageContext.getSession());
+                List<AbstractQuestionEntry> answeredQuestions = PersonUtility.getAnsweredQuestions((HttpServletRequest) pageContext.getRequest());
                 String isCheckedQuestion = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions) ? "checked" : "";
                 String contextPath = pageContext.getServletContext().getContextPath();
                 String str = String.format("<input type='checkbox' id='%s' name='isAnswered'" +

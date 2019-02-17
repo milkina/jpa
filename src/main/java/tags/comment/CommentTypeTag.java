@@ -17,7 +17,7 @@ public class CommentTypeTag extends TagSupport {
             CommentTag parent =
                     (CommentTag) findAncestorWithClass(this, CommentTag.class);
             Comment comment = parent.getComment();
-            CommentType type = comment.getType();
+            CommentType type = comment.getCommentType();
             JspWriter out = pageContext.getOut();
             out.print(type);
         } catch (IOException ioe) {

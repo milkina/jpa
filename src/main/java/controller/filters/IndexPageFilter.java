@@ -1,13 +1,18 @@
 package controller.filters;
 
 
-import data.person.PersonHandler;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import spring.services.person.PersonService;
 import util.CookieUtilities;
 
 import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -26,7 +31,11 @@ import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
  * Time: 11:14:20
  * To change this template use File | Settings | File Templates.
  */
+@Service
 public class IndexPageFilter implements Filter {
+    @Autowired
+    private PersonService personService;
+
     public void init(FilterConfig config) throws ServletException {
 
     }
@@ -35,6 +44,11 @@ public class IndexPageFilter implements Filter {
                          FilterChain chain)
             throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
+        if (personService == null) {
+            ServletContext servletContext = request.getServletContext();
+            WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+            personService = webApplicationContext.getBean(PersonService.class);
+        }
         try {
             start(request);
         } catch (Exception e) {
@@ -70,7 +84,6 @@ public class IndexPageFilter implements Filter {
         if (personId.equals("")) {
             return null;
         }
-        PersonHandler personHandler = new PersonHandler();
-        return personHandler.getPersonById(Integer.parseInt(personId));
+        return personService.getPerson(Integer.parseInt(personId));
     }
 }

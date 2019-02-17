@@ -17,8 +17,8 @@ public class CommentUrlTag extends TagSupport {
             CommentTag parent =
                     (CommentTag) findAncestorWithClass(this, CommentTag.class);
             Comment comment = parent.getComment();
-            CommentType type = comment.getType();
-            String url = type.getUrl(comment.getReferenceId());
+            CommentType type = comment.getCommentType();
+            String url = type.getUrl(comment.getReferenceId(), pageContext.getServletContext());
             String contextPath = pageContext.getServletContext().getContextPath();
             JspWriter out = pageContext.getOut();
             out.print(contextPath + "/" + url);

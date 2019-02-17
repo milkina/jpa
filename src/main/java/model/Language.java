@@ -4,18 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
 @Table(name = "languages")
-@NamedQuery(name = "Language.findAllLanguages",
-        query = "SELECT lan FROM Language lan")
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String code;
     private String description;
 
@@ -28,11 +25,11 @@ public class Language {
     public Language() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,7 +54,7 @@ public class Language {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Language language = (Language) o;
-        return id == language.id &&
+        return Objects.equals(id, language.id) &&
                 Objects.equals(code, language.code) &&
                 Objects.equals(description, language.description);
     }

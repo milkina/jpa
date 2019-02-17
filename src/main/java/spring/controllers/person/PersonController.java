@@ -1,15 +1,12 @@
 package spring.controllers.person;
 
-import data.article.ArticleHandler;
-import data.exam.ExamHandler;
-import data.person.PersonHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.QuestionType;
 import model.TestExam;
 import model.article.Article;
 import model.person.Person;
 import model.person.PersonInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.article.ArticleService;
+import spring.services.exam.ExamService;
+import spring.services.person.PersonService;
+import spring.services.question.QuestionService;
 import util.AllConstants;
 import util.GeneralUtility;
 import util.PersonUtility;
@@ -48,6 +49,18 @@ import static util.GeneralUtility.getResourceValue;
 
 @Controller
 public class PersonController {
+    @Autowired
+    private PersonService personService;
+
+    @Autowired
+    private ArticleService articleService;
+
+    @Autowired
+    private ExamService examService;
+
+    @Autowired
+    private QuestionService questionService;
+
     @RequestMapping(value = "/change-user-settings", method = RequestMethod.POST)
     public ModelAndView changeUserSettings(@ModelAttribute("SpringWeb") Person changedPerson,
                                            ModelMap model, Locale locale) {
@@ -55,10 +68,9 @@ public class PersonController {
 
         PersonUtility.decodeRussianCharacters(changedPerson);
 
-        PersonHandler personHandler = new PersonHandler();
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         Person receivedPerson =
-                personHandler.getPersonByLoginViaCriteria(changedPerson.getLogin());
+                personService.findByLogin(changedPerson.getLogin());
         if (receivedPerson != null
                 && !changedPerson.getLogin().equalsIgnoreCase(person.getLogin())) {
             String message = getResourceValue(locale, "login.exist", "messages");
@@ -71,7 +83,7 @@ public class PersonController {
             personInfo.setEmail(changedPerson.getPersonInfo().getEmail());
             person.setPersonInfo(personInfo);
 
-            personHandler.updatePerson(person);
+            personService.save(person);
         }
         return new ModelAndView(MY_PROFILE_PAGE, "command", person);
     }
@@ -97,8 +109,7 @@ public class PersonController {
         } else {
             password = GeneralUtility.decodeRussianCharacters(password.trim());
             person.setPassword(ServletUtilities.getMD5(password));
-            PersonHandler personHandler = new PersonHandler();
-            personHandler.updatePerson(person);
+            personService.save(person);
         }
 
         return new ModelAndView(url, "command", person);
@@ -109,11 +120,9 @@ public class PersonController {
         String result = getResourceValue(locale, "person.not.removed", "messages");
         ;
         if (userId != null) {
-            QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-            List<AbstractQuestionEntry> questionEntries = questionEntryHandler.getPersonQuestions(userId);
+            List<AbstractQuestionEntry> questionEntries = questionService.getPersonQuestions(userId);
             if (questionEntries.size() == 0) {
-                PersonHandler personHandler = new PersonHandler();
-                personHandler.removePerson(userId);
+                personService.removePerson(userId);
                 result = getResourceValue(locale, "person.removed", "messages");
             } else {
                 result = getResourceValue(locale, "person.has.questions", "messages");
@@ -131,8 +140,7 @@ public class PersonController {
         String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
 
-        PersonHandler personHandler = new PersonHandler();
-        personHandler.removeAnsweredQuestions(person);
+        personService.removeAnsweredQuestions(person);
 
         session.setAttribute(PERSON_ANSWERED_QUESTIONS, null);
         return String.format("redirect:%s?%s=%s&%s=%s&%s=%s",
@@ -144,9 +152,8 @@ public class PersonController {
     public String showPersonHistory(HttpServletRequest request) {
         HttpSession session = request.getSession();
         int personId = GeneralUtility.getIntegerValue(request, USER_ID);
-        Person person = new PersonHandler().getPersonById(personId);
-        ExamHandler examHandler = new ExamHandler();
-        List<TestExam> exams = examHandler.getExams(person);
+        Person person = personService.getPerson(personId);
+        List<TestExam> exams = examService.getExams(person);
         session.setAttribute(USER_TEST_EXAMS, exams);
         session.setAttribute(SOME_USER, person);
         return SHOW_PERSON_HISTORY_PAGE;
@@ -158,13 +165,12 @@ public class PersonController {
         String idString = checked ? request.getParameter(CHECKED_PARAM)
                 : request.getParameter(UNCHECKED_PARAM);
         HttpSession session = request.getSession();
-        QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
         int id = Integer.parseInt(idString);
         AbstractQuestionEntry questionEntry =
-                questionEntryHandler.getQuestionEntry(id);
+                questionService.getQuestionEntry(id);
 
         List<AbstractQuestionEntry> answeredQuestions =
-                PersonUtility.getAnsweredQuestions(session);
+                PersonUtility.getAnsweredQuestions(request);
         if (checked && !answeredQuestions.contains(questionEntry)) {
             answeredQuestions.add(questionEntry);
         } else if (!checked) {
@@ -173,19 +179,16 @@ public class PersonController {
 
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         person.setAnsweredQuestions(answeredQuestions);
-        PersonHandler personHandler = new PersonHandler();
-        personHandler.updatePerson(person);
+        personService.save(person);
     }
 
     @RequestMapping(value = "/show-user-profile", method = RequestMethod.GET)
     public ModelAndView showUserProfile(Model model) {
         HttpSession session = GeneralUtility.getSession(true);
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
-        ExamHandler examHandler = new ExamHandler();
-        List<TestExam> exams = examHandler.getExams(person);
+        List<TestExam> exams = examService.getExams(person);
         session.setAttribute(USER_TEST_EXAMS, exams);
-        ArticleHandler articleHandler = new ArticleHandler();
-        List<Article> articles = articleHandler.getArticles(person);
+        List<Article> articles = articleService.getArticles(person);
         model.addAttribute(ARTICLES, articles);
         return new ModelAndView(MY_PROFILE_PAGE, "command", person);
     }

@@ -1,8 +1,12 @@
 package tags.comment;
 
-import data.comment.CommentHandler;
 import model.comment.Comment;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import spring.services.comment.CommentService;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -14,13 +18,23 @@ import java.util.List;
  * Created by Tatyana on 05.05.2016.
  */
 public class CommentTag extends BodyTagSupport {
+    private CommentService commentService;
     private Comment comment;
     private Iterator<Comment> iterator;
     private Integer commentId;
 
+    private CommentService getCommentService(HttpServletRequest request) {
+        if (commentService == null) {
+            ServletContext servletContext = request.getServletContext();
+            WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+            commentService = webApplicationContext.getBean(CommentService.class);
+        }
+        return commentService;
+    }
+
     public int doStartTag() {
         if (commentId != null) {
-            getCommentFromDB();
+            getCommentFromDB((HttpServletRequest) pageContext.getRequest());
         } else {
             setIterator();
             getCommentFromList();
@@ -37,9 +51,8 @@ public class CommentTag extends BodyTagSupport {
         }
     }
 
-    private void getCommentFromDB() {
-        CommentHandler commentHandler = new CommentHandler();
-        comment = commentHandler.getComment(commentId);
+    private void getCommentFromDB(HttpServletRequest request) {
+        comment = getCommentService(request).getComment(commentId);
     }
 
     private void setIterator() {

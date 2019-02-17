@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,16 +21,16 @@ import java.io.Serializable;
 public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "question")
     private String text;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,19 +45,14 @@ public class Question implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-
+        if (o == null || getClass() != o.getClass()) return false;
         Question question = (Question) o;
-
-        if (text != null ? !text.equals(question.text)
-                : question.text != null) return false;
-
-        return true;
+        return Objects.equals(id, question.id) &&
+                Objects.equals(text, question.text);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (text != null ? text.hashCode() : 0);
-        return result;
+        return Objects.hash(id, text);
     }
 }

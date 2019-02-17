@@ -24,7 +24,7 @@ import java.util.Objects;
 public class Answer implements Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "answer")
     private String text;
@@ -36,11 +36,11 @@ public class Answer implements Serializable, Cloneable {
     @JoinColumn(name = "entry_id", referencedColumnName = "entry_id")
     private AbstractQuestionEntry questionEntry;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,7 +73,7 @@ public class Answer implements Serializable, Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Answer answer = (Answer) o;
-        return id == answer.id &&
+        return Objects.equals(id, answer.id) &&
                 Objects.equals(text, answer.text) &&
                 Objects.equals(correct, answer.correct);
     }

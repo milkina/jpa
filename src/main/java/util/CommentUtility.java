@@ -20,7 +20,7 @@ public class CommentUtility {
         setUser(request, commentEntity);
         setType(request, commentEntity);
         setReferenceId(request, commentEntity);
-        commentEntity.setDate(new Date());
+        commentEntity.setCreatedDate(new Date());
         return commentEntity;
     }
 
@@ -39,7 +39,7 @@ public class CommentUtility {
 
     private static void setType(HttpServletRequest request, Comment commentEntity) {
         String type = request.getParameter(COMMENT_TYPE);
-        commentEntity.setType(CommentType.valueOf(type));
+        commentEntity.setCommentType(CommentType.valueOf(type));
     }
 
     private static void setUser(HttpServletRequest request, Comment commentEntity) {

@@ -1,6 +1,7 @@
 package model.person;
 
 import model.AbstractQuestionEntry;
+import util.GeneralUtility;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,31 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(
-                name = "findPersonByLoginAndPassword",
-                query = "SELECT c FROM Person c WHERE c.login=:loginName AND c.password=:passwordName"),
-        @NamedQuery(
-                name = "findPersonByLogin",
-                query = "SELECT c FROM Person c WHERE c.login=:loginName"),
-        @NamedQuery(
-                name = "Person.findAnsweredQuestions",
-                query = "SELECT aq from Person p JOIN p.answeredQuestions aq WHERE p.ID=:personId")
-})
 @Table(name = "Users")
 public class Person implements Comparable<Person> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int ID;
+    private Integer id;
 
     @Column(name = "login")
     private String login = "";
@@ -67,12 +56,12 @@ public class Person implements Comparable<Person> {
         return login;
     }
 
-    public void setID(int l) {
-        ID = l;
+    public void setId(Integer l) {
+        id = l;
     }
 
-    public int getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
 
     public void setPassword(String p) {
@@ -110,6 +99,10 @@ public class Person implements Comparable<Person> {
         return createdDate;
     }
 
+    public String getFormattedCreatedDate() {
+        return getCreatedDate() != null ? GeneralUtility.formatDate(getCreatedDate()) : "";
+    }
+
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
@@ -136,25 +129,16 @@ public class Person implements Comparable<Person> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-
-        if (ID != person.ID) return false;
-        if (login != null ? !login.equals(person.login) : person.login != null) return false;
-        if (password != null ? !password.equals(person.password) : person.password != null) return false;
-       /* if(personInfo!=null && person.getPersonInfo()==null) return false;
-        if(personInfo==null && person.getPersonInfo()!=null) return false;
-        if(personInfo!=null && person.getPersonInfo()!=null && !personInfo.equals(person.getPersonInfo())) return false;*/
-        return true;
+        return Objects.equals(id, person.id) &&
+                Objects.equals(login, person.login) &&
+                Objects.equals(password, person.password);
     }
 
     @Override
     public int hashCode() {
-        int result = ID;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return Objects.hash(id, login, password);
     }
 
     @Override

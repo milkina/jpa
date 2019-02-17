@@ -12,31 +12,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Tatyana on 05.05.2016.
  */
 @Entity
 @Table(name = "article")
-@NamedQueries({
-        @NamedQuery(name = "Article.getAllArticles", query = "SELECT a from Article a where a.hidden=false and " +
-                "a.url is not null and a.title is not null order by a.createdDate desc"),
-        @NamedQuery(name = "Article.getPersonArticles", query = "SELECT a from Article a where a.hidden=false and " +
-                "a.url is not null and a.title is not null AND a.author=:param order by a.createdDate desc"),
-        @NamedQuery(name = "Article.getArticleByUrl", query = "SELECT a from Article a where a.url=:param"),
-        @NamedQuery(name = "Article.getCategory", query = "SELECT c from Category c where c.article.id=:article_id")})
 public class Article {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String url;
 
@@ -66,11 +58,11 @@ public class Article {
     @OneToOne(mappedBy = "article")
     private Category category;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -174,34 +166,22 @@ public class Article {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Article article = (Article) o;
-
-        if (getUrl() != null ? !getUrl().equals(article.getUrl()) : article.getUrl() != null) return false;
-        if (getText() != null ? !getText().equals(article.getText()) : article.getText() != null) return false;
-        if (getCreatedDate() != null ? !getCreatedDate().equals(article.getCreatedDate()) : article.getCreatedDate() != null)
-            return false;
-        if (getImage() != null ? !getImage().equals(article.getImage()) : article.getImage() != null) return false;
-        if (getKeywords() != null ? !getKeywords().equals(article.getKeywords()) : article.getKeywords() != null)
-            return false;
-        if (getDescription() != null ? !getDescription().equals(article.getDescription()) : article.getDescription() != null)
-            return false;
-        if (getTitle() != null ? !getTitle().equals(article.getTitle()) : article.getTitle() != null) return false;
-        if (getAuthor() != null ? !getAuthor().equals(article.getAuthor()) : article.getAuthor() != null) return false;
-        return !(getCategory() != null ? !getCategory().equals(article.getCategory()) : article.getCategory() != null);
+        return hidden == article.hidden &&
+                indexStatus == article.indexStatus &&
+                Objects.equals(id, article.id) &&
+                Objects.equals(url, article.url) &&
+                Objects.equals(text, article.text) &&
+                Objects.equals(image, article.image) &&
+                Objects.equals(keywords, article.keywords) &&
+                Objects.equals(description, article.description) &&
+                Objects.equals(title, article.title) &&
+                Objects.equals(author, article.author) &&
+                Objects.equals(category, article.category);
     }
 
     @Override
     public int hashCode() {
-        int result = getUrl() != null ? getUrl().hashCode() : 0;
-        result = 31 * result + (getText() != null ? getText().hashCode() : 0);
-        result = 31 * result + (getCreatedDate() != null ? getCreatedDate().hashCode() : 0);
-        result = 31 * result + (getImage() != null ? getImage().hashCode() : 0);
-        result = 31 * result + (getKeywords() != null ? getKeywords().hashCode() : 0);
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
-        result = 31 * result + (getAuthor() != null ? getAuthor().hashCode() : 0);
-        result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
-        return result;
+        return Objects.hash(id, url, text, createdDate, image, keywords, description, title, hidden, indexStatus, comments, author, category);
     }
 }

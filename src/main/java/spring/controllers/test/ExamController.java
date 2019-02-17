@@ -1,17 +1,18 @@
 package spring.controllers.test;
 
-import data.category.CategoryHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractExam;
 import model.AbstractQuestionEntry;
 import model.Category;
 import model.TestExam;
 import model.TestQuestionEntry;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import spring.services.category.CategoryService;
+import spring.services.question.QuestionService;
 import util.CategoryUtility;
 import util.GeneralUtility;
 import util.exam.ExamUtility;
@@ -36,8 +37,12 @@ import static util.AllConstantsParam.TEST_PATH;
  */
 @Controller
 public class ExamController {
-    private static QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-    private static CategoryHandler categoryHandler = new CategoryHandler();
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/start-test")
     public String startExam(@RequestParam(TEST_PATH) String testPath, Model model,
@@ -49,7 +54,7 @@ public class ExamController {
         int count = ExamUtility.getCount(categoryPaths, request, Category::getTestsCount);
 
         List<AbstractQuestionEntry> questionEntries =
-                questionEntryHandler.getQuestionsForExam(categoryPaths, count);
+                questionService.getQuestionsForExam(categoryPaths, count);
         if (questionEntries.isEmpty()) {
             model.addAttribute(MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "exam.empty", "messages"));
@@ -97,7 +102,7 @@ public class ExamController {
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
         String questionType = request.getParameter("questionType");
         List<AbstractQuestionEntry> questionEntries =
-                new QuestionEntryHandler().getQuestionsForQuiz(categoryPaths, person, questionType, count);
+                questionService.getQuestionsForQuiz(categoryPaths, person, questionType, count);
         if (questionEntries.isEmpty()) {
             model.addAttribute(MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "exam.empty", "messages"));
@@ -112,18 +117,18 @@ public class ExamController {
     }
 
     @RequestMapping(value = "/finish-exam")
-    public String finishExam() {
+    public String finishExam(HttpServletRequest request) {
         HttpSession session = GeneralUtility.getSession(true);
         TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
 
-        ExamUtility.createExam(exam);
+        ExamUtility.createExam(exam, request.getServletContext());
         return "/exam/show-test-result";
     }
 
     @RequestMapping(value = "/select-category-for-exam")
     public String selectCategoriesForTest(@RequestParam(TEST_PATH) String testPath,
                                           HttpServletRequest request) {
-        List<Category> categories = categoryHandler.getCategories(testPath);
+        List<Category> categories = categoryService.getCategories(testPath);
         CategoryUtility.selectCategories(categories,
                 c -> c.getTestsCount() < 1);
         request.setAttribute(CATEGORIES, categories);
@@ -133,7 +138,7 @@ public class ExamController {
     @RequestMapping(value = "/select-categories-to-see-questions")
     public String selectCategoriesToSeeQuestions(@RequestParam(TEST_PATH) String testPath,
                                                  HttpServletRequest request) {
-        List<Category> categories = categoryHandler.getCategories(testPath);
+        List<Category> categories = categoryService.getCategories(testPath);
         CategoryUtility.selectCategories(categories,
                 c -> c.getQuestionsCount() < 1);
         request.setAttribute(CATEGORIES, categories);

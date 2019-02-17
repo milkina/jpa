@@ -3,6 +3,7 @@ package tags.questionEntry;
 import model.AbstractQuestionEntry;
 import util.PersonUtility;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.util.List;
 
@@ -15,6 +16,6 @@ public class BaseQuestionEntryTypeTag extends TagSupport {
     }
 
     protected List<AbstractQuestionEntry> getAnsweredQuestions() {
-        return PersonUtility.getAnsweredQuestions(pageContext.getSession());
+        return PersonUtility.getAnsweredQuestions((HttpServletRequest) pageContext.getRequest());
     }
 }

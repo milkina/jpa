@@ -1,20 +1,17 @@
 package util;
 
-import data.language.LanguageHandler;
 import model.Language;
 
 import javax.servlet.ServletContext;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import static util.AllConstantsAttribute.LANGUAGES;
 
-public class LanguageUtility {
-    private static LanguageHandler languageHandler = new LanguageHandler();
+public class LanguageUtility extends SpringUtility {
 
     public static void loadLanguages(ServletContext servletContext) {
-        Map<String, Language> languages = languageHandler.findAllLanguages();
+        Map<String, Language> languages = getLanguageService(servletContext).findAllLanguages();
         servletContext.setAttribute(LANGUAGES, languages);
     }
 

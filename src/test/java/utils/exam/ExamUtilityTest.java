@@ -1,25 +1,25 @@
 package utils.exam;
 
-import junit.framework.Assert;
-import data.person.PersonBean;
-import data.person.PersonBeanI;
-import data.person.PersonHandler;
 import model.AbstractQuestionEntry;
 import model.Category;
-import model.QuestionExam;
 import model.QuestionEntry;
+import model.QuestionExam;
 import model.article.Article;
 import model.person.Person;
-import util.exam.ExamUtility;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import spring.services.person.PersonService;
+import util.exam.ExamUtility;
 import utils.TestUtils;
-
-import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Tatyana on 30.04.2016.
@@ -95,11 +95,9 @@ public class ExamUtilityTest {
             exam.setPerson(person);
             exam.setCurrentNumber(currentNumber);
         }
-        PersonBeanI personBeanI = mock(PersonBean.class);
-        PersonHandler personHandler = new PersonHandler(personBeanI);
-        ExamUtility.setPersonHandler(personHandler);
+        PersonService personBeanI = mock(PersonService.class);
         List<AbstractQuestionEntry> answeredQuestions = person != null ? person.getAnsweredQuestions() : null;
-        when(personHandler.findAnsweredQuestions(anyInt())).thenReturn(answeredQuestions);
+        when(personBeanI.findAnsweredQuestions(anyInt())).thenReturn(answeredQuestions);
         boolean result = ExamUtility.isCurrentQuestionChecked(exam, answeredQuestions);
         Assert.assertEquals(result, expectedResult);
     }

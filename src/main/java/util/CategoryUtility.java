@@ -1,12 +1,11 @@
 package util;
 
-import data.category.CategoryHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Category;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
+import spring.services.category.CategoryService;
 import util.article.ArticleUtility;
 
 import javax.servlet.ServletContext;
@@ -34,13 +33,7 @@ import static util.AllConstantsParam.TEST_PATH;
  * Time: 0:31:28
  * To change this template use File | Settings | File Templates.
  */
-public class CategoryUtility {
-    private static CategoryHandler categoryHandler =
-            new CategoryHandler();
-    private static QuestionEntryHandler questionEntryHandler =
-            new QuestionEntryHandler();
-
-
+public class CategoryUtility extends SpringUtility {
     public static String getDescription(Category category) {
         if (category != null && category.getArticle() != null
                 && category.getArticle().getDescription() != null) {
@@ -73,7 +66,7 @@ public class CategoryUtility {
 
         Category parent = null;
         if (!categoryParentId.isEmpty()) {
-            parent = categoryHandler.getCategory(
+            parent = getCategoryService(request.getServletContext()).findOne(
                     Integer.parseInt(categoryParentId));
         }
         category.setName(categoryName.trim());
@@ -83,7 +76,8 @@ public class CategoryUtility {
     }
 
     public static Category getCategoryByPath(HttpServletRequest request) {
-        return categoryHandler.getCategory(request.getParameter(CATEGORY_PATH));
+        CategoryService categoryService = getCategoryService(request.getServletContext());
+        return categoryService.getCategory(request.getParameter(CATEGORY_PATH));
     }
 
 
@@ -96,7 +90,7 @@ public class CategoryUtility {
                                       Category category) {
         setCategoryData(request, category);
         setCategoryArticle(request, category);
-        updateCategory(category);
+        updateCategory(category, request.getServletContext());
         TestUtility.loadTestsToServletContext(request.getServletContext());
     }
 
@@ -130,23 +124,23 @@ public class CategoryUtility {
         category.setArticle(article);
     }
 
-    public static void updateCategory(Category category) {
-        categoryHandler.updateCategory(category);
+    public static void updateCategory(Category category, ServletContext servletContext) {
+        getCategoryService(servletContext).update(category);
     }
 
     public static boolean containArticle(Category category) {
         return category.getArticle() != null;
     }
 
-    public static boolean containQuestionEntries(Category category) {
+    public static boolean containQuestionEntries(Category category, ServletContext servletContext) {
         Map<Integer, AbstractQuestionEntry> questions =
-                questionEntryHandler.getAllAbstractQuestionsMap(category);
+                getQuestionService(servletContext).getAllAbstractQuestionsMap(category);
         return questions != null && !questions.isEmpty();
     }
 
     public static void setDuplicateCategories(ServletContext servletContext) {
         Map<String, Category> categories =
-                categoryHandler.getDuplicateCategories();
+                getCategoryService(servletContext).getDuplicateCategories();
         servletContext.setAttribute(DUPLICATE_CATEGORIES, categories);
     }
 
@@ -166,7 +160,7 @@ public class CategoryUtility {
     }
 
     public static void selectCategories(List<Category> categories,
-                                                 Predicate<Category> filter) {
+                                        Predicate<Category> filter) {
         categories.removeIf(category -> category.getParentCategory() != null);
         selectSubCategories(categories, filter);
         Predicate<Category> removeFilter = c -> c.getParentCategory() == null

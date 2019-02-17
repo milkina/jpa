@@ -1,13 +1,15 @@
 package tags.questionEntry;
 
-import data.category.CategoryHandler;
-import data.questionEntry.QuestionEntryHandler;
 import model.AbstractQuestionEntry;
 import model.Category;
 import model.QuestionType;
 import model.person.Person;
+import spring.services.category.CategoryService;
+import spring.services.question.QuestionService;
 import util.GeneralUtility;
+import util.SpringUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import java.util.List;
 
@@ -19,26 +21,41 @@ import static util.AllConstantsParam.TYPE;
  * Created by Tatyana on 05.06.2016.
  */
 public class QuestionEntryListTag extends BodyTagSupport {
-    private QuestionEntryHandler questionEntryHandler = new QuestionEntryHandler();
-    private CategoryHandler categoryHandler = new CategoryHandler();
+    private QuestionService questionService;
+    private CategoryService categoryService;
     private List<AbstractQuestionEntry> questionEntries;
 
     public List<AbstractQuestionEntry> getQuestionEntries() {
         return questionEntries;
     }
 
+    private QuestionService getQuestionService(ServletContext servletContext) {
+        if (questionService == null) {
+            questionService = SpringUtility.getService(servletContext, QuestionService.class);
+        }
+        return questionService;
+    }
+
+    private CategoryService getCategoryService(ServletContext servletContext) {
+        if (categoryService == null) {
+            categoryService = SpringUtility.getService(servletContext, CategoryService.class);
+        }
+        return categoryService;
+    }
+
     public int doStartTag() {
         Category category = getCategory();
         String type = pageContext.getRequest().getParameter(TYPE);
+        questionService = getQuestionService(pageContext.getServletContext());
         if (QuestionType.QUESTION.toString().equals(type)) {
-            questionEntries = questionEntryHandler.getAllQuestions(category);
+            questionEntries = questionService.getAllQuestions(category);
         } else if (QuestionType.TEST.toString().equals(type)) {
-            questionEntries = questionEntryHandler.getAllTestQuestions(category);
+            questionEntries = questionService.getAllTestQuestions(category);
         } else if (QuestionType.NOT_APPROVED.toString().equals(type)) {
-            questionEntries = questionEntryHandler.getNotApprovedQuestions();
+            questionEntries = questionService.getNotApprovedQuestions();
         } else if (QuestionType.MY_QUESTIONS.toString().equals(type)) {
             Person person = (Person) pageContext.getSession().getAttribute(PERSON_ATTRIBUTE);
-            questionEntries = questionEntryHandler.getPersonQuestions(person.getID());
+            questionEntries = questionService.getPersonQuestions(person.getId());
         }
         return EVAL_BODY_INCLUDE;
     }
@@ -46,7 +63,7 @@ public class QuestionEntryListTag extends BodyTagSupport {
     private Category getCategory() {
         String categoryPathParameter = pageContext.getRequest().getParameter(CATEGORY_PATH);
         if (!GeneralUtility.isEmpty(categoryPathParameter)) {
-            return categoryHandler.getCategory(categoryPathParameter);
+            return getCategoryService(pageContext.getServletContext()).getCategory(categoryPathParameter);
         } else {
             return null;
         }

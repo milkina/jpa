@@ -24,6 +24,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,34 +39,14 @@ import java.util.Map;
         @NamedQuery(name = "Test.findAllTests",
                 query = "SELECT t,sum(c.questionsCount),sum(c.testsCount) FROM Test t "
                         + "left join t.categories c "
-                        + "GROUP BY t ORDER BY t.orderId "),
-        @NamedQuery(name = "Test.findPathName",
-                query = "select t.id,t.pathName from Test t"),
-        @NamedQuery(name = "Test.getTestByQuestion",
-                query = "SELECT t FROM Test t INNER JOIN t.categories c INNER JOIN c.questionEntries q" +
-                        " WHERE q=:param"),
-        @NamedQuery(name = "Test.findAllWithNotEmptyTests",
-                query = "SELECT distinct t FROM Test t "
-                        + "left join t.categories c WHERE "
-                        + "c.testsCount>0 "
-                        + "ORDER BY t.orderId"),
-        @NamedQuery(name = "Course.findAllWithNotEmptyQuestions",
-                query = "SELECT distinct t FROM Test t "
-                        + "left join t.categories c WHERE "
-                        + "c.questionsCount>0 "
-                        + "ORDER BY t.orderId"),
-        @NamedQuery(name = "Test.getPreviousTests",
-                query = "SELECT t FROM Test t WHERE t.orderId<= "
-                        + " (SELECT tt.orderId FROM Test tt WHERE tt.pathName=:param) ORDER BY t.orderId"),
-        @NamedQuery(name = "Test.getNextTests",
-                query = "SELECT t FROM Test t WHERE t.orderId>= "
-                        + " (SELECT tt.orderId FROM Test tt WHERE tt.pathName=:param) ORDER BY t.orderId")
+                        + "GROUP BY t ORDER BY t.orderId ")
+
 })
 public class Test implements Serializable, Comparable<Test> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Integer id;
     @Column(name = "TEST_NAME")
     private String name;
 
@@ -113,11 +94,11 @@ public class Test implements Serializable, Comparable<Test> {
         this.article = article;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -205,7 +186,7 @@ public class Test implements Serializable, Comparable<Test> {
 
     public void addCategory(Category category) {
         if (categories == null) {
-            categories = new HashMap<String, Category>();
+            categories = new HashMap<>();
         }
         categories.put(category.getPathName(), category);
     }
@@ -214,24 +195,15 @@ public class Test implements Serializable, Comparable<Test> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Test test = (Test) o;
-
-        if (getId() != test.getId()) return false;
-        if (getName() != null ? !getName().equals(test.getName()) : test.getName() != null) return false;
-
-        return !(getPathName() != null ? !getPathName().equals(test.getPathName()) : test.getPathName() != null);
-
+        return Objects.equals(id, test.id) &&
+                Objects.equals(name, test.name) &&
+                Objects.equals(pathName, test.pathName);
     }
 
     @Override
     public int hashCode() {
-        int result = getId();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getQuestionsNumber() != null ? getQuestionsNumber().hashCode() : 0);
-        result = 31 * result + (getCategories() != null ? getCategories().hashCode() : 0);
-        result = 31 * result + (getPathName() != null ? getPathName().hashCode() : 0);
-        return result;
+        return Objects.hash(id, name, pathName);
     }
 
     @Override

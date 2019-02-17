@@ -14,8 +14,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,24 +21,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "AbstractQuestionEntry.getAllQuestions",
-                query = "SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id"),
-        @NamedQuery(name = "AbstractQuestionEntry.getNotApprovedQuestions",
-                query = "SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.approved=false ORDER BY qe.orderColumn, qe.id"),
-        @NamedQuery(name = "AbstractQuestionEntry.getPersonQuestions",
-                query = "SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
-                        + "JOIN FETCH qe.category WHERE qe.person.ID=:param ORDER BY qe.orderColumn, qe.id"),
-        @NamedQuery(name = "QuestionEntry.getPreviousQuestionEntry",
-                query = "SELECT qe1 FROM AbstractQuestionEntry qe1 "
-                        + "WHERE qe1.orderColumn = (SELECT max(qe2.orderColumn) "
-                        + "FROM AbstractQuestionEntry qe2 WHERE qe2.approved=true AND qe2.orderColumn<:param AND qe2.category.id="
-                        + "(SELECT qe3.category.id FROM AbstractQuestionEntry qe3 WHERE qe3.orderColumn=:param)"
-                        + " AND qe2.type=(SELECT qe4.type FROM AbstractQuestionEntry qe4 WHERE qe4.orderColumn=:param))")
-
-})
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "QTYPE")
 @Table(name = "QUESTIONS")
@@ -48,7 +28,7 @@ public abstract class AbstractQuestionEntry {
     @Id
     @Column(name = "entry_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
@@ -86,11 +66,11 @@ public abstract class AbstractQuestionEntry {
         this.type = type;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -164,7 +144,7 @@ public abstract class AbstractQuestionEntry {
 
         AbstractQuestionEntry that = (AbstractQuestionEntry) o;
 
-        if (getId() != that.getId()) return false;
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
         if (getOrderColumn() != that.getOrderColumn()) return false;
         if (getCategory() != null ? !getCategory().equals(that.getCategory()) : that.getCategory() != null)
             return false;
@@ -184,13 +164,12 @@ public abstract class AbstractQuestionEntry {
                 return false;
             }
         }
-        if (getPerson() != null ? !getPerson().equals(that.getPerson()) : that.getPerson() != null) return false;
-        return getCreatedDate() != null ? getCreatedDate().equals(that.getCreatedDate()) : that.getCreatedDate() == null;
+        return getPerson() != null ? getPerson().equals(that.getPerson()) : that.getPerson() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getId();
+        int result =  (getId() != null ? getId().hashCode() : 0);
         result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
         result = 31 * result + (getQuestion() != null ? getQuestion().hashCode() : 0);
         result = 31 * result + (getAnswers() != null ? getAnswers().hashCode() : 0);

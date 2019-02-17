@@ -1,11 +1,11 @@
 package spring.controllers.course;
 
 import com.google.gson.Gson;
-import data.test.TestHandler;
 import model.Category;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.course.CourseService;
 import util.CategoryUtility;
 import util.LanguageUtility;
 import util.TestUtility;
@@ -40,14 +41,15 @@ import static util.GeneralUtility.getResourceValue;
 
 @Controller
 public class CourseController {
-    private static TestHandler testHandler = new TestHandler();
+    @Autowired
+    private CourseService courseService;
 
     @RequestMapping(value = "/tests")
     public String selectCoursesWithTestsAndQuestions(HttpServletRequest request) {
-        List<Test> coursesWithTests = testHandler.getAllTestsWithNotEmptyTests();
+        List<Test> coursesWithTests = courseService.getAllTestsWithNotEmptyTests();
         request.setAttribute(TESTS_WITH_TESTS, coursesWithTests);
 
-        List<Test> coursesWithQuestions = testHandler.getAllCoursesWithNotEmptyQuestions();
+        List<Test> coursesWithQuestions = courseService.getAllCoursesWithNotEmptyQuestions();
         request.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);
         return TESTS_PAGE;
     }
@@ -70,10 +72,9 @@ public class CourseController {
         Person person = (Person)
                 request.getSession().getAttribute(PERSON_ATTRIBUTE);
         TestUtility.setTestData(newTest, newTest, languageCode, servletContext);
-        ArticleUtility.createArticle(newTest.getArticle(), person);
+        ArticleUtility.createArticle(newTest.getArticle(), person, servletContext);
 
-        TestHandler testHandler = new TestHandler();
-        testHandler.addTest(newTest);
+        courseService.create(newTest);
 
         TestUtility.loadTestsToServletContext(servletContext);
         model.addAttribute(MESSAGE_ATTRIBUTE, getResourceValue(locale, "course.added", "messages"));
@@ -101,10 +102,9 @@ public class CourseController {
                 request.getServletContext().getAttribute(TESTS);
         Test test = testMap.get(testPath);
         TestUtility.setTestData(test, newTest, languageCode, request.getServletContext());
-        ArticleUtility.setArticleData(test.getArticle(), newTest.getArticle());
+        ArticleUtility.setArticleData(test.getArticle(), newTest.getArticle(), request.getServletContext());
 
-        TestHandler testHandler = new TestHandler();
-        testHandler.updateTest(test);
+        courseService.update(test);
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         String message = getResourceValue(locale, "course.updated", "messages");
@@ -121,8 +121,7 @@ public class CourseController {
     public ModelAndView deleteCourse(Locale locale, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
         Test test = TestUtility.getTestFromServletContext(request);
-        TestHandler testHandler = new TestHandler();
-        if (testHandler.deleteTest(test)) {
+        if (courseService.deleteCourse(test)) {
             modelAndView.addObject(MESSAGE_ATTRIBUTE,
                     getResourceValue(locale, "course.deleted", "messages"));
         } else {
@@ -149,8 +148,7 @@ public class CourseController {
         Test test = testMap.get(testPath);
         Test stopTest = testMap.get(stopTestPath);
 
-        TestHandler testHandler = new TestHandler();
-        testHandler.moveTest(test, stopTest);
+        courseService.moveCourse(test, stopTest);
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         CategoryUtility.setDuplicateCategories(request.getServletContext());

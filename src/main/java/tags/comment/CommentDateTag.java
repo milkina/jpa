@@ -19,7 +19,7 @@ public class CommentDateTag extends TagSupport {
             Comment comment = parent.getComment();
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
             JspWriter out = pageContext.getOut();
-            out.print(dateFormat.format(comment.getDate()));
+            out.print(dateFormat.format(comment.getCreatedDate()));
         } catch (IOException ioe) {
             System.out.println("Error in CommentDateTag: " + ioe);
         }

@@ -1,7 +1,7 @@
 package spring.controllers.person;
 
-import data.person.PersonHandler;
 import model.person.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import spring.services.person.PersonService;
 import util.GeneralUtility;
 import util.PersonUtility;
 
@@ -24,6 +25,9 @@ import static util.AllConstantsAttribute.USER_NAME;
 
 @Controller
 public class RegisterController {
+    @Autowired
+    private PersonService personService;
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register(Model model) {
         return new ModelAndView(REGISTER_PAGE, "command", new Person());
@@ -37,8 +41,7 @@ public class RegisterController {
         PersonUtility.decodeRussianCharacters(person);
         confPassword = GeneralUtility.decodeRussianCharacters(confPassword.trim());
         if (isValidData(model, person, confPassword, locale)) {
-            PersonHandler personHandler = new PersonHandler();
-            person = personHandler.addPerson(person);
+            person = personService.addPerson(person);
 
             HttpSession session = GeneralUtility.getSession(true);
             session.setAttribute(PERSON_ATTRIBUTE, person);
@@ -69,8 +72,7 @@ public class RegisterController {
     }
 
     private boolean isLoginExists(String login) {
-        PersonHandler personHandler = new PersonHandler();
-        Person existedPerson = personHandler.getPersonByLogin(login);
+        Person existedPerson = personService.findByLogin(login);
         return !login.isEmpty() && existedPerson != null;
     }
 }

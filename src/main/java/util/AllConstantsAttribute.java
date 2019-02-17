@@ -12,6 +12,7 @@ public interface AllConstantsAttribute {
     String PERSON_ANSWERED_QUESTIONS = "PERSON_ANSWERED_QUESTIONS";
     String WRONG_LOGIN_MESSAGE_ATTRIBUTE = "wrongLoginMessage";
     String PERSON_LIST_ATTRIBUTE = "personList";
+    String SIZE = "SIZE";
     String NEW_PERSON_ATTRIBUTE = "newPerson";
     String MESSAGE_ATTRIBUTE = "message";
     String EDIT_PARAM = "Edit";

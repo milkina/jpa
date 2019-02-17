@@ -1,11 +1,5 @@
-<%@ page import="data.person.PersonHandler" %>
-<%@ page import="java.util.List"%>
-<%@ page import="model.person.Person"%>
-<%@ page import="util.GeneralUtility"%>
-<%  PersonHandler personHandler = new PersonHandler();
-    List<Person> personList = personHandler.getAllPersonsList();
-%>
-<h3><spring:message	code="users"/>(<%=personList.size()%>)</h3>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<h3><spring:message	code="users"/>(${SIZE})</h3>
 <div class="adminUserHead">
   <div class="adminUserCellHead"><spring:message code="login"/></div>
   <div class="adminUserCellHead"><spring:message code="created.date"/></div>
@@ -13,18 +7,16 @@
   <div class="adminUserCellHead">&nbsp;</div>
 </div>
 <div class="adminUserTable" id="adminUserTable">
-       <%for(Person p:personList){
-          String createdDate = p.getCreatedDate() != null?GeneralUtility.formatDate(p.getCreatedDate()):"&nbsp;";
-       %>
-       <div id="user<%=p.getLogin()%>">
-         <div class="adminUserCell"><%=p.getLogin()%>&nbsp;</div>
-         <div class="adminUserCell"><%=createdDate%></div>
-         <div class="adminUserCell">
-            <a href="${pageContext.request.contextPath}/delete-person?USER_ID=<%=p.getID()%>">
+       <c:forEach var="person" items="${personList}">
+          <div id="user${person.login}">
+            <div class="adminUserCell">${person.login}&nbsp;</div>
+            <div class="adminUserCell">${person.formattedCreatedDate}&nbsp;</div>
+            <div class="adminUserCell">
+              <a href="${pageContext.request.contextPath}/delete-person?USER_ID=${person.id}">
                <spring:message code="delete"/></a></div>
-         <div class="adminUserCell">
-            <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=<%=p.getID()%>"
-             id="seeHistory<%=p.getLogin()%>"><spring:message code="see.history"/></a></div>
-       </div>
-       <%}%>
+            <div class="adminUserCell">
+               <a href="${pageContext.request.contextPath}/show-person-history?USER_ID=${person.id}"
+             id="seeHistory${person.login}"><spring:message code="see.history"/></a></div>
+          </div>
+       </c:forEach>
 </div>

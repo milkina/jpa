@@ -1,8 +1,10 @@
 package tags.test;
 
-import data.test.TestHandler;
 import model.Test;
+import spring.services.course.CourseService;
+import util.SpringUtility;
 
+import javax.servlet.ServletContext;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -12,7 +14,7 @@ import java.util.Map;
  * Created by Tatyana on 15.05.2016.
  */
 public class TestTag extends TagSupport {
-    private TestHandler testHandler = new TestHandler();
+    private CourseService courseService;
     private Map<Integer, Test> testMap;
     private Map<String, Test> testMapPath;
     private Integer testId;
@@ -39,14 +41,15 @@ public class TestTag extends TagSupport {
 
     public Map<Integer, Test> getTestMap() {
         if (testMap == null) {
-            testMap = testHandler.getAllTests();
+            testMap = getCourseService(pageContext.getServletContext()).getAllCourses();
         }
         return testMap;
     }
 
     public Map<String, Test> getTestMapPath() {
         if (testMapPath == null) {
-            testMapPath = testHandler.getAllTestsWithPath();
+            testMapPath = getCourseService(pageContext.getServletContext())
+                    .getAllCoursesWithPath();
         }
         return testMapPath;
     }
@@ -74,5 +77,12 @@ public class TestTag extends TagSupport {
 
     public void setPathName(String pathName) {
         this.pathName = pathName;
+    }
+
+    private CourseService getCourseService(ServletContext servletContext) {
+        if (courseService == null) {
+            courseService = SpringUtility.getService(servletContext, CourseService.class);
+        }
+        return courseService;
     }
 }

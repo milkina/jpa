@@ -36,5 +36,9 @@
         <from>^/ocjp-ocpjp.jsp$</from>
         <to type="redirect">http://www.examclouds.com/publications/ocjp-ocpjp</to>
     </rule>
+    <rule>
+        <from>^/ocpjp8-update-from-java6$</from>
+        <to type="redirect">http://www.examclouds.com/exam/ocpjp8-update-from-java6</to>
+    </rule>
 </urlrewrite>
 

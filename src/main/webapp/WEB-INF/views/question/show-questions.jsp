@@ -11,9 +11,9 @@
         <meta name="robots" content="noindex">
         <title><spring:message code="questions"/> <category:name/> - ${TESTS[param.TEST_PATH].name}</title>
         <META NAME="Description" CONTENT="<category:description/>">
-        <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/prism_min.css">
-        <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+        <script async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prism_min.css">
+        <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
    </jsp:attribute>
    <jsp:body>
      <div class="mainArea">

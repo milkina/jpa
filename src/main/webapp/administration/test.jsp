@@ -25,7 +25,7 @@
           </tr>
          </c:forEach>
       </table><BR>
-       <script type="text/javascript">
+       <script>
               $(document).ready(function() {
                  $("#table-1").tableDnD({
                     onDrop: function(table, row) {

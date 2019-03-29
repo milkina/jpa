@@ -5,12 +5,6 @@
         <div id="sprite-examclouds" class="menuImageDiv"></div>
         <div style="float:left;">
         <aside>
-        <style>
-        .ad3 { width: 234px; height: 60px; }
-        @media(min-width: 400px) { .ad3 { width: 234px; height: 60px;} }
-        @media(min-width: 480px) { .ad3 {width: 468px; height: 60px; } }
-        @media(min-width: 800px) { .ad3 {width: 468px; height: 60px; } }
-        </style>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- ad3 -->
        <ins class="adsbygoogle ad3"

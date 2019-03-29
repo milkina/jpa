@@ -20,11 +20,11 @@
        </comment:comment>
    </ol>
    </comment:commentList>
-    <script type="text/javascript">
-                   function addUserComment(contextPath) {
+    <script>
+                   function addUserComment(contextPath, message) {
                        var isLoggedIn = document.getElementById("isLogin");
                        if (!isLoggedIn) {
-                           alert("Please log in or register to have a possibility to add comment.");
+                           alert(message);
                            return;
                        }
                        var form = document.getElementById("addCommentForm");
@@ -36,7 +36,7 @@
    <spring:message code="leave.comment"/>:<BR>
    <textarea rows="7" class="commentTextArea" maxlength="350" name="commentText" required id="commentText"></textarea><BR>
    <input type="button" value="<spring:message code="post"/>" id="addComment" name="addComment"
-    onclick="addUserComment('<%=request.getContextPath()%>')">
+    onclick="addUserComment('<%=request.getContextPath()%>','<spring:message code="comment.not.added"/>')">
    <BR><BR>
 </form>
 </div>

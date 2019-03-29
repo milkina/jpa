@@ -1,8 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
+    <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
                 <title>
                    <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
@@ -13,7 +14,7 @@
                 <META NAME="Keywords" CONTENT="${CATEGORY_ATTRIBUTE.article.keywords}">
                 <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
                 <%@ include file="/edit/categoryOL.jsp" %>
-                <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+                <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
                 <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null && DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName!=param.TEST_PATH}">
                       <link rel="canonical"
                       href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />

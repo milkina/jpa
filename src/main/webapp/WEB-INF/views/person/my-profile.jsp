@@ -7,7 +7,7 @@
 <t:wrapper>
   <jsp:attribute name="header">
     <title><spring:message code="my.profile.label"/> | ExamClouds</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/my_profile.js"></script>
+    <script src="${pageContext.request.contextPath}/js/my_profile.js"></script>
     <meta name="robots" content="noindex">
  </jsp:attribute>
  <jsp:body>

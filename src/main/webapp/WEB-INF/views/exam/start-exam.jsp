@@ -7,7 +7,7 @@
         <link rel="canonical" href="http://www.examclouds.com/exam/${param.TEST_PATH}"/>
         <title><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
-        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
     </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

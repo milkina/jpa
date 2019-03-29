@@ -6,7 +6,7 @@
 <t:wrapper>
   <jsp:attribute name="header">
     <title>${SOME_USER.login} <spring:message code="history.label"/> | ExamClouds</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/my_profile_min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/my_profile_min.js"></script>
     <meta name="robots" content="noindex">
  </jsp:attribute>
  <jsp:body>

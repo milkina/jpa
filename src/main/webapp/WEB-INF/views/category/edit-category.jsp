@@ -6,7 +6,7 @@
  <jsp:attribute name="header">
     <meta name="robots" content="noindex">
     <title>Edit Category</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common.js"></script>
     <jsp:include page="/edit/tinymceHeader.jsp"/>
  </jsp:attribute>
  <jsp:body>

@@ -6,7 +6,7 @@
  <jsp:attribute name="header">
     <meta name="robots" content="noindex">
     <title><spring:message code="create.category"/> | ExamClouds</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js?v=1"></script>
+    <script src="${pageContext.request.contextPath}/js/common.js?v=1"></script>
     <jsp:include page="/edit/tinymceHeader.jsp"/>
  </jsp:attribute>
  <jsp:body>

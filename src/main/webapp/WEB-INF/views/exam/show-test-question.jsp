@@ -7,8 +7,8 @@
 <t:wrapper3>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} Test</title>
-    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
-    <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <script async src="${pageContext.request.contextPath}/js/show_questions_min.js?v=4"></script>
+    <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="http://www.examclouds.com/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}"/>
 </jsp:attribute>
 <jsp:attribute name="left">

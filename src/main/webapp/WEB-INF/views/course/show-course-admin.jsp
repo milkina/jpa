@@ -5,7 +5,7 @@
 <t:wrapper>
  <jsp:attribute name="header">
     <title>Edit Test</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/administration.js"></script>
+    <script src="${pageContext.request.contextPath}/js/administration.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.tablednd.js"></script>
     <meta name="robots" content="noindex">
@@ -60,7 +60,7 @@
                         </tr>
                 </c:forEach>
         </table><br>
-        <script type="text/javascript">
+        <script>
         $(document).ready(function() {
            $("#table-1").tableDnD({
               onDrop: function(table, row) {

@@ -6,7 +6,7 @@
        <%@ include file="/WEB-INF/head/editableArea.jsp"%>
        <meta name="robots" content="noindex">
        <title><spring:message code="add.question.button"/></title>
-       <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+       <script src="${pageContext.request.contextPath}/js/common.js"></script>
   </jsp:attribute>
   <jsp:body>
         <div class="mainArea">

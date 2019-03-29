@@ -22,7 +22,7 @@
                     <c:set var="url" value="${'/exam/'}" />
                 </c:if>
                     <a href="${pageContext.request.contextPath}${url}${test.value.pathName}">
-                       <h2>${test.value.iconText}</h2>
+                       ${test.value.iconText}
                        <span class="questionsNumber">
                         ${test.value.questionsNumber + test.value.testsNumber} questions
                        </span>

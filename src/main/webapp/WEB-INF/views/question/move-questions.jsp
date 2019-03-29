@@ -5,8 +5,8 @@
 <t:wrapper>
     <jsp:attribute name="header">
         <title><spring:message code="move.questions"/></title>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/administration.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+        <script src="${pageContext.request.contextPath}/js/administration.js"></script>
+        <script src="${pageContext.request.contextPath}/js/common.js"></script>
         <meta name="robots" content="noindex">
     </jsp:attribute>
     <jsp:body>

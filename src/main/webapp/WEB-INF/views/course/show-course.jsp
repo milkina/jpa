@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
+ <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
  <jsp:attribute name="header">
      <META NAME="Keywords" CONTENT="${TESTS[param.TEST_PATH].article.keywords}">
      <META NAME="Description" CONTENT="${TESTS[param.TEST_PATH].article.description}">

@@ -4,7 +4,7 @@
 <t:wrapper>
  <jsp:attribute name="header">
     <title><spring:message	code="edit.comment"/></title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/administration.js"></script>
+    <script src="${pageContext.request.contextPath}/js/administration.js"></script>
     <meta name="robots" content="noindex">
  </jsp:attribute>
   <jsp:body>

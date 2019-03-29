@@ -1,8 +1,9 @@
 <%@tag description="Wrapper Tag with 3 columns" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="left" fragment="true" %>
+<%@attribute name="language" fragment="true" %>
 <!DOCTYPE HTML>
-<html lang="en">
+<html <jsp:invoke fragment="language"/>>
         <head>
             <%@ include file="/WEB-INF/head_common.jsp" %>
             <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->

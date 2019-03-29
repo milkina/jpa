@@ -8,8 +8,8 @@
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
         <title>${person.login} | <spring:message code="test.result"/></title>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/prism_min.css">
-        <script type="text/javascript" async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prism_min.css">
+        <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
    </jsp:attribute>
    <jsp:body>
      <div class="mainArea">

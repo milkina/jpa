@@ -1,5 +1,5 @@
 <div style="float:right;">
-<script type="text/javascript">(function(w,doc) {
+<script>(function(w,doc) {
 if (!w.__utlWdgt ) {
     w.__utlWdgt = true;
     var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';

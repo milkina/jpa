@@ -8,7 +8,7 @@
 <select name="categoryParent">
    <option value="" <c:if test="${CATEGORY_ATTRIBUTE.parentCategory==null}">
                           selected
-                       </c:if>></option>
+                       </c:if>>&nbsp;</option>
    <c:forEach var="category" items="${TESTS[param.TEST_PATH].categories}">
        <option value="${category.value.id}"
             <c:if test="${CATEGORY_ATTRIBUTE.parentCategory.id==category.value.id}">
@@ -17,7 +17,6 @@
        >${category.value.name}</option>
    </c:forEach>
 </select>
-<selectTag:select options="${TESTS[param.TEST_PATH].categories}" name="categoryParent" selected=""/>
 <BR>
 <span class="adminLabel"><spring:message code="hidden"/>?</span>
 <input type="checkbox" name="hidden" <c:if test="${CATEGORY_ATTRIBUTE.hidden}">checked</c:if>>

@@ -18,7 +18,10 @@
    <jsp:body>
      <div class="mainArea">
         <main>
-             <h1 class="header1"><category:name/></h1>
+          <h1 class="header1">
+                <category:name/>
+                <c:if test="${param.TYPE.equals('NOT_APPROVED')}"><spring:message code="not.approved"/></c:if>
+          </h1>
           <form action="${pageContext.request.contextPath}/clear-history">
           <input type="hidden" name="CATEGORY_PATH" value="<category:pathName/>">
           <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">

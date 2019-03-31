@@ -19,7 +19,7 @@
              <BR> <BR>
                <%@ include file="/edit/select-test-category-new.jsp" %>
          &nbsp;  <a href="${pageContext.request.contextPath}/up-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${param.TEST_PATH}&EDIT_MODE_PARAM=UP_FROM_EDIT"
-          class="showAnswer" name="up"><spring:message	code="up"/></a> <br> <br>
+          class="showAnswer" id="up"><spring:message	code="up"/></a> <br> <br>
           <strong><spring:message code="question"/>:</strong>
           <textarea name="QUESTION_TEXT_PARAM" id="QUESTION_TEXT_PARAM" rows="20" cols="80">${QUESTION_ENTRY_ATTRIBUTE.question.text}
           </textarea>

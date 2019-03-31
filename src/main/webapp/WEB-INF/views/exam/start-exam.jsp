@@ -3,8 +3,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
+    <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
-        <link rel="canonical" href="http://www.examclouds.com/exam/${param.TEST_PATH}"/>
+        <link rel="canonical" href="${pageContext.request.contextPath}/exam/${param.TEST_PATH}"/>
         <title><spring:message code="start.test"/> ${TESTS[param.TEST_PATH].name}</title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
@@ -33,7 +34,7 @@
              </c:choose>
           </c:forEach>
           </select><BR>
-           <script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
+          <script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
           <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
           <script>
           $('select[multiple]').multiselect({
@@ -44,10 +45,10 @@
               search:true
           });
           </script>
-          </div>
          <spring:message code="number.questions.label"/> <input type="text" value="20" name="NUMBER_OF_QUESTIONS"><BR><BR>
          <input type="submit" value="<spring:message code="start.test"/>" name="startTest">
          </form>
+         </div>
          </main>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>
         </div>

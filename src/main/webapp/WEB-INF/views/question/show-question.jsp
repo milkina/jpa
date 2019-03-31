@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
+<jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${QUESTION_ENTRY_ATTRIBUTE.category.parentCategory.name} ${QUESTION_ENTRY_ATTRIBUTE.category.name} - ${TESTS[TEST_PATH].name}</title>
     <META NAME="Description" CONTENT="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
@@ -12,10 +13,10 @@
     <c:choose>
        <c:when test="${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName]!=null && DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName!=TEST_PATH}">
            <link rel="canonical"
-                href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
+                href="${pageContext.request.contextPath}/java/${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
        </c:when>
        <c:otherwise>
-            <link rel="canonical" href="http://www.examclouds.com/java/${TEST_PATH}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
+            <link rel="canonical" href="${pageContext.request.contextPath}/java/${TEST_PATH}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
        </c:otherwise>
     </c:choose>
 </jsp:attribute>
@@ -49,7 +50,7 @@
                </div>
          </div><BR>
           <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${TEST_PATH}"
-          name="seeOtherQuestions">
+          id="seeOtherQuestions">
           <spring:message code="see.other.questions"/></a><BR>
               <jsp:include page="/WEB-INF/comment/comments.jsp">
                     <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}" />

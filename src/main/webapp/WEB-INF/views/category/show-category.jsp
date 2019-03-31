@@ -17,7 +17,7 @@
                 <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
                 <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null && DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName!=param.TEST_PATH}">
                       <link rel="canonical"
-                      href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
+                      href="${pageContext.request.contextPath}/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
                 </c:if>
                 <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus || not empty CATEGORY_ATTRIBUTE.subCategories}">
                      <meta name="robots" content="noindex">

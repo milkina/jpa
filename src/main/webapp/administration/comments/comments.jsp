@@ -3,7 +3,7 @@
 <h3 class="header3"><spring:message	code="comments"/></h3>
 <form ACTION="${pageContext.request.contextPath}/delete-comment"
     method="POST">
-<h4>
+<div>
 <input type="submit" value="<spring:message	code="delete.comments"/>" name="DeleteCommentButton">
 <div style="padding-left:20px;padding-right:20px;margin-left:10px;margin-right:10px">
   <div class="adminComment" style="width:10%"><spring:message	code="created.date"/></div>
@@ -11,7 +11,7 @@
   <div class="adminComment" style="width:60%"><spring:message	code="comment"/></div>
   <div class="adminComment" style="width:10%"><spring:message code="type"/></div>
   </div>
-</h4>
+</div>
 <div>
        <div>
          <comment:commentList amount="10" >

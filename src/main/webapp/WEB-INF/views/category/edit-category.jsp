@@ -12,7 +12,7 @@
  <jsp:body>
        <div class="mainArea">
         <form action="${pageContext.request.contextPath}/edit-category" method="POST" id="editCategoryForm" >
-            <span class="adminLabel"><spring:message code="category.id"/>:</span><span name="categoryId">${CATEGORY_ATTRIBUTE.id}</span>
+            <span class="adminLabel"><spring:message code="category.id"/>:</span><span id="categoryId">${CATEGORY_ATTRIBUTE.id}</span>
             <input type="hidden" name="CATEGORY_PATH" value="${param.CATEGORY_PATH}">
             <input type="hidden" name="TEST_PATH" value="${param.TEST_PATH}">
             <BR>

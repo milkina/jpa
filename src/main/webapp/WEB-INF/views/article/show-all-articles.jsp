@@ -12,7 +12,7 @@
     <main>
         <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
         <BR>
-        <a href="${pageContext.request.contextPath}/add-article" name="addArticle">
+        <a href="${pageContext.request.contextPath}/add-article" id="addArticle">
            <spring:message code="add.article"/>
         </a><BR>
         <article:articleList>

@@ -12,19 +12,19 @@
  <jsp:body>
     <div class="mainArea">
         <h2 class="header2">${SOME_USER.login} <spring:message code="history.label"/></h2>
-        <table width="100%">
+        <table style="width:100%">
         <tr>
-                        <td width="10%"><B><spring:message code="date.label"/></B></td>
-                        <td width="10%"><B><spring:message code="percent.label"/></B></td>
-                        <td width="10%"><B><spring:message code="number.questions.label"/></B></td>
-                        <td width="70%"><B><spring:message code="category.label"/></B></td>
+                        <td style="width:10%"><B><spring:message code="date.label"/></B></td>
+                        <td style="width:10%"><B><spring:message code="percent.label"/></B></td>
+                        <td style="width:10%"><B><spring:message code="number.questions.label"/></B></td>
+                        <td style="width:70%"><B><spring:message code="category.label"/></B></td>
         </tr>
         <c:forEach var="exam" items="${USER_TEST_EXAMS}">
            <tr>
-                <td width="10%">${exam.formattedDate}</td>
-                <td width="10%">${exam.percent}%</td>
-                <td width="10%">${exam.amount}</td>
-                <td width="70%">(${fn:length(exam.categories)})
+                <td style="width:10%">${exam.formattedDate}</td>
+                <td style="width:10%">${exam.percent}%</td>
+                <td style="width:10%">${exam.amount}</td>
+                <td style="width:70%">(${fn:length(exam.categories)})
                    <c:forEach var="category" items="${exam.categories}">
                       <c:if test="${category!=null && category.parentCategory!=null}">
                          ${category.parentCategory.name}.

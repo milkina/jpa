@@ -14,12 +14,12 @@
     <div class="mainArea">
     <c:if test="${person.sysadmin}">
           <%@ include file="/administration/test.jsp" %>
-          <a href="${pageContext.request.contextPath}/show-questions?TYPE=NOT_APPROVED" name="viewNotApprovedQuestions">
+          <a href="${pageContext.request.contextPath}/show-questions?TYPE=NOT_APPROVED" id="viewNotApprovedQuestions">
           <spring:message	code="view.not.approved.questions"/></a>
           <%@ include file="/administration/users.jsp" %>
           <%@ include file="/administration/comments/comments.jsp" %>
           <%@ include file="/administration/articles.jsp" %>
-          <a href="${pageContext.request.contextPath}/add-question" name="addQuestion">
+          <a href="${pageContext.request.contextPath}/add-question" id="addQuestion">
              <spring:message code="add.question.button"/></a>
      </c:if>
     </div>

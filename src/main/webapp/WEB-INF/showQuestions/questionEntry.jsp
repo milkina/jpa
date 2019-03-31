@@ -16,17 +16,17 @@
              <a href="<qe:up/>&TEST_PATH=${param.TEST_PATH}&TYPE=${param.TYPE}" class="showAnswer">
                 <spring:message	code="up"/></a>
            </c:if>
-             <a href="<qe:show/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer" name="editQuestion">
+             <a href="<qe:show/>&TEST_PATH=${param.TEST_PATH}" class="showAnswer editQuestion">
                 <spring:message	code="edit"/></a>
              <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&TEST_PATH=${param.TEST_PATH}"
-             class="showAnswer" name="goToQuestion"><spring:message	code="go.to"/></a>
+             class="showAnswer goToQuestion"><spring:message	code="go.to"/></a>
              <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&MODE=PICTURE&TEST_PATH=${param.TEST_PATH}"
-             class="showAnswer" name="showPicture"><spring:message	code="show.picture"/></a>
-             <a href="#" class="showAnswer" name="deleteQuestion"
+             class="showAnswer showPicture"><spring:message	code="show.picture"/></a>
+             <a href="#" class="showAnswer deleteQuestion"
              onclick="deleteQuestion('${pageContext.request.contextPath}',<qe:id/>,'<category:pathName/>','${param.TEST_PATH}');">
              <spring:message code="delete"/></a>
             <c:if test="${param.TYPE.equals('NOT_APPROVED')}">
-               <a href="#" class="showAnswer" name="approveQuestion"
+               <a href="#" class="showAnswer approveQuestion"
               onclick="approveQuestion('${pageContext.request.contextPath}',<qe:id/>);"><spring:message code="approve"/></a>
             </c:if>
        <input type="button" value="<spring:message code="read.answer"/>"

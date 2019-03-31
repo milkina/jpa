@@ -3,12 +3,13 @@
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper3>
+<jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} Quiz</title>
     <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
-    <link rel="canonical" href="http://www.examclouds.com/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}" />
+    <link rel="canonical" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}" />
 </jsp:attribute>
 <jsp:attribute name="left">
       <jsp:include page="/WEB-INF/categoryMenu.jsp"/>

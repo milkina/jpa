@@ -20,7 +20,7 @@
                         <tr id="${category.value.pathName}">
                              <td>
                                <a href="${pageContext.request.contextPath}/show-edit-category?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}"
-                               name="edit${category.value.pathName}">
+                               id="edit${category.value.pathName}">
                                 <c:if test="${category.value.parentCategory!=null}">
                                      ${category.value.parentCategory.name}.
                                 </c:if>
@@ -28,34 +28,34 @@
                                 </a>
                              </td>
                              <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION"
-                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION">
+                             id="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=QUESTION">
                                       <spring:message code="questions"/> ${category.value.questionsCount}
                                  </a>
                              </td>
                              <td><a href="${pageContext.request.contextPath}/show-questions?CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST"
-                             name="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST">
+                             id="CATEGORY_PATH=${category.value.pathName}&TEST_PATH=${param.TEST_PATH}&TYPE=TEST">
                                       <spring:message code="tests"/> ${category.value.testsCount}
                                  </a>
                              </td>
                              <td>
                                  <a href="${pageContext.request.contextPath}/show-move-batch?OLD_TEST_PATH=${param.TEST_PATH}&OLD_CATEGORY_PATH=${category.value.pathName}"
-                                 name="moveQuestions${category.value.pathName}">
+                                 id="moveQuestions${category.value.pathName}">
                                  <spring:message code="move.questions"/></a>
                              </td>
                              <td>
                                 <input type="button" value="<spring:message	code="delete"/>"
                                 onclick="deleteCategory('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}','<spring:message 	code="want.delete"/>');"
-                                name="delete${category.value.pathName}">
+                                id="delete${category.value.pathName}">
                              </td>
                              <td>
                                  <a href="${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${category.value.pathName}"
-                                 name="addQuestion${category.value.pathName}">
+                                 id="addQuestion${category.value.pathName}">
                                     <spring:message	code="add.question.button"/></a>
                              </td>
                              <td>
                                  <input type="button" value="<spring:message code="delete.from.course"/>"
                                   onclick="deleteFromTest('${pageContext.request.contextPath}','${param.TEST_PATH}','${category.value.pathName}','<spring:message	code="want.delete"/>','<spring:message	code="from"/>');"
-                                  name="removeFromTest${category.value.pathName}">
+                                  id="removeFromTest${category.value.pathName}">
                              </td>
                         </tr>
                 </c:forEach>
@@ -70,10 +70,10 @@
            });
         });
         </script>
-        <a href="${pageContext.request.contextPath}/show-create-category?TEST_PATH=${param.TEST_PATH}" name="createCategory">
+        <a href="${pageContext.request.contextPath}/show-create-category?TEST_PATH=${param.TEST_PATH}" id="createCategory">
           <spring:message	code="create.category"/>
         </a><br>
-        <a href="${pageContext.request.contextPath}/show-add-category?TEST_PATH=${param.TEST_PATH}" name="addCategory">
+        <a href="${pageContext.request.contextPath}/show-add-category?TEST_PATH=${param.TEST_PATH}" id="addCategory">
           <spring:message	code="add.category"/>
         </a><br>
     </c:if>

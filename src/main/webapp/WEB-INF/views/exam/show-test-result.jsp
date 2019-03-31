@@ -5,6 +5,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
+    <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
         <title>${person.login} | <spring:message code="test.result"/></title>
@@ -24,7 +25,7 @@
                                <c:set var="userAnswers" value="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].userAnswers}"></c:set>
                                <c:forEach var="j" begin="0" end="${fn:length(answers)-1}">
                                  <div class="answer"
-                                 style="display:block;<c:if test="${answers[j]!=userAnswers[j]}">text-decoration:line-through"</c:if>"><div><input type="checkbox" disabled <c:if test="${userAnswers[j].correct}">checked</c:if>>${answers[j].text}</div></div>
+                                 style="display:block;<c:if test="${answers[j]!=userAnswers[j]}">text-decoration:line-through</c:if>"><div><input type="checkbox" disabled <c:if test="${userAnswers[j].correct}">checked</c:if>>${answers[j].text}</div></div>
                                </c:forEach>
                         </div>
                      </li>

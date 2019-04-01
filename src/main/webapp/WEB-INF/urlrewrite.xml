@@ -34,11 +34,15 @@
     </rule>
     <rule>
         <from>^/ocjp-ocpjp.jsp$</from>
-        <to type="redirect">http://www.examclouds.com/publications/ocjp-ocpjp</to>
+        <to type="redirect">/publications/ocjp-ocpjp</to>
     </rule>
     <rule>
         <from>^/ocpjp8-update-from-java6$</from>
-        <to type="redirect">http://www.examclouds.com/exam/ocpjp8-update-from-java6</to>
+        <to type="redirect">/exam/ocpjp8-update-from-java6</to>
+    </rule>
+    <rule>
+        <from>^/publications/Oce6Jpa$</from>
+        <to type="redirect">/jpa</to>
     </rule>
 </urlrewrite>
 

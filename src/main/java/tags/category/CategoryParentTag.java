@@ -20,7 +20,7 @@ public class CategoryParentTag extends TagSupport {
             if (category != null) {
                 parentCategory = category.getParentCategory();
             }
-            String result = parentCategory == null ? "" : parentCategory.getName() + ".";
+            String result = parentCategory == null ? "" : parentCategory.getName();
             out.print(result);
         } catch (IOException ioe) {
             System.out.println("Error in CategoryParentTag: " + ioe);

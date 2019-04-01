@@ -2,7 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<t:wrapper3>
+<t:wrapper>
     <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
                 <title>
@@ -22,9 +22,6 @@
                 <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus || not empty CATEGORY_ATTRIBUTE.subCategories}">
                      <meta name="robots" content="noindex">
                 </c:if>
-    </jsp:attribute>
-    <jsp:attribute name="left">
-                     <jsp:include page="/WEB-INF/categoryMenu.jsp"/>
     </jsp:attribute>
     <jsp:body>
          <div class="mainArea">
@@ -79,4 +76,4 @@
             </jsp:include>
          </div>
     </jsp:body>
-</t:wrapper3>
+</t:wrapper>

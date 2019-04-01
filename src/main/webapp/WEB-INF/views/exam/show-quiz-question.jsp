@@ -2,7 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<t:wrapper3>
+<t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} Quiz</title>
@@ -11,15 +11,13 @@
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}" />
 </jsp:attribute>
-<jsp:attribute name="left">
-      <jsp:include page="/WEB-INF/categoryMenu.jsp"/>
-</jsp:attribute>
 <jsp:body>
      <div class="mainArea">
+        <h1 class="header1">${TESTS[param.TEST_PATH].name}</h1>
         <h2 class="header2">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.name}
            <span class="questionEntryNumber" id="questionEntryNumber"><exam:number/>/<exam:size/></span>
         </h2>
-         <div class="questionEntryDiv">
+        <div class="questionEntryDiv">
               <div class="questionEntryCheckboxDiv">
                   <exam:checkbox/>
               </div>
@@ -44,4 +42,4 @@
      </jsp:include>
      </div>
  </jsp:body>
-</t:wrapper3>
+</t:wrapper>

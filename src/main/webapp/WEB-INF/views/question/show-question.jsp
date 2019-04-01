@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<t:wrapper3>
+<t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${QUESTION_ENTRY_ATTRIBUTE.category.parentCategory.name} ${QUESTION_ENTRY_ATTRIBUTE.category.name} - ${TESTS[TEST_PATH].name}</title>
@@ -20,14 +20,9 @@
        </c:otherwise>
     </c:choose>
 </jsp:attribute>
-<jsp:attribute name="left">
-       <jsp:include page="/WEB-INF/categoryMenu.jsp">
-                  <jsp:param name="TEST_PATH" value="${TEST_PATH}" />
-       </jsp:include>
-</jsp:attribute>
 <jsp:body>
      <div class="mainArea">
-          <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp">
+          <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs2.jsp">
             <jsp:param name="TEST_PATH" value="${TEST_PATH}" />
             <jsp:param name="CATEGORY_PATH" value="${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
           </jsp:include>
@@ -57,6 +52,5 @@
                     <jsp:param name="commentType" value="QUESTION" />
               </jsp:include>
      </div>
-
  </jsp:body>
-</t:wrapper3>
+</t:wrapper>

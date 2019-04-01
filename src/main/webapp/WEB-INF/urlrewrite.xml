@@ -44,5 +44,49 @@
         <from>^/publications/Oce6Jpa$</from>
         <to type="redirect">/jpa</to>
     </rule>
+    <rule>
+        <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/resource-references-9-06-2017$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/resource-references-JV-17-05$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-17-06$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-17-07$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-18-01$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-18-02$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-18-03$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-18-04$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/JV-18-05$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/jv-19-01$</from>
+        <to type="redirect">/publications/groups</to>
+    </rule>
 </urlrewrite>
 

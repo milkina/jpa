@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<t:wrapper3>
+<t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} Test</title>
@@ -12,11 +12,9 @@
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.pathName}"/>
 </jsp:attribute>
-<jsp:attribute name="left">
-      <jsp:include page="/WEB-INF/categoryMenu.jsp"/>
-</jsp:attribute>
 <jsp:body>
      <div class="mainArea">
+        <h1 class="header1">${TESTS[param.TEST_PATH].name}</h1>
         <h2 class="header2">
         <c:if test="${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory!=null}">
             ${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory.name}.
@@ -78,4 +76,4 @@
      </jsp:include>
      </div>
  </jsp:body>
-</t:wrapper3>
+</t:wrapper>

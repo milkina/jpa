@@ -72,16 +72,13 @@ public class ExamController {
     @RequestMapping(value = "/show-exam-question")
     public String showExamQuestion(HttpServletRequest request) {
         HttpSession session = GeneralUtility.getSession(true);
-        int i = 0;
-        if (request.getParameter("PREVIOUS") != null) {
-            i = -1;
-        } else if (request.getParameter("NEXT") != null) {
-            i = 1;
-        }
         AbstractExam exam = (AbstractExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
-
-        int currentNumber = exam.getCurrentNumber() + i;
-        if (request.getParameter(QUESTION_NUMBER) != null) {
+        int currentNumber = exam.getCurrentNumber();
+        if (request.getParameter("PREVIOUS") != null) {
+            currentNumber--;
+        } else if (request.getParameter("NEXT") != null) {
+            currentNumber++;
+        } else if (request.getParameter(QUESTION_NUMBER) != null) {
             currentNumber = GeneralUtility.getIntegerValue(request, QUESTION_NUMBER);
         }
         return ExamUtility.updateCurrentQuestionEntry(currentNumber, exam);

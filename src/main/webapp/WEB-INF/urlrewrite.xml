@@ -1,50 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
-    <rule>
-        <name>Ensure HTTPS</name>
-        <condition name="host" operator="notequal">examclouds.com</condition>
+     <rule>
+        <name>Domain Name Check</name>
+        <condition name="host" operator="notequal">www.examclouds.com</condition>
         <condition name="host" operator="notequal">localhost</condition>
         <from>^/(.*)$</from>
-        <to type="redirect">http://www.examclouds.com/$1</to>
+        <to type="permanent-redirect">http://www.examclouds.com/$1</to>
     </rule>
-    <rule>
-        <from>^/java/(.*)/(.*)$</from>
-        <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
-    </rule>
-    <rule>
-        <from>^/publications/(.*)$</from>
-        <to type="passthrough">/show-article?URL_PARAM=$1</to>
-    </rule>
-    <rule>
-        <from>^/ocjp$</from>
-        <to type="passthrough">/show-course?TEST_PATH=ocjp</to>
-    </rule>
-    <rule>
-        <from>^/jpa$</from>
-        <to type="passthrough">/show-course?TEST_PATH=jpa</to>
-    </rule>
-    <rule>
-        <from>^/web-services$</from>
-        <to type="passthrough">/show-course?TEST_PATH=web-services</to>
-    </rule>
-    <rule>
-        <from>^/exam/(.*)$</from>
-        <to type="passthrough">/show-course?TEST_PATH=$1</to>
-    </rule>
-    <rule>
-        <from>^/ocjp-ocpjp.jsp$</from>
-        <to type="redirect">/publications/ocjp-ocpjp</to>
-    </rule>
-    <rule>
-        <from>^/ocpjp8-update-from-java6$</from>
-        <to type="redirect">/exam/ocpjp8-update-from-java6</to>
-    </rule>
-    <rule>
-        <from>^/publications/Oce6Jpa$</from>
-        <to type="redirect">/jpa</to>
-    </rule>
-    <rule>
+<!--    <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
         <to type="redirect">/publications/groups</to>
     </rule>
@@ -87,6 +51,39 @@
     <rule>
         <from>^/java/java-core-russian/jv-19-01$</from>
         <to type="redirect">/publications/groups</to>
+    </rule>-->
+    <rule>
+        <from>^/java/(.*)/(.*)$</from>
+        <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
+    </rule>
+
+    <rule>
+        <from>^/publications/(.*)$</from>
+        <to type="passthrough">/show-article?URL_PARAM=$1</to>
+    </rule>
+    <rule>
+        <from>^/ocjp$</from>
+        <to type="passthrough">/show-course?TEST_PATH=ocjp</to>
+    </rule>
+    <rule>
+        <from>^/jpa$</from>
+        <to type="passthrough">/show-course?TEST_PATH=jpa</to>
+    </rule>
+    <rule>
+        <from>^/web-services$</from>
+        <to type="passthrough">/show-course?TEST_PATH=web-services</to>
+    </rule>
+    <rule>
+        <from>^/exam/(.*)$</from>
+        <to type="passthrough">/show-course?TEST_PATH=$1</to>
+    </rule>
+    <rule>
+        <from>^/ocjp-ocpjp.jsp$</from>
+        <to type="redirect">/publications/ocjp-ocpjp</to>
+    </rule>
+    <rule>
+        <from>^/ocpjp8-update-from-java6$</from>
+        <to type="redirect">/exam/ocpjp8-update-from-java6</to>
     </rule>
 </urlrewrite>
 

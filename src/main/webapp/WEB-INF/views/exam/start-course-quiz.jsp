@@ -5,7 +5,7 @@
 <t:wrapper>
     <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
-        <link rel="canonical" href="${pageContext.request.contextPath}/exam/${param.TEST_PATH}"/>
+        <meta name="robots" content="noindex">
         <title>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/> </title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">

@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
+<%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
@@ -10,19 +11,11 @@
     <META NAME="Description" CONTENT="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js?v=4"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
-    <c:choose>
-       <c:when test="${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName]!=null && DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName!=TEST_PATH}">
-           <link rel="canonical"
-                href="${pageContext.request.contextPath}/java/${DUPLICATE_CATEGORIES[QUESTION_ENTRY_ATTRIBUTE.category.pathName].tests[0].pathName}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
-       </c:when>
-       <c:otherwise>
-            <link rel="canonical" href="${pageContext.request.contextPath}/java/${TEST_PATH}/${QUESTION_ENTRY_ATTRIBUTE.category.pathName}" />
-       </c:otherwise>
-    </c:choose>
+    <link rel="canonical" href="<ca:canonicalTag/>">
 </jsp:attribute>
 <jsp:body>
      <div class="mainArea">
-         <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp">
+         <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs2.jsp">
               <jsp:param name="TEST_PATH" value="${TEST_PATH}" />
               <jsp:param name="CATEGORY_PATH" value="${QUESTION_ENTRY_ATTRIBUTE.category.pathName}"/>
          </jsp:include>

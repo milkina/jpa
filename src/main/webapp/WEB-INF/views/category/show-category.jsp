@@ -19,7 +19,7 @@
                       <link rel="canonical"
                       href="${pageContext.request.contextPath}/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
                 </c:if>
-                <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus || not empty CATEGORY_ATTRIBUTE.subCategories}">
+                <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">
                      <meta name="robots" content="noindex">
                 </c:if>
     </jsp:attribute>
@@ -33,7 +33,7 @@
                            alt="${CATEGORY_ATTRIBUTE.name}" title="${CATEGORY_ATTRIBUTE.name}" width="280" height="200">
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
-                         <h1 class="header1">${CATEGORY_ATTRIBUTE.parentCategory.name}</h1>
+                         <p class="header1" style="font-size: 1.5em">${CATEGORY_ATTRIBUTE.parentCategory.name}</p>
                     </c:if>
                     <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
@@ -58,11 +58,11 @@
                        </ol>
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" value="<spring:message code="start.test"/>" id="startTest"
+                       <input type="button" value="<spring:message code="start.test"/>" id="startTest1"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
-                      <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
+                      <input type="button" value="<spring:message code="questions"/>" id="startQuiz2"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
               </article>

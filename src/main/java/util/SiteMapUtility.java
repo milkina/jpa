@@ -78,15 +78,11 @@ public class SiteMapUtility {
     }
 
     private void setTestLink(Test test) {
-        String testPathName = SITE_NAME + test.getPathName();
-        if (!isExceptionTestPath(test.getPathName())) {
-            testPathName = SITE_NAME + "exam/" + test.getPathName();
-        }
+        String testPathName = SITE_NAME + test.getFullPathName();
         UrlEntity urlEntity =
                 createUrlEntity(testPathName, HIGH_PRIORITY, "weekly");
 
         links.addUrlEntity(urlEntity);
-
         setCategoryLinks(test);
     }
 
@@ -134,15 +130,5 @@ public class SiteMapUtility {
         }
         Test firstTest = category.getTests().get(0);
         return !firstTest.equals(test);
-    }
-
-    private boolean isExceptionTestPath(String testPath) {
-        String[] list = {"ocjp", "jpa", "web-services"};
-        for (String t : list) {
-            if (testPath.equals(t)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

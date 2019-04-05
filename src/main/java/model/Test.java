@@ -174,6 +174,13 @@ public class Test implements Serializable, Comparable<Test> {
         this.iconText = iconText;
     }
 
+    public String getFullPathName() {
+        if (getPathName().equals("jpa") || getPathName().equals("ocjp") || getPathName().equals("web-services")) {
+            return pathName;
+        }
+        return "exam/" + pathName;
+    }
+
     public int compareTo(Test t) {
         return getId() - t.getId();
     }

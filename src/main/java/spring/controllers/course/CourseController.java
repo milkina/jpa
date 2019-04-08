@@ -44,7 +44,7 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/tests")
+    @RequestMapping(value = {"/tests", "ru/tests"})
     public String selectCoursesWithTestsAndQuestions(HttpServletRequest request) {
         List<Test> coursesWithTests = courseService.getAllTestsWithNotEmptyTests();
         request.setAttribute(TESTS_WITH_TESTS, coursesWithTests);

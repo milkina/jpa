@@ -4,7 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
     <jsp:attribute name="header">
-        <META NAME="Keywords" CONTENT="online it courses">
         <META NAME="Description"
                        CONTENT="Free online Java Courses for preparation to Oracle Java Certifications, interviews and learning Java.">
         <title><spring:message code="courses"/> | ExamClouds</title>

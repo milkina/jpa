@@ -39,7 +39,7 @@
 <ul>
     <li><a href="<%=request.getContextPath()%>/" id="home"><spring:message code="home"/></a></li>
     <li><a href="<%=request.getContextPath()%>/show-all-courses" id="courses"><spring:message code="courses"/></a></li>
-    <li><a href="<%=request.getContextPath()%>/tests" id="tests"><spring:message code="tests.questions"/></a></li>
+    <li><a href="<%=request.getContextPath()%>/<spring:message code="menu.tests"/>" id="tests"><spring:message code="tests.questions"/></a></li>
     <li><a href="<%=request.getContextPath()%>/show-all-articles"><spring:message code="articles"/></a></li>
     <c:if test="${person!=null}">
        <li><a href="<%=request.getContextPath()%>/show-user-profile"><spring:message code="my.profile.label"/></a></li>
@@ -48,7 +48,6 @@
             <li><a href="<%=request.getContextPath()%>/show-administration">
             <spring:message code="administration.panel"/></a></li>
     </c:if>
-
 </ul>
 </div>
 </div>

@@ -175,7 +175,7 @@ public class Test implements Serializable, Comparable<Test> {
     }
 
     public String getFullPathName() {
-        if (getPathName().equals("jpa") || getPathName().equals("ocjp") || getPathName().equals("web-services")) {
+        if (getPathName().equals("jpa") || getPathName().equals("web-services")) {
             return pathName;
         }
         return "exam/" + pathName;

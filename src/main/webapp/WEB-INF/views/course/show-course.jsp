@@ -5,7 +5,6 @@
 <t:wrapper>
  <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
  <jsp:attribute name="header">
-     <META NAME="Keywords" CONTENT="${TESTS[param.TEST_PATH].article.keywords}">
      <META NAME="Description" CONTENT="${TESTS[param.TEST_PATH].article.description}">
      <title>${TESTS[param.TEST_PATH].article.title}</title>
  </jsp:attribute>

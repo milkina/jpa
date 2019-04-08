@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <t:wrapper>
     <jsp:attribute name="header">
-        <META NAME="Keywords" CONTENT="oracle java,oracle certification,java oracle,java certification,oracle java tutorial,oracle java certification,java quiz,oracle certifications,java tutorial oracle">
         <META NAME="Description"
                        CONTENT="Free online Java Tutorial for preparation to Oracle Java Certifications. Practice questions will help to be prepared and pass Oracle exams.">
         <title>Free Oracle Java Certification Tutorial on ExamClouds</title>

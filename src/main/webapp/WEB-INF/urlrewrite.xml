@@ -63,7 +63,15 @@
     </rule>
     <rule>
         <from>^/ocjp$</from>
-        <to type="passthrough">/show-course?TEST_PATH=ocjp</to>
+        <to type="redirect">/publications/ocjp</to>
+    </rule>
+    <rule>
+        <from>^/exam/ocajp7$</from>
+        <to type="redirect">/publications/ocjp</to>
+    </rule>
+    <rule>
+        <from>^/exam/ocpjp7$</from>
+        <to type="redirect">/publications/ocjp</to>
     </rule>
     <rule>
         <from>^/jpa$</from>

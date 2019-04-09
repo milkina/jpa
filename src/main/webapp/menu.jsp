@@ -37,7 +37,7 @@
   </div>
 <div class="indentmenu">
 <ul>
-    <li><a href="<%=request.getContextPath()%>/" id="home"><spring:message code="home"/></a></li>
+    <li><a href="<%=request.getContextPath()%><spring:message code="menu.home"/>" id="home"><spring:message code="home"/></a></li>
     <li><a href="<%=request.getContextPath()%>/show-all-courses" id="courses"><spring:message code="courses"/></a></li>
     <li><a href="<%=request.getContextPath()%>/<spring:message code="menu.tests"/>" id="tests"><spring:message code="tests.questions"/></a></li>
     <li><a href="<%=request.getContextPath()%>/show-all-articles"><spring:message code="articles"/></a></li>

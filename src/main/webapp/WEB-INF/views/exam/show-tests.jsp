@@ -9,9 +9,9 @@
                        CONTENT="<spring:message code="tests.description"/>">
         <title><spring:message code="tests.questions"/> | ExamClouds</title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp"/>
-        <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests" />
-        <link rel="alternate" hreflang="en" href="http://www.examclouds.com/tests" />
-        <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/tests" />
+        <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests">
+        <link rel="alternate" hreflang="en" href="http://www.examclouds.com/tests">
+        <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/tests">
     </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

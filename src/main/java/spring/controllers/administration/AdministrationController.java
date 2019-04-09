@@ -30,4 +30,9 @@ public class AdministrationController {
     public String showMain() {
         return "main";
     }
+
+    @RequestMapping(value = "/ru/")
+    public String showMainRu() {
+        return "main-ru";
+    }
 }

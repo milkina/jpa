@@ -122,26 +122,6 @@ public class ExamController {
         return "/exam/show-test-result";
     }
 
-    @RequestMapping(value = "/select-category-for-exam")
-    public String selectCategoriesForTest(@RequestParam(TEST_PATH) String testPath,
-                                          HttpServletRequest request) {
-        List<Category> categories = categoryService.getCategories(testPath);
-        CategoryUtility.selectCategories(categories,
-                c -> c.getTestsCount() < 1);
-        request.setAttribute(CATEGORIES, categories);
-        return "/exam/start-exam";
-    }
-
-    @RequestMapping(value = "/select-categories-to-see-questions")
-    public String selectCategoriesToSeeQuestions(@RequestParam(TEST_PATH) String testPath,
-                                                 HttpServletRequest request) {
-        List<Category> categories = categoryService.getCategories(testPath);
-        CategoryUtility.selectCategories(categories,
-                c -> c.getQuestionsCount() < 1);
-        request.setAttribute(CATEGORIES, categories);
-        return "/exam/start-course-quiz";
-    }
-
     @RequestMapping(value = "/add-person-answer")
     public String addPersonAnswer(HttpServletRequest request) {
         String categoryPath = request.getParameter(CATEGORY_PATH);

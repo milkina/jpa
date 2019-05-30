@@ -7,7 +7,6 @@
   <c:set var="position" value="3"></c:set>
   <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          &gt;
           <a itemprop="item" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.parentCategory.pathName}">
               ${CATEGORY_ATTRIBUTE.parentCategory.name}
           </a>
@@ -16,10 +15,6 @@
      </li>
   </c:if>
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      &gt;
-        <a itemprop="item" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${param.CATEGORY_PATH}">
-          <span itemprop="name">${CATEGORY_ATTRIBUTE.name}</span>
-        </a>
-        <meta itemprop="position" content="${position}"/>
+          ${CATEGORY_ATTRIBUTE.name}<meta itemprop="position" content="${position}"/></li>
  </ol>
- </div><br>
+ </div>

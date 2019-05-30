@@ -1,25 +1,18 @@
-<%@ taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
+<%@taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<BR>
-<div class="commentDiv" id="commentDiv">
-<form action="<%=request.getContextPath()%>/save-comment" name="addCommentForm" id="addCommentForm">
-<input type="hidden" name="COMMENT_TYPE" value="${param.commentType}">
-<input type="hidden" name="REFERENCE_ID" value="${param.referenceId}">
-   <BR>
+<div class="comment-wrapper">
+  <div class="comment-label"><spring:message code="comments"/></div>
+  <div class="commentDiv scroll-style" id="commentDiv">
    <comment:commentList type="${param.commentType}" referenceId="${param.referenceId}">
-   <div class="commentAmount"><comment:amount/> <spring:message code="comments.number"/></div>
-   <ol class="commentList">
        <comment:comment>
-       <li>
-            <div class="commentBody">
-               <div class="commentAuthor"><comment:author/></div>
-               <div class="commentDate"><comment:createdDate/></div>
-               <comment:body/>
-            </div>
-       </li>
+           <div class="comment-item">
+              <div class="comment-user"><comment:author/></div>
+              <div class="comment-date"><comment:createdDate/></div>
+              <div class="comment-text"><comment:body/></div>
+           </div>
        </comment:comment>
-   </ol>
    </comment:commentList>
+   </div>
     <script>
                    function addUserComment(contextPath, message) {
                        var isLoggedIn = document.getElementById("isLogin");
@@ -33,10 +26,12 @@
                        form.submit();
                    }
                 </script>
-   <spring:message code="leave.comment"/>:<BR>
-   <textarea rows="7" class="commentTextArea" maxlength="350" name="commentText" required id="commentText"></textarea><BR>
-   <input type="button" value="<spring:message code="post"/>" id="addComment" name="addComment"
-    onclick="addUserComment('<%=request.getContextPath()%>','<spring:message code="comment.not.added"/>')">
-   <BR><BR>
-</form>
+   <form action="<%=request.getContextPath()%>/save-comment" name="addCommentForm" id="addCommentForm">
+      <input type="hidden" name="COMMENT_TYPE" value="${param.commentType}">
+      <input type="hidden" name="REFERENCE_ID" value="${param.referenceId}">
+      <textarea class="commentTextArea" name="commentText" id="commentText"
+      placeholder="<spring:message code="leave.comment"/>"></textarea>
+      <input type="button" class="styled-button" value="<spring:message code="post"/>" id="addComment" name="addComment"
+      onclick="addUserComment('<%=request.getContextPath()%>','<spring:message code="comment.not.added"/>')">
+   </form>
 </div>

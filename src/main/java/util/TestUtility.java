@@ -11,11 +11,17 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import static util.AllConstantsAttribute.CATEGORIES;
+import static util.AllConstantsAttribute.COURSES_WITH_QUESTIONS;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
+import static util.AllConstantsAttribute.TESTS_WITH_TESTS;
 import static util.AllConstantsAttribute.TEST_PATHS_ATTRIBUTE;
 import static util.AllConstantsParam.CATEGORY_ID_PARAMETER;
 import static util.AllConstantsParam.TEST_ID_PARAM;
@@ -112,6 +118,24 @@ public class TestUtility extends SpringUtility {
         String testPath = request.getParameter(TEST_PATH);
         Test test = testMap.get(testPath);
         return test;
+    }
+
+    public static void loadCoursesForTests(ServletContext servletContext) {
+        List<Test> coursesWithTests = getCourseService(servletContext).getAllTestsWithNotEmptyTests();
+        for (Test test : coursesWithTests) {
+            CategoryUtility.selectCategories(test.getCategories().values(),
+                    c -> c.getTestsCount() < 1);
+        }
+        servletContext.setAttribute(TESTS_WITH_TESTS, coursesWithTests);
+    }
+
+    public static void loadCoursesForQuestions(ServletContext servletContext) {
+        List<Test> coursesWithQuestions = getCourseService(servletContext).getAllCoursesWithNotEmptyQuestions();
+        for (Test test : coursesWithQuestions) {
+            CategoryUtility.selectCategories(test.getCategories().values(),
+                    c -> c.getQuestionsCount() < 1);
+        }
+        servletContext.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);
     }
 
     public static void setArticleData(Test test, HttpServletRequest request) {

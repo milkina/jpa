@@ -46,11 +46,11 @@ public class CourseController {
 
     @RequestMapping(value = {"/tests", "ru/tests"})
     public String selectCoursesWithTestsAndQuestions(HttpServletRequest request) {
-        List<Test> coursesWithTests = courseService.getAllTestsWithNotEmptyTests();
+       /* List<Test> coursesWithTests = courseService.getAllTestsWithNotEmptyTests();
         request.setAttribute(TESTS_WITH_TESTS, coursesWithTests);
 
         List<Test> coursesWithQuestions = courseService.getAllCoursesWithNotEmptyQuestions();
-        request.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);
+        request.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);*/
         return TESTS_PAGE;
     }
 

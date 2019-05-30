@@ -22,6 +22,7 @@ import static util.AllConstantsAttribute.WRONG_LOGIN_MESSAGE_ATTRIBUTE;
 import static util.AllConstantsParam.LOGIN_PARAMETER;
 import static util.AllConstantsParam.PASSWORD_PARAMETER;
 import static util.AllConstantsParam.REMEMBER_PARAMETER;
+import static util.GeneralUtility.getResourceValue;
 
 @Controller
 public class LoginController {
@@ -59,7 +60,7 @@ public class LoginController {
             HttpSession session = GeneralUtility.getSession(true);
 
             session.setAttribute(PERSON_ATTRIBUTE, person);
-            return "redirect:";
+            return "redirect:" + getResourceValue(locale, "menu.home", "label");
         } else {
             model.addAttribute(WRONG_LOGIN_MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "wrong.login.password", "messages"));
@@ -68,7 +69,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/logout")
-    public String logout() {
+    public String logout(Locale locale) {
         HttpSession session = GeneralUtility.getSession(true);
         session.invalidate();
         Cookie cookie = new Cookie(COOKIE_VALUE, "");
@@ -76,6 +77,7 @@ public class LoginController {
         cookie.setPath("/");
         HttpServletResponse response = GeneralUtility.getResponse();
         response.addCookie(cookie);
-        return "redirect:";
+        String href = getResourceValue(locale, "menu.home", "label");
+        return "redirect:" + href;
     }
 }

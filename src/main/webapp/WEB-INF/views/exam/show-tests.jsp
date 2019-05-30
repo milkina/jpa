@@ -8,33 +8,76 @@
         <META NAME="Description"
                        CONTENT="<spring:message code="tests.description"/>">
         <title><spring:message code="tests.questions"/> | ExamClouds</title>
-        <jsp:include page="/WEB-INF/google-ads-header.jsp"/>
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
+        <script src="${pageContext.request.contextPath}/js/incrementing.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
+        <style>
+          .test_header:after{
+                    content:"<spring:message code="select.categories"/>";
+          }
+        </style>
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests">
         <link rel="alternate" hreflang="en" href="http://www.examclouds.com/tests">
         <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/tests">
-    </jsp:attribute>
+     </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
         <cache:cacheTag/>
-        <div class="mainArea">
+        <div class="breadCrumbs">
+          <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
+            <li><spring:message code="tests.questions"/></li>
+          </ol>
+        </div>
          <main>
-          <h1 class="header1"><spring:message code="tests.questions.java"/></h1>
           <div>
-          <h2 class="indexH1"><strong><spring:message code="tests"/></strong></h2>
-          <c:forEach var="test" items="${TESTS_WITH_TESTS}">
-             <a href="${pageContext.request.contextPath}/select-category-for-exam?TEST_PATH=${test.pathName}"
-             id="${test.pathName}Test">${test.name}</a><BR>
-          </c:forEach>
+            <h1 class="all-tests-header"><spring:message code="tests"/></h1>
+            <ul class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <c:forEach var="test" items="${TESTS_WITH_TESTS}">
+                    <li class="panel select-category-li">
+                        <div class="panel-heading" role="tab" id="heading_${test.pathName}">
+                            <h2 class="panel-title test_header">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                 href="#collapse_${test.pathName}" class="collapsed"
+                                 aria-expanded="false" aria-controls="collapse_${test.pathName}">
+                                    ${test.name}
+                                </a>
+                            </h2>
+                        </div>
+                        <%@include file="/WEB-INF/views/exam/start-exam.jsp"%>
+                    </li>
+                </c:forEach>
+             </ul>
           </div>
           <div>
-           <h2 class="indexH1"><strong><spring:message code="questions"/></strong></h2>
-          <c:forEach var="test" items="${COURSES_WITH_QUESTIONS}">
-             <a href="${pageContext.request.contextPath}/select-categories-to-see-questions?TEST_PATH=${test.pathName}"
-             id="${test.pathName}Question">${test.name}</a><BR>
-          </c:forEach>
+            <h1 class="all-questions-header"><spring:message code="questions"/></h1>
+            <ul class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+             <c:forEach var="test" items="${COURSES_WITH_QUESTIONS}">
+              <li class="panel select-category-li">
+                <div class="panel-heading" role="tab" id="heading_q_${test.pathName}">
+                  <h2 class="panel-title test_header">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion1"
+                           href="#collapse_q_${test.pathName}" class="collapsed"
+                           aria-expanded="false" aria-controls="collapse_q_${test.pathName}">
+                               ${test.name}
+                      </a>
+                  </h2>
+                  </div>
+                  <%@include file="/WEB-INF/views/exam/start-course-quiz.jsp"%>
+              </li>
+            </c:forEach>
+          </ul>
           </div>
          </main>
+         <script>
+                     $('select[multiple]').multiselect({
+                         columns: 2,
+                         placeholder: '<spring:message code="select.categories"/>',
+                         selectAll : true,
+                         selectGroup:true,
+                         search:true
+                     });
+         </script>
          <%@ include file="/WEB-INF/socialButtons.jsp" %>
-        </div>
  </jsp:body>
 </t:wrapper>

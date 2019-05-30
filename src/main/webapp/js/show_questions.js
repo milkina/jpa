@@ -66,10 +66,10 @@ function getElementsByClassName(node, classname) {
            var answerElement = document.getElementById("answer" + i);
             if (answerElement.style.display == "block"){
                answerElement.style.display = "none";
-               element.value = readMessage;
+               element.innerHTML = readMessage;
             }else{
                 answerElement.style.display = "block";
-                element.value = hideMessage;
+                element.innerHTML = hideMessage;
             }
        }
 

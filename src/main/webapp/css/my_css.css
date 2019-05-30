@@ -7,7 +7,7 @@
         	height: 100%;
         }
 
-        header, nav, section, main, article, aside, footer {
+        header, nav, section, main, article, aside {
         	display: block;
         }
 
@@ -16,25 +16,12 @@
                 width: 100%;
         }
 
-        .maxw {
-        	margin: 0 auto;
-        	min-width: 240px;
-        	max-width: 1920px;
-        }
 
        header {
             min-width:240px;
         	width: 100%;
        }
 
-      #wrapper {
-                position: relative;
-                margin: 0 auto;
-                height: auto !important;
-                height: 100%;
-                min-height: 100%;
-                padding:5px 0;
-        }
 
          .section {
         	width: 100%;
@@ -88,15 +75,6 @@
                     	position: relative;
                     	min-height: 350px;
                     }
-
-              footer {
-        	margin: -100px auto 0;
-        	width: 100%;
-            min-width:240px;
-        	height: 50px;
-        	position: relative;
-        }
-
 /* Для отображения на устройствах меньше 980px*/
         @media screen and (min-width:240px) and (max-width:479px) {
                  header {
@@ -173,13 +151,6 @@
                         right: 0;
                     }
         }
-ol,ul{
- padding-left:40px;
-}
-.mainStyle{
-    color:#666e74;
-    font-size: 14pt;
-}
 .mainPanel{
   width:100%;
        position:relative;
@@ -240,29 +211,6 @@ border-right: 1px solid white;
     bottom:0;
     left:120px;
 }
-.examNumbers span a,.examNumbers span a:visited{
-   text-decoration:none;
-   color:rgb(134, 156, 202);
-}
-
- .breadCrumbs{
-    color:#3a5795;
-    font-weight: bold;
-    display:inline-block;
- }
- .breadCrumbs ol{
-   margin:0px;
-   padding:0px;
-   list-style-type:none;
- }
- .breadCrumbs ol li{
-   float:left;
- }
- .breadCrumbs ol li a, .breadCrumbs ol li a:visited{
-    text-decoration:none;
-    color:#3a5795;
- }
-
  .testList, .testIcon{
       color:rgb(58, 87, 149);
       background-color: #869CCA;
@@ -379,12 +327,7 @@ border-right: 1px solid white;
       overflow: hidden;
       border:none;
 }
-.socialIcon{
-  display:inline-block;
-  float:left;
-  background: url('../images/spritesheet.png');
-  padding: 1px 1px 1px 1px;
-}
+
 .socialIconDiv{
   padding-bottom:60px;
   padding-left:60px;
@@ -425,12 +368,6 @@ border-right: 1px solid white;
 .codeStyle{
   white-space: pre-wrap;
 }
-.showQuestionsList{
-  list-style:none;
-}
-.showQuestionsList li:nth-child(even){
-  background-color:lightgrey;
-}
 .notAnsweredQuestion {
     display: block;
 }
@@ -444,13 +381,7 @@ border-right: 1px solid white;
     white-space: pre-wrap;
     display: none;
 }
-.questionText {
-    margin-bottom:5px;
-    white-space: pre-wrap;
-}
-.questionText p, .answer p{
-    display:inline;
-}
+
 .showAnswer {
     color: darkblue;
     font-size: 10pt;
@@ -460,18 +391,12 @@ border-right: 1px solid white;
    font-size:13px;
    font-weight: bold;
 }
-.questionEntryDiv{
-  width:100%;
-}
+
 .questionEntryCheckboxDiv{
   width:20px;
   vertical-align:top;
   display:inline;
   float:right;
-}
-.questionEntryBody{
-  vertical-align:top;
-  display:inline;
 }
 
 #sprite-examclouds {
@@ -480,23 +405,6 @@ border-right: 1px solid white;
         background-position: -5px -5px;
  }
 
-#sprite-icon_facebook {
-     width: 33px;
-     height: 33px;
-     background-position: -5px -80px;
- }
-
-#sprite-icon_twitter {
-    width: 33px;
-    height: 33px;
-    background-position: -48px -80px;
- }
-
-#sprite-icon_vkontakte {
-   width: 33px;
-   height: 33px;
-   background-position: -91px -80px;
- }
  #sprite-index {
      width: 90%;
      height: 200px;
@@ -504,10 +412,6 @@ border-right: 1px solid white;
  }
 .inlineForm{
   display:inline;
-}
-.contactUsEmail{
-  float:left;
-  font-size: 10pt;
 }
 .contactUs{
   float:left;
@@ -528,7 +432,7 @@ border-right: 1px solid white;
   font-size:14px;
   color:#869cca;
 }
-
+/*
   div.accordion, .accordionM {
         background-color: #3a5795;
         color: white;
@@ -584,7 +488,7 @@ border-right: 1px solid white;
     div.panel.show {
         opacity: 1;
         max-height: 500px;
-    }
+    }*/
 
 .categoryMenuDiv{
   display:inline-block;
@@ -626,17 +530,10 @@ border-right: 1px solid white;
   font-size:12px;
   display:block;
 }
-.questionEntryNumber{
-  float:right;
-  display:inline;
-  font-weight: bold;
-}
+
 .commentList{
   list-style:none;
   padding:0px;
-}
-.commentTextArea{
-  width:70%;
 }
 
 .commentBody{
@@ -653,12 +550,6 @@ border-right: 1px solid white;
   font-style:italic;
   font-size:80%;
 }
-.commentDiv{
-  border-top:1px solid #e2e2e2;
-  display:inline-block;
-  width:70%;
-  margin-left:10px;
-}
 .commentAmount{
  font-weight:bold;
 }
@@ -670,10 +561,7 @@ border-right: 1px solid white;
     display:inline-block;
     width:100%;
 }
-.answerDiv{
-    display:inline-block;
-    width:90%
-}
+
 .answerBlockDiv{
     width:100%
 }

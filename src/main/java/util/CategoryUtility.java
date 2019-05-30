@@ -159,7 +159,7 @@ public class CategoryUtility extends SpringUtility {
         return previousCategory;
     }
 
-    public static void selectCategories(List<Category> categories,
+    public static void selectCategories(Collection<Category> categories,
                                         Predicate<Category> filter) {
         categories.removeIf(category -> category.getParentCategory() != null);
         selectSubCategories(categories, filter);
@@ -170,7 +170,7 @@ public class CategoryUtility extends SpringUtility {
         categories.removeIf(removeFilter);
     }
 
-    private static void selectSubCategories(List<Category> categories, Predicate<Category> filter) {
+    private static void selectSubCategories(Collection<Category> categories, Predicate<Category> filter) {
         for (Category category : categories) {
             Collection<Category> subCategories = category.getSubCategories();
             if (subCategories != null && !subCategories.isEmpty()) {

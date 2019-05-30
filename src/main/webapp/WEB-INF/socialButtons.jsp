@@ -1,4 +1,4 @@
-<div style="float:right;">
+<div style="text-align:right;">
 <script>(function(w,doc) {
 if (!w.__utlWdgt ) {
     w.__utlWdgt = true;

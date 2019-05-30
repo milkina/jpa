@@ -18,6 +18,8 @@ public class LoadTestServlet implements ServletContextListener {
         TestUtility.loadTestsToServletContext(servletContext);
         CategoryUtility.setDuplicateCategories(servletContext);
         LanguageUtility.loadLanguages(servletContext);
+        TestUtility.loadCoursesForTests(servletContext);
+        TestUtility.loadCoursesForQuestions(servletContext);
     }
 
     @Override

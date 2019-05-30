@@ -64,12 +64,6 @@
         <info>Text of the comment.</info>
     </tag>
     <tag>
-        <name>amount</name>
-        <tagclass>tags.comment.CommentAmountTag</tagclass>
-        <bodycontent>empty</bodycontent>
-        <info>Amount of comments for the current page.</info>
-    </tag>
-    <tag>
         <name>url</name>
         <tagclass>tags.comment.CommentUrlTag</tagclass>
         <bodycontent>empty</bodycontent>

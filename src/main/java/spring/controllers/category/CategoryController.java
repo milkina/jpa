@@ -45,14 +45,14 @@ public class CategoryController {
 
     @RequestMapping(value = "/show-category")
     public ModelAndView showCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
-                                     Model model, HttpServletRequest request) {
+                                     Model model, HttpServletRequest request, Locale locale) {
         Map<String, Category> categoryMap =
                 CategoryUtility.getCategoriesFromServletContext(request);
         Category category = categoryMap.get(categoryPath);
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
         model.addAttribute(ARTICLE_ATTRIBUTE, category.getArticle());
         if (category.getHidden()) {
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:" + getResourceValue(locale, "menu.home", "label"));
         }
         return new ModelAndView("/category/show-category");
     }

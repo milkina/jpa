@@ -5,29 +5,17 @@
 <html <jsp:invoke fragment="language"/>>
         <head>
             <%@ include file="/WEB-INF/head_common.jsp" %>
-            <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
             <jsp:invoke fragment="header"/>
         </head>
-        <body itemscope itemtype="http://schema.org/WebPage" class="mainStyle">
+        <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
            <header>
-               <div class="maxw">
-                   <%@ include file="/menu.jsp" %>
+               <div class="container-fluid menu top round-border-bottom">
+                    <%@ include file="/menu.jsp" %>
                </div>
            </header>
-           <div id="wrapper">
-                 <div class="section maxw">
-                      <div class="mainwrap2">
-                                <jsp:doBody/>
-                      </div>
-                      <aside id="s_right">
-                          <jsp:include page="/WEB-INF/google-ads.jsp" />
-                      </aside>
-                 </div>
+           <div class="wrapper container">
+                   <jsp:doBody/>
            </div>
-           <footer>
-                <div class="maxw">
-                     <%@ include file="/WEB-INF/footer.jsp"%>
-                </div>
-           </footer>
+           <%@ include file="/WEB-INF/footer.jsp"%>
         </body>
 </html>

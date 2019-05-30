@@ -19,4 +19,10 @@
         <bodycontent>empty</bodycontent>
         <info>Menu Articles Tag.</info>
     </tag>
+    <tag>
+        <name>homeTag</name>
+        <tagclass>tags.menu.MenuHomeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Menu Home Tag.</info>
+    </tag>
 </taglib>

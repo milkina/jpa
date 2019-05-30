@@ -12,7 +12,12 @@
     <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
     <cache:cacheTag/>
     <div class="mainArea">
-        <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs2.jsp"/>
+               <div class="breadCrumbs">
+                  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="2"/></li>
+                  </ol>
+                </div>
         <main><article>
             <c:if test="${TESTS[param.TEST_PATH].testsNumber>0}">
               <form action="${pageContext.request.contextPath}/select-category-for-exam">
@@ -26,6 +31,7 @@
                  <input type="submit" value="<spring:message code="questions"/>" id="startQuiz">
               </form>
             </c:if>
+            <h1 class="show-course-header">${TESTS[param.TEST_PATH].name}</h1>
             ${TESTS[param.TEST_PATH].article.text}
             <jsp:include page="/WEB-INF/views/category/category-menu-center.jsp"/>
         </article></main>

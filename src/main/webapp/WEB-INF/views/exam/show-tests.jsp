@@ -12,8 +12,8 @@
         <script src="${pageContext.request.contextPath}/js/incrementing.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
-          .test_header:after{
-                    content:"<spring:message code="select.categories"/>";
+          .test_header>a:before{
+              content:"<spring:message code="select.categories"/>";
           }
         </style>
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests">

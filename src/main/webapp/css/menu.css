@@ -15,15 +15,15 @@
 .flags ul,.user-login{
   float:right;
 }
-#button-bar .icon-bar{
+#button-bar .hamburger-inner,#button-bar .hamburger-inner:before,#button-bar .hamburger-inner:after{
  background-color:#4c82be;
 }
-
-/*.menuCenterDiv{
-   width:1145px;
-   margin: 0 auto;
-   font-size: 0px
- }*/
+.navbar-collapse{
+  border:none;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  float:none;
+}
 .indexMenu{
   min-height: 685px;
  }
@@ -45,10 +45,10 @@ nav>ul>li:last-child{
   padding-right: 110px;
 }
 .menuItem,.menuItemWithSub{
-  display: inline-block;
   position: relative;
   padding: 15px 0 10px;
   z-index:10;
+  list-style: none;
 }
 .menuItemWithSub .dropdown-menu{
 	position: absolute;
@@ -63,10 +63,25 @@ nav>ul>li:last-child{
  }
 .menuItemWithSub li{
    padding: 0 35px;
+   min-height:40px;
 }
+/* .navbar-nav .open .dropdown-menu>li>a {
+     padding: 0;
+}
+@media (min-width: 778px) {
+.menuItemWithSub li{
+   padding: 0 35px;
+}
+ .navbar-nav .open .dropdown-menu>li>a {
+     padding: 5px 15px 5px 25px;
+  }
+}*/
 .menuItemWithSub a{
   position:relative;
   z-index:30;
+}
+.dropdown-menu li a:hover{
+ background:none;
 }
 .menuItemWithSub ul a{
 	color: #2f3748;
@@ -110,10 +125,6 @@ nav>ul>li:last-child{
    margin-top:-46px;
    padding:50px 0 30px;
 }
-/*.menuItemWithSub:hover{
-	background-color: white;
-	border-radius: 12px 0 0 0;
-}*/
 .contactUsEmail a{
      font: 400 21px proxima;
      color:white;
@@ -150,26 +161,25 @@ nav>ul>li:last-child{
   padding-right:45px;
 }
 #sprite-icon_facebook {
-    background-position: -28px -3px;
+    background-position: -28px -4px;
  }
 #sprite-icon_facebook:hover {
    background-position: -28px -31px;
 }
 #sprite-icon_twitter {
-    background-position: -56px -3px;
+    background-position: -57px -4px;
 }
 #sprite-icon_twitter:hover {
-    background-position: -56px -31px;
+    background-position: -57px -32px;
 }
 #sprite-icon_vkontakte {
-    background-position: 0px -3px;
+    background-position: 0px -4px;
 }
 #sprite-icon_vkontakte:hover {
     background-position: 0px -31px;
 }
 .my-profile{
-   display: inline-block;
-   margin: 33px 52px 10px 20px;
+   margin: 33px 0 10px;
 }
  .flags ul li{
    display:inline-block;
@@ -195,10 +205,11 @@ nav>ul>li:last-child{
     font: 700 17px proxima;
     color:#6b6b6b;
     display:inline-block;
-    margin:24px 0;
+    margin:14px 0;
  }
  .breadCrumbs ol li{
     display:inline-block;
+    line-height:40px;
  }
  .breadCrumbs ol li a, .breadCrumbs ol li a:visited{
     color:#6b6b6b;
@@ -217,5 +228,23 @@ nav>ul>li:last-child{
 .breadCrumbs ol:last-child{
      color:#2f3748;
  }
-
-
+.nav .open>a:hover{
+  background-color:white;
+  border-color: #6b6b6b;
+}
+.lesson-icon1,.lesson-icon2,.lesson-icon3{
+  display:block;
+  background: url('../images/sprites.png');
+  padding: 1px;
+  width: 350px;
+  height: 270px;
+}
+.lesson-icon1 {
+    background-position: -492px -277px;
+}
+.lesson-icon2 {
+    background-position: -492px -555px;
+}
+.lesson-icon3 {
+    background-position: -492px -3px;
+}

@@ -23,7 +23,7 @@
    <div style="padding:10px 0;">
      <span class="number-questions"><spring:message code="number.questions.label"/></span>
      <div class="dec button">-</div>
-     <input type="number" value="20" name="NUMBER_OF_QUESTIONS" class="number-questions-input">
+     <input type="number" value="25" name="NUMBER_OF_QUESTIONS" class="number-questions-input">
      <div class="inc button">+</div>
    </div>
    <div>

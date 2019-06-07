@@ -22,8 +22,9 @@
   display: block;
 }
 body{
-  font-family: 'Montserrat', sans-serif;
+/*  font-family: 'Montserrat', sans-serif;*/
   color:#2f3748;
+  font: 400 18px proxima;
 }
 .wrapper{
   /*width:1145px;*/
@@ -79,9 +80,9 @@ body{
  text-decoration:none;
  }
 .index-item{
-  padding-right:56px;
   min-height: 200px;
   vertical-align:top;
+  list-style: none;
   }
 .index-items{
   margin-top: 55px;
@@ -200,6 +201,8 @@ h1, .coloredHeader{
 .categoryImage{
   float: left;
   margin: 0px 30px 15px 0px;
+  width:280px;
+  height:200px;
 }
 .lessons-list{
   font-size: 0;
@@ -308,13 +311,13 @@ h1, .coloredHeader{
    position:relative;
    /*display:inline-block;*/
 }
-.test_header:after{
+.test_header>a:before{
   float: right;
   color:#4c82be;
   font:700 19px proxima;
   padding-right:10px;
 }
-.test_header>a.collapsed:after{
+.test_header>a.collapsed:after, .read-answer:before{
   content:"";
   position:absolute;
   border-bottom: 2px solid #4c82be;
@@ -325,7 +328,7 @@ h1, .coloredHeader{
   margin:5px;
   left:100%;
 }
-.test_header>a:after{
+.test_header>a:after, .read-answer.open:before{
   content:"";
   position:absolute;
   border-bottom: 2px solid #4c82be;
@@ -335,6 +338,9 @@ h1, .coloredHeader{
   height:10px;
   margin:5px;
   left:100%;
+}
+.read-answer:before, .read-answer.open:before{
+    left:0;
 }
 .select-category-li .label{
   font-size:16px;
@@ -351,6 +357,7 @@ h1, .coloredHeader{
 }*/
 .select-category-li panel-body, .select-category-li{
  border:none;
+ list-style: none;
 }
 .index-item1:before,.index-item2:before,.index-item3:before,.index-item4:before,
 .index-image-pig:before,.index-image-globe:before,.index-image-flags:before{
@@ -371,17 +378,17 @@ h1, .coloredHeader{
     height:110px;
 }
 .index-item2:before{
-    background-position: 465px -100px;
+    background-position: 759px -105px;
     width:121px;
     height:110px;
 }
 .index-item3:before{
-    background-position: 339px -93px;
+    background-position: 619px -90px;
     width:121px;
     height:110px;
 }
 .index-item4:before{
-    background-position: 779px -90px;
+    background-position: 499px -90px;
     width:141px;
     height:110px;
 }
@@ -389,7 +396,7 @@ h1, .coloredHeader{
   font-size:0;
 }
 .index-image-pig:before{
-    background-position: 414px -200px;
+    background-position: 698px -200px;
     width:220px;
 }
 .index-image-globe:before{
@@ -397,7 +404,7 @@ h1, .coloredHeader{
     width:187px;
 }
 .index-image-flags:before{
-    background-position: 925px -421px;
+    background-position: 641px -421px;
     width:218px;
 }
 .number-questions{
@@ -417,7 +424,7 @@ h1, .coloredHeader{
 }
 .number-questions-input{
   width:28px;
-  height:18px;
+  height:20px;
   font:700 19px proxima;
   outline:none;
 }
@@ -468,6 +475,9 @@ input.number-questions-input::-webkit-inner-spin-button {
     color:#2f3748;
     margin: 0 10px 20px;
 }
+#answersDiv{
+  list-style:none;
+}
 .your-answer-div{
     font:600 20px/29px proxima-semibold;
     color:#6b6b6b;
@@ -507,6 +517,9 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 .questionEntryDiv,.answersResult{
    counter-reset: section;
 }
+.answersResult{
+ list-style:none;
+}
 .answerDiv:before,.right-answer-div:before,.your-answer-div:before{
    counter-increment: section;
    content: counter(section, lower-latin);
@@ -532,14 +545,23 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   margin-left:15px;
 }*/
 .finish-exam-button{
-/*    float:right;*/
     text-align:right;
-  /*  width: 550px;*/
     padding-top:20px;
 }
-.finish-exam-button a,.next-exam-button a,.previous-exam-button a{
+.answer {
+    text-align: justify;
+    padding: 10px 5px 10px 10px;
+    white-space: pre-wrap;
+    display: none;
+    font:400 17px proxima;
+    color:#2f3748;
+}
+.finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer,.read-questions-href{
    color:#4c82be;
    font:700 19px proxima;
+}
+.finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer{
+   position:relative;
 }
 .finish-exam-button a{
   padding-right:15px;
@@ -547,8 +569,11 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 .next-exam-button,.previous-exam-button{
  padding-bottom:15px;
 }
-.next-exam-button a,.previous-exam-button a{
+.next-exam-button a,.previous-exam-button a,.read-answer,.read-answer:visited{
    text-decoration:none;
+}
+.read-answer{
+  padding-left:20px;
 }
 .examNumbers ul li{
   padding-right:45px;
@@ -648,6 +673,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 .showQuestionsList{
   counter-reset: question-section;
   margin-bottom:84px;
+  list-style:none;
 }
 .test-passed{
   color:#6b6b6b;
@@ -687,6 +713,8 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   padding-top:24px;
   color:#2f3748;
   font:400 20px proxima;
+  margin-left:-15px;
+  margin-right:-15px;
 }
 .wrong-answers-number{
   font:600 28px Montserrat;
@@ -696,6 +724,8 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   padding-top:7px;
   color:#6b6b6b;
   font:400 20px proxima;
+  margin-left:-15px;
+  margin-right:-15px;
 }
 .your-answer{
  color:#6b6b6b;
@@ -710,8 +740,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 .show-course-header{
  font: 500 20px Montserrat;
  color:#2f3748;
- width: 500px;
- margin: 0 auto;
+ margin: 0 auto 60px;
  text-align: center;
 }
 .show-course-header:before{
@@ -721,4 +750,59 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   width: 87px;
   height: 156px;
   display:block;
+}
+.category-href,.category-href:hover,.category-sub-href,.category-sub-href:hover{
+    border-bottom: 2px solid rgba(76, 130, 190, 0.28);
+    color:#4c82be;
+    font: 700 20px proxima;
+    text-decoration:none;
+}
+.category-href{
+  padding-bottom: 6px;
+}
+.category-desc{
+  margin-bottom: 91px;
+  padding-top:18px;
+  color:#2f3748;
+  font: 400 17px proxima;
+  height:56px;
+}
+.course-desc{
+  font: 400 17px proxima;
+  color:#2f3748;
+  margin-bottom:40px;
+}
+.dropdown-menu{
+ min-width:290px;
+}
+.show-category-header{
+   font: 500 28px Montserrat;
+   color:#2f3748;
+   margin-top:45px;
+   text-align:center;
+}
+.category-list{
+  margin-top: 36px;
+  list-style: none;
+  counter-reset: li;
+}
+.category-list li{
+ margin-top:28px;
+ counter-increment: li;
+}
+.category-list li::before {
+  content: counter(li);
+  color: #6b6b6b;
+  font:400 17px proxima;
+  padding-right: 15px;
+}
+.category-article{
+  text-align:justify;
+  font:400 18px proxima;
+  color:#2f3748;
+}
+.articleDescription{
+    display:inline-block;
+    width:100%;
+    text-align:justify;
 }

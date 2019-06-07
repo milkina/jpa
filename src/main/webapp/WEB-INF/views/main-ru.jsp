@@ -22,7 +22,9 @@
              <div class="col-xs-12 col-md-4">
                 <h1>Бесплатное обучение по Java</h1>
                 <h2>Начинаете изучать язык Java? Вам на ExamClouds</h2>
-                <a class="start-learning" href="${pageContext.request.contextPath}/show-login-page">Начать обучение</a>
+                 <c:if test="${param.param != null || person == null}">
+                   <a class="start-learning" href="${pageContext.request.contextPath}/show-login-page">Начать обучение</a>
+                 </c:if>
              </div>
              <div class="hidden-xs hidden-sm col-md-8 computer-img"></div>
          </div>
@@ -50,11 +52,16 @@
               </li>
             </ul>
             <ul class="lessons-list scroll-style">
+               <c:set var="count" value="${1}" />
                <c:forEach var="category" items="${TESTS['java-core-russian'].categories}">
                   <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
                     <li>
-                       <img src="${not empty category.value.article.image?category.value.article.image:pageContext.request.contextPath += "/images/lesson1-image.png"}"
-                        alt="${category.value.name}">
+                       <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}"
+                        class="lesson-icon${count}"></a>
+                        <c:set var="count" value="${count+1}" />
+                        <c:if test="${count>=4}">
+                          <c:set var="count" value="${1}" />
+                        </c:if>
                        <h3>${category.value.name}</h3>
                        <div>${category.value.article.description}</div>
                        <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}">Полный урок</a>

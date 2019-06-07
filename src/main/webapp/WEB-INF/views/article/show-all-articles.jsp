@@ -8,7 +8,6 @@
     <title><spring:message code="articles"/> | ExamClouds</title>
   </jsp:attribute>
   <jsp:body>
-  <div class="mainArea">
     <main>
         <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
         <BR>
@@ -29,6 +28,5 @@
            </div>
         </article:articleList>
     </main>
-  </div>
  </jsp:body>
 </t:wrapper>

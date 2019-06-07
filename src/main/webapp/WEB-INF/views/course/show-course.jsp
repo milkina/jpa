@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
  <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
@@ -11,7 +10,6 @@
  <jsp:body>
     <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
     <cache:cacheTag/>
-    <div class="mainArea">
                <div class="breadCrumbs">
                   <ol itemscope itemtype="http://schema.org/BreadcrumbList">
                     <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
@@ -19,27 +17,15 @@
                   </ol>
                 </div>
         <main><article>
-            <c:if test="${TESTS[param.TEST_PATH].testsNumber>0}">
-              <form action="${pageContext.request.contextPath}/select-category-for-exam">
-                 <input type="submit" value="<spring:message code="start.test"/>">
-                 <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
-              </form>
-            </c:if>
-            <c:if test="${TESTS[param.TEST_PATH].questionsNumber>0}">
-              <form action="${pageContext.request.contextPath}/select-categories-to-see-questions">
-                 <input type="hidden" value="${param.TEST_PATH}" name="TEST_PATH">
-                 <input type="submit" value="<spring:message code="questions"/>" id="startQuiz">
-              </form>
-            </c:if>
             <h1 class="show-course-header">${TESTS[param.TEST_PATH].name}</h1>
-            ${TESTS[param.TEST_PATH].article.text}
+            <div class="course-desc">${TESTS[param.TEST_PATH].article.text}</div>
             <jsp:include page="/WEB-INF/views/category/category-menu-center.jsp"/>
-        </article></main>
+           </article>
+        </main>
         <%@ include file="/WEB-INF/socialButtons.jsp" %>
         <jsp:include page="/WEB-INF/comment/comments.jsp">
              <jsp:param name="referenceId" value="${TESTS[param.TEST_PATH].id}" />
              <jsp:param name="commentType" value="TEST"/>
         </jsp:include>
-    </div>
  </jsp:body>
 </t:wrapper>

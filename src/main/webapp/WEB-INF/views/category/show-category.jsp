@@ -23,33 +23,21 @@
                 </c:if>
     </jsp:attribute>
     <jsp:body>
-         <div class="mainArea">
            <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
-            <main>
+            <main class="container">
               <article>
                     <c:if test="${CATEGORY_ATTRIBUTE.article.image != null &&  not empty CATEGORY_ATTRIBUTE.article.image}">
                            <img class="categoryImage" src="${CATEGORY_ATTRIBUTE.article.image}"
-                           alt="${CATEGORY_ATTRIBUTE.name}" title="${CATEGORY_ATTRIBUTE.name}" width="280" height="200">
+                           alt="${CATEGORY_ATTRIBUTE.name}" title="${CATEGORY_ATTRIBUTE.name}">
                     </c:if>
-                    <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
-                         <p class="header1" style="font-size: 1.5em">${CATEGORY_ATTRIBUTE.parentCategory.name}</p>
-                    </c:if>
-                    <h1 class="header1">${CATEGORY_ATTRIBUTE.name}</h1>
-                    <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" value="<spring:message code="start.test"/>" id="startTest"
-                    onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
-                    </c:if>
-                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
-                       <input type="button" value="<spring:message code="questions"/>" id="startQuiz"
-                    onclick="window.location.href='${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
-                   </c:if>
-                    ${CATEGORY_ATTRIBUTE.article.text}
+                    <h1 class="show-category-header">${CATEGORY_ATTRIBUTE.name}</h1>
+                    <div class="category-article">${CATEGORY_ATTRIBUTE.article.text}</div>
                     <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
-                      <ol>
+                      <ol class="category-list">
                         <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.subCategories}">
                            <c:if test="${subCategory.hidden==false}">
                               <li><a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${subCategory.pathName}"
-                                                            id="categoryItem${subCategory.pathName}">${subCategory.name}
+                                     class="category-sub-href" id="categoryItem${subCategory.pathName}">${subCategory.name}
                                   </a>
                               </li>
                            </c:if>
@@ -57,22 +45,23 @@
                        </ol>
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" value="<spring:message code="start.test"/>" id="startTest1"
+                       <input type="button" class="styled-button" value="<spring:message code="start.test"/>" id="startTest"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
-                      <input type="button" value="<spring:message code="questions"/>" id="startQuiz2"
-                                        onclick="window.location.href='${pageContext.request.contextPath}/start-quiz?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                       <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
+                        id="startQuiz" class="read-questions-href">
+                          <spring:message code="questions"/>
+                       </a>
                     </c:if>
               </article>
-            </main><BR>
-            <input type="button" value="<spring:message code="add.question.button"/>" id="AddQuestion"
+            </main>
+            <input type="button" class="styled-button" value="<spring:message code="add.question.button"/>" id="AddQuestion"
              onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
             <%@ include file="/WEB-INF/socialButtons.jsp" %>
             <jsp:include page="/WEB-INF/comment/comments.jsp">
                 <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}" />
                 <jsp:param name="commentType" value="ARTICLE" />
             </jsp:include>
-         </div>
     </jsp:body>
 </t:wrapper>

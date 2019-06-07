@@ -4,10 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca" %>
+<%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
-    <title>${TESTS[param.TEST_PATH].name} Quiz</title>
+    <title>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/></title>
     <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
@@ -44,10 +45,10 @@
               </div>
               <div class="questionEntryBody">
                        <div class="questionText">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.question.text}</div>
-                        <a href="#" onclick="showAnswer('1','<spring:message code="read.answer"/>','<spring:message code="hide.answer"/>');" id="a1">
+                        <a href="#" id="a1" class="read-answer">
                           <spring:message code="read.answer"/>
                         </a>
-                       <div class="answer" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
+                        <div class="answer" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
                </div>
          </div><BR>
          <div style="display:inline">
@@ -76,5 +77,19 @@
            <jsp:param name="commentType" value="QUESTION" />
      </jsp:include>
      </main>
+     <script>
+                   $('#a1').click(function(){
+                              var answerElement = document.getElementById("answer1");
+                               if (answerElement.style.display == "block"){
+                                  answerElement.style.display = "none";
+                                  this.innerHTML = '<spring:message code="read.answer"/>';
+                                  $(this).removeClass("open");
+                               }else{
+                                   answerElement.style.display = "block";
+                                   this.innerHTML = '<spring:message code="hide.answer"/>';
+                                   $(this).addClass("open");
+                               }
+                 });
+     </script>
  </jsp:body>
 </t:wrapper>

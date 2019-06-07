@@ -1,57 +1,90 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
-<t:wrapper>
-    <jsp:attribute name="language"> lang="<spring:message code="lang"/>"</jsp:attribute>
-    <jsp:attribute name="header">
+<%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <%@ include file="/WEB-INF/head_common.jsp" %>
         <META NAME="Description" CONTENT="<spring:message code="main.description"/>">
         <title><spring:message code="main.title"/></title>
         <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
         <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
         <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">
-    </jsp:attribute>
-    <jsp:body>
-        <cache:cacheTag/>
-        <div class="mainArea">
-         <main>
-          <h1 class="indexH1"><spring:message code="main.header"/></h1>
-               <c:forEach var="test" items="${TESTS}">
-                <div class="testList">
-                    <a href="${pageContext.request.contextPath}/${test.value.fullPathName}">
-                       ${test.value.iconText}
-                       <span class="questionsNumber">
-                        ${test.value.questionsNumber + test.value.testsNumber} questions
-                       </span>
-                       <br>
-                    </a>
+  </head>
+    <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
+    <cache:cacheTag/>
+         <div class="container-fluid menu indexMenu round-border-bottom">
+          <%@ include file="/menu.jsp" %>
+          <div class="container">
+             <div class="row-no-gutters index-img-div">
+                 <div class="col-xs-12 col-md-4">
+                    <h1>Free Java Tutorial</h1>
+                    <h2>Start learning Java? Welcome to ExamClouds</h2>
+                     <c:if test="${param.param != null || person == null}">
+                       <a class="start-learning" href="${pageContext.request.contextPath}/show-login-page">Start Learning</a>
+                     </c:if>
+                 </div>
+                 <div class="hidden-xs hidden-sm col-md-8 computer-img"></div>
+             </div>
+          </div>
+        </div>
+        <div class="container" style="padding-bottom:142px">
+         	    <main>
+                <ul class="row index-items">
+                  <li class="index-item index-item1 col-xs-12 col-sm-6 col-md-3">
+                    <h3 class="index-image-item1">Tests and Answers to Questions</h3>
+                    <div class="index-items-text">After each lesson you can pass tests to verify what you have learned and to answer to the questions left.</div>
+                  </li>
+                  <li class="index-item index-item2 col-xs-12 col-sm-6 col-md-3">
+                    <h3 class="index-image-item2">Oracle Certifications</h3>
+                    <div class="index-items-text">Oracle Corporation has a range of internationally recognized exams for IT specialists.</div>
+                  </li>
+                  <li class="clearfix visible-sm-block"></li>
+                  <li class="index-item index-item3 col-xs-12 col-sm-6 col-md-3">
+                    <h3 class="index-image-item3">Articles and Literature</h3>
+                    <div class="index-items-text">Articles and literature for learning Java language.</div>
+                  </li>
+                 <li class="index-item index-item4 col-xs-12 col-sm-6 col-md-3">
+                     <h3 class="index-image-item4">Web Services and JPA</h3>
+                    <div class="index-items-text">Articles to learn Web Services and Java Persistence API.</div>
+                  </li>
+                </ul>
+                <ul class="lessons-list scroll-style">
+                   <c:set var="count" value="${1}" />
+                   <c:forEach var="category" items="${TESTS['ocpjp8'].categories}">
+                      <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
+                        <li>
+                           <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}"
+                            class="lesson-icon${count}"></a>
+                            <c:set var="count" value="${count+1}" />
+                            <c:if test="${count>=4}">
+                              <c:set var="count" value="${1}" />
+                            </c:if>
+                           <h3>${category.value.name}</h3>
+                           <div>${category.value.article.description}</div>
+                           <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}">Full lesson</a>
+                        </li>
+                      </c:if>
+                   </c:forEach>
+                </ul>
+                <div class="row learn-java">
+                  <h3 class="col-xs-12">Why should I learn Java?</h3>
+                  <p class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 learn-java-text">Java has very rich API, which allows to solve different problems, but still is very easy in learning. It has a lot of forums, resources and still is growing.</p>
                 </div>
-            </c:forEach>
-           <div class="indexColumn">
-             <h2 class="header2">Oracle Certifications for Java Developers</h2>
-             <p>Oracle Corporation has a range of internationally recognized exams for IT specialists. Oracle refreshes its certification exams with a new release of Java or a Java product. Software engineers should pass new tests to support their qualifying level. They are considered to be the best tests for java engineers.</p>
-             <h2 class="header2">How to Get Certified in Java?</h2>
-             <p><!--noindex--><a href="http://education.oracle.com/" target="_blank" rel="nofollow noopener">Oracle education site</a><!--/noindex--> contains such important info as topic's exam, training recommendation, exam duration and fee. <!--noindex--><a href="https://wsr.pearsonvue.com/testtaker/registration/SelectTestCenterProximity/ORACLE/290123" target="_blank" rel="nofollow noopener">Pearsonvue</a><!--/noindex--> can help to find the nearest test center, where it is possible to register for exam. Such exams as OCJP have very extended info of exam objects. But some lack detailed information, for example Web Service certification. <strong style="font-weight: normal;">Online java exam questions and answers quiz</strong> tutorials can be helpful in preparation. They will help to find out which topics are more important for exam and should be paid attention to. And which can be skipped. Feedbacks of those, who has already passed exams, is an invaluable thing as well. Discussions of certifications can be found on <!--noindex--><a href="http://www.coderanch.com/" target="_blank" rel="nofollow noopener">Coderanch</a><!--/noindex--> site.</p>
-             <h2 class="header2">About Us</h2>
-             <p>Study material for oracle java certification preparation on the ExamClouds will help to get prepared for exams. There are free tests and questions created by certified java engineers.</p>
-             <h2 class="header2">FAQ</h2>
-               <h3 class="header3">How much time should be spent on the preparation?</h3>
-               <p>It depends on the person's background in the specified area. Some people can spend several months, for others a week is enough to pass an exam.</p>
-               <h3 class="header3">Is Java Certification worth it?</h3>
-               <p>Very often engineers work in some particular area, and learning something new is a good chance to broad your mind, get in a new technology and implement it in the daily work. Or just improve and structure your knowledge in the area of exam.</p>
-           </div>
-           </main>
-           <div style="float:left">
-           <%@ include file="/WEB-INF/socialButtons.jsp" %>
-           <jsp:include page="/WEB-INF/comment/comments.jsp">
-                           <jsp:param name="referenceId" value="1" />
-                           <jsp:param name="commentType" value="ARTICLE" />
-           </jsp:include>
-           </div>
-     </div>
- </jsp:body>
-</t:wrapper>
-
-
+                <ul class="pig-globe row">
+                    <li class="learn-java-item index-image-pig col-xs-12 col-md-4"><h4>High average salary</h4></li>
+                    <li class="learn-java-item index-image-flags col-xs-12 col-md-4"><h4>Great possibilities</h4></li>
+                    <li class="learn-java-item index-image-globe col-xs-12 col-md-4"><h4>Universal usage</h4></li>
+                </ul>
+               </main>
+               <jsp:include page="/WEB-INF/comment/comments.jsp">
+                    <jsp:param name="referenceId" value="1" />
+                    <jsp:param name="commentType" value="ARTICLE" />
+               </jsp:include>
+         </div>
+        <%@include file="/WEB-INF/footer.jsp"%>
+    </body>
+    </html>

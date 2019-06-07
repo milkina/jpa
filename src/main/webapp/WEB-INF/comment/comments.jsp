@@ -1,6 +1,6 @@
 <%@taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<div class="comment-wrapper">
+<div class="comment-wrapper col-xs-12">
   <div class="comment-label"><spring:message code="comments"/></div>
   <div class="commentDiv scroll-style" id="commentDiv">
    <comment:commentList type="${param.commentType}" referenceId="${param.referenceId}">
@@ -14,10 +14,10 @@
    </comment:commentList>
    </div>
     <script>
-                   function addUserComment(contextPath, message) {
+                   function addUserComment(contextPath) {
                        var isLoggedIn = document.getElementById("isLogin");
                        if (!isLoggedIn) {
-                           alert(message);
+                          $('#commentModal').modal('show');
                            return;
                        }
                        var form = document.getElementById("addCommentForm");
@@ -32,6 +32,21 @@
       <textarea class="commentTextArea" name="commentText" id="commentText"
       placeholder="<spring:message code="leave.comment"/>"></textarea>
       <input type="button" class="styled-button" value="<spring:message code="post"/>" id="addComment" name="addComment"
-      onclick="addUserComment('<%=request.getContextPath()%>','<spring:message code="comment.not.added"/>')">
+      onclick="addUserComment('<%=request.getContextPath()%>')">
    </form>
+   <div class="modal fade" tabindex="-1" role="dialog" id="commentModal">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body">
+           <p><spring:message code="comment.not.added"/></p>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+         </div>
+       </div>
+     </div>
+   </div>
 </div>

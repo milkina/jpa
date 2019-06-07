@@ -3,19 +3,19 @@
 <%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <div class="navbar">
      	<div class="container">
-     	     	    <div class="navbar-header navbar-default">
-                          <button type="button" class="navbar-toggle collapsed" id="button-bar" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+     	     	    <div class="navbar-header">
+     	     	          <button class="hamburger hamburger--spin navbar-toggle collapsed" type="button"  id="button-bar" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                           <span class="sr-only">Toggle navigation</span>
+                           <span class="hamburger-box">
+                           <span class="hamburger-inner"></span>
+                           </span>
                           </button>
                            <a href="<menu:homeTag/>" id="home" class="logo">
                                <img src="${pageContext.request.contextPath}/images/logo.png" alt="ExamClouds">
                            </a>
                     </div>
-     	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			  <div class="col-xs-12 col-sm-2 col-lg-1 flags navbar-right">
+     	  <div class="collapse navbar-collapse navbar-nav" id="bs-example-navbar-collapse-1">
+			  <div class="col-xs-3 col-sm-2 col-lg-1 flags navbar-right">
                             <ul>
                               <li><a href="?lang=ru" id="ru-flag"></a></li>
                               <li><a href="?lang=en" id="en-flag"></a></li>
@@ -23,14 +23,14 @@
               </div>
 				 <c:choose>
                    <c:when test="${param.param != null || person == null}">
-                    <div class="col-xs-12 col-sm-2 col-lg-2 navbar-right">
-				      <a class="my-profile topMenu" href="${pageContext.request.contextPath}/show-login-page" id='my-profile'>
+                    <div class="col-xs-9 col-sm-2 col-lg-2 navbar-right menuItem">
+				      <a class="topMenu" href="${pageContext.request.contextPath}/show-login-page" id='my-profile'>
 				        <spring:message code="my.profile.label"/>
 				      </a>
 	                </div>
 				   </c:when>
                    <c:otherwise>
-                    <div class="col-xs-12 col-sm-2 col-lg-2 topMenu menuItemWithSub dropdown navbar-right">
+                    <div class="col-xs-9 col-sm-2 col-lg-2 topMenu menuItemWithSub dropdown navbar-right">
                         <a href="#" id="userLogin" class="user-login dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           ${person.login}
                          </a>
@@ -71,11 +71,23 @@
 <script>
 $(document).ready(function(){
      $('.menuItemWithSub').hover(function(){
+        if($(window).width()<768){
+           return;
+        }
         if($(this).hasClass('open')){
             $(this).removeClass('open');
         }else{
             $(this).addClass('open');
         }
      });
+});
+$(document).ready(function(){
+          $('#button-bar').click(function(){
+             if($(this).hasClass('is-active')){
+                 $(this).removeClass('is-active');
+             }else{
+                 $(this).addClass('is-active');
+             }
+          });
 });
 </script>

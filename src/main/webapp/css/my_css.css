@@ -53,10 +53,6 @@
             margin:0;
         }
 
-        article p{
-                margin: 0 0 10px 0;
-        }
-
                     #s_left {
                     	float: left;
                     	width: 240px;
@@ -328,12 +324,6 @@ border-right: 1px solid white;
       border:none;
 }
 
-.socialIconDiv{
-  padding-bottom:60px;
-  padding-left:60px;
-  display:inline;
-}
-
 .selectWidth{
  width: 156px;
 }
@@ -374,14 +364,6 @@ border-right: 1px solid white;
 .answeredQuestion {
     display: block;
 }
-
-.answer {
-    text-align: justify;
-    padding: 10px 5px 10px 10px;
-    white-space: pre-wrap;
-    display: none;
-}
-
 .showAnswer {
     color: darkblue;
     font-size: 10pt;
@@ -399,22 +381,8 @@ border-right: 1px solid white;
   float:right;
 }
 
-#sprite-examclouds {
-     width: 333px;
-        height: 65px;
-        background-position: -5px -5px;
- }
-
- #sprite-index {
-     width: 90%;
-     height: 200px;
-     background-position: -5px -80px;
- }
 .inlineForm{
   display:inline;
-}
-.contactUs{
-  float:left;
 }
 .adminLabel{
   font-weight:bold;
@@ -553,15 +521,6 @@ border-right: 1px solid white;
 .commentAmount{
  font-weight:bold;
 }
-.categoryImage{
-  float: left;
-  margin: 0px 30px 15px 0px;
-}
-.articleDescription{
-    display:inline-block;
-    width:100%;
-}
-
 .answerBlockDiv{
     width:100%
 }

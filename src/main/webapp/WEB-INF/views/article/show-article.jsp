@@ -22,7 +22,6 @@
     </c:if>
  </jsp:attribute>
  <jsp:body>
-   <div class="mainArea">
     <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
     <main>
       <article>
@@ -38,6 +37,5 @@
       <jsp:param name="referenceId" value="${ARTICLE_ATTRIBUTE.id}" />
       <jsp:param name="commentType" value="ARTICLE" />
     </jsp:include>
- </div>
 </jsp:body>
 </t:wrapper>

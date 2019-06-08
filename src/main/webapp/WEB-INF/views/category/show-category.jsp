@@ -45,7 +45,7 @@
                        </ol>
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0}">
-                       <input type="button" class="styled-button" value="<spring:message code="start.test"/>" id="startTest"
+                       <input type="button" class="styled-button" style="width:170px" value="<spring:message code="start.test"/>" id="startTest"
                                         onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
                     </c:if>
                     <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0}">
@@ -55,10 +55,10 @@
                        </a>
                     </c:if>
               </article>
+               <input type="button" class="styled-button" style="width:170px" value="<spring:message code="add.question.button"/>" id="AddQuestion"
+                           onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
             </main>
-            <input type="button" class="styled-button" value="<spring:message code="add.question.button"/>" id="AddQuestion"
-             onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
-            <%@ include file="/WEB-INF/socialButtons.jsp" %>
+              <%@ include file="/WEB-INF/socialButtons.jsp" %>
             <jsp:include page="/WEB-INF/comment/comments.jsp">
                 <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}" />
                 <jsp:param name="commentType" value="ARTICLE" />

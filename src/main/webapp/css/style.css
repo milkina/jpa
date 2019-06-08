@@ -58,14 +58,13 @@ body{
   background-color:#a1d6f7;
 }
 .computer-img{
- /* float:right;
-  width: 784px;*/
   background:#a1d6f7 url('../images/index-image.png') no-repeat;
   transform:translate(84px,-32px);
   background-size: contain;
   height:417px;
 }
 .start-learning{
+ border-bottom: 2px solid rgba(10, 21, 26,0.15);
  display:block;
  width: 263px;
  height: 62px;
@@ -79,6 +78,12 @@ body{
  font: 700 19px proxima;
  text-decoration:none;
  }
+.start-learning:hover{
+ border-top: 2px solid rgba(10, 21, 26,0.15);
+ border-bottom: none;
+ color:white;
+ text-decoration:none;
+}
 .index-item{
   min-height: 200px;
   vertical-align:top;
@@ -184,6 +189,12 @@ h1, .coloredHeader{
 .comment-item{
   margin-bottom: 73px;
 }
+.comment-icon{
+ padding-top:25px;
+}
+.div-comment-text-area{
+  margin-top:50px;
+}
 .commentTextArea{
  padding:15px;
  outline:none;
@@ -195,8 +206,7 @@ h1, .coloredHeader{
  resize: none;
  color:#2f3748;
  font: 700 17px proxima;
- margin-top:50px;
- background: url('../images/comment.png') no-repeat right;
+ margin-bottom:15px;
 }
 .categoryImage{
   float: left;
@@ -207,7 +217,7 @@ h1, .coloredHeader{
 .lessons-list{
   font-size: 0;
   overflow-x: scroll;
-  padding: 1px;
+  padding: 5px;
 }
 .lessons-list>li{
   display: table-cell;
@@ -241,6 +251,12 @@ h1, .coloredHeader{
    font:700 19px/30px proxima;
    color:#4c82be;
    margin-left:40px;
+   border-bottom: 2px solid rgba(76, 130, 190, 0.28);
+   padding-bottom: 6px;
+}
+.lessons-list>li>a:hover{
+   color:#313a4c;
+   text-decoration:none;
 }
 .scroll-style::-webkit-scrollbar{
 	width: 8px;
@@ -422,17 +438,23 @@ h1, .coloredHeader{
   margin:10px 0;
   outline:none;
 }
+.styled-button:hover{
+   color:white;
+   background: #4c82be;
+}
 .number-questions-input{
-  width:28px;
+  width:30px;
   height:20px;
   font:700 19px proxima;
   outline:none;
 }
+input.number-questions-input {
+    -moz-appearance: textfield;
+}
 input.number-questions-input::-webkit-outer-spin-button,
 input.number-questions-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
 }
 .inc, .dec{
   color:#4c82be;
@@ -441,6 +463,10 @@ input.number-questions-input::-webkit-inner-spin-button {
   display:inline-block;
   font:700 19px proxima;
   margin: 0 5px;
+  cursor:pointer;
+}
+.inc:hover, .dec:hover{
+  color:#2f3748;
 }
 .exam-header1{
   font:500 28px/26px Montserrat;
@@ -805,4 +831,14 @@ input[type="checkbox"].test-checkbox:checked+label:after{
     display:inline-block;
     width:100%;
     text-align:justify;
+}
+#addComment{
+  display:block;
+  background: url('../images/sprites.png') -216px 0px;
+  padding: 1px;
+  width: 27px;
+  height: 27px;
+}
+#addComment:hover{
+  background-position:-255px 0px;
 }

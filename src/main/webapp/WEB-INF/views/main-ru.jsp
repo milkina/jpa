@@ -80,7 +80,7 @@
             </ul>
            </main>
            <jsp:include page="/WEB-INF/comment/comments.jsp">
-                <jsp:param name="referenceId" value="1" />
+                <jsp:param name="referenceId" value="398" />
                 <jsp:param name="commentType" value="ARTICLE" />
            </jsp:include>
      </div>

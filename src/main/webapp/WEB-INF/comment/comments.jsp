@@ -29,10 +29,15 @@
    <form action="<%=request.getContextPath()%>/save-comment" name="addCommentForm" id="addCommentForm">
       <input type="hidden" name="COMMENT_TYPE" value="${param.commentType}">
       <input type="hidden" name="REFERENCE_ID" value="${param.referenceId}">
-      <textarea class="commentTextArea" name="commentText" id="commentText"
-      placeholder="<spring:message code="leave.comment"/>"></textarea>
-      <input type="button" class="styled-button" value="<spring:message code="post"/>" id="addComment" name="addComment"
-      onclick="addUserComment('<%=request.getContextPath()%>')">
+      <div class="div-comment-text-area">
+        <div class="col-xs-11">
+         <textarea class="commentTextArea" name="commentText" id="commentText"
+         placeholder="<spring:message code="leave.comment"/>"></textarea>
+        </div>
+        <div class="col-xs-1 comment-icon">
+            <a href="#addComment" id="addComment" onclick="addUserComment('<%=request.getContextPath()%>')"></a>
+        </div>
+      </div>
    </form>
    <div class="modal fade" tabindex="-1" role="dialog" id="commentModal">
      <div class="modal-dialog" role="document">

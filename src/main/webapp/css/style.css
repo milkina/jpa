@@ -1,6 +1,8 @@
 @import url(reset.css);
 @import url(prism.css);
 @import url(menu.css);
+@import url(ui.totop.css) screen,projection;
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&subset=cyrillic,cyrillic-ext,latin-ext');
 @font-face {
     font-family: 'proxima';
@@ -415,6 +417,7 @@ h2, .header2{
 }
 .pig-globe{
   font-size:0;
+  margin-bottom:40px;
 }
 .index-image-pig:before{
     background-position: 698px -200px;
@@ -588,7 +591,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
     font:400 17px proxima;
     color:#2f3748;
 }
-.finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer,.read-questions-href{
+.finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer{
    color:#4c82be;
    font:700 19px proxima;
 }
@@ -783,7 +786,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   height: 156px;
   display:block;
 }
-.category-href,.category-sub-href{
+.category-href,.category-sub-href,.read-questions-href{
     border-bottom: 2px solid rgba(76, 130, 190, 0.28);
     color:#4c82be;
     font: 700 20px proxima;
@@ -959,4 +962,14 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 }
 .register-button,.register-joined-text{
  text-align:center;
+}
+.read-questions-div{
+  margin-top:28px;
+  padding-left:30px;
+}
+.pass-test-btn{
+  margin-top:28px;
+  margin-left:30px;
+  width:170px;
+  display:block;
 }

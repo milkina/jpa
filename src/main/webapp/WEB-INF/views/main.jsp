@@ -80,6 +80,7 @@
                     <li class="learn-java-item index-image-globe col-xs-12 col-md-4"><h4>Universal usage</h4></li>
                 </ul>
                </main>
+               <%@ include file="/WEB-INF/socialButtons.jsp" %>
                <jsp:include page="/WEB-INF/comment/comments.jsp">
                     <jsp:param name="referenceId" value="1" />
                     <jsp:param name="commentType" value="ARTICLE" />

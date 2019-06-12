@@ -2,8 +2,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-<LINK TYPE="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/style.css?v=1">
+<LINK TYPE="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/style.css?v=2">
 <LINK TYPE="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/my_css.css?v=1">
+<script src="${pageContext.request.contextPath}/js/easing.js" type="text/javascript"></script>
+ <script src="${pageContext.request.contextPath}/js/jquery.ui.totop.min.js" type="text/javascript"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" >
 <jsp:include page="/WEB-INF/googleScript.jsp"/>

@@ -4,7 +4,6 @@ import model.AbstractQuestionEntry;
 import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
-import model.person.PersonInfo;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,11 +12,8 @@ import utils.TestValues;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static utils.TestValues.EMAILS;
-import static utils.TestValues.FIRST_NAMES;
-import static utils.TestValues.LAST_NAMES;
 import static utils.TestValues.LOGINS;
 import static utils.TestValues.PASSWORDS;
 
@@ -63,13 +59,12 @@ public class PersonServiceIT extends BaseIT {
 
     @Test
     public void testRemoveAnsweredQuestions() {
-        PersonInfo personInfo = TestUtils.createPersonInfo(10);
         List<AbstractQuestionEntry> answeredQuestions = new ArrayList<>();
         answeredQuestions.add(questionEntries[0]);
         answeredQuestions.add(questionEntries[1]);
         answeredQuestions.add(questionEntries[2]);
         Person person = TestUtils.createPerson(TestValues.LOGINS[10], TestValues.PASSWORDS[10], false,
-                personInfo, answeredQuestions);
+                EMAILS[10], answeredQuestions);
         personService.addPerson(person);
         personService.removeAnsweredQuestions(person);
 
@@ -109,18 +104,13 @@ public class PersonServiceIT extends BaseIT {
         person.setPassword(PASSWORDS[4]);
         person.setSysadmin(false);
 
-        person.getPersonInfo().setLastName(LAST_NAMES[4]);
-        person.getPersonInfo().setFirstName(FIRST_NAMES[4]);
-        person.getPersonInfo().setEmail(EMAILS[4]);
+        person.setEmail(EMAILS[4]);
         personService.save(person);
         Person receivedPerson = personService.getPerson(person.getId());
         Assert.assertNotNull(receivedPerson);
         Assert.assertEquals(receivedPerson.getPassword(), PASSWORDS[4]);
         Assert.assertEquals(receivedPerson.getLogin(), LOGINS[4]);
-        Assert.assertNotNull(receivedPerson.getPersonInfo());
-        Assert.assertEquals(receivedPerson.getPersonInfo().getLastName(), LAST_NAMES[4]);
-        Assert.assertEquals(receivedPerson.getPersonInfo().getFirstName(), FIRST_NAMES[4]);
-        Assert.assertEquals(receivedPerson.getPersonInfo().getEmail(), EMAILS[4]);
+        Assert.assertEquals(receivedPerson.getEmail(), EMAILS[4]);
     }
 
     @Test

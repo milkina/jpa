@@ -50,9 +50,7 @@ public class RegisterController {
             url = WELCOME_REGISTER_PAGE;
         } else {
             model.addAttribute("login", person.getLogin());
-            model.addAttribute("firstName", person.getPersonInfo().getFirstName());
-            model.addAttribute("lastName", person.getPersonInfo().getLastName());
-            model.addAttribute("email", person.getPersonInfo().getEmail());
+            model.addAttribute("email", person.getEmail());
         }
         return new ModelAndView(url, "command", person);
     }

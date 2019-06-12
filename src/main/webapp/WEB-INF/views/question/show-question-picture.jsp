@@ -15,10 +15,13 @@
 </jsp:attribute>
 <jsp:body>
      <div class="mainArea">
-         <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs2.jsp">
-              <jsp:param name="TEST_PATH" value="${TEST_PATH}" />
-              <jsp:param name="CATEGORY_PATH" value="${QUESTION_ENTRY_ATTRIBUTE.category.pathName}"/>
-         </jsp:include>
+     <div class="breadCrumbs">
+       <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+           <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
+           <li><a href="<menu:testsTag/>"><spring:message code="tests"/></a><meta itemprop="position" content="2"/></li>
+           <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
+       </ol>
+     </div>
          <h2 class="header2">${QUESTION_ENTRY_ATTRIBUTE.category.name}
          </h2>
          <div class="questionEntryDiv" style="padding-left:8px">

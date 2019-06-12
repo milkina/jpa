@@ -9,44 +9,25 @@
       <title><spring:message code="registration"/> | ExamClouds</title>
   </jsp:attribute>
   <jsp:body>
-<div class="mainArea">
-  <form:form ACTION="${pageContext.request.contextPath}/addPerson"
-       METHOD="POST" id="confirmRegistration" name="confirmRegistration">
-    <H1 class="header1"><spring:message	code="registration"/></H1>
-
-<span class="wrongMessage" id="registerWrongMessage"> ${requestScope.message}</span>
-    <table width="100%" border=0>
-        <tr>
-            <td width="20%"><spring:message	code="login"/>: <span class="wrongMessage">*</span></td>
-            <td><form:input required="required" maxlength="70" path="login" class="selectWidth"/><BR></td>
-        </tr>
-        <tr>
-            <td><spring:message	code="password"/>: <span class="wrongMessage">*</span></td>
-            <td><form:input TYPE="PASSWORD" path="password" required="required" maxlength="50" class="selectWidth"/><BR></td>
-        </tr>
-        <tr>
-            <td><spring:message	code="confirm.password"/>: <span class="wrongMessage">*</span></td>
-            <td><INPUT TYPE="PASSWORD" required maxlength="50" NAME="confPassword" class="selectWidth"><BR></td>
-        </tr>
-        <tr>
-            <td><spring:message	code="firstName"/>:</td>
-            <td><form:input maxlength="50" path="personInfo.firstName" class="selectWidth"/><BR></td>
-        </tr>
-        <tr>
-            <td><spring:message	code="lastName"/>:</td>
-            <td><form:input maxlength="50" path="personInfo.lastName" class="selectWidth"/><BR></td>
-        </tr>
-         <tr>
-            <td>E-mail:<span class="wrongMessage">*</span></td>
-            <td><form:input TYPE="email" path="personInfo.email" required="required" maxlength="50" class="selectWidth"/><BR></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><INPUT TYPE="submit" VALUE="<spring:message	code="registration"/>" name="Confirm"></td>
-        </tr>
-    </table>
-    </form:form>
- </div>
-<BR>
+    <div class="register-form">
+         <div class="white-bg">
+            <div class="top-detail"></div>
+              <form:form action="${pageContext.request.contextPath}/addPerson"
+                   method="POST" id="confirmRegistration" name="confirmRegistration">
+                  <h1 class="register-header"><spring:message code="registration"/></h1>
+                  <span class="wrongMessage" id="registerWrongMessage"> ${requestScope.message}</span>
+                  <div class="register-label"><spring:message code="login"/></div>
+                  <div><form:input required="required" maxlength="70" path="login" class="register-input"/></div>
+                  <div class="register-label"><spring:message	code="password"/> </div>
+                  <div><form:input type="password" path="password" required="required" maxlength="50" class="register-input"/></div>
+                  <div class="register-label"><spring:message	code="confirm.password"/></div>
+                  <div><input type="password" required maxlength="50" name="confPassword" class="register-input"></div>
+                  <div class="register-label">e-mail:</div>
+                  <div><form:input type="email" path="email" required="required" maxlength="50" class="register-input"/></div>
+                  <div class="register-button"><input type="submit" value="<spring:message	code="registration"/>" name="Confirm" class="styled-button"></div>
+              </form:form>
+           </div>
+    </div>
+  </div>
 </jsp:body>
 </t:wrapper>

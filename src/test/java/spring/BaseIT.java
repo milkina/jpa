@@ -11,7 +11,6 @@ import model.article.Article;
 import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
-import model.person.PersonInfo;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeClass;
@@ -63,7 +62,6 @@ public class BaseIT extends AbstractTestNGSpringContextTests {
 
     protected static model.Test[] tests;
     protected static Person[] persons;
-    protected static PersonInfo personInfo[];
     protected static Category[] categories;
     protected static QuestionEntry[] questionEntries;
     protected static TestQuestionEntry[] testQuestionEntries;
@@ -163,7 +161,6 @@ public class BaseIT extends AbstractTestNGSpringContextTests {
     private void preparePersons() {
         int personLength = 3;
         persons = new Person[personLength];
-        personInfo = new PersonInfo[personLength];
         for (int i = 0; i < personLength; i++) {
             persons[i] = TestUtils.createPerson(i);
             persons[i] = personService.save(persons[i]);

@@ -5,7 +5,6 @@ import util.GeneralUtility;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,8 +37,16 @@ public class Person implements Comparable<Person> {
 
     private Date createdDate;
 
-    @Embedded
-    private PersonInfo personInfo;
+    @Column(name = "email")
+    private String email = "";
+
+    public void setEmail(String e) {
+        email = e;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(name = "answered_questions",
@@ -85,14 +92,6 @@ public class Person implements Comparable<Person> {
             return false;
         }
         return sysadmin;
-    }
-
-    public PersonInfo getPersonInfo() {
-        return personInfo;
-    }
-
-    public void setPersonInfo(PersonInfo personInfo) {
-        this.personInfo = personInfo;
     }
 
     public Date getCreatedDate() {

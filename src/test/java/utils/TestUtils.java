@@ -6,7 +6,6 @@ import model.article.Article;
 import model.comment.Comment;
 import model.comment.CommentType;
 import model.person.Person;
-import model.person.PersonInfo;
 
 import java.util.*;
 
@@ -21,32 +20,18 @@ import static utils.TestValues.*;
  */
 public class TestUtils {
     public static Person createPerson(int i) {
-        PersonInfo personInfo = createPersonInfo(i);
-        return createPerson(TestValues.LOGINS[i], TestValues.PASSWORDS[i], true, personInfo, null);
+        return createPerson(TestValues.LOGINS[i], TestValues.PASSWORDS[i], true, EMAILS[i], null);
     }
 
     public static Person createPerson(String login, String password, Boolean sysadmin,
-                                      PersonInfo personInfo, List<AbstractQuestionEntry> answeredQuestions) {
+                                      String email, List<AbstractQuestionEntry> answeredQuestions) {
         Person person = new Person();
         person.setLogin(login);
         person.setPassword(password);
         person.setSysadmin(sysadmin);
-        person.setPersonInfo(personInfo);
+        person.setEmail(email);
         person.setAnsweredQuestions(answeredQuestions);
         return person;
-    }
-
-    public static PersonInfo createPersonInfo(int i) {
-        return createPersonInfo(TestValues.FIRST_NAMES[i], TestValues.LAST_NAMES[i],
-                TestValues.EMAILS[i]);
-    }
-
-    public static PersonInfo createPersonInfo(String firstName, String lastName, String email) {
-        PersonInfo personInfo = new PersonInfo();
-        personInfo.setFirstName(firstName);
-        personInfo.setLastName(lastName);
-        personInfo.setEmail(email);
-        return personInfo;
     }
 
     public static QuestionEntry createQuestionEntry(int i, Category category, Person person) {

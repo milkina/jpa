@@ -5,7 +5,6 @@ import model.QuestionType;
 import model.TestExam;
 import model.article.Article;
 import model.person.Person;
-import model.person.PersonInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,11 +76,7 @@ public class PersonController {
             model.addAttribute(MESSAGE_ATTRIBUTE, message);
         } else {
             person.setLogin(changedPerson.getLogin());
-            PersonInfo personInfo = new PersonInfo();
-            personInfo.setFirstName(changedPerson.getPersonInfo().getFirstName());
-            personInfo.setLastName(changedPerson.getPersonInfo().getLastName());
-            personInfo.setEmail(changedPerson.getPersonInfo().getEmail());
-            person.setPersonInfo(personInfo);
+            person.setEmail(changedPerson.getEmail());
 
             personService.save(person);
         }

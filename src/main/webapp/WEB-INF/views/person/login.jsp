@@ -12,7 +12,6 @@
      <form ACTION="${pageContext.request.contextPath}/login" METHOD="POST" id="LoginForm" class="inlineForm">
         <section class="container">
             <div class="login">
-            <!--  <form method="post" action="${pageContext.request.contextPath}/servlet/LoginServlet" id="LoginForm">-->
                 <p><input type="text" name="login" value="${person.login}" placeholder="Login"></p>
                 <p><input type="password" name="password" value="${person.password}" placeholder="Password"></p>
                 <p class="remember">
@@ -22,12 +21,11 @@
                     <span class="wrongMessage" id="wrongMessage">${wrongLoginMessage}</span>
                   </label>
                 </p>
-                <p class="submit"><input type="submit" name="Enter" value="<spring:message code="log.in"/>"></p>
-            <!--  </form>-->
+                <p class="submit"><input type="submit" class="styled-button" name="Enter" value="<spring:message code="log.in"/>"></p>
             </div>
           </section>
      </form>
      <spring:message code="new.to.examclouds"/>
-     <a href="${pageContext.request.contextPath}/register"><spring:message code="register"/></a>
+    <a href="${pageContext.request.contextPath}/register"><spring:message code="register"/></a>
  </jsp:body>
 </t:wrapper>

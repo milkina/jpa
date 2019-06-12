@@ -1,28 +1,3 @@
-        * {
-        	margin: 0;
-        	padding: 0;
-        }
-
-        html {
-        	height: 100%;
-        }
-
-        header, nav, section, main, article, aside {
-        	display: block;
-        }
-
-        body {
-                height: 100%;
-                width: 100%;
-        }
-
-
-       header {
-            min-width:240px;
-        	width: 100%;
-       }
-
-
          .section {
         	width: 100%;
         	padding: 0 0 100px;
@@ -253,14 +228,6 @@ border-right: 1px solid white;
 }
 .indexImageStyle{
     background: url('../images/spritesheet.png');
-}
-.indexH1, .header1{
-   margin:10px;
-   color:rgb(134, 156, 202);
-}
-.indexColumn h3, .indexColumn h4, .header2, .header3,.header4{
-   margin:10px;
-   color:rgb(134, 156, 202);
 }
 .indexColumn p{
  margin:0px;

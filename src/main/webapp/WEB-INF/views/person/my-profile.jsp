@@ -21,16 +21,8 @@
                     <td><form:input class="selectWidth" path="login" required="required"/><BR></td>
                 </tr>
                 <tr>
-                    <td><B><spring:message	code="firstName"/>:</B></td>
-                    <td><form:input class="selectWidth" path="personInfo.firstName"/><BR></td>
-                </tr>
-                <tr>
-                    <td><B><spring:message	code="lastName"/>:</B></td>
-                    <td><form:input class="selectWidth" path="personInfo.lastName"/><BR></td>
-                </tr>
-                <tr>
                     <td><B>E-mail:</B><span class="wrongMessage">*</span></td>
-                    <td><form:input class="selectWidth" path="personInfo.email" required="required"/><BR></td>
+                    <td><form:input class="selectWidth" path="email" required="required"/><BR></td>
                 </tr>
             </table>
             <br>

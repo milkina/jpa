@@ -3,7 +3,6 @@ package util;
 import model.AbstractQuestionEntry;
 import model.comment.Comment;
 import model.person.Person;
-import model.person.PersonInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +15,7 @@ import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
  * Created by Tatyana on 29.12.2015.
  */
 
-public class PersonUtility extends SpringUtility{
+public class PersonUtility extends SpringUtility {
 
     public static boolean isSysadmin(Person person) {
         return person != null && person.isSysadmin();
@@ -24,35 +23,14 @@ public class PersonUtility extends SpringUtility{
 
     public static String getCommentAuthor(Comment comment) {
         if (comment == null || comment.getUser() == null
-                || comment.getUser().getPersonInfo() == null) {
+                || comment.getUser().getLogin() == null) {
             return AllConstants.UNKNOWN_USER;
         }
         return getPersonName(comment.getUser());
     }
 
     public static String getPersonName(Person person) {
-        String personName = getPersonName(person.getPersonInfo());
-        if (personName.isEmpty()) {
-            return person.getLogin();
-        }
-        return personName;
-    }
-
-    private static String getPersonName(PersonInfo personInfo) {
-        String firstName = personInfo.getFirstName();
-        String lastName = personInfo.getLastName();
-        firstName = firstName == null ? "" : firstName;
-        lastName = lastName == null ? "" : lastName;
-        if (firstName.isEmpty() && lastName.isEmpty()) {
-            return "";
-        }
-        if (lastName.isEmpty()) {
-            return firstName;
-        }
-        if (firstName.isEmpty()) {
-            return lastName;
-        }
-        return firstName + " " + lastName;
+        return person.getLogin();
     }
 
     public static List<AbstractQuestionEntry> getAnsweredQuestions(
@@ -80,7 +58,5 @@ public class PersonUtility extends SpringUtility{
     public static void decodeRussianCharacters(Person person) {
         person.setLogin(GeneralUtility.decodeRussianCharacters(person.getLogin().trim()));
         person.setPassword(GeneralUtility.decodeRussianCharacters(person.getPassword().trim()));
-        person.getPersonInfo().setFirstName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getFirstName().trim()));
-        person.getPersonInfo().setLastName(GeneralUtility.decodeRussianCharacters(person.getPersonInfo().getLastName().trim()));
     }
 }

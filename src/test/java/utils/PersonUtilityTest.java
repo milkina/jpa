@@ -2,7 +2,6 @@ package utils;
 
 import model.comment.Comment;
 import model.person.Person;
-import model.person.PersonInfo;
 import util.AllConstants;
 import util.PersonUtility;
 import org.testng.Assert;
@@ -14,7 +13,7 @@ import org.testng.annotations.Test;
  * Created by Tatyana on 03.05.2016.
  */
 public class PersonUtilityTest {
-    private Comment comment1, comment2, comment3, comment4, comment5, comment6, comment7;
+    private Comment comment1, comment2, comment3, comment4, comment7;
 
     @BeforeTest
     public void before() {
@@ -27,23 +26,15 @@ public class PersonUtilityTest {
 
 
         comment3 = new Comment();
-        person.setPersonInfo(new PersonInfo());
         comment3.setUser(person);
 
-        comment4 = setData(null, "LastName", null);
-        comment5 = setData("FirstName", "LastName", null);
-        comment6 = setData("FirstName", null, null);
-        comment7 = setData(null, null, "login");
-
+        comment4 = setData(null);
+        comment7 = setData("login");
     }
 
-    private Comment setData(String firstName, String lastName, String login) {
+    private Comment setData(String login) {
         Person person = new Person();
 
-        PersonInfo personInfo = new PersonInfo();
-        person.setPersonInfo(personInfo);
-        person.getPersonInfo().setFirstName(firstName);
-        person.getPersonInfo().setLastName(lastName);
         person.setLogin(login);
 
         Comment comment = new Comment();
@@ -57,10 +48,8 @@ public class PersonUtilityTest {
         return new Object[][]
                 {{null, AllConstants.UNKNOWN_USER},
                         {new Comment(), AllConstants.UNKNOWN_USER},
-                        {comment1, AllConstants.UNKNOWN_USER},
-                        {comment4, "LastName"},
-                        {comment5, "FirstName LastName"},
-                        {comment6, "FirstName"},
+                        {comment1, ""},
+                        {comment4, AllConstants.UNKNOWN_USER},
                         {comment7, "login"},
                 };
     }

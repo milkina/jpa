@@ -15,8 +15,6 @@ public class TestValues {
 
     public static String[] LOGINS = createArray("login", PERSON_LENGTH);
     public static String[] PASSWORDS = createArray("password", PERSON_LENGTH);
-    public static String[] LAST_NAMES = createArray("LastName", PERSON_LENGTH);
-    public static String[] FIRST_NAMES = createArray("FirstName", PERSON_LENGTH);
     public static String[] EMAILS = createArray("Email1@gmail.com", PERSON_LENGTH);
 
     public static String[] TEST_NAMES = createArray("Test", TEST_LENGTH);

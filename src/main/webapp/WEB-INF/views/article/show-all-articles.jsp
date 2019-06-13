@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="/WEB-INF/tld/articlejsp-taglib.tld" prefix="article"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <t:wrapper>
   <jsp:attribute name="header">
     <META NAME="Description" CONTENT="Articles about Java news, preparation for examination.">
@@ -10,23 +10,21 @@
   <jsp:body>
     <main>
         <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
-        <BR>
-        <a href="${pageContext.request.contextPath}/add-article" id="addArticle">
-           <spring:message code="add.article"/>
-        </a><BR>
-        <article:articleList>
-           <div>
-              <article:article>
-                <div class="articleDescription">
-                <article:articleImg/>
-                 <h2 class="header2"><article:articleTitle/></h2>
-                 <article:articleDescription/><br>
-                  <a href="${pageContext.request.contextPath}<article:articleUrl/>"><spring:message code="read.more"/></a>
-                </div>
-                <br>
-              </article:article>
-           </div>
-        </article:articleList>
+        <input type="button" class="styled-button add-article-btn" value="<spring:message code="add.article"/>" id="addArticle"
+         onclick="window.location.href='${pageContext.request.contextPath}/add-article';">
+         <ul class="article-list">
+          <c:forEach var="article" items="${ARTICLES}">
+             <li>
+                 <div class="row article-head-date">
+                    <h2 class="article-head col-xs-12 col-sm-6">${article.title}</h2>
+                    <div class="col-xs-12 col-sm-6 article-date">${article.formattedDate}</div>
+                 </div>
+                 <div class="article-author">${article.author.login}</div>
+                 <div class="article-desc">${article.description}</div>
+                 <a href="${pageContext.request.contextPath}/${article.url}" class="article-url"><spring:message code="read.more"/></a>
+             </li>
+          </c:forEach>
+          </ul>
     </main>
  </jsp:body>
 </t:wrapper>

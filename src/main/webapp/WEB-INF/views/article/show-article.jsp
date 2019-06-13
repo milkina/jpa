@@ -4,10 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <cache:cacheTag/>
 <t:wrapper>
   <jsp:attribute name="header">
-    <META NAME="Description" CONTENT="${ARTICLE_ATTRIBUTE.description}">
+    <meat name="Description" content="${ARTICLE_ATTRIBUTE.description}">
     <title>${ARTICLE_ATTRIBUTE.title}</title>
     <meta property = "og:title" content = "${ARTICLE_ATTRIBUTE.title}" />
     <meta property = "og:type" content = "article" />
@@ -22,7 +23,18 @@
     </c:if>
  </jsp:attribute>
  <jsp:body>
-    <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
+    <div class="breadCrumbs">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp" %>
+        <li itemprop="itemListElement" itemscope
+          itemtype="http://schema.org/ListItem">
+           <a itemprop="item" href="<menu:articlesTag/>"><spring:message code="articles"/>
+           </a><meta itemprop="position" content="2"/>
+        </li>
+        <li itemprop="itemListElement" itemscope
+          itemtype="http://schema.org/ListItem">${ARTICLE_ATTRIBUTE.title}<meta itemprop="position" content="3"/></li>
+       </ol>
+     </div>
     <main>
       <article>
        <c:if test="${ARTICLE_ATTRIBUTE.image != null &&  not empty ARTICLE_ATTRIBUTE.image}">

@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -92,6 +93,13 @@ public class Article {
 
     public Date getCreatedDate() {
         return createdDate;
+    }
+    public String getFormattedDate() {
+        if (createdDate == null) {
+            return "";
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        return simpleDateFormat.format(createdDate);
     }
 
     public void setCreatedDate(Date createdDate) {

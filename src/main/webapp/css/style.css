@@ -786,7 +786,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   height: 156px;
   display:block;
 }
-.category-href,.category-sub-href,.read-questions-href{
+.category-href,.category-sub-href,.read-questions-href,.article-url{
     border-bottom: 2px solid rgba(76, 130, 190, 0.28);
     color:#4c82be;
     font: 700 20px proxima;
@@ -836,11 +836,6 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   text-align:justify;
   font:400 18px proxima;
   color:#2f3748;
-}
-.articleDescription{
-    display:inline-block;
-    width:100%;
-    text-align:justify;
 }
 #addComment{
   display:block;
@@ -972,4 +967,36 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   margin-left:30px;
   width:170px;
   display:block;
+}
+.article-head{
+  font: 700 28px Montserrat;
+  color:#2f3748;
+}
+.article-head-date{
+  margin:80px 0 28px 1px;
+}
+.article-author{
+ font: 400 20px proxima;
+ color:#6b6b6b;
+ margin-bottom:26px;
+}
+.add-article-btn{
+ display:block;
+ margin-top:40px;
+ width:170px;
+}
+.article-list{
+ margin-left:35px;
+ list-style: none;
+ margin-bottom:114px;
+}
+.article-desc{
+ font: 400 17px proxima;
+ margin-bottom:26px;
+ text-align:justify;
+}
+.article-date{
+ color:#6b6b6b;
+ font: 400 17px proxima;
+ text-align: right;
 }

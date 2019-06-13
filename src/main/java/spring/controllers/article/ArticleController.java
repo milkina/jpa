@@ -12,8 +12,10 @@ import util.GeneralUtility;
 import util.article.ArticleUtility;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Locale;
 
+import static util.AllConstants.ARTICLES;
 import static util.AllConstants.EDIT_ARTICLE;
 import static util.AllConstants.SHOW_ARTICLE_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
@@ -52,8 +54,11 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/show-all-articles")
-    public String showAllArticles() {
-        return "article/show-all-articles";
+    public ModelAndView showAllArticles() {
+        List<Article> articleList = articleService.getArticles();
+        ModelAndView modelAndView = new ModelAndView("article/show-all-articles");
+        modelAndView.addObject(ARTICLES, articleList);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/edit-article")

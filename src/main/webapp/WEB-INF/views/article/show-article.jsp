@@ -41,7 +41,9 @@
           <img class="categoryImage" src="${ARTICLE_ATTRIBUTE.image}"
              alt="${ARTICLE_ATTRIBUTE.title}" title="${ARTICLE_ATTRIBUTE.title}" width="280" height="200">
        </c:if>
+       <div class="article-desc">
        ${ARTICLE_ATTRIBUTE.text}
+       </div>
       </article>
     </main>
     <%@ include file="/WEB-INF/socialButtons.jsp" %>

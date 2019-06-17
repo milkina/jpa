@@ -16,8 +16,8 @@
           <c:forEach var="article" items="${ARTICLES}">
              <li>
                  <div class="row article-head-date">
-                    <h2 class="article-head col-xs-12 col-sm-6">${article.title}</h2>
-                    <div class="col-xs-12 col-sm-6 article-date">${article.formattedDate}</div>
+                    <h2 class="article-head col-xs-12 col-sm-9">${article.title}</h2>
+                    <div class="col-xs-12 col-sm-3 article-date">${article.formattedDate}</div>
                  </div>
                  <div class="article-author">${article.author.login}</div>
                  <div class="article-desc">${article.description}</div>

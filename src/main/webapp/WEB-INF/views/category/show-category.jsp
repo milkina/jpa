@@ -53,9 +53,22 @@
                     <input type="button" class="styled-button pass-test-btn" value="<spring:message code="start.test"/>" id="startTest"
                           onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
               </article>
-               <input type="button" class="styled-button pass-test-btn" value="<spring:message code="add.question.button"/>" id="AddQuestion"
-                           onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
-            </main>
+              <input type="button" class="styled-button pass-test-btn" value="<spring:message code="add.question.button"/>" id="AddQuestion"
+                                         onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
+
+              <c:if test="${not empty CATEGORY_ATTRIBUTE.parentCategory.subCategories}">
+               <div>
+                  <spring:message code="read.also"/>:
+                  <ul>
+                  <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.parentCategory.subCategories}">
+                     <li><a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${subCategory.pathName}">${subCategory.name}
+                         </a>
+                     </li>
+                  </c:forEach>
+                  </ul>
+               </div>
+              </c:if>
+             </main>
               <%@ include file="/WEB-INF/socialButtons.jsp" %>
             <jsp:include page="/WEB-INF/comment/comments.jsp">
                 <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}" />

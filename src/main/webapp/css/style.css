@@ -781,10 +781,17 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 .show-course-header:before{
   margin: 0 auto 27px;
   content:'';
-  background: url('../images/sprites.png') -399px -205px;
+  background: url('../images/courses/javaacup.png') no-repeat;
   width: 87px;
   height: 156px;
   display:block;
+}
+#categories{
+   counter-reset: lesson;
+}
+#categories li{
+  counter-increment: lesson;
+  list-style:none;
 }
 .category-href,.category-sub-href,.read-questions-href,.article-url{
     border-bottom: 2px solid rgba(76, 130, 190, 0.28);
@@ -999,4 +1006,8 @@ input[type="checkbox"].test-checkbox:checked+label:after{
  color:#6b6b6b;
  font: 400 17px proxima;
  text-align: right;
+ margin-top:20px;
+}
+.optgroup>ul{
+ list-style:none;
 }

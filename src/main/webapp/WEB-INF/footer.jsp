@@ -28,7 +28,7 @@
        </footer>
     </div>
 </div>
- <script type="text/javascript">
+ <script>
  $(document).ready(function() {
  /*
  var defaults = {

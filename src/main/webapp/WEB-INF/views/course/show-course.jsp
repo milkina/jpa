@@ -1,11 +1,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <t:wrapper>
  <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
  <jsp:attribute name="header">
      <META NAME="Description" CONTENT="${TESTS[param.TEST_PATH].article.description}">
      <title>${TESTS[param.TEST_PATH].article.title}</title>
+
+     <style>
+      <c:if test="${TESTS[param.TEST_PATH].article.image!=null && not empty TESTS[param.TEST_PATH].article.image}">
+         .show-course-header:before{
+           background: url('${pageContext.request.contextPath}${TESTS[param.TEST_PATH].article.image}') no-repeat;
+           width: 164px;
+         }
+      </c:if>
+      .category-href:before{
+            content:"<spring:message code="lesson"/> " counter(lesson)" - ";
+      }
+     </style>
  </jsp:attribute>
  <jsp:body>
     <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

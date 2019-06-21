@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca" %>
@@ -16,6 +16,14 @@
     <style>
           .questionText:before{
               content:"<exam:number/>";
+          }
+          .read-answer.collapsed:after{
+            content:'<spring:message code="read.answer"/>';
+            font:700 19px proxima;
+          }
+          .read-answer:after{
+             content:'<spring:message code="hide.answer"/>';
+             font:700 19px proxima;
           }
     </style>
 </jsp:attribute>
@@ -45,10 +53,11 @@
               </div>
               <div class="questionEntryBody">
                        <div class="questionText">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.question.text}</div>
-                        <a href="#" id="a1" class="read-answer">
+                        <a class="read-answer collapsed" role="button" data-toggle="collapse" id="a1"
+                        href="#answer1" aria-expanded="false" aria-controls="answer1">
                           <spring:message code="read.answer"/>
                         </a>
-                        <div class="answer" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
+                        <div class="answer collapse" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
                </div>
          </div><BR>
          <div style="display:inline">
@@ -77,19 +86,5 @@
            <jsp:param name="commentType" value="QUESTION" />
      </jsp:include>
      </main>
-     <script>
-                   $('#a1').click(function(){
-                              var answerElement = document.getElementById("answer1");
-                               if (answerElement.style.display == "block"){
-                                  answerElement.style.display = "none";
-                                  this.innerHTML = '<spring:message code="read.answer"/>';
-                                  $(this).removeClass("open");
-                               }else{
-                                   answerElement.style.display = "block";
-                                   this.innerHTML = '<spring:message code="hide.answer"/>';
-                                   $(this).addClass("open");
-                               }
-                 });
-     </script>
  </jsp:body>
 </t:wrapper>

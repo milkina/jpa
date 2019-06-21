@@ -70,7 +70,18 @@
 </div>
 <script>
 $(document).ready(function(){
-     $('.menuItemWithSub').hover(function(){
+     $('.menuItemWithSub').mouseenter(function(){
+        if($(window).width()<768){
+           return;
+        }
+        if(!$(this).hasClass('open')){
+            $(this).addClass('open');
+            $(this).find(">a").attr( "aria-expanded", "true" );
+        }
+     });
+});
+$(document).ready(function(){
+     $('.menuItemWithSub').mouseleave(function(){
         if($(window).width()<768){
            return;
         }
@@ -78,9 +89,6 @@ $(document).ready(function(){
             $(this).removeClass('open');
             $(this).find(">a").attr( "aria-expanded", "false" );
 
-        }else{
-            $(this).addClass('open');
-            $(this).find(">a").attr( "aria-expanded", "true" );
         }
      });
 });

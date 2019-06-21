@@ -56,7 +56,6 @@ nav>ul>li:last-child{
 	width:170%;
 	left:50%;
 	top:46px;
-	max-height: 0;
     overflow: hidden;
     border-radius:12px;
     z-index:25;
@@ -111,9 +110,10 @@ nav>ul>li:last-child{
 .menuItemWithSub:hover a{
   color:#6b6b6b;
 }
-.menuItemWithSub.open>a {
+.menuItemWithSub.open>a,.menuItemWithSub.open>a:focus {
   background:none;
   border-color:#6b6b6b;
+  background-color: white;
 }
 @media (min-width: 778px) {
  .menuItemWithSub.open>a{
@@ -259,7 +259,7 @@ nav>ul>li:last-child{
   float:none;
  }
 }
-.lesson-icon1,.lesson-icon2,.lesson-icon3{
+.lesson-icon1,.lesson-icon2,.lesson-icon0{
   display:block;
   background: url('../images/sprites.png');
   padding: 1px;
@@ -272,6 +272,6 @@ nav>ul>li:last-child{
 .lesson-icon2 {
     background-position: -492px -555px;
 }
-.lesson-icon3 {
+.lesson-icon0 {
     background-position: -492px -3px;
 }

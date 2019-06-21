@@ -13,6 +13,11 @@
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
         <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
         <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">
+        <style>
+              .lessons-list>li>h3:before{
+                content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';
+              }
+        </style>
   </head>
     <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
     <cache:cacheTag/>
@@ -58,12 +63,9 @@
                       <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
                         <li>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}"
-                            class="lesson-icon${count}"></a>
-                            <c:set var="count" value="${count+1}" />
-                            <c:if test="${count>=4}">
-                              <c:set var="count" value="${1}" />
-                            </c:if>
+                            class="lesson-icon${count%3}"></a>
                            <h3>${category.value.name}</h3>
+                           <c:set var="count" value="${count+1}" />
                            <div>${category.value.article.description}</div>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}">Full lesson</a>
                         </li>

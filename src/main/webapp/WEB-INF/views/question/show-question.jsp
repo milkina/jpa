@@ -14,7 +14,6 @@
     <link rel="canonical" href="<ca:canonicalTag/>">
 </jsp:attribute>
 <jsp:body>
-     <div class="mainArea">
           <div class="breadCrumbs">
             <ol itemscope itemtype="http://schema.org/BreadcrumbList">
                 <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
@@ -47,6 +46,5 @@
                     <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}" />
                     <jsp:param name="commentType" value="QUESTION" />
               </jsp:include>
-     </div>
  </jsp:body>
 </t:wrapper>

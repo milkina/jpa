@@ -44,14 +44,18 @@
                         </c:forEach>
                        </ol>
                     </c:if>
+                    <c:if test="${CATEGORY_ATTRIBUTE.questionsCount!=0 or not empty CATEGORY_ATTRIBUTE.subCategories}">
                     <div class="read-questions-div">
                        <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
                         id="startQuiz" class="read-questions-href">
                           <spring:message code="questions"/>
                        </a>
                     </div>
-                    <input type="button" class="styled-button pass-test-btn" value="<spring:message code="start.test"/>" id="startTest"
+                    </c:if>
+                     <c:if test="${CATEGORY_ATTRIBUTE.testsCount!=0 or not empty CATEGORY_ATTRIBUTE.subCategories}">
+                       <input type="button" class="styled-button pass-test-btn" value="<spring:message code="start.test"/>" id="startTest"
                           onclick="window.location.href='${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}';">
+                     </c:if>
               </article>
               <input type="button" class="styled-button pass-test-btn" value="<spring:message code="add.question.button"/>" id="AddQuestion"
                                          onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">

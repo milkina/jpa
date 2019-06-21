@@ -9,14 +9,6 @@
         	clear: both;
         	display: table;
         }
-
-        .mainwrap,.mainwrap2 {
-        	width: 100%;
-        	float: left;
-        	overflow: hidden;
-        	text-align:justify;
-        }
-
        .mainwrap .mainArea {
         	padding: 0 240px 0 240px;
         	min-height: 350px;

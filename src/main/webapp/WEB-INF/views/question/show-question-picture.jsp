@@ -14,7 +14,6 @@
     <link rel="canonical" href="<ca:canonicalTag/>">
 </jsp:attribute>
 <jsp:body>
-     <div class="mainArea">
      <div class="breadCrumbs">
        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
@@ -34,9 +33,8 @@
                <li style="width:451px"><a href="${pageContext.request.contextPath}" style="width:474px;text-align:center">www.examclouds.com</a></li>
             </ul>
           </div>
-      </div>
       <div>
-         ${TESTS[TEST_PATH].tags}<br>
+         ${TESTS[TEST_PATH].tags}
          <spring:message code="read.answer.on"/> <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}"
                class="showAnswer" id="readAnswer">${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}</a>
       </div>

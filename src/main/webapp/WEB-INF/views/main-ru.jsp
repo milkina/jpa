@@ -12,6 +12,11 @@
 	<link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
     <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
     <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">
+    <style>
+      .lessons-list>li>h3:before{
+        content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';
+      }
+    </style>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
 <cache:cacheTag/>
@@ -57,12 +62,9 @@
                   <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
                     <li>
                        <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}"
-                        class="lesson-icon${count}"></a>
-                        <c:set var="count" value="${count+1}" />
-                        <c:if test="${count>=4}">
-                          <c:set var="count" value="${1}" />
-                        </c:if>
+                        class="lesson-icon${count%3}"></a>
                        <h3>${category.value.name}</h3>
+                       <c:set var="count" value="${count+1}" />
                        <div>${category.value.article.description}</div>
                        <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}">Полный урок</a>
                     </li>
@@ -79,7 +81,7 @@
                 <li class="learn-java-item index-image-globe col-xs-12 col-md-4"><h4>Java‑программисты нужны в каждой стране мира</h4></li>
             </ul>
            </main>
-           <%@ include file="/WEB-INF/socialButtons.jsp" %>
+           <%@ include file="/WEB-INF/socialButtons.jsp"%>
            <jsp:include page="/WEB-INF/comment/comments.jsp">
                 <jsp:param name="referenceId" value="398" />
                 <jsp:param name="commentType" value="ARTICLE" />

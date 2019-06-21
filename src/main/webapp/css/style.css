@@ -1,6 +1,7 @@
 @import url(reset.css);
 @import url(prism.css);
 @import url(menu.css);
+@import url(my_css.css);
 @import url(ui.totop.css) screen,projection;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&subset=cyrillic,cyrillic-ext,latin-ext');
@@ -41,12 +42,22 @@ a:hover{
  color:#23527c;
  text-decoration:none;
 }
-.indexH1, .header1,indexColumn h3, .indexColumn h4, .header3,.header4,.coloredHeader,h1{
+code{
+ color: #4c82be;
+ background-color: rgb(244, 249, 253);
+}
+.indexH1, .header1,indexColumn h3, .indexColumn ,.coloredHeader,h1{
    margin:10px;
    color: #2f3748;
 }
 h2, .header2{
-   font: 500 25px Montserrat;
+   font: 400 28px Montserrat;
+}
+h3,.header3{
+   font: 400 24px Montserrat;
+}
+h4, .header4{
+   font: 400 20px Montserrat;
 }
 .navbar-default {
      background-color: #a1d6f7;
@@ -225,8 +236,10 @@ h2, .header2{
   font-size: 0;
   overflow-x: scroll;
   padding: 5px;
+  counter-reset: lesson;
 }
 .lessons-list>li{
+  counter-increment: lesson;
   display: table-cell;
   padding: 0 70px 0 0;
 }
@@ -234,6 +247,8 @@ h2, .header2{
     font:700 23px Montserrat;
     color:#6b6b6b;
     margin:22px 0 20px 40px;
+    height:56px;
+    overflow:hidden;
 }
 .lessons-list>li>div{
    font:400 18px/28px proxima;
@@ -340,7 +355,7 @@ h2, .header2{
   font:700 19px proxima;
   padding-right:10px;
 }
-.test_header>a.collapsed:after, .read-answer:before{
+.test_header>a.collapsed:after, .read-answer.collapsed:before{
   content:"";
   position:absolute;
   border-bottom: 2px solid #4c82be;
@@ -351,7 +366,7 @@ h2, .header2{
   margin:5px;
   left:100%;
 }
-.test_header>a:after, .read-answer.open:before{
+.test_header>a:after, .read-answer:before{
   content:"";
   position:absolute;
   border-bottom: 2px solid #4c82be;
@@ -362,7 +377,7 @@ h2, .header2{
   margin:5px;
   left:100%;
 }
-.read-answer:before, .read-answer.open:before{
+.read-answer.collapsed:before, .read-answer:before{
     left:0;
 }
 .select-category-li .label{
@@ -591,9 +606,13 @@ input[type="checkbox"].test-checkbox:checked+label:after{
     font:400 17px proxima;
     color:#2f3748;
 }
-.finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer{
+.finish-exam-button a,.next-exam-button a,.previous-exam-button a{
    color:#4c82be;
    font:700 19px proxima;
+}
+.read-answer{
+  color:#4c82be;
+  font-size:0;
 }
 .finish-exam-button a,.next-exam-button a,.previous-exam-button a,.read-answer{
    position:relative;
@@ -808,6 +827,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   color:#2f3748;
   font: 400 17px proxima;
   height:56px;
+  text-align: justify;
 }
 .course-desc{
   font: 400 17px proxima;

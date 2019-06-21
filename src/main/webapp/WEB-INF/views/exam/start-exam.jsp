@@ -5,19 +5,23 @@
          <form ACTION="${pageContext.request.contextPath}/start-test?TEST_PATH=${test.pathName}"  method="POST">
    <select name="CATEGORY_PATH" id="CATEGORY_PATH_test_${test.pathName}" multiple="multiple"
     class="2col active" required>
+      <c:set var="count" value="${1}" />
       <c:forEach var="category" items="${test.categories}">
           <c:choose>
              <c:when test="${not empty category.value.subCategories}">
-                <optgroup label="${category.value.name}">
+                <optgroup label="<spring:message code="lesson"/> ${count} - ${category.value.name}">
                 <c:forEach var="subCategory" items="${category.value.subCategories}">
                       <option value="${subCategory.pathName}">${subCategory.name}</option>
                 </c:forEach>
                 </optgroup>
              </c:when>
              <c:otherwise>
-                <option value="${category.value.pathName}">${category.value.name}</option>
+                <option value="${category.value.pathName}">
+                  <spring:message code="lesson"/> ${count} - ${category.value.name}
+                </option>
              </c:otherwise>
              </c:choose>
+             <c:set var="count" value="${count+1}"/>
       </c:forEach>
    </select>
    <div style="padding:10px 0;">

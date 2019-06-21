@@ -5,9 +5,8 @@
 <t:wrapper>
     <jsp:attribute name="language"> lang="<spring:message code="lang"/>"</jsp:attribute>
     <jsp:attribute name="header">
-        <META NAME="Description"
-                       CONTENT="<spring:message code="tests.description"/>">
-        <title><spring:message code="tests.questions"/> | ExamClouds</title>
+        <meta name="Description" content="<spring:message code="tests.description"/>">
+        <title><spring:message code="tests.questions"/> | Java | ExamClouds</title>
         <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/incrementing.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>

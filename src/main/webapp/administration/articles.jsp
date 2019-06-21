@@ -12,17 +12,17 @@
                 <li>
                          <div style="width:38%;display:inline-block">${article.id}</div>
                          <div style="width:38%;display:inline-block">
-                           <a href="${pageContext.request.contextPath}${article.url}">
+                           <a href="${pageContext.request.contextPath}/${article.url}">
                               ${article.url}
                            </a>
                          </div>
                          <div style="width:10%;display:inline-block">
                            <a href="${pageContext.request.contextPath}/delete-article?ARTICLE_ID=${article.id}"
-                             id="deleteArticle${article.url}"><spring:message code="delete"/></a>
+                             id="deleteArticle/${article.url}"><spring:message code="delete"/></a>
                          </div>
                          <div style="width:10%;display:inline-block">
                            <a href="${pageContext.request.contextPath}/edit-article?ARTICLE_ID=${article.id}"
-                             id="editArticle${article.url}"><spring:message code="edit"/></a>
+                             id="editArticle/${article.url}"><spring:message code="edit"/></a>
                          </div>
                 </li>
             </c:forEach>

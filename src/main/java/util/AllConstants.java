@@ -35,6 +35,7 @@ public interface AllConstants {
     String ADD_QUESTION_PAGE = "/question/add-question";
     String ADMINISTRATION_WELCOME_PAGE = "/administration/welcome.jsp";
     String SHOW_QUESTION_PAGE = "question/show-question";
+    String SHOW_TEST_PAGE = "question/show-test-question";
     String SHOW_QUESTION_PICTURE_PAGE = "question/show-question-picture";
     String SHOW_QUIZ_QUESTION_PAGE = "/exam/show-quiz-question";
     String SHOW_TEST_QUESTION_PAGE = "/exam/show-test-question";

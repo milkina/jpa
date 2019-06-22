@@ -31,7 +31,7 @@
      <div class="breadCrumbs">
        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-           <li><a href="<menu:testsTag/>"><spring:message code="questions"/></a><meta itemprop="position" content="2"/></li>
+           <li><a href="<menu:testsTag/>"><spring:message code="tests.questions"/></a><meta itemprop="position" content="2"/></li>
            <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
        </ol>
      </div>
@@ -59,7 +59,7 @@
                         </a>
                         <div class="answer collapse" id="answer1">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.answer.text}</div>
                </div>
-         </div><BR>
+         </div>
          <div style="display:inline">
               <form ACTION="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
                         method="POST">

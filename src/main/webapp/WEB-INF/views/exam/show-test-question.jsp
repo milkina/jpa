@@ -22,7 +22,7 @@
      <div class="breadCrumbs">
        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-           <li><a href="<menu:testsTag/>"><spring:message code="tests"/></a><meta itemprop="position" content="2"/></li>
+           <li><a href="<menu:testsTag/>"><spring:message code="tests.questions"/></a><meta itemprop="position" content="2"/></li>
            <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
        </ol>
      </div>

@@ -30,6 +30,7 @@ import static util.AllConstants.EDIT_QUESTION_ENTRY_PAGE;
 import static util.AllConstants.MOVE_QUESTIONS_PAGE;
 import static util.AllConstants.SHOW_QUESTION_PAGE;
 import static util.AllConstants.SHOW_QUESTION_PICTURE_PAGE;
+import static util.AllConstants.SHOW_TEST_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
 import static util.AllConstantsAttribute.LOCALE;
@@ -238,7 +239,6 @@ public class QuestionController {
         AbstractQuestionEntry questionEntry =
                 questionService.getQuestionEntry(questionEntryId);
         request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
-        String mode = request.getParameter(MODE);
         String testPathName = request.getParameter(TEST_PATH);
         if (GeneralUtility.isEmpty(testPathName)) {
             Test test = questionService.getFirstQuestionEntryTest(
@@ -246,13 +246,23 @@ public class QuestionController {
             testPathName = test.getPathName();
         }
         request.setAttribute(TEST_PATH, testPathName);
-        return mode == null ? SHOW_QUESTION_PAGE
-                : SHOW_QUESTION_PICTURE_PAGE;
+        return questionEntry.getType().equals("QUESTION") ? SHOW_QUESTION_PAGE : SHOW_TEST_PAGE;
     }
 
     @RequestMapping(value = "/show-question-picture")
-    public String showQuestionPicture(@RequestParam("QUESTION_ENTRY_ID_PARAM") String questionId, Model model) {
-        model.addAttribute(QUESTION_ENTRY_ATTRIBUTE, questionId);
+    public String showQuestionPicture(HttpServletRequest request) {
+        Integer questionEntryId = getIntegerValue(request,
+                QUESTION_ENTRY_ID_PARAM);
+        AbstractQuestionEntry questionEntry =
+                questionService.getQuestionEntry(questionEntryId);
+        request.setAttribute(QUESTION_ENTRY_ATTRIBUTE, questionEntry);
+        String testPathName = request.getParameter(TEST_PATH);
+        if (GeneralUtility.isEmpty(testPathName)) {
+            Test test = questionService.getFirstQuestionEntryTest(
+                    questionEntry.getId());
+            testPathName = test.getPathName();
+        }
+        request.setAttribute(TEST_PATH, testPathName);
         return "question/show-question-picture";
     }
 }

@@ -20,7 +20,7 @@
                 <spring:message	code="edit"/></a>
              <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&TEST_PATH=${param.TEST_PATH}"
              class="showAnswer goToQuestion"><spring:message	code="go.to"/></a>
-             <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=<qe:id/>&MODE=PICTURE&TEST_PATH=${param.TEST_PATH}"
+             <a href="${pageContext.request.contextPath}/show-question-picture?QUESTION_ENTRY_ID_PARAM=<qe:id/>&TEST_PATH=${param.TEST_PATH}"
              class="showAnswer showPicture"><spring:message	code="show.picture"/></a>
              <a href="#" class="showAnswer deleteQuestion"
              onclick="deleteQuestion('${pageContext.request.contextPath}',<qe:id/>,'<category:pathName/>','${param.TEST_PATH}');">

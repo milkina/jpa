@@ -495,7 +495,6 @@ input.number-questions-input::-webkit-inner-spin-button {
 .exam-header1{
   font:500 28px/26px Montserrat;
   color:#2f3748;
-  display:inline-block;
   padding:10px 5px;
 }
 .exam-header2{
@@ -1030,4 +1029,17 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 }
 .optgroup>ul{
  list-style:none;
+}
+#seeOtherQuestions{
+ margin-top:30px;
+ display:block;
+}
+.examclouds-label{
+  color:white;
+  background-color:#4c82be;
+  max-width:474px;
+  text-align:center;
+  display:block;
+  padding:10px;
+  border-radius:15px;
 }

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca"%>
 <%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
@@ -13,16 +13,6 @@
     <script async src="${pageContext.request.contextPath}/js/show_questions.js?v=4"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="<ca:canonicalTag/>">
-    <style>
-      .read-answer.collapsed:after{
-         content:'<spring:message code="read.answer"/>';
-         font:700 19px proxima;
-      }
-      .read-answer:after{
-         content:'<spring:message code="hide.answer"/>';
-         font:700 19px proxima;
-      }
-    </style>
 </jsp:attribute>
 <jsp:body>
           <div class="breadCrumbs">
@@ -42,18 +32,22 @@
                    ${QUESTION_ENTRY_ATTRIBUTE.category.name}
                   </h2>
           </div>
-          <div class="questionEntryBody">
+         <div class="questionEntryDiv">
               <div class="questionText">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
-              <a class="read-answer collapsed" role="button" data-toggle="collapse" id="a1"
-               href="#answer1" aria-expanded="false" aria-controls="answer1">
-                     <spring:message code="read.answer"/>
-               </a>
-              <div class="answer collapse" id="answer1">${QUESTION_ENTRY_ATTRIBUTE.answer.text}</div>
-          </div>
-          <a href="${pageContext.request.contextPath}/see-questions?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${TEST_PATH}"
+                       <c:set var="count" value="${0}"/>
+                       <ul id="answersDiv">
+                          <c:forEach var="answer" items="${QUESTION_ENTRY_ATTRIBUTE.answers}">
+                              <li id="answerblock${count}">
+                                 <input type="checkbox" disabled class="test-checkbox" name = "checkbox${count}" id = "checkbox${count}" <c:if test="${answer.correct}">checked</c:if>>
+                                 <label class="answerDiv" for="checkbox${count}">${answer.text}</label>
+                                 <c:set var="count" value="${count+1}" />
+                              </li>
+                           </c:forEach>
+                       </ul>
+         </div>
+          <a href="${pageContext.request.contextPath}/start-test?CATEGORY_PATH=${QUESTION_ENTRY_ATTRIBUTE.category.pathName}&TEST_PATH=${TEST_PATH}"
           id="seeOtherQuestions">
-             <spring:message code="see.other.questions"/>
-          </a>
+          <spring:message code="see.other.questions"/></a>
               <jsp:include page="/WEB-INF/comment/comments.jsp">
                     <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}" />
                     <jsp:param name="commentType" value="QUESTION" />

@@ -1,9 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam"%>
 <%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
@@ -17,7 +18,7 @@
      <div class="breadCrumbs">
        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-           <li><a href="<menu:testsTag/>"><spring:message code="tests"/></a><meta itemprop="position" content="2"/></li>
+           <li><a href="<menu:testsTag/>"><spring:message code="tests.questions"/></a><meta itemprop="position" content="2"/></li>
            <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
        </ol>
      </div>
@@ -26,17 +27,29 @@
          <div class="questionEntryDiv" style="padding-left:8px">
             <div class="questionEntryBody">
                  <div class="questionText" style="width:470px">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
+                 <c:if test="${QUESTION_ENTRY_ATTRIBUTE.type=='TEST'}">
+                   <c:set var="count" value="${0}"/>
+                   <ul id="answersDiv">
+                     <c:forEach var="answer" items="${QUESTION_ENTRY_ATTRIBUTE.answers}">
+                         <li id="answerblock${count}">
+                            <input type="checkbox" disabled class="test-checkbox" name = "checkbox${count}" id = "checkbox${count}">
+                            <label class="answerDiv" for="checkbox${count}">${answer.text}</label>
+                            <c:set var="count" value="${count+1}" />
+                         </li>
+                     </c:forEach>
+                   </ul>
+                 </c:if>
             </div>
           </div>
-          <div class="indentmenu" style="width:472px">
-            <ul>
-               <li style="width:451px"><a href="${pageContext.request.contextPath}" style="width:474px;text-align:center">www.examclouds.com</a></li>
-            </ul>
+          <div>
+            <a href="${pageContext.request.contextPath}" class="examclouds-label">www.examclouds.com</a>
           </div>
       <div>
          ${TESTS[TEST_PATH].tags}
-         <spring:message code="read.answer.on"/> <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}"
-               class="showAnswer" id="readAnswer">${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}</a>
+         <spring:message code="read.answer.on"/>
+         <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}"
+          id="readAnswer" style="overflow-wrap: break-word;">
+            ${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}</a>
       </div>
     </jsp:body>
    </t:wrapper>

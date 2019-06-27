@@ -44,3 +44,6 @@ table {
 pre{
   font-size:18px;
 }
+ol,ul{
+ margin-left:20px;
+}

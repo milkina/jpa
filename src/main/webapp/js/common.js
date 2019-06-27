@@ -23,12 +23,6 @@ function saveQuestion(contextPath) {
     form.submit();
 }
 
-function saveCategory() {
-    var form = document.getElementById("addCategoryForm");
-    form.method = "POST";
-    form.submit();
-}
-
 function editQuestion(contextPath) {
     if (isQAEmpty()) {
         return;

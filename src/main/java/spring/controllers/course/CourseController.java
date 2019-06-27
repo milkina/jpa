@@ -155,11 +155,6 @@ public class CourseController {
         return "redirect:/show-administration";
     }
 
-    @RequestMapping(value = "/show-all-courses")
-    public String showAllCourses() {
-        return "course/show-all-courses";
-    }
-
     @RequestMapping(value = "/change-course", produces = "application/json;charset=UTF-8")
     public @ResponseBody
     String

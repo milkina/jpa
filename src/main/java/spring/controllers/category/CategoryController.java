@@ -191,12 +191,13 @@ public class CategoryController {
                              HttpServletRequest request) {
         Category category = CategoryUtility.getCategoryByPath(request);
         Category previousCategory = categoryService.getCategory(previousCategoryPath);
-
-        if (category.getOrderId() > previousCategory.getOrderId()) {
-            categoryService.moveCategoryUp(category, previousCategoryPath, testPath);
-        } else {
-            categoryService.moveCategoryDown(category, previousCategoryPath, testPath);
+        synchronized (this) {
+            if (category.getOrderId() > previousCategory.getOrderId()) {
+                categoryService.moveCategoryUp(category, previousCategoryPath, testPath);
+            } else {
+                categoryService.moveCategoryDown(category, previousCategoryPath, testPath);
+            }
+            TestUtility.loadTestsToServletContext(request.getServletContext());
         }
-        TestUtility.loadTestsToServletContext(request.getServletContext());
     }
 }

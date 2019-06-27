@@ -43,8 +43,8 @@
                 <div class="index-items-text">После каждого урока можно пройти тест на проверку полученных знаний и узнать ответ на оставшийся вопрос.</div>
               </li>
               <li class="index-item index-item2 col-xs-12 col-sm-6 col-md-3">
-                <h3 class="index-image-item2">Подготовка к сертификации</h3>
-                <div class="index-items-text">Java SE 8 Programmer I, Java SE 8 Programmer II</div>
+                <h3 class="index-image-item2">Oracle Java Certification</h3>
+                <div class="index-items-text">Подготовка к сертификациям Java SE 8 Programmer I, Java SE 8 Programmer II</div>
               </li>
               <li class="clearfix visible-sm-block"></li>
               <li class="index-item index-item3 col-xs-12 col-sm-6 col-md-3">

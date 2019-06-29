@@ -13,19 +13,6 @@
        </comment:comment>
    </comment:commentList>
    </div>
-    <script>
-                   function addUserComment(contextPath) {
-                       var isLoggedIn = document.getElementById("isLogin");
-                       if (!isLoggedIn) {
-                          $('#commentModal').modal('show');
-                           return;
-                       }
-                       var form = document.getElementById("addCommentForm");
-                       form.action = contextPath + "/save-comment";
-                       form.method = "POST";
-                       form.submit();
-                   }
-                </script>
    <form action="<%=request.getContextPath()%>/save-comment" name="addCommentForm" id="addCommentForm">
       <input type="hidden" name="COMMENT_TYPE" value="${param.commentType}">
       <input type="hidden" name="REFERENCE_ID" value="${param.referenceId}">

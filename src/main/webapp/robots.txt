@@ -5,6 +5,7 @@ Disallow: /person/
 Disallow: /change-course
 Disallow: /save-comment
 Disallow: /person/login.jsp
+Disallow: /show-login-page
 Disallow: /show-exam-question
 Disallow: /*?lang=
 Host: www.examclouds.com

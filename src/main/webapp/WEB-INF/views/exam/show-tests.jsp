@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
     <jsp:attribute name="language"> lang="<spring:message code="lang"/>"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="Description" content="<spring:message code="tests.description"/>">
         <title><spring:message code="tests.questions.title"/> | ExamClouds</title>
-        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/incrementing.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>

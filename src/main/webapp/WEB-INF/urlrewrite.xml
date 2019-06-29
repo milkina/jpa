@@ -8,6 +8,10 @@
         <from>^/(.*)$</from>
         <to type="permanent-redirect">http://www.examclouds.com/$1</to>
     </rule>
+    <rule>
+        <from>http://www.examclouds.com/</from>
+        <to type="redirect">http://www.examclouds.com</to>
+    </rule>
 <!--    <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
         <to type="redirect">/publications/groups</to>

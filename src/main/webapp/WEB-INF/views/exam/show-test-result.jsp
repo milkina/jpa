@@ -10,7 +10,7 @@
         <meta name="robots" content="noindex">
         <title><spring:message code="test.result"/> ${person.login}</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prism_min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/circle.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/circle_min.css">
         <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
    </jsp:attribute>
    <jsp:body>

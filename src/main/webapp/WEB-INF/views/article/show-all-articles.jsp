@@ -1,15 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:wrapper>
   <jsp:attribute name="header">
-    <META NAME="Description" CONTENT="Articles about Java news, preparation for examination.">
+    <meat name="Description" content="Articles about Java news, preparation for examination.">
     <title><spring:message code="articles"/> | ExamClouds</title>
   </jsp:attribute>
   <jsp:body>
     <main>
-        <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp" %>
+        <%@ include file="/WEB-INF/breadCrumbs/publicationsBreadCrumbs2.jsp"%>
+        <h1 class="article-head"><spring:message code="articles"/></h1>
         <input type="button" class="styled-button add-article-btn" value="<spring:message code="add.article"/>" id="addArticle"
          onclick="window.location.href='${pageContext.request.contextPath}/add-article';">
          <ul class="article-list">

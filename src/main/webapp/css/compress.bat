@@ -1,1 +1,1 @@
-java -jar yuicompressor-2.4.8.jar my_css.css -o my_css_min.css
+java -jar yuicompressor-2.4.8.jar style.css -o style_min.css

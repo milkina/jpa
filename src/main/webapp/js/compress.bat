@@ -1,1 +1,1 @@
-java -jar yuicompressor-2.4.8.jar show_questions.js -o show_questions_min.js
+java -jar yuicompressor-2.4.8.jar general.js -o general_min.js

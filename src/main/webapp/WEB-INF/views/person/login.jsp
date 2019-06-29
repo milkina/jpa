@@ -6,9 +6,11 @@
  <jsp:attribute name="header">
     <title><spring:message code="login.to"/> ExamClouds</title>
     <meta name="robots" content="noindex">
-    <LINK TYPE="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/login.css?v=2">
+    <meat name="Description" content="<spring:message code="login.description"/>">
+    <link type="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/login_min.css">
  </jsp:attribute>
  <jsp:body>
+    <h1><spring:message code="log.in"/></h1>
      <form ACTION="${pageContext.request.contextPath}/login" METHOD="POST" id="LoginForm" class="inlineForm">
         <section class="container">
             <div class="login">

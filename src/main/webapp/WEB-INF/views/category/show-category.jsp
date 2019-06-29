@@ -11,12 +11,12 @@
                    </c:if>
                    ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}
                 </title>
-                <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
+                <meta name="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
                 <%@ include file="/edit/categoryOL.jsp" %>
                 <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
                 <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null && DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName!=param.TEST_PATH}">
                       <link rel="canonical"
-                      href="${pageContext.request.contextPath}/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
+                      href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
                 </c:if>
                 <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">
                      <meta name="robots" content="noindex">

@@ -1,8 +1,8 @@
-@import url(reset.css);
-@import url(prism.css);
-@import url(menu.css);
-@import url(my_css.css);
-@import url(ui.totop.css) screen,projection;
+@import url(reset_min.css);
+@import url(prism_min.css);
+@import url(menu_min.css);
+@import url(my_css_min.css);
+@import url(ui.totop_min.css) screen,projection;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&subset=cyrillic,cyrillic-ext,latin-ext');
 @font-face {
@@ -119,9 +119,6 @@ h4, .header4{
   margin-top: 55px;
   margin-bottom:165px;
 }
-/*.index-item:last-child{
-  padding-right:0px;
-}*/
 .index-items-text{
   font: 400 17px/29px proxima;
   color:#6b6b6b;
@@ -136,7 +133,6 @@ h4, .header4{
 .mainDiv{
   font-size: 20px
 }
-
 .mainArea{
    width:1145px;
    margin: 0 auto;
@@ -347,7 +343,6 @@ h4, .header4{
    color:#2f3748;
    padding: 30px 0;
    position:relative;
-   /*display:inline-block;*/
 }
 .test_header>a:before{
   float: right;
@@ -385,14 +380,6 @@ h4, .header4{
   color:#2f3748;
   text-align:left;
 }
-/*.hidden-part{
-   max-height: 0;
-   overflow: hidden;
-}
-.select-category-li:hover .hidden-part{
-    transition: all 5s ease;
-	max-height: 500px;
-}*/
 .select-category-li panel-body, .select-category-li{
  border:none;
  list-style: none;
@@ -588,11 +575,6 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   font:400 16px proxima-semibold;
   padding: 0 10px 0 0;
 }
-/*.start-exam-button{
-  float:left;
-  width: 520px;
-  margin-left:15px;
-}*/
 .finish-exam-button{
     text-align:right;
     padding-top:20px;
@@ -648,9 +630,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
    text-align:center;
 }
 .next-exam-button{
-  /*  display:inline-block;*/
     text-align:right;
-  /*  width:140px;*/
 }
 .next-exam-button a:after{
    content:"";
@@ -661,10 +641,6 @@ input[type="checkbox"].test-checkbox:checked+label:after{
    height: 10px;
    display: inline-block;
 }
-/*.previous-exam-button{
-    display:inline-block;
-    width:140px;
-}*/
 .previous-exam-button a:before{
   content:"";
   transform: rotate(45deg);

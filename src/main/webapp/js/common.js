@@ -1,9 +1,7 @@
-
 function trim(sInString) {
     sInString = sInString.replace(/ /g, '');
     return sInString.replace(/(^\s+)|(\s+$)/g, "");
 }
-
 function findPos(obj) {
     var curtop = 0;
     if (obj.offsetParent) {
@@ -13,7 +11,6 @@ function findPos(obj) {
         return [curtop];
     }
 }
-
 function saveQuestion(contextPath) {
     if (isQAEmpty()) {
        return;
@@ -22,7 +19,6 @@ function saveQuestion(contextPath) {
     form.method = "POST";
     form.submit();
 }
-
 function editQuestion(contextPath) {
     if (isQAEmpty()) {
         return;
@@ -31,7 +27,6 @@ function editQuestion(contextPath) {
     form.method = "POST";
     form.submit();
 }
-
 function isQAEmpty(){
     var question = tinyMCE.get("QUESTION_TEXT_PARAM").getContent();
     var answer = tinyMCE.get("ANSWER_TEXT_PARAM1").getContent();
@@ -45,7 +40,6 @@ function isQAEmpty(){
     }
     return false;
 }
-
 function changeTest(contextPath) {
     var index = document.getElementById("TEST_ID_PARAM").selectedIndex;
     var value = document.getElementById("TEST_ID_PARAM").options[index].value;

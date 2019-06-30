@@ -68,37 +68,3 @@
           </div>
        </div>
 </div>
-<script>
-$(document).ready(function(){
-     $('.menuItemWithSub').mouseenter(function(){
-        if($(window).width()<768){
-           return;
-        }
-        if(!$(this).hasClass('open')){
-            $(this).addClass('open');
-            $(this).find(">a").attr( "aria-expanded", "true" );
-        }
-     });
-});
-$(document).ready(function(){
-     $('.menuItemWithSub').mouseleave(function(){
-        if($(window).width()<768){
-           return;
-        }
-        if($(this).hasClass('open')){
-            $(this).removeClass('open');
-            $(this).find(">a").attr( "aria-expanded", "false" );
-
-        }
-     });
-});
-$(document).ready(function(){
-          $('#button-bar').click(function(){
-             if($(this).hasClass('is-active')){
-                 $(this).removeClass('is-active');
-             }else{
-                 $(this).addClass('is-active');
-             }
-          });
-});
-</script>

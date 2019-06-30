@@ -1,13 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:wrapper>
  <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
  <jsp:attribute name="header">
-     <META NAME="Description" CONTENT="${TESTS[param.TEST_PATH].article.description}">
+     <meta name="Description" content="${TESTS[param.TEST_PATH].article.description}">
      <title>${TESTS[param.TEST_PATH].article.title}</title>
-
      <style>
       <c:if test="${TESTS[param.TEST_PATH].article.image!=null && not empty TESTS[param.TEST_PATH].article.image}">
          .show-course-header:before{
@@ -37,7 +36,7 @@
         </main>
         <%@ include file="/WEB-INF/socialButtons.jsp" %>
         <jsp:include page="/WEB-INF/comment/comments.jsp">
-             <jsp:param name="referenceId" value="${TESTS[param.TEST_PATH].id}" />
+             <jsp:param name="referenceId" value="${TESTS[param.TEST_PATH].id}"/>
              <jsp:param name="commentType" value="TEST"/>
         </jsp:include>
  </jsp:body>

@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <t:wrapper>
     <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
@@ -11,10 +12,10 @@
                    </c:if>
                    ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}
                 </title>
-                <meta name="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
+                <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
                 <%@ include file="/edit/categoryOL.jsp" %>
                 <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
-                <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null && DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName!=param.TEST_PATH}">
+                <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
                       <link rel="canonical"
                       href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
                 </c:if>
@@ -23,6 +24,7 @@
                 </c:if>
     </jsp:attribute>
     <jsp:body>
+        <cache:cacheTag/>
            <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
             <main class="container">
               <article>
@@ -72,11 +74,11 @@
                   </ul>
                </div>
               </c:if>
-             </main>
-              <%@ include file="/WEB-INF/socialButtons.jsp" %>
+            </main>
+            <%@ include file="/WEB-INF/socialButtons.jsp"%>
             <jsp:include page="/WEB-INF/comment/comments.jsp">
-                <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}" />
-                <jsp:param name="commentType" value="ARTICLE" />
+                <jsp:param name="referenceId" value="${CATEGORY_ATTRIBUTE.article.id}"/>
+                <jsp:param name="commentType" value="ARTICLE"/>
             </jsp:include>
     </jsp:body>
 </t:wrapper>

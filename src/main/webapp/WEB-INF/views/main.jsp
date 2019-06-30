@@ -7,9 +7,8 @@
 <html lang="en">
   <head>
         <%@ include file="/WEB-INF/head_common.jsp" %>
-        <META NAME="Description" CONTENT="<spring:message code="main.description"/>">
+        <meta name="Description" content="<spring:message code="main.description"/>">
         <title><spring:message code="main.title"/></title>
-        <jsp:include page="/WEB-INF/google-ads-header.jsp" />
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
         <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
         <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">

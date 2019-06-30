@@ -9,7 +9,7 @@
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${QUESTION_ENTRY_ATTRIBUTE.category.parentCategory.name} ${QUESTION_ENTRY_ATTRIBUTE.category.name} - ${TESTS[TEST_PATH].name}</title>
-    <META NAME="Description" CONTENT="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
+    <meta name="Description" content="${QUESTION_ENTRY_ATTRIBUTE.category.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js?v=4"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="<ca:canonicalTag/>">
@@ -49,8 +49,8 @@
           id="seeOtherQuestions">
           <spring:message code="see.other.questions"/></a>
               <jsp:include page="/WEB-INF/comment/comments.jsp">
-                    <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}" />
-                    <jsp:param name="commentType" value="QUESTION" />
+                    <jsp:param name="referenceId" value="${QUESTION_ENTRY_ATTRIBUTE.id}"/>
+                    <jsp:param name="commentType" value="QUESTION"/>
               </jsp:include>
  </jsp:body>
 </t:wrapper>

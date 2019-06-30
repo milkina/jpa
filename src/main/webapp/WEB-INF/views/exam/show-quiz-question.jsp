@@ -2,14 +2,14 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib uri="/WEB-INF/tld/examjsp-taglib.tld" prefix="exam"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/WEB-INF/tld/canonical-jsp-taglib.tld" prefix="ca"%>
 <%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <t:wrapper>
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name} <spring:message code="questions"/></title>
-    <META NAME="Description" CONTENT="${CATEGORY_ATTRIBUTE.article.description}">
+    <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <link rel="canonical" href="<ca:examCanonicalTag/>">

@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:wrapper>
   <jsp:attribute name="header">
-    <meat name="Description" content="Articles about Java news, preparation for examination.">
+    <meta name="Description" content="Articles about Java news, preparation for examination.">
     <title><spring:message code="articles"/> | ExamClouds</title>
   </jsp:attribute>
   <jsp:body>

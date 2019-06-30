@@ -46,18 +46,22 @@ code{
  color: #4c82be;
  background-color: rgb(244, 249, 253);
 }
-.indexH1, .header1,indexColumn h3, .indexColumn ,.coloredHeader,h1{
+.indexH1, indexColumn h3, .indexColumn ,.coloredHeader{
    margin:10px;
    color: #2f3748;
 }
-h2, .header2{
+
+h1,.header1,h2, .header2{
    font: 400 28px Montserrat;
+   margin:30px 0 30px;
 }
 h3,.header3{
    font: 400 24px Montserrat;
+   margin:30px 0 30px;
 }
 h4, .header4{
    font: 400 20px Montserrat;
+   margin:30px 0 30px;
 }
 .navbar-default {
      background-color: #a1d6f7;
@@ -786,6 +790,11 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 #categories li{
   counter-increment: lesson;
   list-style:none;
+  padding: 0 60px 0 60px;
+}
+#categories li h2{
+  min-height: 70px;
+  margin:0;
 }
 .category-href,.category-sub-href,.read-questions-href,.article-url{
     border-bottom: 2px solid rgba(76, 130, 190, 0.28);
@@ -800,18 +809,16 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   margin-bottom: 91px;
   padding-top:18px;
   color:#2f3748;
-  font: 400 17px proxima;
+  font: 400 17px/27px proxima;
   height:56px;
-  text-align: justify;
 }
 .course-desc{
-  font: 400 17px proxima;
+  font: 400 17px/27px proxima;
   color:#2f3748;
-  margin-bottom:40px;
-  text-align: justify;
+  margin: 0 80px 40px;
 }
 .dropdown-menu{
- min-width:290px;
+  min-width:290px;
 }
 .show-category-header{
    font: 500 28px Montserrat;
@@ -835,8 +842,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   padding-right: 15px;
 }
 .category-article{
-  text-align:justify;
-  font:400 18px proxima;
+  font:400 18px/27px proxima;
   color:#2f3748;
 }
 #addComment{
@@ -993,9 +999,8 @@ input[type="checkbox"].test-checkbox:checked+label:after{
  margin-bottom:114px;
 }
 .article-desc{
- font: 400 17px proxima;
+ font: 400 17px/27px proxima;
  margin-bottom:26px;
- text-align:justify;
 }
 .article-date{
  color:#6b6b6b;

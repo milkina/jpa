@@ -26,8 +26,8 @@
                 </tr>
             </table>
             <br>
-            <input type="submit" class="wideSubmitButton" value="<spring:message code="save.button"/>" name="Save" id="Save">
-            <input type="button" class="wideSubmitButton" value="<spring:message code="change.password.button"/>" name="ChangePassword"
+            <input type="submit" value="<spring:message code="save.button"/>" name="Save" id="Save">
+            <input type="button" value="<spring:message code="change.password.button"/>" name="ChangePassword"
                    id="ChangePassword" onclick="openChangePasswordWindow('${pageContext.request.contextPath}')">
         </form:form>
         <h2 class="header2"><spring:message code="history.label"/></h2>

@@ -1,5 +1,6 @@
 <%@taglib uri="/WEB-INF/tld/commentjsp-taglib.tld" prefix="comment"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <div class="comment-wrapper col-xs-12">
   <div class="comment-label"><spring:message code="comments"/></div>
   <div class="commentDiv scroll-style" id="commentDiv">

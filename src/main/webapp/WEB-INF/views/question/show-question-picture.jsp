@@ -24,9 +24,9 @@
      </div>
          <h2 class="header2">${QUESTION_ENTRY_ATTRIBUTE.category.name}
          </h2>
-         <div class="questionEntryDiv" style="padding-left:8px">
+         <div class="questionEntryDiv questionEntryDivPicture">
             <div class="questionEntryBody">
-                 <div class="questionText" style="width:470px">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
+                 <div class="questionText">${QUESTION_ENTRY_ATTRIBUTE.question.text}</div>
                  <c:if test="${QUESTION_ENTRY_ATTRIBUTE.type=='TEST'}">
                    <c:set var="count" value="${0}"/>
                    <ul id="answersDiv">
@@ -48,7 +48,7 @@
          ${TESTS[TEST_PATH].tags}
          <spring:message code="read.answer.on"/>
          <a href="${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}"
-          id="readAnswer" style="overflow-wrap: break-word;">
+          id="readAnswer" class="picture-wrap-href">
             ${pageContext.request.contextPath}/show-question?QUESTION_ENTRY_ID_PARAM=${QUESTION_ENTRY_ATTRIBUTE.id}&TEST_PATH=${TEST_PATH}</a>
       </div>
     </jsp:body>

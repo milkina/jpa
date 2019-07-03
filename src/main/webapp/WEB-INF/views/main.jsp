@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -6,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <%@ include file="/WEB-INF/head_common.jsp" %>
+        <%@ include file="/WEB-INF/head_common.jsp"%>
         <meta name="Description" content="<spring:message code="main.description"/>">
         <title><spring:message code="main.title"/></title>
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
@@ -35,7 +36,7 @@
              </div>
           </div>
         </div>
-        <div class="container" style="padding-bottom:142px">
+        <div class="container about-items">
          	    <main>
                 <ul class="row index-items">
                   <li class="index-item index-item1 col-xs-12 col-sm-6 col-md-3">
@@ -43,7 +44,7 @@
                     <div class="index-items-text">After each lesson you can pass tests to verify what you have learned and to answer to the questions left.</div>
                   </li>
                   <li class="index-item index-item2 col-xs-12 col-sm-6 col-md-3">
-                    <h3 class="index-image-item2">Oracle Certifications</h3>
+                    <h3 class="index-image-item2">Oracle Java Certifications</h3>
                     <div class="index-items-text">Oracle Corporation has a range of internationally recognized exams for IT specialists.</div>
                   </li>
                   <li class="clearfix visible-sm-block"></li>
@@ -57,14 +58,14 @@
                   </li>
                 </ul>
                 <ul class="lessons-list scroll-style">
-                   <c:set var="count" value="${1}" />
+                   <c:set var="count" value="${1}"/>
                    <c:forEach var="category" items="${TESTS['ocpjp8'].categories}">
                       <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
                         <li>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}"
                             class="lesson-icon${count%3}"></a>
                            <h3>${category.value.name}</h3>
-                           <c:set var="count" value="${count+1}" />
+                           <c:set var="count" value="${count+1}"/>
                            <div>${category.value.article.description}</div>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}">Full lesson</a>
                         </li>
@@ -73,7 +74,7 @@
                 </ul>
                 <div class="row learn-java">
                   <h3 class="col-xs-12">Why should I learn Java?</h3>
-                  <p class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 learn-java-text">Java has very rich API, which allows to solve different problems, but still is very easy in learning. It has a lot of forums, resources and still is growing.</p>
+                  <p class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 learn-java-text">Java has a rich API, which allows to solve different problems, but still is easy in learning. It has a lot of forums, resources and still is growing.</p>
                 </div>
                 <ul class="pig-globe row">
                     <li class="learn-java-item index-image-pig col-xs-12 col-md-4"><h4>High average salary</h4></li>
@@ -81,10 +82,10 @@
                     <li class="learn-java-item index-image-globe col-xs-12 col-md-4"><h4>Universal usage</h4></li>
                 </ul>
                </main>
-               <%@ include file="/WEB-INF/socialButtons.jsp" %>
+               <%@ include file="/WEB-INF/socialButtons.jsp"%>
                <jsp:include page="/WEB-INF/comment/comments.jsp">
-                    <jsp:param name="referenceId" value="1" />
-                    <jsp:param name="commentType" value="ARTICLE" />
+                    <jsp:param name="referenceId" value="1"/>
+                    <jsp:param name="commentType" value="ARTICLE"/>
                </jsp:include>
          </div>
         <%@include file="/WEB-INF/footer.jsp"%>

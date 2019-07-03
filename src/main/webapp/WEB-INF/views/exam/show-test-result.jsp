@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
@@ -15,7 +16,7 @@
    </jsp:attribute>
    <jsp:body>
         <main>
-             <h1 class="header-test-result"><spring:message code="test.result"/> ${person.login}</h1>
+             <h1 class="header-test-result"><spring:message code="test.result"/>${person.login}</h1>
              <div class="row">
                <c:choose>
                   <c:when test="${CURRENT_EXAM_ATTRIBUTE.percent>=70}">
@@ -72,28 +73,28 @@
                  </div>
              </div>
              <ul class="showQuestionsList">
-              <c:forEach var="number"  begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
-                     <li>
-                        <div class="questionEntryBody">
-                              <div class="questionText">${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].question.text}</div>
-                               <c:set var="answers" value="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answers}"></c:set>
-                               <c:set var="userAnswers" value="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].userAnswers}"></c:set>
-                               <div class="your-answer"><spring:message code="your.answer"/></div>
-                               <ul class="answersResult">
-                               <c:forEach var="j" begin="0" end="${fn:length(answers)-1}">
-                                    <li class="your-answer-div"
-                                      <c:if test="${not userAnswers[j].correct}">style="visibility:hidden;height:0;padding-top:0"</c:if>>${userAnswers[j].text}</li>
-                               </c:forEach>
-                               </ul>
-                               <div class="right-answer"><spring:message code="right.answer"/></div>
-                               <ul class="answersResult">
-                               <c:forEach var="j" begin="0" end="${fn:length(answers)-1}">
-                                  <li class="right-answer-div"
-                                   <c:if test="${not answers[j].correct}">style="visibility:hidden;height:0;padding-top:0"</c:if>>${answers[j].text}</li>
-                               </c:forEach>
-                               </ul>
-                        </div>
-                     </li>
+              <c:forEach var="number" begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
+                 <li>
+                   <div class="questionEntryBody">
+                      <div class="questionText">${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].question.text}</div>
+                      <c:set var="answers" value="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answers}"></c:set>
+                      <c:set var="userAnswers" value="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].userAnswers}"></c:set>
+                      <div class="your-answer"><spring:message code="your.answer"/></div>
+                      <ul class="answersResult">
+                        <c:forEach var="j" begin="0" end="${fn:length(answers)-1}">
+                           <li class="your-answer-div
+                              <c:if test="${not userAnswers[j].correct}"> answer-hidden</c:if>">${userAnswers[j].text}</li>
+                        </c:forEach>
+                      </ul>
+                      <div class="right-answer"><spring:message code="right.answer"/></div>
+                      <ul class="answersResult">
+                         <c:forEach var="j" begin="0" end="${fn:length(answers)-1}">
+                           <li class="right-answer-div
+                             <c:if test="${not answers[j].correct}"> answer-hidden</c:if>">${answers[j].text}</li>
+                         </c:forEach>
+                      </ul>
+                   </div>
+                 </li>
               </c:forEach>
              </ul>
            </main>

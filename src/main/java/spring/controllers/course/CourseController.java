@@ -22,18 +22,16 @@ import util.article.ArticleUtility;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static util.AllConstants.QUESTIONS_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstants.TESTS_PAGE;
-import static util.AllConstantsAttribute.COURSES_WITH_QUESTIONS;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
-import static util.AllConstantsAttribute.TESTS_WITH_TESTS;
 import static util.AllConstantsParam.OLD_TEST_PATH;
 import static util.AllConstantsParam.PREVIOUS_TEST_PATH;
 import static util.AllConstantsParam.TEST_PATH;
@@ -45,13 +43,13 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(value = {"/tests", "ru/tests"})
-    public String selectCoursesWithTestsAndQuestions(HttpServletRequest request) {
-       /* List<Test> coursesWithTests = courseService.getAllTestsWithNotEmptyTests();
-        request.setAttribute(TESTS_WITH_TESTS, coursesWithTests);
-
-        List<Test> coursesWithQuestions = courseService.getAllCoursesWithNotEmptyQuestions();
-        request.setAttribute(COURSES_WITH_QUESTIONS, coursesWithQuestions);*/
+    public String showTests() {
         return TESTS_PAGE;
+    }
+
+    @RequestMapping(value = {"/questions", "ru/questions"})
+    public String showQuestions() {
+        return QUESTIONS_PAGE;
     }
 
     @RequestMapping(value = "/show-add-course")

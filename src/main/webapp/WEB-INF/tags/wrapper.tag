@@ -9,12 +9,12 @@
         </head>
         <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
            <header>
-               <div class="container-fluid menu top round-border-bottom">
-                    <%@ include file="/menu.jsp" %>
-               </div>
+             <div class="container-fluid menu top round-border-bottom">
+               <jsp:include page="/menu.jsp"/>
+             </div>
            </header>
            <div class="wrapper container">
-                   <jsp:doBody/>
+              <jsp:doBody/>
            </div>
            <%@ include file="/WEB-INF/footer.jsp"%>
         </body>

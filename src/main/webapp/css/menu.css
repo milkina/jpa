@@ -42,19 +42,20 @@ nav{
  padding-left:250px
 }
 nav>ul>li:last-child{
-  padding-right: 110px;
+  padding-right: 110px
 }
 .menuItem,.menuItemWithSub{
   position: relative;
-  padding: 15px 0 10px;
+  padding: 15px 10px 10px;
   z-index:10;
   list-style: none;
+  display:inline-block
 }
 .menuItemWithSub .dropdown-menu{
 	position: absolute;
 	background-color: white;
 	width:170%;
-	left:50%;
+	left:-25px;
 	top:46px;
     overflow: hidden;
     border-radius:12px;
@@ -159,22 +160,22 @@ nav>ul>li:last-child{
   padding-right:45px;
 }
 #sprite-icon_facebook {
-    background-position: -28px -4px;
+    background-position: -28px -6px;
  }
 #sprite-icon_facebook:hover {
-   background-position: -28px -31px;
+   background-position: -28px -33px;
 }
 #sprite-icon_twitter {
-    background-position: -57px -4px;
+    background-position: -57px -6px;
 }
 #sprite-icon_twitter:hover {
-    background-position: -57px -32px;
+    background-position: -57px -33px;
 }
 #sprite-icon_vkontakte {
-    background-position: 0px -4px;
+    background-position: 0 -6px;
 }
 #sprite-icon_vkontakte:hover {
-    background-position: 0px -31px;
+    background-position: 0 -33px;
 }
 .my-profile{
    margin: 33px 0 10px;
@@ -187,13 +188,13 @@ nav>ul>li:last-child{
     display:inline-block;
     width: 17px;
     height: 18px;
-    background: url('../images/sprites.png');
+    background: url('../images/sprites.png')
  }
  #en-flag{
-    background-position: -161px 0px;
+    background-position: -161px -2px
  }
  #ru-flag{
-    background-position: -182px 0px;
+    background-position: -182px -2px
  }
 .logo{
    padding-top: 13px;
@@ -256,11 +257,11 @@ nav>ul>li:last-child{
   height: 270px;
 }
 .lesson-icon1 {
-    background-position: -492px -277px;
+    background-position: -420px -280px
 }
 .lesson-icon2 {
-    background-position: -492px -555px;
+    background-position: -420px -555px
 }
 .lesson-icon0 {
-    background-position: -492px -3px;
+    background-position: -407px -3px
 }

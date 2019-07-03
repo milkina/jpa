@@ -17,7 +17,7 @@
             <br>
             <%@ include file="/edit/select-test-category-new.jsp" %>
             <br>
-            <input type="submit" value="<spring:message	code="add"/>" id="Add" name="Add" class="submitButton">
+            <input type="submit" value="<spring:message	code="add"/>" id="Add" name="Add">
         </form>
         </div>
  </jsp:body>

@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -6,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <%@ include file="/WEB-INF/head_common.jsp" %>
+    <%@ include file="/WEB-INF/head_common.jsp"%>
 	<title>Бесплатные онлайн курсы по Java программированию</title>
 	<meta name="Description" content="Бесплатные онлайн курсы, тесты и вопросы по изучению Java программирования и подготовке к Oracle Java сертификациям и собеседованиям.">
 	<link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
@@ -21,7 +22,7 @@
 <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
 <cache:cacheTag/>
      <div class="container-fluid menu indexMenu round-border-bottom">
-      <%@ include file="/menu.jsp" %>
+      <%@ include file="/menu.jsp"%>
       <div class="container">
          <div class="row-no-gutters index-img-div">
              <div class="col-xs-12 col-md-4">
@@ -35,7 +36,7 @@
          </div>
       </div>
     </div>
-    <div class="container" style="padding-bottom:142px">
+    <div class="container about-items">
      	    <main>
             <ul class="row index-items">
               <li class="index-item index-item1 col-xs-12 col-sm-6 col-md-3">
@@ -57,14 +58,14 @@
               </li>
             </ul>
             <ul class="lessons-list scroll-style">
-               <c:set var="count" value="${1}" />
+               <c:set var="count" value="${1}"/>
                <c:forEach var="category" items="${TESTS['java-core-russian'].categories}">
                   <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
                     <li>
                        <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}"
                         class="lesson-icon${count%3}"></a>
                        <h3>${category.value.name}</h3>
-                       <c:set var="count" value="${count+1}" />
+                       <c:set var="count" value="${count+1}"/>
                        <div>${category.value.article.description}</div>
                        <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}">Полный урок</a>
                     </li>
@@ -83,8 +84,8 @@
            </main>
            <%@ include file="/WEB-INF/socialButtons.jsp"%>
            <jsp:include page="/WEB-INF/comment/comments.jsp">
-                <jsp:param name="referenceId" value="398" />
-                <jsp:param name="commentType" value="ARTICLE" />
+                <jsp:param name="referenceId" value="398"/>
+                <jsp:param name="commentType" value="ARTICLE"/>
            </jsp:include>
      </div>
     <%@include file="/WEB-INF/footer.jsp"%>

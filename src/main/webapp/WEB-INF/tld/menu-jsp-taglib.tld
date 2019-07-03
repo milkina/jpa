@@ -14,6 +14,12 @@
         <info>Menu Test Tag.</info>
     </tag>
     <tag>
+        <name>questionsTag</name>
+        <tagclass>tags.menu.MenuQuestionsTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Menu Questions Tag.</info>
+    </tag>
+    <tag>
         <name>articlesTag</name>
         <tagclass>tags.menu.MenuArticleTag</tagclass>
         <bodycontent>empty</bodycontent>

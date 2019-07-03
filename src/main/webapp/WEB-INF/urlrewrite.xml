@@ -10,7 +10,7 @@
     </rule>
     <rule>
         <from>http://www.examclouds.com/</from>
-        <to type="redirect">http://www.examclouds.com</to>
+        <to type="permanent-redirect">http://www.examclouds.com</to>
     </rule>
 <!--    <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
@@ -62,7 +62,7 @@
     </rule>
     <rule>
         <from>^/publications/oracle-java-certifications$</from>
-        <to type="redirect">/</to>
+        <to type="permanent-redirect">/</to>
     </rule>
     <rule>
         <from>^/publications/(.*)$</from>
@@ -70,15 +70,15 @@
     </rule>
     <rule>
         <from>^/ocjp$</from>
-        <to type="redirect">/publications/ocjp</to>
+        <to type="permanent-redirect">/publications/ocjp</to>
     </rule>
     <rule>
         <from>^/exam/ocajp7$</from>
-        <to type="redirect">/publications/ocjp</to>
+        <to type="permanent-redirect">/publications/ocjp</to>
     </rule>
     <rule>
         <from>^/exam/ocpjp7$</from>
-        <to type="redirect">/publications/ocjp</to>
+        <to type="permanent-redirect">/publications/ocjp</to>
     </rule>
     <rule>
         <from>^/jpa$</from>
@@ -94,11 +94,11 @@
     </rule>
     <rule>
         <from>^/ocjp-ocpjp.jsp$</from>
-        <to type="redirect">/publications/ocjp-ocpjp</to>
+        <to type="permanent-redirect">/publications/ocjp-ocpjp</to>
     </rule>
     <rule>
         <from>^/ocpjp8-update-from-java6$</from>
-        <to type="redirect">/exam/ocpjp8-update-from-java6</to>
+        <to type="permanent-redirect">/exam/ocpjp8-update-from-java6</to>
     </rule>
 </urlrewrite>
 

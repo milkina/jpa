@@ -1,7 +1,7 @@
+@import url(hamburgers_min.css);
 @import url(reset_min.css);
 @import url(prism_min.css);
 @import url(menu_min.css);
-@import url(my_css_min.css);
 @import url(ui.totop_min.css) screen,projection;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800&subset=cyrillic,cyrillic-ext,latin-ext');
@@ -26,42 +26,42 @@
 }
 body{
   color:#2f3748;
-  font: 400 18px proxima;
+  font: 400 18px proxima
 }
 .wrapper{
   margin:-90px auto 0;
   padding:90px 0 142px;
   min-height:100vh;
-  box-sizing:border-box;
+  box-sizing:border-box
 }
 a{
   color:#4c82be;
-  text-decoration:none;
+  text-decoration:none
 }
 a:hover{
  color:#23527c;
- text-decoration:none;
+ text-decoration:none
 }
 code{
  color: #4c82be;
- background-color: rgb(244, 249, 253);
+ background-color: rgb(244, 249, 253)
 }
 .indexH1, indexColumn h3, .indexColumn ,.coloredHeader{
    margin:10px;
-   color: #2f3748;
+   color: #2f3748
 }
 
 h1,.header1,h2, .header2{
    font: 400 28px Montserrat;
-   margin:30px 0 30px;
+   margin:30px 0 30px
 }
 h3,.header3{
    font: 400 24px Montserrat;
-   margin:30px 0 30px;
+   margin:30px 0 30px
 }
 h4, .header4{
    font: 400 20px Montserrat;
-   margin:30px 0 30px;
+   margin:30px 0 30px
 }
 .navbar-default {
      background-color: #a1d6f7;
@@ -186,7 +186,7 @@ h4, .header4{
    width: 29px;
    height: 23px;
    display: inline-block;
-   background: url('../images/sprites.png') -97px -12px;
+   background: url('../images/sprites.png') -97px -13px
 }
 .comment-user{
     font:700 21px proxima;
@@ -323,24 +323,24 @@ h4, .header4{
 .all-tests-header:before{
     content:"";
     display:block;
-    background: url('../images/sprites.png') 10px -99px;
+    background: url('../images/sprites.png') 6px -99px;
     width:101px;
     height:110px;
-    margin: 15px 0;
+    margin: 15px auto
 }
 .all-tests-header, .all-questions-header{
   margin: 0 auto;
   font:700 28px Montserrat;
   color:#6b6b6b;
-  width:91px;
+  text-align:center
 }
 .all-questions-header:before{
    content:"";
    display:block;
-   background: url('../images/sprites.png') 10px -230px;
+   background: url('../images/sprites.png') 6px -230px;
    width:121px;
    height:111px;
-   margin: 15px 0;
+   margin: 15px auto
 }
 .test_header{
    font:700 20px proxima;
@@ -402,44 +402,44 @@ h4, .header4{
    margin: 0 auto 80px auto;
 }
 .index-item1:before{
-    background-position: 10px -99px;
+    background-position: 6px -99px;
     width:101px;
-    height:110px;
+    height:110px
 }
 .index-item2:before{
-    background-position: 759px -105px;
+    background-position: 679px -105px;
     width:121px;
-    height:110px;
+    height:110px
 }
 .index-item3:before{
-    background-position: 619px -90px;
+    background-position: 539px -105px;
     width:121px;
-    height:110px;
+    height:110px
 }
 .index-item4:before{
-    background-position: 499px -90px;
+    background-position: 767px -655px;
     width:141px;
-    height:110px;
+    height:110px
 }
 .pig-globe{
   font-size:0;
-  margin-bottom:40px;
+  margin-bottom:40px
 }
 .index-image-pig:before{
-    background-position: 698px -200px;
-    width:220px;
+    background-position: 618px -200px;
+    width:220px
 }
 .index-image-globe:before{
     background-position: -1px -421px;
-    width:187px;
+    width:187px
 }
 .index-image-flags:before{
-    background-position: 641px -421px;
-    width:218px;
+    background-position: 568px -421px;
+    width:218px
 }
 .number-questions{
    font:700 19px/22.8px proxima;
-   color:#6b6b6b;
+   color:#6b6b6b
 }
 .styled-button{
   border: 3px solid #4c82be;
@@ -810,12 +810,13 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   padding-top:18px;
   color:#2f3748;
   font: 400 17px/27px proxima;
-  height:56px;
+  min-height:150px;
 }
 .course-desc{
   font: 400 17px/27px proxima;
   color:#2f3748;
   margin: 0 80px 40px;
+  overflow-wrap:break-word
 }
 .dropdown-menu{
   min-width:290px;
@@ -839,21 +840,21 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   content: counter(li);
   color: #6b6b6b;
   font:400 17px proxima;
-  padding-right: 15px;
+  padding-right: 15px
 }
 .category-article{
   font:400 18px/27px proxima;
-  color:#2f3748;
+  color:#2f3748
 }
 #addComment{
   display:block;
-  background: url('../images/sprites.png') -216px 0px;
+  background: url('../images/sprites.png') -216px -2px;
   padding: 1px;
   width: 27px;
-  height: 27px;
+  height: 27px
 }
 #addComment:hover{
-  background-position:-255px 0px;
+  background-position:-255px -2px
 }
 /*Register form*/
 .register-form{
@@ -1022,5 +1023,101 @@ input[type="checkbox"].test-checkbox:checked+label:after{
   text-align:center;
   display:block;
   padding:10px;
-  border-radius:15px;
+  border-radius:15px
+}
+.about-items{
+  padding-bottom:142px
+}
+.questionEntryDivPicture{
+ padding-left:8px
+}
+.questionEntryDivPicture .questionText{
+ width:470px
+}
+.picture-wrap-href{
+ overflow-wrap:break-word
+}
+.social-buttons{
+ text-align:right
+}
+.inc-div{
+  padding:10px 0
+}
+.answer-hidden{
+ visibility:hidden;
+ height:0;
+ padding-top:0
+}
+.wrongMessage{
+   color:#FF0000;
+}
+.selectWidth{
+ width: 156px;
+}
+.adminUserTable{
+  height:100px;
+  overflow-y: scroll;
+  border:1px double #666e74;
+  padding-left:20px;
+  margin-bottom:20px;
+  width:100%;
+}
+.adminUserCell{
+  width:22%;
+  display:inline-block;
+  float:left;
+}
+.adminUserCellHead{
+  width:22%;
+  display:inline-block;
+  float:left;
+  font-weight:bold;
+}
+.adminUserHead{
+ padding-left:20px;
+}
+.adminComment{
+  display:inline-block;
+}
+.notAnsweredQuestion {
+    display: block;
+}
+.answeredQuestion {
+    display: block;
+}
+.showAnswer {
+    color: darkblue;
+    font-size: 10pt;
+    position:relative;
+}
+.selectOptionsPanel{
+   font-size:13px;
+   font-weight: bold;
+}
+.questionEntryCheckboxDiv{
+  width:20px;
+  vertical-align:top;
+  display:inline;
+  float:right;
+}
+.inlineForm{
+  display:inline;
+}
+.adminLabel{
+  font-weight:bold;
+  width:150px;
+  display:inline-block;
+}
+.commentList{
+  list-style:none;
+  padding:0px;
+}
+.commentBody{
+  background:#f6f6f6;
+  padding:20px;
+  border:1px solid #e2e2e2;
+  margin:10px;
+}
+.answerBlockDiv{
+    width:100%
 }

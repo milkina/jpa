@@ -84,11 +84,6 @@ public class ExamController {
         return ExamUtility.updateCurrentQuestionEntry(currentNumber, exam);
     }
 
-    @RequestMapping(value = "/start-quiz")
-    public String startQuiz() {
-        return "exam/start-quiz";
-    }
-
     @RequestMapping(value = "/see-questions")
     public String seeQuestions(@RequestParam(TEST_PATH) String testPath,
                                Model model, Locale locale,

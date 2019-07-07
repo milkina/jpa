@@ -35,12 +35,7 @@ body{
   box-sizing:border-box
 }
 a{
-  color:#4c82be;
-  text-decoration:none
-}
-a:hover{
- color:#23527c;
- text-decoration:none
+  color:#4c82be
 }
 code{
  color: #4c82be;
@@ -802,6 +797,9 @@ input[type="checkbox"].test-checkbox:checked+label:after{
     font: 700 20px proxima;
     text-decoration:none;
 }
+.category-href:hover,.category-sub-href:hover,.read-questions-href:hover,.article-url:hover{
+   text-decoration:none
+}
 .category-href{
   padding-bottom: 6px;
 }
@@ -1120,4 +1118,12 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 }
 .answerBlockDiv{
     width:100%
+}
+.glyphicon-envelope{
+ vertical-align:middle
+}
+.glyphicon-facetime-video:before {
+    color: #4c82be;
+    vertical-align: middle;
+    padding-right: 5px;
 }

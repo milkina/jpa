@@ -24,14 +24,14 @@
         </div>
 		<c:choose>
           <c:when test="${param.param != null || person == null}">
-             <div class="col-xs-9 col-sm-2 col-lg-2 navbar-right menuItem">
+             <div class="col-xs-9 col-sm-2 col-lg-2 topMenu navbar-right menuItem">
 		       <a class="topMenu" href="${pageContext.request.contextPath}/show-login-page" id='my-profile'>
 		         <spring:message code="log.in"/>
 		       </a>
 	         </div>
 		  </c:when>
           <c:otherwise>
-            <div class="col-xs-9 col-sm-1 col-lg-2 topMenu menuItemWithSub dropdown navbar-right">
+            <div class="col-xs-9 col-sm-2 col-lg-2 topMenu menuItemWithSub dropdown navbar-right glyphicon glyphicon-user">
               <a href="#" id="userLogin" class="user-login dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ${person.login}
               </a>
@@ -49,7 +49,7 @@
             </div>
           </c:otherwise>
         </c:choose>
-        <nav class="col-xs-12 col-md-7 topMenu nav navbar-nav pull-right">
+        <nav class="col-xs-12 col-md-8 topMenu nav navbar-nav">
            <ul class="row-no-gutters">
              <li class="dropdown menuItemWithSub">
                 <a href="#" id="courses" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

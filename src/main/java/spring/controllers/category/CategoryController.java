@@ -17,14 +17,21 @@ import util.TestUtility;
 import util.article.ArticleUtility;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.ARTICLE_ATTRIBUTE;
 import static util.AllConstantsAttribute.CATEGORY_ATTRIBUTE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
+import static util.AllConstantsAttribute.NEXT_CATEGORY;
+import static util.AllConstantsAttribute.PREVIOUS_CATEGORY;
 import static util.AllConstantsAttribute.TESTS;
 import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.OLD_TEST_PATH;
@@ -48,9 +55,17 @@ public class CategoryController {
                                      Model model, HttpServletRequest request, Locale locale) {
         Map<String, Category> categoryMap =
                 CategoryUtility.getCategoriesFromServletContext(request);
+
         Category category = categoryMap.get(categoryPath);
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
         model.addAttribute(ARTICLE_ATTRIBUTE, category.getArticle());
+        List<Category> list = new ArrayList<>(categoryMap.values());
+        int index = list.indexOf(category);
+
+        Category nextCategory = index < list.size() - 1 ? list.get(index + 1) : null;
+        Category previousCategory = index > 0 ? list.get(index - 1) : null;
+        model.addAttribute(NEXT_CATEGORY, nextCategory);
+        model.addAttribute(PREVIOUS_CATEGORY, previousCategory);
         if (category.getHidden()) {
             return new ModelAndView("redirect:" + getResourceValue(locale, "menu.home", "label"));
         }
@@ -77,6 +92,9 @@ public class CategoryController {
         CategoryUtility.setCategoryArticle(request, category);
         category = categoryService.create(category);
         categoryService.addCategoryToCourse(test, category);
+        if (category.getParentCategory() != null) {
+            categoryService.moveCategoryUp(category, category.getParentCategory().getPathName(), testPath);
+        }
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);

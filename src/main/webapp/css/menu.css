@@ -4,7 +4,10 @@
 }
 .topMenu{
   margin-top:18px;
-  vertical-align:top;
+  vertical-align:top
+}
+.topMenu>ul{
+ text-align:right
 }
 .flags{
   padding-right:0;
@@ -12,8 +15,8 @@
   margin-top:36px;
   vertical-align:top;
 }
-.flags ul,.user-login{
-  float:right;
+.flags ul{
+  float:right
 }
 #button-bar .hamburger-inner,#button-bar .hamburger-inner:before,#button-bar .hamburger-inner:after{
  background-color:#4c82be;
@@ -87,7 +90,6 @@ nav>ul>li:last-child{
     font: 700 18px proxima;
     text-decoration: none;
     border-bottom: 2px solid rgba(250, 250, 250,0.28);
-    float:right;
 }
 .menuItemWithSub ul li a{
    border-bottom: 2px solid rgba(107, 107, 107,0.1);
@@ -225,7 +227,7 @@ nav>ul>li:last-child{
    content:'';
  }
 .breadCrumbs ol:last-child{
-     color:#2f3748;
+   color:#2f3748;
  }
 .nav .open>a:hover{
   background:none;

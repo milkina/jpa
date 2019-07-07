@@ -62,14 +62,32 @@
          </article>
          <input type="button" class="styled-button pass-test-btn" value="<spring:message code="add.question.button"/>" id="AddQuestion"
            onclick="window.location.href='${pageContext.request.contextPath}/add-question?TEST_PATH=${param.TEST_PATH}&CATEGORY_PATH=${param.CATEGORY_PATH}';">
+         <div class="row">
+           <div class="col-xs-6 previous-exam-button">
+             <c:if test="${PREVIOUS_CATEGORY!=null}">
+               <a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${PREVIOUS_CATEGORY.pathName}">
+                 <spring:message code="previous"/>
+               </a>
+             </c:if>
+           </div>
+           <div class="col-xs-6 next-exam-button">
+             <c:if test="${NEXT_CATEGORY!=null}">
+               <a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${NEXT_CATEGORY.pathName}">
+                 <spring:message code="next"/>
+               </a>
+              </c:if>
+           </div>
+         </div>
          <c:if test="${not empty CATEGORY_ATTRIBUTE.parentCategory.subCategories}">
            <div>
              <spring:message code="read.also"/>:
               <ul>
                   <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.parentCategory.subCategories}">
+                   <c:if test="${subCategory!=CATEGORY_ATTRIBUTE}">
                      <li><a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${subCategory.pathName}">${subCategory.name}
                          </a>
                      </li>
+                   </c:if>
                   </c:forEach>
               </ul>
            </div>

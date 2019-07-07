@@ -18,7 +18,7 @@
              </ul>
           </div>
           <div class="col-xs-12 col-md-4 col-md-push-4 contactUsEmail footerItem">
-             <address>
+             <address class="glyphicon glyphicon-envelope">
     		  <a href="mailto:tatyana.milkina@gmail.com">tatyana.milkina@gmail.com</a>
     		 </address>
           </div>

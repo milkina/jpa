@@ -13,6 +13,7 @@
          </c:if>
          ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}
        </title>
+       <meta name="Keywords" content="${CATEGORY_ATTRIBUTE.article.keywords}">
        <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
        <%@ include file="/edit/categoryOL.jsp"%>
        <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>

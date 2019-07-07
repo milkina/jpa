@@ -9,6 +9,7 @@
 <cache:cacheTag/>
 <t:wrapper>
   <jsp:attribute name="header">
+    <meta name="Keywords" content="${ARTICLE_ATTRIBUTE.keywords}">
     <meta name="Description" content="${ARTICLE_ATTRIBUTE.description}">
     <title>${ARTICLE_ATTRIBUTE.title}</title>
     <meta property = "og:title" content = "${ARTICLE_ATTRIBUTE.title}" />

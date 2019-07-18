@@ -39,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional
     public Category create(Category category) {
         category = categoryRepository.save(category);
-        category.setOrderId(category.getId());
+        category.setOrderId(category.getId() * 10);
         return category;
     }
 

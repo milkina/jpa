@@ -6,6 +6,7 @@
 <t:wrapper>
     <jsp:attribute name="language"> lang="<spring:message code="lang"/>"</jsp:attribute>
     <jsp:attribute name="header">
+        <meta name="Keywords" content="<spring:message code="questions.keywords"/>">
         <meta name="Description" content="<spring:message code="questions.description"/>">
         <title><spring:message code="questions.title"/></title>
         <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">

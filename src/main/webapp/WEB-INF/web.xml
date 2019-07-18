@@ -12,8 +12,12 @@
     <filter>
         <filter-name>ExpiresFilter</filter-name>
         <filter-class>fr.xebia.servlet.filter.ExpiresFilter</filter-class>
-        <init-param>
+    <!--    <init-param>
             <param-name>ExpiresByType image</param-name>
+            <param-value>access plus 2 weeks</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType image/webp</param-name>
             <param-value>access plus 2 weeks</param-value>
         </init-param>
         <init-param>
@@ -21,7 +25,19 @@
             <param-value>access plus 2 weeks</param-value>
         </init-param>
         <init-param>
+            <param-name>ExpiresByType application/javascript</param-name>
+            <param-value>access plus 2 weeks</param-value>
+        </init-param>
+        <init-param>
             <param-name>ExpiresByType text/javascript</param-name>
+            <param-value>access plus 2 weeks</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType application/font-woff</param-name>
+            <param-value>access plus 2 weeks</param-value>
+        </init-param>-->
+        <init-param>
+            <param-name>ExpiresDefault</param-name>
             <param-value>access plus 2 weeks</param-value>
         </init-param>
     </filter>

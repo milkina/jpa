@@ -8,10 +8,10 @@
     <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
        <title>
-         <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
+         <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null && CATEGORY_ATTRIBUTE.name.equals('Задания')}">
             ${CATEGORY_ATTRIBUTE.parentCategory.name}.
          </c:if>
-         ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name}
+         ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name} | ExamClouds
        </title>
        <meta name="Keywords" content="${CATEGORY_ATTRIBUTE.article.keywords}">
        <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">

@@ -22,9 +22,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
 
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstantsAttribute.ARTICLE_ATTRIBUTE;
@@ -62,14 +59,32 @@ public class CategoryController {
         List<Category> list = new ArrayList<>(categoryMap.values());
         int index = list.indexOf(category);
 
-        Category nextCategory = index < list.size() - 1 ? list.get(index + 1) : null;
-        Category previousCategory = index > 0 ? list.get(index - 1) : null;
+        Category nextCategory = getNextCategory(index, list);
+        Category previousCategory = getPreviousCategory(index, list);
         model.addAttribute(NEXT_CATEGORY, nextCategory);
         model.addAttribute(PREVIOUS_CATEGORY, previousCategory);
         if (category.getHidden()) {
             return new ModelAndView("redirect:" + getResourceValue(locale, "menu.home", "label"));
         }
         return new ModelAndView("/category/show-category");
+    }
+
+    private Category getNextCategory(int index, List<Category> list) {
+        Category nextCategory;
+        do {
+            nextCategory = index < list.size() - 1 ? list.get(index + 1) : null;
+            index++;
+        } while (nextCategory != null && nextCategory.getHidden());
+        return nextCategory;
+    }
+
+    private Category getPreviousCategory(int index, List<Category> list) {
+        Category previousCategory;
+        do {
+            previousCategory = index > 0 ? list.get(index - 1) : null;
+            index--;
+        } while (previousCategory != null && previousCategory.getHidden());
+        return previousCategory;
     }
 
     @RequestMapping(value = "/show-create-category")

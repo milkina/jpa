@@ -4,16 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language"> lang="en"</jsp:attribute>
+    <jsp:attribute name="language">lang="ru"</jsp:attribute>
     <jsp:attribute name="header">
-        <meta name="Keywords" content="java online test,java online quiz,java quiz questions and answers,oracle java certification exam">
-        <meta name="Description" content="Free online Test and Quiz with questions and answers for learning Java and preparation to Oracle Java certification exam (OCAJP8 OCPJP8, Update from OCPJP6).">
-        <title>Free Java Online Test and Quiz for Learning Java on ExamClouds</title>
+        <meta name="Keywords" content="тесты java">
+        <meta name="Description" content="Бесплатные онлайн IT Java тесты по программированию с ответами на ExamClouds. Можно пройти тест на знание Java или подготовиться к Oracle сертификации Java.">
+        <title>Онлайн Java тесты по программированию с ответами на ExamClouds</title>
         <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{
-              content:"Select categories";
+              content:"Выбрать категории";
           }
         </style>
         <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests">
@@ -26,12 +26,12 @@
         <div class="breadCrumbs">
           <ol itemscope itemtype="http://schema.org/BreadcrumbList">
             <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-            <li>Tests</li>
+            <li>Тесты</li>
           </ol>
         </div>
         <main>
           <div>
-            <h1 class="all-tests-header">Java Tests</h1>
+            <h1 class="all-tests-header">Java тесты</h1>
             <ul class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <c:forEach var="test" items="${TESTS_WITH_TESTS}">
                     <li class="panel select-category-li">
@@ -53,7 +53,7 @@
          <script>
            $('select[multiple]').multiselect({
                columns: 2,
-               placeholder: 'Select categories',
+               placeholder: 'Выбрать категории',
                selectAll : true,
                selectGroup:true,
                search:true

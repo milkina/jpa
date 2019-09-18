@@ -27,8 +27,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static util.AllConstants.QUESTIONS_PAGE;
+import static util.AllConstants.QUESTIONS_RU_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
 import static util.AllConstants.TESTS_PAGE;
+import static util.AllConstants.TESTS_RU_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.TESTS;
@@ -42,14 +44,24 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = {"/tests", "ru/tests"})
+    @RequestMapping(value = "/tests")
     public String showTests() {
         return TESTS_PAGE;
     }
 
-    @RequestMapping(value = {"/questions", "ru/questions"})
+    @RequestMapping(value = "ru/tests")
+    public String showRuTests() {
+        return TESTS_RU_PAGE;
+    }
+
+    @RequestMapping(value = "/questions")
     public String showQuestions() {
         return QUESTIONS_PAGE;
+    }
+
+    @RequestMapping(value = "ru/questions")
+    public String showRuQuestions() {
+        return QUESTIONS_RU_PAGE;
     }
 
     @RequestMapping(value = "/show-add-course")

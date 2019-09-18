@@ -34,7 +34,9 @@ public class CanonicalTag extends TagSupport {
                 testPath = duplicateCategory.getTests().get(0).getPathName();
                 result = servletContext.getContextPath() + "/java/" + testPath + "/" + categoryPathName;
             }
-            if (category.getHidden() || !category.getArticle().isIndexStatus()) {
+            if (testPath == null) {
+                result = servletContext.getContextPath();
+            } else if (category.getHidden() || !category.getArticle().isIndexStatus()) {
                 Map<String, Test> testMap = (Map<String, Test>) servletContext.getAttribute(TESTS);
                 Test test = testMap.get(testPath);
                 result = servletContext.getContextPath() + "/" + test.getFullPathName();

@@ -156,7 +156,94 @@
         <from>^/java/ocjp/arrays$</from>
         <to type="permanent-redirect">/exam/ocajp8</to>
     </rule>
-
+    <rule>
+        <from>^/java/java-core-russian/lesson22-23-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson23-tasks</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/nasledovanie2$</from>
+        <to type="permanent-redirect">/java/java-core-russian/nasledovanie</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/collections2$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson16</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/spec-functional-interfaces$</from>
+        <to type="permanent-redirect">/java/java-core-russian/functional-interface-russian</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/vidi-collections$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson16</to>
+    </rule>
+    <rule>
+        <from>^/java/ocpjp7/overloading-overriding$</from>
+        <to type="permanent-redirect">/java/ocajp8/overloading-overriding</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/overloading-overriding$</from>
+        <to type="permanent-redirect">/java/ocajp8/overloading-overriding</to>
+    </rule>
+    <rule>
+        <from>^/ru/index.jsp$</from>
+        <to type="permanent-redirect">/ru/</to>
+    </rule>
+    <rule>
+        <from>^/index.jsp$</from>
+        <to type="permanent-redirect">/</to>
+    </rule>
+     <rule>
+        <from>^/java/ocjp/file-navigation-io$</from>
+        <to type="permanent-redirect">/exam/ocpjp8</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/char-streams$</from>
+        <to type="permanent-redirect">/java/java-core-russian/char-io-streams</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/lesson3-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson4-tasks</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/threads$</from>
+        <to type="permanent-redirect">/exam/ocpjp8</to>
+    </rule>
+    <rule>
+        <from>^/articles/javaOneRussia2013.jsp$</from>
+        <to type="permanent-redirect">/show-all-articles</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/oop-klassi-metodi2$</from>
+        <to type="permanent-redirect">/java/java-core-russian/oop-klassi-metodi</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/regex2$</from>
+        <to type="permanent-redirect">/java/java-core-russian/regex-russian</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/regex$</from>
+        <to type="permanent-redirect">/java/java-core-russian/regex-russian</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/operazija -prisvaivanija$</from>
+        <to type="permanent-redirect">/java/java-core-russian/operazija-prisvaivanija</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/lesson5-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesso5-tasks</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/treads1-russian$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson23</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/resource-references$</from>
+        <to type="permanent-redirect">/publications/groups</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/keyword-finally$</from>
+        <to type="permanent-redirect">/java/java-core-russian/keyword-catch</to>
+    </rule>
 
     <rule>
         <from>^/java/(.*)/(.*)$</from>

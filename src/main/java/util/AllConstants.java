@@ -8,8 +8,6 @@ package util;
  * To change this template use File | Settings | File Templates.
  */
 public interface AllConstants {
-    String LOCAL_NAME = "java:module/";
-
     String TEST_NAME_PARAM = "testName";
     String MODE_PARAM = "mode";
     String SERIALIZE_PARAM = "serialize";
@@ -46,6 +44,8 @@ public interface AllConstants {
     String WELCOME_REGISTER_PAGE = "/person/welcome";
     String SITE_NAME = "http://www.examclouds.com/";
     String TESTS_PAGE = "exam/show-tests";
+    String TESTS_RU_PAGE = "exam/show-ru-tests";
     String QUESTIONS_PAGE = "exam/show-interview-questions";
+    String QUESTIONS_RU_PAGE = "exam/show-ru-interview-questions";
     String ARTICLES = "ARTICLES";
 }

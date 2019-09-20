@@ -18,8 +18,12 @@
      <div class="breadCrumbs">
        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
            <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-           <li><a href="<menu:testsTag/>"><spring:message code="tests.questions"/></a><meta itemprop="position" content="2"/></li>
-           <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
+           <li itemprop="itemListElement" itemscope
+                     itemtype="http://schema.org/ListItem">
+                     <a itemprop="item" href="<menu:testsTag/>"><span itemprop="name"><spring:message code="tests.questions"/></span></a>
+                     <meta itemprop="position" content="2"/>
+           </li>
+           <li>${TESTS[param.TEST_PATH].name}</li>
        </ol>
      </div>
          <h2 class="header2">${QUESTION_ENTRY_ATTRIBUTE.category.name}

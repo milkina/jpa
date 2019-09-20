@@ -9,7 +9,7 @@
     <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="robots" content="noindex">
-        <title><spring:message code="test.result"/> ${person.login}</title>
+        <title><spring:message code="test.result"/>&nbsp;${person.login}</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prism_min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/circle_min.css">
         <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>

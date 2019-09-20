@@ -9,13 +9,12 @@
   <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a itemprop="item" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.parentCategory.pathName}">
-              ${CATEGORY_ATTRIBUTE.parentCategory.name}
+               <span itemprop="name">${CATEGORY_ATTRIBUTE.parentCategory.name}</span>
           </a>
           <meta itemprop="position" content="${position}"/>
           <c:set var="position" value="${position+1}" />
      </li>
   </c:if>
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          ${CATEGORY_ATTRIBUTE.name}<meta itemprop="position" content="${position}"/></li>
+  <li>${CATEGORY_ATTRIBUTE.name}</li>
  </ol>
  </div>

@@ -30,11 +30,10 @@
         <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp" %>
         <li itemprop="itemListElement" itemscope
           itemtype="http://schema.org/ListItem">
-           <a itemprop="item" href="<menu:articlesTag/>"><spring:message code="articles"/>
-           </a><meta itemprop="position" content="2"/>
+           <span itemprop="name"><a itemprop="item" href="<menu:articlesTag/>"><spring:message code="articles"/>
+           </a></span><meta itemprop="position" content="2"/>
         </li>
-        <li itemprop="itemListElement" itemscope
-          itemtype="http://schema.org/ListItem">${ARTICLE_ATTRIBUTE.title}<meta itemprop="position" content="3"/></li>
+        <li>${ARTICLE_ATTRIBUTE.title}</li>
        </ol>
      </div>
     <main>

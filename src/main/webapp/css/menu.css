@@ -50,7 +50,7 @@ nav>ul>li:last-child{
 .menuItem,.menuItemWithSub{
   position: relative;
   padding: 15px 10px 10px;
-  z-index:10;
+/*  z-index:10;*/
   list-style: none;
   display:inline-block
 }

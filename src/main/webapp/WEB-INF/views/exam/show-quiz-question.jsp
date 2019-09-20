@@ -32,8 +32,11 @@
   <div class="breadCrumbs">
     <ol itemscope itemtype="http://schema.org/BreadcrumbList">
       <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-      <li><a href="<menu:questionsTag/>"><spring:message code="questions.interviews"/></a><meta itemprop="position" content="2"/></li>
-      <li><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="3"/></li>
+      <li itemprop="itemListElement" itemscope
+                               itemtype="http://schema.org/ListItem"><a itemprop="item" href="<menu:questionsTag/>">
+         <span itemprop="name"><spring:message code="questions.interviews"/></span></a>
+         <meta itemprop="position" content="2"/></li>
+      <li>${TESTS[param.TEST_PATH].name}</li>
     </ol>
   </div>
    <main>

@@ -27,7 +27,7 @@
     <div class="breadCrumbs">
       <ol itemscope itemtype="http://schema.org/BreadcrumbList">
         <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span>${TESTS[param.TEST_PATH].name}</span><meta itemprop="position" content="2"/></li>
+        <li>${TESTS[param.TEST_PATH].name}</li>
       </ol>
     </div>
     <main><article>

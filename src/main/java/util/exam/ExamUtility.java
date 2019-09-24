@@ -83,7 +83,7 @@ public class ExamUtility extends SpringUtility {
             count = Integer.parseInt(countString);
         } else if (categoryPaths.length == 1) {
             Category category = getCategoryService(request.getServletContext()).getCategory(categoryPaths[0]);
-            count = function.apply(category) != 0 ? function.apply(category) : 20;
+            count = category != null && function.apply(category) != 0 ? function.apply(category) : 20;
         }
         return count;
     }

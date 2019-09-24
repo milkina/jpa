@@ -244,6 +244,14 @@
         <from>^/java/java-core-russian/keyword-finally$</from>
         <to type="permanent-redirect">/java/java-core-russian/keyword-catch</to>
     </rule>
+    <rule>
+        <from>^/java/ocajp7/overloading-overriding$</from>
+        <to type="permanent-redirect">/java/ocajp8/overloading-overriding</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/enum$</from>
+        <to type="permanent-redirect">/java/java-core-russian/perechisleniya</to>
+    </rule>
 
     <rule>
         <from>^/java/(.*)/(.*)$</from>

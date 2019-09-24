@@ -196,7 +196,6 @@ h4, .header4{
    font:700 17px/26px proxima;
    color:#2f3748;
    padding: 25px 0;
-   max-height: 60px;
    overflow: hidden;
 }
 .comment-item{

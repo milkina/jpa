@@ -252,6 +252,38 @@
         <from>^/java/ocjp/enum$</from>
         <to type="permanent-redirect">/java/java-core-russian/perechisleniya</to>
     </rule>
+    <rule>
+        <from>^/java/ocajp7/if-else-statement$</from>
+        <to type="permanent-redirect">/java/ocajp8/if-else-statement</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/lesson8-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson7-tasks</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/lesson6-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson7-tasks</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/garbage-collection$</from>
+        <to type="permanent-redirect">/exam/ocpjp8</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/object-oriented-programming-concepts$</from>
+        <to type="permanent-redirect">/java/ocajp8/object-oriented-programming-concepts</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/literals$</from>
+        <to type="permanent-redirect">/java/ocajp8/literals</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/try-catch$</from>
+        <to type="permanent-redirect">/java/ocajp8/try-catch</to>
+    </rule>
+    <rule>
+        <from>^/java/ocjp/inner-classes$</from>
+        <to type="permanent-redirect">/java/ocpjp8/inner-classes</to>
+    </rule>
 
     <rule>
         <from>^/java/(.*)/(.*)$</from>

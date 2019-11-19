@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
+<!--    <rule>
+        <from>http://www.examclouds.com/index.html</from>
+        <to type="permanent-redirect">http://www.examclouds.com</to>
+    </rule>
+    <rule>
+        <from>http://www.examclouds.com/index.php</from>
+        <to type="permanent-redirect">http://www.examclouds.com</to>
+    </rule>-->
      <rule>
         <name>Domain Name Check</name>
         <condition name="host" operator="notequal">www.examclouds.com</condition>
@@ -9,7 +17,7 @@
         <to type="permanent-redirect">http://www.examclouds.com/$1</to>
     </rule>
     <rule>
-        <from>http://www.examclouds.com/</from>
+        <from>http://www.examclouds.com(/+)</from>
         <to type="permanent-redirect">http://www.examclouds.com</to>
     </rule>
     <rule>
@@ -115,10 +123,6 @@
     <rule>
         <from>^/java/java-core-russian/lesson13$</from>
         <to type="permanent-redirect">/exam/java-core-russian</to>
-    </rule>
-    <rule>
-        <from>^/java/web-services/JAXP$</from>
-        <to type="permanent-redirect">/java/web-services/jaxp-parent</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/treads-russian$</from>
@@ -294,6 +298,10 @@
         <to type="permanent-redirect">/</to>
     </rule>
     <rule>
+        <from>^/publications/restful-deployment$</from>
+        <to type="permanent-redirect">/java/web-services/restful-deployment</to>
+    </rule>
+    <rule>
         <from>^/publications/(.*)$</from>
         <to type="passthrough">/show-article?URL_PARAM=$1</to>
     </rule>
@@ -316,6 +324,10 @@
     <rule>
         <from>^/web-services$</from>
         <to type="passthrough">/show-course?TEST_PATH=web-services</to>
+    </rule>
+    <rule>
+        <from>^/exam/web-services$</from>
+        <to type="permanent-redirect">/web-services</to>
     </rule>
     <rule>
         <from>^/exam/(.*)$</from>

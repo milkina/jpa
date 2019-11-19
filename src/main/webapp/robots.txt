@@ -9,5 +9,4 @@ Disallow: /show-login-page
 Disallow: /show-exam-question
 Disallow: /start-quiz
 Disallow: /*?lang=
-Host: www.examclouds.com
 Sitemap: http://www.examclouds.com/sitemap.xml

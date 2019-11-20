@@ -42,7 +42,7 @@ public interface AllConstants {
     String GROUP_NAME = "java";
     String REGISTER_PAGE = "person/register";
     String WELCOME_REGISTER_PAGE = "/person/welcome";
-    String SITE_NAME = "http://www.examclouds.com/";
+    String SITE_NAME = "https://www.examclouds.com/";
     String TESTS_PAGE = "exam/show-tests";
     String TESTS_RU_PAGE = "exam/show-ru-tests";
     String QUESTIONS_PAGE = "exam/show-interview-questions";

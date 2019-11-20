@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
-<!--    <rule>
-        <from>http://www.examclouds.com/index.html</from>
-        <to type="permanent-redirect">http://www.examclouds.com</to>
-    </rule>
+    <!--    <rule>
+            <from>https://www.examclouds.com/index.html</from>
+            <to type="permanent-redirect">https://www.examclouds.com</to>
+        </rule>
+        <rule>
+            <from>https://www.examclouds.com/index.php</from>
+            <to type="permanent-redirect">https://www.examclouds.com</to>
+        </rule>-->
+
     <rule>
-        <from>http://www.examclouds.com/index.php</from>
-        <to type="permanent-redirect">http://www.examclouds.com</to>
-    </rule>-->
-     <rule>
         <name>Domain Name Check</name>
         <condition name="host" operator="notequal">www.examclouds.com</condition>
         <condition name="host" operator="notequal">localhost</condition>
-        <from>^/(.*)$</from>
-        <to type="permanent-redirect">http://www.examclouds.com/$1</to>
+        <condition type="scheme" operator="notequal">https</condition>
+        <from>^/(.*)</from>
+        <to type="permanent-redirect">https://www.examclouds.com/$1</to>
     </rule>
-    <rule>
-        <from>http://www.examclouds.com(/+)</from>
-        <to type="permanent-redirect">http://www.examclouds.com</to>
-    </rule>
+  <!--  <rule>
+        <name>Domain Name Check</name>
+        <condition type="request-url" operator="equal">^http://www.examclouds.com</condition>
+        <from>^(.*)$</from>
+        <to type="permanent-redirect">https://www.examclouds.com/$1</to>
+    </rule>-->
+    <!--   <rule>
+          <name>Https redirect</name>
+          <condition type="scheme" operator="notequal">^https$</condition>
+          <from>^/(.*)</from>
+          <to type="permanent-redirect" last="true">https://www.examclouds.com/$1</to>
+      </rule>-->
+    <!--  <rule>
+         <from>https://www.examclouds.com(/+)</from>
+         <to type="permanent-redirect">https://www.examclouds.com</to>
+     </rule>-->
     <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
         <to type="redirect">/publications/groups</to>
@@ -196,7 +210,7 @@
         <from>^/index.jsp$</from>
         <to type="permanent-redirect">/</to>
     </rule>
-     <rule>
+    <rule>
         <from>^/java/ocjp/file-navigation-io$</from>
         <to type="permanent-redirect">/exam/ocpjp8</to>
     </rule>

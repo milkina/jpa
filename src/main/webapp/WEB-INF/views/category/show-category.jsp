@@ -19,7 +19,7 @@
        <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
        <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
          <link rel="canonical"
-         href="http://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
+         href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
        </c:if>
        <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">
           <meta name="robots" content="noindex">
@@ -32,7 +32,7 @@
         <article>
          <c:if test="${CATEGORY_ATTRIBUTE.article.image != null &&  not empty CATEGORY_ATTRIBUTE.article.image}">
            <img class="categoryImage" src="${CATEGORY_ATTRIBUTE.article.image}"
-             alt="${CATEGORY_ATTRIBUTE.name}" title="${CATEGORY_ATTRIBUTE.name}">
+             alt="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>" title="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>">
          </c:if>
          <h1 class="show-category-header">${CATEGORY_ATTRIBUTE.name}</h1>
          <div class="category-article">${CATEGORY_ATTRIBUTE.article.text}</div>

@@ -18,7 +18,7 @@
         <meta property = "og:image" content = "${ARTICLE_ATTRIBUTE.image}" />
     </c:if>
     <meta property = "og:description" content = "${ARTICLE_ATTRIBUTE.description}" />
-    <meta property = "og:site_name" content="http://www.examclouds.com">
+    <meta property = "og:site_name" content="https://www.examclouds.com">
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <c:if test="${!ARTICLE_ATTRIBUTE.indexStatus}">
         <meta name="robots" content="noindex">

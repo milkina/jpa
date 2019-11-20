@@ -9,4 +9,4 @@ Disallow: /show-login-page
 Disallow: /show-exam-question
 Disallow: /start-quiz
 Disallow: /*?lang=
-Sitemap: http://www.examclouds.com/sitemap.xml
+Sitemap: https://www.examclouds.com/sitemap.xml

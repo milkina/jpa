@@ -2,4 +2,4 @@
 <meta property = "og:type" content = "article" />
 <meta property = "og:image" content = "${CATEGORY_ATTRIBUTE.article.image}" />
 <meta property = "og:description" content = "${CATEGORY_ATTRIBUTE.article.description}" />
-<meta property = "og:site_name" content="http://www.examclouds.com">
+<meta property = "og:site_name" content="https://www.examclouds.com">

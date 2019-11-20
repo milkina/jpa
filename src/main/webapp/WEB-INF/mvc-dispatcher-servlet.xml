@@ -14,6 +14,7 @@
     <resources mapping="/js/**" location="/js/" />
     <resources mapping="/fonts/**" location="/fonts/" />
     <resources mapping="/robots.txt" location="/robots.txt" />
+    <resources mapping="/.well-known/pki-validation/B6C724A58B56B998104764B4F4B5A5B3.txt" location="/a.txt" />
 
     <beans:bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">

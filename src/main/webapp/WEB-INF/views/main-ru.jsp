@@ -10,9 +10,9 @@
     <%@ include file="/WEB-INF/head_common.jsp"%>
 	<title>Бесплатные онлайн курсы по Java программированию</title>
 	<meta name="Description" content="Бесплатные онлайн курсы, тесты и вопросы по изучению Java программирования и подготовке к Oracle Java сертификациям и собеседованиям.">
-	<link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
-    <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
-    <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">
+	<link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/">
+    <link rel="alternate" hreflang="en" href="https://www.examclouds.com/">
+    <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/">
     <style>
       .lessons-list>li>h3:before{
         content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';

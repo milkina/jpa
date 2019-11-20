@@ -5,9 +5,9 @@
     <jsp:attribute name="language"> lang="<spring:message code="lang"/>"</jsp:attribute>
     <jsp:attribute name="header">
         <title>ExamClouds</title>
-        <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/tests">
-        <link rel="alternate" hreflang="en" href="http://www.examclouds.com/tests">
-        <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/tests">
+        <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/tests">
+        <link rel="alternate" hreflang="en" href="https://www.examclouds.com/tests">
+        <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/tests">
     </jsp:attribute>
     <jsp:body>
         <div>Page is removed or does not exist.</div>

@@ -10,9 +10,9 @@
         <%@ include file="/WEB-INF/head_common.jsp"%>
         <meta name="Description" content="<spring:message code="main.description"/>">
         <title><spring:message code="main.title"/></title>
-        <link rel="alternate" hreflang="ru" href="http://www.examclouds.com/ru/">
-        <link rel="alternate" hreflang="en" href="http://www.examclouds.com/">
-        <link rel="alternate" hreflang="x-default" href="http://www.examclouds.com/">
+        <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/">
+        <link rel="alternate" hreflang="en" href="https://www.examclouds.com/">
+        <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/">
         <style>
               .lessons-list>li>h3:before{
                 content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';

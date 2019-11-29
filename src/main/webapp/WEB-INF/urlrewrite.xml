@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
-    <!--    <rule>
-            <from>https://www.examclouds.com/index.html</from>
-            <to type="permanent-redirect">https://www.examclouds.com</to>
-        </rule>
-        <rule>
-            <from>https://www.examclouds.com/index.php</from>
-            <to type="permanent-redirect">https://www.examclouds.com</to>
-        </rule>-->
-
     <rule>
         <name>Domain Name Check</name>
         <condition name="host" operator="notequal">www.examclouds.com</condition>
@@ -18,12 +9,12 @@
         <from>^/(.*)</from>
         <to type="permanent-redirect">https://www.examclouds.com/$1</to>
     </rule>
-  <!--  <rule>
-        <name>Domain Name Check</name>
-        <condition type="request-url" operator="equal">^http://www.examclouds.com</condition>
-        <from>^(.*)$</from>
-        <to type="permanent-redirect">https://www.examclouds.com/$1</to>
-    </rule>-->
+    <!--  <rule>
+          <name>Domain Name Check</name>
+          <condition type="request-url" operator="equal">^http://www.examclouds.com</condition>
+          <from>^(.*)$</from>
+          <to type="permanent-redirect">https://www.examclouds.com/$1</to>
+      </rule>-->
     <!--   <rule>
           <name>Https redirect</name>
           <condition type="scheme" operator="notequal">^https$</condition>
@@ -34,49 +25,62 @@
          <from>https://www.examclouds.com(/+)</from>
          <to type="permanent-redirect">https://www.examclouds.com</to>
      </rule>-->
+<!--    <rule>
+        <condition type="parameter" name="lang" operator="equal">(ru|en)</condition>
+        <from>^(.*)</from>
+        <to type="permanent-redirect">%{context-path}$1/%{parameter:lang}</to>
+    </rule>-->
+    <rule>
+        <from>^/?(index.html|index.php)$</from>
+        <to type="permanent-redirect">https://www.examclouds.com</to>
+    </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-9-06-2017$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-JV-17-05$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-17-06$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-17-07$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-01$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-02$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-03$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-04$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-05$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/jv-19-01$</from>
-        <to type="redirect">/publications/groups</to>
+        <to type="redirect">/java/java-core-russian/groups</to>
+    </rule>
+    <rule>
+        <from>^/publications/groups$</from>
+        <to type="redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/dateformat$</from>
@@ -256,7 +260,7 @@
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references$</from>
-        <to type="permanent-redirect">/publications/groups</to>
+        <to type="permanent-redirect">/java/java-core-russian/groups</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/keyword-finally$</from>
@@ -301,6 +305,14 @@
     <rule>
         <from>^/java/ocjp/inner-classes$</from>
         <to type="permanent-redirect">/java/ocpjp8/inner-classes</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/treads2-russian$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson23</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/lesson9-tasks$</from>
+        <to type="permanent-redirect">/java/java-core-russian/lesson7-tasks</to>
     </rule>
 
     <rule>

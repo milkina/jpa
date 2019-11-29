@@ -34,7 +34,7 @@ body{
   min-height:100vh;
   box-sizing:border-box
 }
-a{
+a,span.external-reference{
   color:#4c82be
 }
 code{

@@ -17,10 +17,16 @@
        <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
        <%@ include file="/edit/categoryOL.jsp"%>
        <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
-       <c:if test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
+       <c:choose>
+       <c:when test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
          <link rel="canonical"
          href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
-       </c:if>
+       </c:when>
+       <c:otherwise>
+           <link rel="canonical"
+             href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}" />
+       </c:otherwise>
+       </c:choose>
        <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">
           <meta name="robots" content="noindex">
        </c:if>

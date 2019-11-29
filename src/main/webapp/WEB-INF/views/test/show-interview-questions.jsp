@@ -4,18 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language">lang="ru"</jsp:attribute>
+    <jsp:attribute name="language">lang="ua"</jsp:attribute>
     <jsp:attribute name="header">
-        <meta name="Keywords" content="Java вопросы на собеседовании">
-        <meta name="Description" content="Онлайн подготовка к собеседованию по Java - примеры вопросов и ответов для разработчиков. Что должен знать Java программист для успешного прохождения интервью?">
-        <title>Онлайн Java вопросы на собеседовании программисту на ExamClouds</title>
+        <meta name="Keywords" content="java certification questions,java interview preparation,java interview questions,java interview questions and answers">
+        <meta name="Description" content="Online Oracle Java certification and interview questions and answers. What should know Java developer to pass interview successfully?">
+        <title>Online Oracle Java Certification and Interview Questions and Answers</title>
         <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{
-              content:"Выбрать категории";
+              content:"Select categories";
           }
         </style>
+        <link rel="canonical" href="https://www.examclouds.com/questions">
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/questions">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/questions">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/questions">
@@ -26,12 +27,12 @@
         <div class="breadCrumbs">
           <ol itemscope itemtype="http://schema.org/BreadcrumbList">
             <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>
-            <li>Вопросы собеседований</li>
+            <li>Interview Questions</li>
           </ol>
         </div>
         <main>
           <div>
-            <h1 class="all-questions-header">Java вопросы на собеседовании</h1>
+            <h1 class="all-questions-header">Java Interview Questions</h1>
             <ul class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
              <c:forEach var="test" items="${COURSES_WITH_QUESTIONS}">
               <li class="panel select-category-li">
@@ -44,7 +45,7 @@
                       </a>
                   </h2>
                   </div>
-                  <%@include file="/WEB-INF/views/exam/start-course-quiz.jsp"%>
+                  <%@include file="/WEB-INF/views/test/start-course-quiz.jsp"%>
               </li>
             </c:forEach>
           </ul>
@@ -53,8 +54,8 @@
          <script>
            $('select[multiple]').multiselect({
                columns: 2,
-               placeholder: 'Выбрать категории',
-               selectAll: true,
+               placeholder: 'Select categories',
+               selectAll : true,
                selectGroup:true,
                search:true
             });

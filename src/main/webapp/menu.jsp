@@ -18,8 +18,18 @@
      <div class="collapse navbar-collapse navbar-nav" id="bs-example-navbar-collapse-1">
 	    <div class="col-xs-3 col-sm-2 col-lg-1 flags navbar-right">
            <ul>
-             <li><a href="?lang=ru" id="ru-flag"></a></li>
-             <li><a href="?lang=en" id="en-flag"></a></li>
+             <li>
+                 <form method="post" action="${pageContext.request.contextPath}/ru/">
+                   <input type="hidden" name="lang" value="ru">
+                   <button type="submit" id="ru-flag"></button>
+                 </form>
+             </li>
+             <li>
+                 <form method="post" action="${pageContext.request.contextPath}/">
+                    <input type="hidden" name="lang" value="en">
+                    <button type="submit" id="en-flag"></button>
+                 </form>
+             </li>
            </ul>
         </div>
 		<c:choose>
@@ -57,7 +67,7 @@
              	 </a>
                  <ul class="dropdown-menu" aria-labelledby="courses">
                     <c:forEach var="test" items="${TESTS}">
-                        <li><a href="${pageContext.request.contextPath}/${test.value.fullPathName}" id="${test.value.pathName}">
+                        <li><a href="${pageContext.request.contextPath}/<spring:message code="menu.home"/>${test.value.fullPathName}" id="${test.value.pathName}">
                             ${test.value.name}</a></li>
                     </c:forEach>
                  </ul>

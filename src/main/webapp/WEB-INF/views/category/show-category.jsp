@@ -46,7 +46,7 @@
             <ol class="category-list">
               <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.subCategories}">
                 <c:if test="${subCategory.hidden==false}">
-                  <li><a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${subCategory.pathName}"
+                  <li><a href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>java/${param.TEST_PATH}/${subCategory.pathName}"
                        class="category-sub-href" id="categoryItem${subCategory.pathName}">${subCategory.name}
                        </a>
                   </li>
@@ -72,14 +72,14 @@
          <div class="row">
            <div class="col-xs-6 previous-exam-button">
              <c:if test="${PREVIOUS_CATEGORY!=null}">
-               <a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${PREVIOUS_CATEGORY.pathName}">
+               <a href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>java/${param.TEST_PATH}/${PREVIOUS_CATEGORY.pathName}">
                  <spring:message code="previous"/>
                </a>
              </c:if>
            </div>
            <div class="col-xs-6 next-exam-button">
              <c:if test="${NEXT_CATEGORY!=null}">
-               <a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${NEXT_CATEGORY.pathName}">
+               <a href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>java/${param.TEST_PATH}/${NEXT_CATEGORY.pathName}">
                  <spring:message code="next"/>
                </a>
               </c:if>
@@ -91,7 +91,7 @@
               <ul>
                   <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.parentCategory.subCategories}">
                    <c:if test="${subCategory!=CATEGORY_ATTRIBUTE}">
-                     <li><a href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${subCategory.pathName}">${subCategory.name}
+                     <li><a href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>java/${param.TEST_PATH}/${subCategory.pathName}">${subCategory.name}
                          </a>
                      </li>
                    </c:if>

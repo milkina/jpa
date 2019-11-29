@@ -26,7 +26,7 @@ public class UrlSet {
 
     public void addUrlEntity(UrlEntity entity) {
         if (url == null) {
-            url = new ArrayList<UrlEntity>();
+            url = new ArrayList<>();
         }
         url.add(entity);
     }

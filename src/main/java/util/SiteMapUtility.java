@@ -52,38 +52,40 @@ public class SiteMapUtility {
     }
 
     public UrlSet buildLinks() {
-        setTestLinks();
-        setArticleLinks();
+        setTestLinks("");
+        setTestLinks("ru/");
+        setArticleLinks("");
+        setArticleLinks("ru/");
         return links;
     }
 
-    private void setArticleLinks() {
+    private void setArticleLinks(String language) {
         for (Article article : articles) {
             if (article.isIndexStatus()) {
                 double priority = NORM_PRIORITY;
                 if (article.getUrl().trim().isEmpty()) {
                     priority = 1;
                 }
-                UrlEntity urlEntity = createUrlEntity(SITE_NAME
+                UrlEntity urlEntity = createUrlEntity(SITE_NAME + language
                         + article.getUrl(), priority, "monthly");
                 links.addUrlEntity(urlEntity);
             }
         }
     }
 
-    private void setTestLinks() {
+    private void setTestLinks(String language) {
         for (Test test : testMap.values()) {
-            setTestLink(test);
+            setTestLink(test, language);
         }
     }
 
-    private void setTestLink(Test test) {
-        String testPathName = SITE_NAME + test.getFullPathName();
+    private void setTestLink(Test test, String language) {
+        String testPathName = SITE_NAME + language + test.getFullPathName();
         UrlEntity urlEntity =
                 createUrlEntity(testPathName, HIGH_PRIORITY, "weekly");
 
         links.addUrlEntity(urlEntity);
-        setCategoryLinks(test);
+        setCategoryLinks(test, language);
     }
 
     private UrlEntity createUrlEntity(String testPathName,
@@ -100,15 +102,15 @@ public class SiteMapUtility {
         return urlEntity;
     }
 
-    private void setCategoryLinks(Test test) {
+    private void setCategoryLinks(Test test, String language) {
         for (Category category : test.getCategories().values()) {
-            setCategoryLink(test, category);
+            setCategoryLink(test, category, language);
         }
     }
 
-    private void setCategoryLink(Test test, Category category) {
+    private void setCategoryLink(Test test, Category category, String language) {
         if (isCategoryLinkable(test, category)) {
-            UrlEntity urlEntity = createUrlEntity(SITE_NAME + "java/"
+            UrlEntity urlEntity = createUrlEntity(SITE_NAME + language + "java/"
                     + test.getPathName() + "/"
                     + category.getPathName(), NORM_PRIORITY, "weekly");
             links.addUrlEntity(urlEntity);

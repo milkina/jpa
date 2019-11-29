@@ -7,6 +7,10 @@
   <jsp:attribute name="header">
     <meta name="Description" content="Articles about Java news, preparation for examination.">
     <title><spring:message code="articles"/> | ExamClouds</title>
+    <link rel="canonical" href="https://www.examclouds.com/<spring:message code='menu.home'/>show-all-articles">
+    <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/show-all-articles">
+    <link rel="alternate" hreflang="en" href="https://www.examclouds.com/show-all-articles">
+    <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/show-all-articles">
   </jsp:attribute>
   <jsp:body>
     <main>
@@ -23,7 +27,7 @@
            </div>
            <div class="article-author">${article.author.login}</div>
            <div class="article-desc">${article.description}</div>
-           <a href="${pageContext.request.contextPath}/${article.url}" class="article-url"><spring:message code="read.more"/></a>
+           <a href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>${article.url}" class="article-url"><spring:message code="read.more"/></a>
          </li>
         </c:forEach>
       </ul>

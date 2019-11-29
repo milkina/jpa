@@ -47,7 +47,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/show-category")
+    @RequestMapping(value = {"/show-category", "{langid}/show-category"})
     public ModelAndView showCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
                                      Model model, HttpServletRequest request, Locale locale) {
         Map<String, Category> categoryMap =

@@ -1,12 +1,14 @@
 package tags.menu;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
 
 public class MenuArticleTag extends MenuTag {
     public int doStartTag() {
         try {
-            String href = getHref("show-all-articles", "show-all-articles");
+            String localeHref = getLocalHref((HttpServletRequest) pageContext.getRequest(), "menu.articles");
+            String href = getHref("show-all-articles", localeHref);
             JspWriter out = pageContext.getOut();
             out.print(href);
         } catch (IOException exception) {

@@ -44,7 +44,7 @@ public class ArticleController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/show-article")
+    @RequestMapping(value = {"/show-article", "{langid}/show-article"})
     public ModelAndView showArticle(@RequestParam(URL_PARAM) String articleUrl) {
         Article article =
                 articleService.getArticleByUrl("publications/" + articleUrl);
@@ -53,7 +53,7 @@ public class ArticleController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/show-all-articles")
+    @RequestMapping(value = {"{langid}/show-all-articles", "/show-all-articles"})
     public ModelAndView showAllArticles() {
         List<Article> articleList = articleService.getArticles();
         ModelAndView modelAndView = new ModelAndView("article/show-all-articles");

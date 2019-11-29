@@ -144,7 +144,7 @@ public class CourseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "show-course")
+    @RequestMapping(value = {"/show-course","{langid}/show-course"})
     public String showCourse() {
         return "/course/show-course";
     }

@@ -22,8 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
 
-import static util.AllConstants.SHOW_EXAM_QUESTION;
-import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstants.*;
 import static util.AllConstantsAttribute.CATEGORIES;
 import static util.AllConstantsAttribute.CURRENT_EXAM_ATTRIBUTE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
@@ -114,7 +113,7 @@ public class ExamController {
         TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
 
         ExamUtility.createExam(exam, request.getServletContext());
-        return "/exam/show-test-result";
+        return SHOW_TEST_RESULT;
     }
 
     @RequestMapping(value = "/add-person-answer")

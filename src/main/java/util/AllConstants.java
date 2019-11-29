@@ -35,17 +35,18 @@ public interface AllConstants {
     String SHOW_QUESTION_PAGE = "question/show-question";
     String SHOW_TEST_PAGE = "question/show-test-question";
     String SHOW_QUESTION_PICTURE_PAGE = "question/show-question-picture";
-    String SHOW_QUIZ_QUESTION_PAGE = "/exam/show-quiz-question";
-    String SHOW_TEST_QUESTION_PAGE = "/exam/show-test-question";
+    String SHOW_QUIZ_QUESTION_PAGE = "/test/show-quiz-question";
+    String SHOW_TEST_QUESTION_PAGE = "/test/show-test-question";
     String SHOW_QUESTION_SERVLET_PAGE = "show-question";
     String SHOW_EXAM_QUESTION = "show-exam-question";
     String GROUP_NAME = "java";
     String REGISTER_PAGE = "person/register";
     String WELCOME_REGISTER_PAGE = "/person/welcome";
     String SITE_NAME = "https://www.examclouds.com/";
-    String TESTS_PAGE = "exam/show-tests";
-    String TESTS_RU_PAGE = "exam/show-ru-tests";
-    String QUESTIONS_PAGE = "exam/show-interview-questions";
-    String QUESTIONS_RU_PAGE = "exam/show-ru-interview-questions";
+    String TESTS_PAGE = "test/show-tests";
+    String TESTS_RU_PAGE = "test/show-ru-tests";
+    String QUESTIONS_PAGE = "test/show-interview-questions";
+    String QUESTIONS_RU_PAGE = "test/show-ru-interview-questions";
+    String SHOW_TEST_RESULT = "/test/show-test-result";
     String ARTICLES = "ARTICLES";
 }

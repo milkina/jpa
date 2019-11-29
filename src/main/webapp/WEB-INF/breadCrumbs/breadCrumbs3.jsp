@@ -8,7 +8,7 @@
   <c:set var="position" value="3"></c:set>
   <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null}">
      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="${pageContext.request.contextPath}/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.parentCategory.pathName}">
+          <a itemprop="item" href="${pageContext.request.contextPath}/<spring:message code='menu.home'/>java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.parentCategory.pathName}">
                <span itemprop="name">${CATEGORY_ATTRIBUTE.parentCategory.name}</span>
           </a>
           <meta itemprop="position" content="${position}"/>

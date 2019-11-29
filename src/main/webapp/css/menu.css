@@ -185,7 +185,8 @@ nav>ul>li:last-child{
  .flags ul li{
    display:inline-block;
  }
- .flags ul li a{
+ .flags ul li button{
+    border:none;
     margin-left: 7px;
     display:inline-block;
     width: 17px;

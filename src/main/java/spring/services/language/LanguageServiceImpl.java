@@ -20,7 +20,7 @@ public class LanguageServiceImpl implements LanguageService {
         List<Language> list = languageRepository.findAll();
         Map<String, Language> map = new TreeMap<>();
         for (Language language : list) {
-            map.put(language.getCode(), language);
+            map.put(language.getCode().toString(), language);
         }
         return map;
     }

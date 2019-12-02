@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
+<%@page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -20,11 +20,17 @@
        <c:choose>
        <c:when test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
          <link rel="canonical"
-         href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
+         href="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
+         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
+         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
+         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
        </c:when>
        <c:otherwise>
            <link rel="canonical"
-             href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}" />
+             href="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}"/>
+           <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+           <link rel="alternate" hreflang="en" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+           <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
        </c:otherwise>
        </c:choose>
        <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">

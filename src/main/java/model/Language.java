@@ -1,10 +1,6 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,10 +9,11 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String code;
+    @Enumerated(EnumType.STRING)
+    private LanguageCode code;
     private String description;
 
-    public Language(int id, String code, String description) {
+    public Language(int id, LanguageCode code, String description) {
         this.id = id;
         this.code = code;
         this.description = description;
@@ -33,11 +30,11 @@ public class Language {
         this.id = id;
     }
 
-    public String getCode() {
+    public LanguageCode getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(LanguageCode code) {
         this.code = code;
     }
 

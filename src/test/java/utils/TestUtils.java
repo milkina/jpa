@@ -184,7 +184,7 @@ public static PossibleAnswer createPossibleAnswer(Answer answer, boolean isRight
 
     public static Language createLanguage(int i) {
         Language language = new Language();
-        language.setCode(LANGUAGE_CODE[i]);
+        language.setCode(LanguageCode.valueOf(LANGUAGE_CODE[i]));
         language.setDescription(LANGUAGE_DESCRIPTION[i]);
         return language;
     }

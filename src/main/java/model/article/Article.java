@@ -1,6 +1,7 @@
 package model.article;
 
 import model.Category;
+import model.Language;
 import model.comment.Comment;
 import model.person.Person;
 
@@ -37,6 +38,7 @@ public class Article {
     private String title;
 
     private boolean hidden = false;
+
     private boolean indexStatus = true;
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
@@ -48,6 +50,18 @@ public class Article {
 
     @OneToOne(mappedBy = "article")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "language")
+    private Language language;
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 
     public Integer getId() {
         return id;

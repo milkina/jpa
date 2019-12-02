@@ -1,6 +1,7 @@
 package util;
 
 import model.Category;
+import model.Language;
 import model.Test;
 import model.article.Article;
 import model.sitemap.UrlEntity;
@@ -52,40 +53,41 @@ public class SiteMapUtility {
     }
 
     public UrlSet buildLinks() {
-        setTestLinks("");
-        setTestLinks("ru/");
-        setArticleLinks("");
-        setArticleLinks("ru/");
+        setTestLinks();
+        setArticleLinks();
         return links;
     }
 
-    private void setArticleLinks(String language) {
+    private void setArticleLinks() {
         for (Article article : articles) {
             if (article.isIndexStatus()) {
                 double priority = NORM_PRIORITY;
                 if (article.getUrl().trim().isEmpty()) {
                     priority = 1;
                 }
-                UrlEntity urlEntity = createUrlEntity(SITE_NAME + language
-                        + article.getUrl(), priority, "monthly");
+                Language language = article.getLanguage();
+                String languageCode = language != null ? language.getCode().getPath() : "";
+                UrlEntity urlEntity = createUrlEntity(SITE_NAME + languageCode + article.getUrl(), priority, "monthly");
                 links.addUrlEntity(urlEntity);
             }
         }
     }
 
-    private void setTestLinks(String language) {
+    private void setTestLinks() {
         for (Test test : testMap.values()) {
-            setTestLink(test, language);
+            setTestLink(test);
         }
     }
 
-    private void setTestLink(Test test, String language) {
-        String testPathName = SITE_NAME + language + test.getFullPathName();
+    private void setTestLink(Test test) {
+        Language language = test.getLanguage();
+        String languageCode = language != null ? language.getCode().getPath() : "";
+        String testPathName = SITE_NAME + languageCode + test.getFullPathName();
         UrlEntity urlEntity =
                 createUrlEntity(testPathName, HIGH_PRIORITY, "weekly");
 
         links.addUrlEntity(urlEntity);
-        setCategoryLinks(test, language);
+        setCategoryLinks(test, languageCode);
     }
 
     private UrlEntity createUrlEntity(String testPathName,

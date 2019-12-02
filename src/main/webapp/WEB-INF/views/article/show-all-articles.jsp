@@ -4,10 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:wrapper>
+  <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
   <jsp:attribute name="header">
     <meta name="Description" content="Articles about Java news, preparation for examination.">
     <title><spring:message code="articles"/> | ExamClouds</title>
-    <link rel="canonical" href="https://www.examclouds.com/<spring:message code='menu.home'/>show-all-articles">
+    <link rel="canonical" href="https://www.examclouds.com/show-all-articles">
     <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/show-all-articles">
     <link rel="alternate" hreflang="en" href="https://www.examclouds.com/show-all-articles">
     <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/show-all-articles">

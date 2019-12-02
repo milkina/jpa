@@ -19,11 +19,20 @@
             <input type="text" name="TITLE" maxlength="70" required value="${ARTICLE_ATTRIBUTE.title}" size="70"><BR>
             <span class="adminLabel"><spring:message code="image.url"/>:</span>
             <input type="text" name="ARTICLE_IMAGE" maxlength="70" value="${ARTICLE_ATTRIBUTE.image}"><BR>
+                       <strong class="adminLabel"><spring:message	code="language"/>:</strong>
+                        <select name="LANGUAGE">
+                           <c:forEach var="language" items="${LANGUAGES}">
+                              <option value="${language.value.code}"
+                                <c:if test="${ARTICLE_ATTRIBUTE.language.code==language.value.code}">selected</c:if>
+                                  >${language.value.description}
+                              </option>
+                           </c:forEach>
+                        </select><BR>
             <span class="adminLabel"><spring:message code="index"/>?</span>
             <input type="checkbox" name="index"
               <c:if test="${ARTICLE_ATTRIBUTE==null || ARTICLE_ATTRIBUTE.indexStatus}">checked</c:if>>
             <BR>
-            <span class="adminLabel"><spring:message code="keywords"/>:<span class="wrongMessage">*</span></span>
+             <span class="adminLabel"><spring:message code="keywords"/>:<span class="wrongMessage">*</span></span>
             <textarea rows="4" cols="40" maxlength="160" name="keywords" required id="keywords">${ARTICLE_ATTRIBUTE.keywords}</textarea>  <BR>
             <span class="adminLabel"><spring:message code="meta.description"/>:<span class="wrongMessage">*</span></span>
             <textarea rows="4" cols="40" maxlength="160" name="description" required id="description">${ARTICLE_ATTRIBUTE.description}</textarea>  <BR>

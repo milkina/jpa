@@ -16,7 +16,7 @@
               content:"Выбрать категории";
           }
         </style>
-        <link rel="canonical" href="https://www.examclouds.com/ru/tests">
+        <link rel="canonical" href="https://www.examclouds.com/tests">
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/tests">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/tests">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/tests">

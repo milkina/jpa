@@ -24,7 +24,7 @@ public class LanguageUtility extends SpringUtility {
         Map<String, Language> map = (Map<String, Language>) servletContext.getAttribute(LANGUAGES);
         Map<String, String> result = new HashMap<>();
         for (Language language : map.values()) {
-            result.put(language.getCode(), language.getDescription());
+            result.put(language.getCode().toString(), language.getDescription());
         }
         return result;
     }

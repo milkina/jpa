@@ -1,9 +1,11 @@
 package util.article;
 
 import model.Category;
+import model.Language;
 import model.Test;
 import model.article.Article;
 import model.person.Person;
+import util.LanguageUtility;
 import util.ServletUtilities;
 import util.SpringUtility;
 
@@ -12,14 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 import static util.AllConstants.GROUP_NAME;
-import static util.AllConstantsParam.ARTICLE_DESCRIPTION;
-import static util.AllConstantsParam.ARTICLE_IMAGE;
-import static util.AllConstantsParam.ARTICLE_INDEX;
-import static util.AllConstantsParam.ARTICLE_KEYWORDS;
-import static util.AllConstantsParam.ARTICLE_TEXT;
-import static util.AllConstantsParam.ARTICLE_URL_PREFIX;
-import static util.AllConstantsParam.TITLE;
-import static util.AllConstantsParam.URL_PARAM;
+import static util.AllConstantsParam.*;
 import static util.GeneralUtility.decodeRussianCharacters;
 import static util.GeneralUtility.isEmpty;
 
@@ -92,6 +87,7 @@ public class ArticleUtility extends SpringUtility {
                 request.getParameter(ARTICLE_KEYWORDS));
         String title = decodeRussianCharacters(request.getParameter(TITLE));
         String index = request.getParameter(ARTICLE_INDEX);
+        String languageCode = request.getParameter(LANGUAGE);
 
         article.setText(text);
         article.setImage(image);
@@ -99,6 +95,8 @@ public class ArticleUtility extends SpringUtility {
         article.setKeywords(keywords);
         article.setTitle(title);
         article.setIndexStatus("on".equals(index));
+        Language language = LanguageUtility.findLanguageInContext( request.getServletContext(), languageCode);
+        article.setLanguage(language);
     }
 
     public static void updateArticle(Article article,

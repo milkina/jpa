@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language">lang="ua"</jsp:attribute>
+    <jsp:attribute name="language">lang="en"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="Keywords" content="java certification questions,java interview preparation,java interview questions,java interview questions and answers">
         <meta name="Description" content="Online Oracle Java certification and interview questions and answers. What should know Java developer to pass interview successfully?">

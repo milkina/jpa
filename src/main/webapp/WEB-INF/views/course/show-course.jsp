@@ -9,7 +9,10 @@
      <meta name="Keywords" content="${TESTS[param.TEST_PATH].article.keywords}">
      <meta name="Description" content="${TESTS[param.TEST_PATH].article.description}">
      <title>${TESTS[param.TEST_PATH].article.title}</title>
-     <link rel="canonical" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].fullPathName}">
+     <link rel="canonical" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}${TESTS[param.TEST_PATH].fullPathName}">
+     <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/${TESTS[param.TEST_PATH].fullPathName}">
+     <link rel="alternate" hreflang="en" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].fullPathName}">
+     <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].fullPathName}">
      <style>
       <c:if test="${TESTS[param.TEST_PATH].article.image!=null && not empty TESTS[param.TEST_PATH].article.image}">
          .show-course-header:before{

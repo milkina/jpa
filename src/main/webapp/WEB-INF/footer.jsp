@@ -3,17 +3,19 @@
        <footer class="row">
           <div class="col-xs-12 col-md-4 col-md-push-4 footerItem">
             <ul>
-              <li>
-    		  	<a href="http://vk.com/club44323672" target="_blank" rel="nofollow" id="sprite-icon_vkontakte" class="socialIcon">
-    			 </a>
+              <li><span class="external-reference" data-link="http://vk.com/club44323672">
+                     <span id="sprite-icon_vkontakte" class="socialIcon"></span>
+                   </span>
     		  </li>
     		  <li>
-    		  	 <a href="http://www.facebook.com/Examclouds" target="_blank" rel="nofollow" id="sprite-icon_facebook" class="socialIcon">
-    			 </a>
+    		    <span class="external-reference" data-link="http://www.facebook.com/Examclouds">
+    		  	   <span id="sprite-icon_facebook" class="socialIcon"></span>
+    			 </span>
     		  </li>
     		  <li>
-    			 <a href="https://twitter.com/ExamClouds" target="_blank" rel="nofollow" id="sprite-icon_twitter" class="socialIcon">
-                 </a>
+    			 <span class="external-reference" data-link="https://twitter.com/ExamClouds">
+    			    <span id="sprite-icon_twitter" class="socialIcon"></span>
+                 </span>
               </li>
              </ul>
           </div>

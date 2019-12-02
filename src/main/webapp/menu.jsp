@@ -12,7 +12,7 @@
            </span>
         </button>
         <a href="<menu:homeTag/>" id="home" class="logo">
-          <img src="${pageContext.request.contextPath}/images/logo.webp" alt="ExamClouds">
+          <img src="https://static.examclouds.com/general/logo.webp" alt="ExamClouds">
         </a>
      </div>
      <div class="collapse navbar-collapse navbar-nav" id="bs-example-navbar-collapse-1">

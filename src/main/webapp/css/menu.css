@@ -134,7 +134,7 @@ nav>ul>li:last-child{
 }
 .socialIcon{
   display:block;
-  background: url('../images/sprites.webp');
+  background: url('https://static.examclouds.com/general/sprites.webp');
   padding: 1px;
   width: 26px;
   height: 26px;
@@ -191,7 +191,7 @@ nav>ul>li:last-child{
     display:inline-block;
     width: 17px;
     height: 18px;
-    background: url('../images/sprites.webp')
+    background: url('https://static.examclouds.com/general/sprites.webp')
  }
  #en-flag{
     background-position: -161px -2px
@@ -254,7 +254,7 @@ nav>ul>li:last-child{
 }
 .lesson-icon1,.lesson-icon2,.lesson-icon0{
   display:block;
-  background: url('../images/sprites.webp');
+  background: url('https://static.examclouds.com/general/sprites.webp');
   padding: 1px;
   width: 350px;
   height: 270px;

@@ -21,15 +21,16 @@
           <from>^/(.*)</from>
           <to type="permanent-redirect" last="true">https://www.examclouds.com/$1</to>
       </rule>-->
-    <!--  <rule>
-         <from>https://www.examclouds.com(/+)</from>
-         <to type="permanent-redirect">https://www.examclouds.com</to>
-     </rule>-->
-<!--    <rule>
-        <condition type="parameter" name="lang" operator="equal">(ru|en)</condition>
-        <from>^(.*)</from>
-        <to type="permanent-redirect">%{context-path}$1/%{parameter:lang}</to>
+  <!--  <rule match-type="regex">
+        <note>Remove trailing slash</note>
+        <from>^(.*)/$</from>
+        <to type="redirect">$1</to>
     </rule>-->
+    <!--    <rule>
+            <condition type="parameter" name="lang" operator="equal">(ru|en)</condition>
+            <from>^(.*)</from>
+            <to type="permanent-redirect">%{context-path}$1/%{parameter:lang}</to>
+        </rule>-->
     <rule>
         <from>^/?(index.html|index.php)$</from>
         <to type="permanent-redirect">https://www.examclouds.com</to>
@@ -314,6 +315,14 @@
         <from>^/java/java-core-russian/lesson9-tasks$</from>
         <to type="permanent-redirect">/java/java-core-russian/lesson7-tasks</to>
     </rule>
+    <rule>
+        <from>^/java/ocajp7/try-catch$</from>
+        <to type="permanent-redirect">/java/ocajp8/try-catch</to>
+    </rule>
+    <rule>
+        <from>^/questions/java/Web_Services/Support_for_Media_Type_in_Jersey$</from>
+        <to type="permanent-redirect">/java/web-services/jersey-json</to>
+    </rule>
 
     <rule>
         <from>/java/(.*)/(.*)$</from>
@@ -366,6 +375,10 @@
     <rule>
         <from>^/articles.jsp$</from>
         <to type="permanent-redirect">/show-all-articles</to>
+    </rule>
+    <rule>
+        <from>^/articles/Oce6Jpa.jsp$</from>
+        <to type="permanent-redirect">/publications/ocjp</to>
     </rule>
     <rule>
         <from>^/start-quiz.jsp(.*)$</from>

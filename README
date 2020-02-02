@@ -25,3 +25,6 @@ To turn gzip on, change standalone/standalone.xml:
    <gzip name="gzipFilter"/>
             </filters>
         </subsystem>
+
+
+To redirect http to https  - https://javaee.ch/nginx-jelastic

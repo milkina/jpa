@@ -19,6 +19,7 @@
                 content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';
               }
         </style>
+        <meta name="google-site-verification" content="WTpUYaoC4-6-_VPl3kwMu6auSphdQoEI6K1gvJ2Vp3o"/>
   </head>
     <body itemscope itemtype="http://schema.org/WebPage" class="scroll-style">
     <cache:cacheTag/>

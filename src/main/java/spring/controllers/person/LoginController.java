@@ -31,7 +31,7 @@ public class LoginController {
 
     @RequestMapping(value = "/show-login-page")
     public String showLoginPage() {
-        return "/person/login";
+        return "person/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -64,7 +64,7 @@ public class LoginController {
         } else {
             model.addAttribute(WRONG_LOGIN_MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "wrong.login.password", "messages"));
-            return "/person/login";
+            return "person/login";
         }
     }
 

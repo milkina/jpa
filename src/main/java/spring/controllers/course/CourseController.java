@@ -68,7 +68,7 @@ public class CourseController {
     public ModelAndView showAddCourse(HttpServletRequest request) {
         Test newTest = new Test();
         newTest.setArticle(new Article());
-        ModelAndView modelAndView = new ModelAndView("/course/add-course", "command", newTest);
+        ModelAndView modelAndView = new ModelAndView("course/add-course", "command", newTest);
 
         Map<String, String> languages = LanguageUtility.getLanguagesMap(request.getServletContext());
         modelAndView.addObject("languagesMap", languages);
@@ -98,7 +98,7 @@ public class CourseController {
                 request.getServletContext().getAttribute(TESTS);
         Test test = testMap.get(testPath);
         Map<String, String> languages = LanguageUtility.getLanguagesMap(request.getServletContext());
-        ModelAndView modelAndView = new ModelAndView("/course/edit-course", "command", test);
+        ModelAndView modelAndView = new ModelAndView("course/edit-course", "command", test);
         modelAndView.addObject("languagesMap", languages);
         return modelAndView;
     }
@@ -146,7 +146,7 @@ public class CourseController {
 
     @RequestMapping(value = {"/show-course","{langid}/show-course"})
     public String showCourse() {
-        return "/course/show-course";
+        return "course/show-course";
     }
 
     @RequestMapping(value = "/up-course")

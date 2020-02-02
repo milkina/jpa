@@ -66,7 +66,7 @@ public class CategoryController {
         if (category.getHidden()) {
             return new ModelAndView("redirect:" + getResourceValue(locale, "menu.home", "label"));
         }
-        return new ModelAndView("/category/show-category");
+        return new ModelAndView("category/show-category");
     }
 
     private Category getNextCategory(int index, List<Category> list) {
@@ -89,7 +89,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/show-create-category")
     public String showCreateCategory() {
-        return "/category/create-category";
+        return "category/create-category";
     }
 
     @RequestMapping(value = "/create-category")
@@ -123,7 +123,7 @@ public class CategoryController {
         Article article = category.getArticle();
         ArticleUtility.fixTinyMceIssue(article);
 
-        ModelAndView modelAndView = new ModelAndView("/category/edit-category");
+        ModelAndView modelAndView = new ModelAndView("category/edit-category");
         modelAndView.addObject(CATEGORY_ATTRIBUTE, category);
         return modelAndView;
     }
@@ -144,7 +144,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/show-add-category")
     public String showAddCategory() {
-        return "/category/add-category";
+        return "category/add-category";
     }
 
     @RequestMapping(value = "/add-category", method = RequestMethod.POST)

@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static util.AllConstants.ARTICLES;
+import static util.AllConstants.CHANGE_PASSWORD_PAGE;
 import static util.AllConstants.MY_PROFILE_PAGE;
 import static util.AllConstants.SHOW_PERSON_HISTORY_PAGE;
 import static util.AllConstants.SHOW_QUESTIONS_PAGE;
@@ -87,7 +88,7 @@ public class PersonController {
     public ModelAndView changeUserSettings() {
         HttpSession session = GeneralUtility.getSession(true);
         Person person = (Person) session.getAttribute(PERSON_ATTRIBUTE);
-        return new ModelAndView("/person/change-password", "command", person);
+        return new ModelAndView(CHANGE_PASSWORD_PAGE, "command", person);
     }
 
     @RequestMapping(value = "/save-user-password", method = RequestMethod.POST)
@@ -100,7 +101,7 @@ public class PersonController {
         if (!password.equals(confPassword)) {
             String message = getResourceValue(locale, "password.and.conf.password.different", "messages");
             model.addAttribute(MESSAGE_ATTRIBUTE, message);
-            url = "/person/change-password";
+            url = CHANGE_PASSWORD_PAGE;
         } else {
             password = GeneralUtility.decodeRussianCharacters(password.trim());
             person.setPassword(ServletUtilities.getMD5(password));

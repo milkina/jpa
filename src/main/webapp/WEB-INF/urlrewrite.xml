@@ -21,16 +21,16 @@
           <from>^/(.*)</from>
           <to type="permanent-redirect" last="true">https://www.examclouds.com/$1</to>
       </rule>-->
-  <!--  <rule match-type="regex">
-        <note>Remove trailing slash</note>
-        <from>^(.*)/$</from>
-        <to type="redirect">$1</to>
-    </rule>-->
     <!--    <rule>
             <condition type="parameter" name="lang" operator="equal">(ru|en)</condition>
             <from>^(.*)</from>
             <to type="permanent-redirect">%{context-path}$1/%{parameter:lang}</to>
         </rule>-->
+  <!--  <rule>
+        <note>Remove trailing slash</note>
+        <from>^(.*)/{2,}(.*)$</from>
+        <to type="permanent-redirect">%{context-path}$1/$2</to>
+    </rule>-->
     <rule>
         <from>^/?(index.html|index.php)$</from>
         <to type="permanent-redirect">https://www.examclouds.com</to>
@@ -388,5 +388,6 @@
         <from>^/comment.jsp$</from>
         <to type="permanent-redirect">/</to>
     </rule>
+
 </urlrewrite>
 

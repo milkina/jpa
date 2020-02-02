@@ -95,8 +95,10 @@ public class ArticleUtility extends SpringUtility {
         article.setKeywords(keywords);
         article.setTitle(title);
         article.setIndexStatus("on".equals(index));
-        Language language = LanguageUtility.findLanguageInContext( request.getServletContext(), languageCode);
-        article.setLanguage(language);
+        if (languageCode != null) {
+            Language language = LanguageUtility.findLanguageInContext(request.getServletContext(), languageCode);
+            article.setLanguage(language);
+        }
     }
 
     public static void updateArticle(Article article,

@@ -86,7 +86,7 @@ public class QuestionController {
     @RequestMapping(value = "/show-questions")
     public String showQuestions(Locale locale, HttpServletRequest request) {
         request.setAttribute(LOCALE, locale);
-        return "/question/show-questions";
+        return "question/show-questions";
     }
 
     @RequestMapping(value = "/show-edit-question")
@@ -196,7 +196,7 @@ public class QuestionController {
         Map<String, Category> categories = test.getCategories();
         Category category = categories.get(oldCategoryPath);
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
-        return "/question/move-questions";
+        return "question/move-questions";
     }
 
     @RequestMapping(value = "/move-batch", method = RequestMethod.POST)

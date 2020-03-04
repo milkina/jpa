@@ -59,21 +59,21 @@
                     <div class="index-items-text">Articles to learn Web Services and Java Persistence API.</div>
                   </li>
                 </ul>
-                <ul class="lessons-list scroll-style">
+                <div class="lessons-list scroll-style">
                    <c:set var="count" value="${1}"/>
                    <c:forEach var="category" items="${TESTS['ocpjp8'].categories}">
                       <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
-                        <li>
+                        <div>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}"
                             class="lesson-icon${count%3}"></a>
-                           <h3>${category.value.name}</h3>
+                           <h5>${category.value.name}</h5>
                            <c:set var="count" value="${count+1}"/>
                            <div>${category.value.article.description}</div>
                            <a href="${pageContext.request.contextPath}/java/ocpjp8/${category.value.pathName}">Full lesson</a>
-                        </li>
+                        </div>
                       </c:if>
                    </c:forEach>
-                </ul>
+                </div>
                 <div class="row learn-java">
                   <h3 class="col-xs-12">Why should I learn Java?</h3>
                   <p class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 learn-java-text">Java has a rich API, which allows to solve different problems, but still is easy in learning. It has a lot of forums, resources and still is growing.</p>

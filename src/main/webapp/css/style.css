@@ -1123,6 +1123,3 @@ input[type="checkbox"].test-checkbox:checked+label:after{
     vertical-align: middle;
     padding-right: 5px;
 }
-.strong-invisible{
-   font-weight: normal
-}

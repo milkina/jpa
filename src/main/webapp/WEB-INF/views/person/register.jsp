@@ -24,7 +24,7 @@
                   <div><input type="password" required maxlength="50" name="confPassword" class="register-input"></div>
                   <div class="register-label">e-mail:</div>
                   <div><form:input type="email" path="email" required="required" maxlength="50" class="register-input"/></div>
-                  <div class="register-button"><input type="submit" value="<spring:message	code="registration"/>" name="Confirm" class="styled-button"></div>
+                  <div class="register-button"><input type="submit" value="<spring:message	code="registration"/>" name="Confirm" id="Confirm" class="styled-button"></div>
               </form:form>
            </div>
     </div>

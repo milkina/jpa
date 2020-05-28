@@ -19,13 +19,13 @@
 	    <div class="col-xs-3 col-sm-2 col-lg-1 flags navbar-right">
            <ul>
              <li>
-                 <form method="post" action="${pageContext.request.contextPath}/ru/">
+                 <form method="post" action="<menu:languageRuTag/>">
                    <input type="hidden" name="lang" value="ru">
                    <button type="submit" id="ru-flag"></button>
                  </form>
              </li>
              <li>
-                 <form method="post" action="${pageContext.request.contextPath}/">
+                 <form method="post" action="<menu:languageEnTag/>">
                     <input type="hidden" name="lang" value="en">
                     <button type="submit" id="en-flag"></button>
                  </form>

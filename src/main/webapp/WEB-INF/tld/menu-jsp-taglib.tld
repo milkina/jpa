@@ -31,4 +31,16 @@
         <bodycontent>empty</bodycontent>
         <info>Menu Home Tag.</info>
     </tag>
+    <tag>
+        <name>languageEnTag</name>
+        <tagclass>tags.menu.MenuLanguageEn</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Language English Tag.</info>
+    </tag>
+    <tag>
+        <name>languageRuTag</name>
+        <tagclass>tags.menu.MenuLanguageRu</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Language Russian Tag.</info>
+    </tag>
 </taglib>

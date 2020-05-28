@@ -14,13 +14,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="shortcut icon" href="https://static.examclouds.com/general/fav.ico" type="image/x-icon">
 <meta name="msvalidate.01" content="1EA6E20A8E37F3439A3AB653B71B0EF9"/>
-<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-7148099013705432",
     enable_page_level_ads: true
   });
-</script>-->
+</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-35384009-1"></script>
 <script>

@@ -44,7 +44,7 @@
           </h2>
           <div class="questionEntryNumber" id="questionEntryNumber"><exam:number/>/<exam:size/></div>
         </div>
-        <form ACTION="${pageContext.request.contextPath}/add-person-answer?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}"
+        <form ACTION="${pageContext.request.contextPath}/add-person-answer?TEST_PATH=${param.TEST_PATH}"
               method="POST">
          <div class="questionEntryDiv">
            <div class="questionText">${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.question.text}</div>
@@ -103,7 +103,7 @@
                 <c:forEach var="number"  begin="${start}" end="${end}">
                 <li
                    <c:if test="${number==CURRENT_EXAM_ATTRIBUTE.currentNumber+1}">class="selected" </c:if>
-                      ><a href="${pageContext.request.contextPath}/show-exam-question?CATEGORY_PATH=${param.CATEGORY_PATH}&TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=${number-1}">
+                      ><a href="${pageContext.request.contextPath}/show-exam-question?TEST_PATH=${param.TEST_PATH}&QUESTION_NUMBER=${number-1}">
                           ${number}</a>
                    <c:if test="${CURRENT_EXAM_ATTRIBUTE.questionEntries[number-1].answered}">
                    &#10004;

@@ -103,7 +103,7 @@ public class ExamUtility extends SpringUtility {
     }
 
     public static String updateCurrentQuestionEntry(int currentNumber, AbstractExam exam) {
-        String url = null;
+        String url;
         exam.setCurrentNumber(currentNumber);
         AbstractQuestionEntry currentQuestionEntry =
                 (AbstractQuestionEntry) exam.getQuestionEntries().get(currentNumber);

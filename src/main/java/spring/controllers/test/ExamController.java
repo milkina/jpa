@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import spring.services.category.CategoryService;
 import spring.services.question.QuestionService;
 import util.CategoryUtility;
@@ -118,15 +119,13 @@ public class ExamController {
 
     @RequestMapping(value = "/add-person-answer")
     public String addPersonAnswer(HttpServletRequest request) {
-        String categoryPath = request.getParameter(CATEGORY_PATH);
         String testPath = request.getParameter(TEST_PATH);
         HttpSession session = request.getSession();
         TestExam exam = (TestExam) session.getAttribute(CURRENT_EXAM_ATTRIBUTE);
         TestQuestionEntry currentQuestionEntry = (TestQuestionEntry) exam.getCurrentQuestionEntry();
 
         ExamUtility.setUserAnswer(request, currentQuestionEntry);
-        String url = String.format("/%s?%s=%s&%s=%s&", SHOW_EXAM_QUESTION,
-                CATEGORY_PATH, categoryPath,
+        String url = String.format("/%s?%s=%s", SHOW_EXAM_QUESTION,
                 TEST_PATH, testPath);
         if (exam.getCurrentNumber() != exam.getQuestionEntries().size() - 1) {
             url = url + "&NEXT=NEXT";

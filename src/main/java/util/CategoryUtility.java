@@ -24,6 +24,7 @@ import static util.AllConstantsParam.CATEGORY_NAME;
 import static util.AllConstantsParam.CATEGORY_PARENT;
 import static util.AllConstantsParam.CATEGORY_PATH;
 import static util.AllConstantsParam.CATEGORY_PATH_NAME;
+import static util.AllConstantsParam.CATEGORY_VIDEO_PATH;
 import static util.AllConstantsParam.TEST_PATH;
 
 /**
@@ -63,6 +64,7 @@ public class CategoryUtility extends SpringUtility {
         String categoryPath = request.getParameter(CATEGORY_PATH_NAME);
         String categoryParentId = request.getParameter(CATEGORY_PARENT);
         String categoryHidden = request.getParameter(CATEGORY_HIDDEN);
+        String videoPath = request.getParameter(CATEGORY_VIDEO_PATH);
 
         Category parent = null;
         if (!categoryParentId.isEmpty()) {
@@ -73,6 +75,7 @@ public class CategoryUtility extends SpringUtility {
         category.setPathName(categoryPath.trim());
         category.setParentCategory(parent);
         category.setHidden("on".equals(categoryHidden));
+        category.setVideoPath(videoPath.trim());
     }
 
     public static Category getCategoryByPath(HttpServletRequest request) {

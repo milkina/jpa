@@ -32,16 +32,6 @@
            <li>${TESTS[param.TEST_PATH].name}</li>
        </ol>
      </div>
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-     <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-7148099013705432"
-          data-ad-slot="5607820838"></ins>
-     <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-     </script>
      <main>
         <c:if test="${CURRENT_EXAM_ATTRIBUTE.currentQuestionEntry.category.parentCategory!=null}">
           <h1 class="exam-header1">

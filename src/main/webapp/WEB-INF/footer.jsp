@@ -25,7 +25,7 @@
     		 </address>
           </div>
           <div class="col-xs-12 col-md-4 col-md-pull-8 copyright footerItem">
-          			 Copyright &#169; 2012-2020 ExamClouds
+          			 Copyright &#169; 2012-2021 ExamClouds
           </div>
        </footer>
     </div>

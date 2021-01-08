@@ -44,6 +44,8 @@ public class Category implements Serializable, Comparable<Category> {
     // @Column(unique = true)
     private String pathName;
 
+    private String videoPath;
+
     @ManyToMany
     @JoinTable(name = "TEST_CATEGORY",
             joinColumns = @JoinColumn(name = "CATEGORY_ID"),
@@ -104,6 +106,14 @@ public class Category implements Serializable, Comparable<Category> {
 
     public void setPathName(String pathName) {
         this.pathName = pathName;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
     }
 
     public List<AbstractQuestionEntry> getQuestionEntries() {

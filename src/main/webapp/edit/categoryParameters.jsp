@@ -4,6 +4,9 @@
 <span class="adminLabel"><spring:message code="category.path"/>:<span class="wrongMessage">*</span></span>
 <input type="text" name="categoryPathName" maxlength="70" required value="${param.CATEGORY_PATH}" size="70"/>
 <BR>
+<span class="adminLabel"><spring:message code="category.videoPath"/>:</span>
+<input type="text" name="categoryVideoPath" maxlength="70" value="${CATEGORY_ATTRIBUTE.videoPath}" size="70"/>
+<BR>
 <span class="adminLabel"><spring:message code="category.parent"/>:</span>
 <select name="categoryParent">
    <option value="" <c:if test="${CATEGORY_ATTRIBUTE.parentCategory==null}">

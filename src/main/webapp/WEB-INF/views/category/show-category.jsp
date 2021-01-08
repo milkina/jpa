@@ -47,7 +47,14 @@
              alt="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>" title="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>">
          </c:if>
          <h1 class="show-category-header">${CATEGORY_ATTRIBUTE.name}</h1>
-         <div class="category-article">${CATEGORY_ATTRIBUTE.article.text}</div>
+         <div class="category-article">
+           <c:if test="${not empty CATEGORY_ATTRIBUTE.videoPath}">
+              <div class="read-questions-div glyphicon glyphicon-facetime-video">
+                  <span class="external-reference" data-link="${CATEGORY_ATTRIBUTE.videoPath}"><spring:message code="category.video"/></span>
+              </div>
+           </c:if>
+           ${CATEGORY_ATTRIBUTE.article.text}
+         </div>
            <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
             <ol class="category-list">
               <c:forEach var="subCategory" items="${CATEGORY_ATTRIBUTE.subCategories}">

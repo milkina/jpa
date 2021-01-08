@@ -32,7 +32,7 @@
             </props>
         </property>
     </bean>
-  <!--  <bean id="dataSource"
+<!--    <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
@@ -48,7 +48,6 @@
         <property name="username" value="root"/>
         <property name="password" value="HFOcrn31114"/>
     </bean>
-
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="myEmf"/>

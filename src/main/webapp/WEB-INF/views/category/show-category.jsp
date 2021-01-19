@@ -2,6 +2,7 @@
 <%@page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <t:wrapper>
@@ -48,12 +49,12 @@
          </c:if>
          <h1 class="show-category-header">${CATEGORY_ATTRIBUTE.name}</h1>
          <div class="category-article">
-           <c:if test="${not empty CATEGORY_ATTRIBUTE.videoPath}">
-              <div class="read-questions-div glyphicon glyphicon-facetime-video">
-                  <span class="external-reference" data-link="${CATEGORY_ATTRIBUTE.videoPath}"><spring:message code="category.video"/></span>
-              </div>
-           </c:if>
-           ${CATEGORY_ATTRIBUTE.article.text}
+            <c:if test="${CATEGORY_ATTRIBUTE.videoPath!=null && not empty CATEGORY_ATTRIBUTE.videoPath}">
+                  <iframe width="100%" height="315" src="${fn:replace(CATEGORY_ATTRIBUTE.videoPath, "youtu.be", "www.youtube.com/embed")}"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  </iframe>
+            </c:if>
+            ${CATEGORY_ATTRIBUTE.article.text}
          </div>
            <c:if test="${not empty CATEGORY_ATTRIBUTE.subCategories}">
             <ol class="category-list">

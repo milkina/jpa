@@ -72,6 +72,11 @@
                    </div>
                  </div>
              </div>
+             <!-- TrustBox widget - Review Collector -->
+             <div class="trustpilot-widget" data-locale="<spring:message code="trustpilot.locale"/>" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="60103d74ba7c3600012452fe" data-style-height="52px" data-style-width="100%">
+               <a href="https://<spring:message code="trustpilot.url"/>.trustpilot.com/review/examclouds.com" target="_blank" rel="noopener">Trustpilot</a>
+             </div>
+             <!-- End TrustBox widget -->
              <ul class="showQuestionsList">
               <c:forEach var="number" begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
                  <li>

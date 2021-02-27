@@ -37,51 +37,51 @@
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-12-04-2017$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-9-06-2017$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references-JV-17-05$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-17-06$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-17-07$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-01$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-02$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-03$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-04$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/JV-18-05$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/jv-19-01$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/publications/groups$</from>
-        <to type="redirect">/java/java-core-russian/groups</to>
+        <to type="redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/dateformat$</from>
@@ -261,7 +261,7 @@
     </rule>
     <rule>
         <from>^/java/java-core-russian/resource-references$</from>
-        <to type="permanent-redirect">/java/java-core-russian/groups</to>
+        <to type="permanent-redirect">/ru/exam/java-core-russian</to>
     </rule>
     <rule>
         <from>^/java/java-core-russian/keyword-finally$</from>
@@ -304,6 +304,14 @@
         <to type="permanent-redirect">/java/ocajp8/try-catch</to>
     </rule>
     <rule>
+        <from>^/ru/java/java-core-russian/groups$</from>
+        <to type="permanent-redirect">/ru/exam/java-core-russian</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/groups$</from>
+        <to type="permanent-redirect">/ru/exam/java-core-russian</to>
+    </rule>
+    <rule>
         <from>^/java/ocjp/inner-classes$</from>
         <to type="permanent-redirect">/java/ocpjp8/inner-classes</to>
     </rule>
@@ -315,6 +323,32 @@
         <from>^/java/java-core-russian/lesson9-tasks$</from>
         <to type="permanent-redirect">/java/java-core-russian/lesson7-tasks</to>
     </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/literature$</from>
+        <to type="permanent-redirect">/ru/publications/java-resources</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/literature$</from>
+        <to type="permanent-redirect">/ru/publications/java-resources</to>
+    </rule>
+
+    <rule>
+        <from>^/ru/java/java-core-russian/checklist$</from>
+        <to type="permanent-redirect">/ru/publications/checklist</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/checklist$</from>
+        <to type="permanent-redirect">/ru/publications/checklist</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/dopolnitelnie-materiali$</from>
+        <to type="permanent-redirect">/ru/exam/java-core-russian</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/dopolnitelnie-materiali$</from>
+        <to type="permanent-redirect">/ru/exam/java-core-russian</to>
+    </rule>
+
     <rule>
         <from>^/java/ocajp7/try-catch$</from>
         <to type="permanent-redirect">/java/ocajp8/try-catch</to>
@@ -328,6 +362,7 @@
         <from>/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>
+
     <rule>
         <from>^/publications/oracle-java-certifications$</from>
         <to type="permanent-redirect">/</to>

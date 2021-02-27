@@ -8,14 +8,14 @@
 
     <annotation-driven />
 
-    <resources mapping="/resources/**" location="/resources/" />
-    <resources mapping="/css/**" location="/css/" />
-    <resources mapping="/images/**" location="/images/" />
-    <resources mapping="/js/**" location="/js/" />
-    <resources mapping="/fonts/**" location="/fonts/" />
-    <resources mapping="/robots.txt" location="/robots.txt" />
-    <resources mapping="/ads.txt" location="/ads.txt" />
-    <resources mapping="/.well-known/pki-validation/B6C724A58B56B998104764B4F4B5A5B3.txt" location="/a.txt" />
+    <resources mapping="/resources/**" location="/resources/"/>
+    <resources mapping="/css/**" location="/css/" cache-period="1209600"/>
+    <resources mapping="/images/**" location="/images/" cache-period="1209600"/>
+    <resources mapping="/js/**" location="/js/" cache-period="1209600"/>
+    <resources mapping="/fonts/**" location="/fonts/" cache-period="1209600"/>
+    <resources mapping="/robots.txt" location="/robots.txt"/>
+    <resources mapping="/ads.txt" location="/ads.txt"/>
+    <resources mapping="/.well-known/pki-validation/B6C724A58B56B998104764B4F4B5A5B3.txt" location="/a.txt"/>
 
     <beans:bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">

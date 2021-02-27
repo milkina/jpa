@@ -771,6 +771,7 @@ input[type="checkbox"].test-checkbox:checked+label:after{
 }
 #categories{
    counter-reset: lesson;
+   overflow: hidden
 }
 #categories li{
   counter-increment: lesson;

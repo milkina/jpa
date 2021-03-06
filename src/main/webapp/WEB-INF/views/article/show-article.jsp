@@ -8,17 +8,37 @@
 <%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <cache:cacheTag/>
 <t:wrapper>
+  <jsp:attribute name="language">lang="${ARTICLE_ATTRIBUTE.language.code}"</jsp:attribute>
   <jsp:attribute name="header">
     <meta name="Keywords" content="${ARTICLE_ATTRIBUTE.keywords}">
     <meta name="Description" content="${ARTICLE_ATTRIBUTE.description}">
     <title>${ARTICLE_ATTRIBUTE.title}</title>
-    <meta property = "og:title" content = "${ARTICLE_ATTRIBUTE.title}" />
-    <meta property = "og:type" content = "article" />
+    <c:choose>
+      <c:when test="${ARTICLE_ATTRIBUTE.url.equals('en')}">
+       <link rel="canonical" href="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.url}" />
+       <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/${ARTICLE_ATTRIBUTE.url}">
+       <link rel="alternate" hreflang="en" href="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.url}">
+       <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.url}">
+      </c:when>
+      <c:otherwise>
+        <link rel="canonical" href="https://www.examclouds.com/ru/${ARTICLE_ATTRIBUTE.url}" />
+        <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/${ARTICLE_ATTRIBUTE.url}">
+        <link rel="alternate" hreflang="en" href="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.url}">
+        <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.url}">
+      </c:otherwise>
+    </c:choose>
+    <meta property="og:title" content="${ARTICLE_ATTRIBUTE.title}"/>
+    <meta property="twitter:title" content="${ARTICLE_ATTRIBUTE.title}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="twitter:card" content="article"/>
     <c:if test="${ARTICLE_ATTRIBUTE.image != null &&  not empty ARTICLE_ATTRIBUTE.image}">
-        <meta property = "og:image" content = "${ARTICLE_ATTRIBUTE.image}" />
+        <meta property="og:image" content="${ARTICLE_ATTRIBUTE.image}"/>
+        <meta property="twitter:image" content="${ARTICLE_ATTRIBUTE.image}"/>
     </c:if>
-    <meta property = "og:description" content = "${ARTICLE_ATTRIBUTE.description}" />
-    <meta property = "og:site_name" content="https://www.examclouds.com">
+    <meta property="og:description" content="${ARTICLE_ATTRIBUTE.description}"/>
+    <meta property="twitter:description" content="${ARTICLE_ATTRIBUTE.description}"/>
+    <meta property="og:url" content="https://www.examclouds.com">
+    <meta property="og:site_name" content="ExamClouds">
     <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
     <c:if test="${!ARTICLE_ATTRIBUTE.indexStatus}">
         <meta name="robots" content="noindex">

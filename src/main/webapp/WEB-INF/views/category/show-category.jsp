@@ -6,18 +6,17 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <t:wrapper>
-    <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
+    <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
-       <title>
-         <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null && CATEGORY_ATTRIBUTE.name.equals('Задания')}">
-            ${CATEGORY_ATTRIBUTE.parentCategory.name}.
-         </c:if>
-         ${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name} | ExamClouds
-       </title>
-       <meta name="Keywords" content="${CATEGORY_ATTRIBUTE.article.keywords}">
-       <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
-       <%@ include file="/edit/categoryOL.jsp"%>
-       <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <c:set var="titleName" value="${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name} | ExamClouds"/>
+    <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null && CATEGORY_ATTRIBUTE.name.equals('Задания')}">
+       <c:set var="titleName" value=" ${CATEGORY_ATTRIBUTE.parentCategory.name}.${titleName}"/>
+    </c:if>
+    <title><c:out value="${titleName}"/></title>
+    <meta name="Keywords" content="${CATEGORY_ATTRIBUTE.article.keywords}">
+    <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
+    <%@ include file="/edit/categoryOL.jsp"%>
+    <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
        <c:choose>
        <c:when test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
          <link rel="canonical"

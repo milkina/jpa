@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:wrapper>
- <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
+ <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
  <jsp:attribute name="header">
      <meta name="Keywords" content="${TESTS[param.TEST_PATH].article.keywords}">
      <meta name="Description" content="${TESTS[param.TEST_PATH].article.description}">

@@ -61,7 +61,7 @@ public class ExamController {
             return SPRING_MESSAGE_PAGE;
         } else {
             ExamUtility.setTestExam(session, person, questionEntries, categoryPaths, count);
-            String urlPattern = "redirect:%s?%s=%s&%s=%s";
+            String urlPattern = "forward:%s?%s=%s&%s=%s";
             String url = String.format(urlPattern, SHOW_EXAM_QUESTION,
                     TEST_PATH, testPath,
                     QUESTION_NUMBER, 0);
@@ -101,7 +101,7 @@ public class ExamController {
             return SPRING_MESSAGE_PAGE;
         } else {
             ExamUtility.setQuestionExam(session, person, questionEntries, categoryPaths, count);
-            String urlPattern = "redirect:%s?%s=%s&%s=%s";
+            String urlPattern = "forward:%s?%s=%s&%s=%s";
             return String.format(urlPattern, SHOW_EXAM_QUESTION,
                     TEST_PATH, testPath,
                     QUESTION_NUMBER, 0);
@@ -130,7 +130,7 @@ public class ExamController {
         if (exam.getCurrentNumber() != exam.getQuestionEntries().size() - 1) {
             url = url + "&NEXT=NEXT";
         }
-        return "redirect:" + url;
+        return "forward:" + url;
     }
 
 }

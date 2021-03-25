@@ -6,12 +6,24 @@
 <t:wrapper>
   <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
   <jsp:attribute name="header">
-    <meta name="Description" content="Articles about Java news, preparation for examination.">
-    <title><spring:message code="articles"/> | ExamClouds</title>
+    <meta name="Description" content="<spring:message code='show-all-articles.description'/>">
+    <title><spring:message code="show-all-articles.title"/></title>
     <link rel="canonical" href="https://www.examclouds.com/show-all-articles">
     <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/show-all-articles">
     <link rel="alternate" hreflang="en" href="https://www.examclouds.com/show-all-articles">
     <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/show-all-articles">
+    <meta property="og:title" content="<spring:message code="articles"/>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:description" content="<spring:message code='show-all-articles.description'/>"/>
+    <meta property="og:site_name" content="ExamClouds">
+    <meta property="og:url" content="https://www.examclouds.com/show-all-articles">
+    <meta property="twitter:title" content="<spring:message code="articles"/>"/>
+    <meta property="twitter:card" content="summary"/>
+    <meta property="twitter:description" content="<spring:message code='show-all-articles.description'/>"/>
+    <meta property="twitter:site" content="@ExamClouds">
+    <meta property="og:image" content="/images/general/logo.webp"/>
+    <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
+
   </jsp:attribute>
   <jsp:body>
     <main>

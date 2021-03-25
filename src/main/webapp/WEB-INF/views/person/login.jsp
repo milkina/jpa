@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
- <jsp:attribute name="language">lang="en"</jsp:attribute>
+ <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
  <jsp:attribute name="header">
     <title><spring:message code="login.to"/> ExamClouds</title>
     <meta name="robots" content="noindex">

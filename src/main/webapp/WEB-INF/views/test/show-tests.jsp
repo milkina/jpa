@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language"> lang="en"</jsp:attribute>
+    <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="Keywords" content="java online test,java online quiz,java quiz questions and answers,oracle java certification exam">
-        <meta name="Description" content="Free online Test and Quiz with questions and answers for learning Java and preparation to Oracle Java certification exam (OCAJP8 OCPJP8, Update from OCPJP6).">
-        <title>Free Java Online Test and Quiz for Learning Java on ExamClouds</title>
+        <meta name="Description" content="【Online Tests】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications">
+        <title>Free Java Online Tests and Questions for Learning Java on ExamClouds</title>
         <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
@@ -20,6 +20,19 @@
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/tests">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/tests">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/tests">
+
+     <meta property="og:title" content="Free Java Online Test and Quiz for Learning Java on ExamClouds"/>
+     <meta property="og:type" content="article"/>
+     <meta property="og:description" content="【Online Tests】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications"/>
+     <meta property="og:site_name" content="ExamClouds">
+     <meta property="og:url" content="https://www.examclouds.com/tests">
+
+     <meta property="twitter:title" content="Задачи по java, тесты java, онлайн задачи по программированию java для начинающих, практические тестовые задачи с ответами по Java программированию"/>
+     <meta property="twitter:card" content="summary"/>
+     <meta property="twitter:description" content="【Online Tests】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications"/>
+     <meta property="twitter:site" content="@ExamClouds">
+     <meta property="og:image" content="/images/general/logo.webp"/>
+     <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
      </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

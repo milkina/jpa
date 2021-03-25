@@ -139,7 +139,7 @@ public class PersonController {
         personService.removeAnsweredQuestions(person);
 
         session.setAttribute(PERSON_ANSWERED_QUESTIONS, null);
-        return String.format("redirect:%s?%s=%s&%s=%s&%s=%s",
+        return String.format("forward:%s?%s=%s&%s=%s&%s=%s",
                 SHOW_QUESTIONS_PAGE, CATEGORY_PATH, categoryPath, TEST_PATH,
                 testPath, TYPE, QuestionType.QUESTION);
     }

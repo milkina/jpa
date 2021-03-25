@@ -14,6 +14,18 @@
     <link rel="alternate" hreflang="en" href="https://www.examclouds.com">
     <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com">
     <link rel="canonical" href="https://www.examclouds.com/ru/">
+        <meta property="og:title" content="Бесплатные курсы Java, курсы программирования Java онлайн, Java для начинающих с нуля"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:description" content="【Курсы Java】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям"/>
+        <meta property="og:site_name" content="ExamClouds">
+        <meta property="og:url" content="https://www.examclouds.com/ru/">
+
+        <meta property="twitter:title" content="Бесплатные курсы Java, курсы программирования Java онлайн, Java для начинающих с нуля"/>
+        <meta property="twitter:card" content="summary"/>
+        <meta property="twitter:description" content="【Курсы Java】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям"/>
+        <meta property="twitter:site" content="@ExamClouds">
+    <meta property="og:image" content="/images/general/logo.webp"/>
+    <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
     <style>
       .lessons-list>li>h3:before{
         content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';

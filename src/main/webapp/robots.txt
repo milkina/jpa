@@ -8,5 +8,7 @@ Disallow: /person/login.jsp
 Disallow: /show-login-page
 Disallow: /show-exam-question
 Disallow: /start-quiz
+Disallow: /see-questions
+Disallow: /finish-exam
 Disallow: /*?lang=
 Sitemap: https://www.examclouds.com/sitemap.xml

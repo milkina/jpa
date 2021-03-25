@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language">lang="ru"</jsp:attribute>
+    <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="Keywords" content="тесты java">
         <meta name="Description" content="【Онлайн тесты】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям">
@@ -20,6 +20,19 @@
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/tests">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/tests">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/tests">
+
+     <meta property="og:title" content="Задачи по java, тесты java, онлайн задачи по программированию java для начинающих, практические тестовые задачи с ответами по Java программированию"/>
+     <meta property="og:type" content="article"/>
+     <meta property="og:description" content="【Онлайн тесты】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям"/>
+     <meta property="og:site_name" content="ExamClouds">
+     <meta property="og:url" content="https://www.examclouds.com/ru/tests">
+
+     <meta property="twitter:title" content="Задачи по java, тесты java, онлайн задачи по программированию java для начинающих, практические тестовые задачи с ответами по Java программированию"/>
+     <meta property="twitter:card" content="summary"/>
+     <meta property="twitter:description" content="【Онлайн тесты】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям"/>
+     <meta property="twitter:site" content="@ExamClouds">
+     <meta property="og:image" content="/images/general/logo.webp"/>
+     <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
      </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

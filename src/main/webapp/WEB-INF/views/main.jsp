@@ -8,12 +8,24 @@
 <html lang="en">
   <head>
         <%@ include file="/WEB-INF/head_common.jsp"%>
-        <meta name="Description" content="<spring:message code="main.description"/>">
-        <title><spring:message code="main.title"/></title>
+        <meta name="Description" content="【Tutorial Java】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to the Oracle certifications">
+        <title>Free Oracle Java Certification Tutorial on ExamClouds</title>
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com">
         <link rel="canonical" href="https://www.examclouds.com">
+        <meta property="og:title" content="Free Oracle Java Certification Tutorial on ExamClouds"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:description" content="【Tutorial Java】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to the Oracle certifications"/>
+        <meta property="og:site_name" content="ExamClouds">
+        <meta property="og:url" content="https://www.examclouds.com">
+
+        <meta property="twitter:title" content="Free Oracle Java Certification Tutorial on ExamClouds">
+        <meta property="twitter:card" content="summary">
+        <meta property="twitter:description" content="【Tutorial Java】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to the Oracle certifications">
+        <meta property="twitter:site" content="@ExamClouds">
+        <meta property="og:image" content="/images/general/logo.webp">
+        <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp">
         <style>
               .lessons-list>li>h3:before{
                 content:'<spring:message code="lesson"/> ' counter(lesson) ' - ';

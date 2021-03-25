@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:wrapper>
-    <jsp:attribute name="language">lang="en"</jsp:attribute>
+    <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
         <meta name="Keywords" content="java certification questions,java interview preparation,java interview questions,java interview questions and answers">
-        <meta name="Description" content="Online Oracle Java certification and interview questions and answers. What should know Java developer to pass interview successfully?">
-        <title>Online Oracle Java Certification and Interview Questions and Answers</title>
+        <meta name="Description" content="【Questions and Answers】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications">
+        <title>Preparation to Oracle Java Certification, Interview Questions and Answers</title>
         <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
@@ -20,6 +20,19 @@
         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/questions">
         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/questions">
         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/questions">
+
+      <meta property="og:title" content="Preparation to Oracle Java Certification, Interview Questions and Answers"/>
+      <meta property="og:type" content="article"/>
+      <meta property="og:description" content="【Questions and Answers】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications"/>
+      <meta property="og:site_name" content="ExamClouds">
+      <meta property="og:url" content="https://www.examclouds.com/questions">
+
+      <meta property="twitter:title" content="Preparation to Oracle Java Certification, Interview Questions and Answers"/>
+      <meta property="twitter:card" content="summary"/>
+      <meta property="twitter:description" content="【Questions and Answers】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications"/>
+      <meta property="twitter:site" content="@ExamClouds">
+      <meta property="og:image" content="/images/general/logo.webp"/>
+      <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
      </jsp:attribute>
      <jsp:body>
         <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>

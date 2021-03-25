@@ -9,8 +9,10 @@
     <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
     <c:set var="titleName" value="${CATEGORY_ATTRIBUTE.name} - ${TESTS[param.TEST_PATH].name} | ExamClouds"/>
+    <c:set var="header1" value="${CATEGORY_ATTRIBUTE.name}"/>
     <c:if test="${CATEGORY_ATTRIBUTE.parentCategory!=null && CATEGORY_ATTRIBUTE.name.equals('Задания')}">
-       <c:set var="titleName" value=" ${CATEGORY_ATTRIBUTE.parentCategory.name}.${titleName}"/>
+       <c:set var="titleName" value="${CATEGORY_ATTRIBUTE.parentCategory.name}. ${titleName}"/>
+       <c:set var="header1" value="${CATEGORY_ATTRIBUTE.parentCategory.name}. ${CATEGORY_ATTRIBUTE.name}"/>
     </c:if>
     <title><c:out value="${titleName}"/></title>
     <meta name="Keywords" content="${CATEGORY_ATTRIBUTE.article.keywords}">
@@ -21,18 +23,18 @@
        <c:when test="${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName]!=null}">
          <link rel="canonical"
          href="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}" />
-         <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
-         <link rel="alternate" hreflang="en" href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
-         <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
+         <meta property="og:url" content="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${DUPLICATE_CATEGORIES[CATEGORY_ATTRIBUTE.pathName].tests[0].pathName}/${CATEGORY_ATTRIBUTE.pathName}">
        </c:when>
        <c:otherwise>
            <link rel="canonical"
              href="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}"/>
-           <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
-           <link rel="alternate" hreflang="en" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
-           <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+           <meta property="og:url" content="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
        </c:otherwise>
        </c:choose>
+       <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+       <link rel="alternate" hreflang="en" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+       <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/java/${param.TEST_PATH}/${CATEGORY_ATTRIBUTE.pathName}">
+
        <c:if test="${CATEGORY_ATTRIBUTE.hidden || !CATEGORY_ATTRIBUTE.article.indexStatus}">
           <meta name="robots" content="noindex">
        </c:if>
@@ -46,7 +48,7 @@
            <img class="categoryImage" src="${CATEGORY_ATTRIBUTE.article.image}"
              alt="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>" title="${CATEGORY_ATTRIBUTE.name}&nbsp;<spring:message code='photo'/>">
          </c:if>
-         <h1 class="show-category-header">${CATEGORY_ATTRIBUTE.name}</h1>
+         <h1 class="show-category-header">${header1}</h1>
          <div class="category-article">
             <c:if test="${CATEGORY_ATTRIBUTE.videoPath!=null && not empty CATEGORY_ATTRIBUTE.videoPath}">
                   <iframe width="100%" height="315" src="${fn:replace(CATEGORY_ATTRIBUTE.videoPath, "youtu.be", "www.youtube.com/embed")}"

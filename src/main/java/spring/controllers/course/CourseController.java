@@ -162,7 +162,7 @@ public class CourseController {
 
         TestUtility.loadTestsToServletContext(request.getServletContext());
         CategoryUtility.setDuplicateCategories(request.getServletContext());
-        return "redirect:/show-administration";
+        return "forward:/show-administration";
     }
 
     @RequestMapping(value = "/change-course", produces = "application/json;charset=UTF-8")

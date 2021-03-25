@@ -13,6 +13,18 @@
      <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/${TESTS[param.TEST_PATH].fullPathName}">
      <link rel="alternate" hreflang="en" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].fullPathName}">
      <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/${TESTS[param.TEST_PATH].fullPathName}">
+     <meta property="og:title" content="${TESTS[param.TEST_PATH].article.title}"/>
+     <meta property="og:type" content="article"/>
+     <meta property="og:description" content="${TESTS[param.TEST_PATH].article.description}"/>
+     <meta property="og:site_name" content="ExamClouds">
+     <meta property="og:url" content="https://www.examclouds.com/${TESTS[param.TEST_PATH].language.code.path}${TESTS[param.TEST_PATH].fullPathName}">
+     <meta property="og:image" content="/images/general/logo.webp"/>
+     <meta property="twitter:image" content="https://www.examclouds.com/images/general/logo.webp"/>
+     <meta property="twitter:title" content="${TESTS[param.TEST_PATH].article.title}"/>
+     <meta property="twitter:card" content="summary"/>
+     <meta property="twitter:description" content="${TESTS[param.TEST_PATH].article.description}"/>
+     <meta property="twitter:site" content="@ExamClouds">
+
      <style>
       <c:if test="${TESTS[param.TEST_PATH].article.image!=null && not empty TESTS[param.TEST_PATH].article.image}">
          .show-course-header:before{

@@ -4,7 +4,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
 <t:wrapper>
     <jsp:attribute name="language">lang="<spring:message code='lang'/>"</jsp:attribute>
     <jsp:attribute name="header">
@@ -40,7 +39,6 @@
        </c:if>
     </jsp:attribute>
     <jsp:body>
-      <cache:cacheTag/>
       <jsp:include page="/WEB-INF/breadCrumbs/breadCrumbs3.jsp"/>
       <main class="container">
         <article>

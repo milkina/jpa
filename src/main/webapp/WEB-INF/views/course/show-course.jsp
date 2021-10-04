@@ -38,8 +38,6 @@
      </style>
  </jsp:attribute>
  <jsp:body>
-    <%@ taglib uri="/WEB-INF/tld/cache-tagjsp-taglib.tld" prefix="cache"%>
-    <cache:cacheTag/>
     <div class="breadCrumbs">
       <ol itemscope itemtype="http://schema.org/BreadcrumbList">
         <%@ include file="/WEB-INF/breadCrumbs/homeBreadCrumb.jsp"%>

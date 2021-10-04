@@ -203,6 +203,10 @@ nav>ul>li:last-child{
    padding-top: 13px;
    display:block;
 }
+.logo img{
+  width:122px;
+  height:49px;
+}
 .breadCrumbs{
     font: 700 17px proxima;
     color:#6b6b6b;

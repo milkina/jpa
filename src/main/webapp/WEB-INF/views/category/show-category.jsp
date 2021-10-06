@@ -49,11 +49,9 @@
          <h1 class="show-category-header">${header1}</h1>
          <div class="category-article">
             <c:if test="${CATEGORY_ATTRIBUTE.videoPath!=null && not empty CATEGORY_ATTRIBUTE.videoPath}">
-                <%--  <iframe width="100%" height="315" src="${fn:replace(CATEGORY_ATTRIBUTE.videoPath, "youtu.be", "www.youtube.com/embed")}"
+                  <iframe width="100%" height="315" src="${fn:replace(CATEGORY_ATTRIBUTE.videoPath, "youtu.be", "www.youtube.com/embed")}"
                       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                  </iframe>--%>
-                <div class="youtube" id="${fn:replace(CATEGORY_ATTRIBUTE.videoPath, "youtu.be", "www.youtube.com/embed")}"
-                     style="width: 500px; height: 281px;"></div>
+                  </iframe>
             </c:if>
             ${CATEGORY_ATTRIBUTE.article.text}
          </div>

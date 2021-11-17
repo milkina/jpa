@@ -354,12 +354,24 @@
         <to type="permanent-redirect">/java/ocajp8/try-catch</to>
     </rule>
     <rule>
+        <from>^/java/java-core-russian/klass-arraylist$</from>
+        <to type="permanent-redirect">/java/java-core-russian/interface-list</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/klass-arraylist$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-list</to>
+    </rule>
+    <rule>
         <from>^/questions/java/Web_Services/Support_for_Media_Type_in_Jersey$</from>
         <to type="permanent-redirect">/java/web-services/jersey-json</to>
     </rule>
 
     <rule>
-        <from>/java/(.*)/(.*)$</from>
+        <from>^/java/(.*)/(.*)$</from>
+        <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
+    </rule
+    > <rule>
+        <from>^/ru/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>
 
@@ -372,7 +384,11 @@
         <to type="permanent-redirect">/java/web-services/restful-deployment</to>
     </rule>
     <rule>
-        <from>/publications/(.*)$</from>
+        <from>^/publications/(.*)$</from>
+        <to type="passthrough">/show-article?URL_PARAM=$1</to>
+    </rule>
+    <rule>
+        <from>^/ru/publications/(.*)$</from>
         <to type="passthrough">/show-article?URL_PARAM=$1</to>
     </rule>
     <rule>
@@ -388,11 +404,19 @@
         <to type="permanent-redirect">/publications/ocjp</to>
     </rule>
     <rule>
-        <from>/jpa$</from>
+        <from>^/jpa$</from>
         <to type="passthrough">/show-course?TEST_PATH=jpa</to>
     </rule>
     <rule>
-        <from>/web-services$</from>
+        <from>^/ru/jpa$</from>
+        <to type="passthrough">/show-course?TEST_PATH=jpa</to>
+    </rule>
+    <rule>
+        <from>^/web-services$</from>
+        <to type="passthrough">/show-course?TEST_PATH=web-services</to>
+    </rule>
+    <rule>
+        <from>^/ru/web-services$</from>
         <to type="passthrough">/show-course?TEST_PATH=web-services</to>
     </rule>
     <rule>
@@ -400,7 +424,11 @@
         <to type="permanent-redirect">/web-services</to>
     </rule>
     <rule>
-        <from>/exam/(.*)$</from>
+        <from>^/exam/(.*)$</from>
+        <to type="passthrough">/show-course?TEST_PATH=$1</to>
+    </rule>
+    <rule>
+        <from>^/ru/exam/(.*)$</from>
         <to type="passthrough">/show-course?TEST_PATH=$1</to>
     </rule>
     <rule>

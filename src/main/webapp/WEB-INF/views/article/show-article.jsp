@@ -33,7 +33,7 @@
     <meta property="twitter:description" content="${ARTICLE_ATTRIBUTE.description}"/>
     <meta property="og:url" content="https://www.examclouds.com/${ARTICLE_ATTRIBUTE.language.code.path}${ARTICLE_ATTRIBUTE.url}">
     <meta property="og:site_name" content="ExamClouds">
-    <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <script async src="${pageContext.request.contextPath}/js/prism.min.js?ver=1"></script>
     <c:if test="${!ARTICLE_ATTRIBUTE.indexStatus}">
         <meta name="robots" content="noindex">
     </c:if>

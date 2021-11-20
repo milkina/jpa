@@ -283,11 +283,7 @@
 
             // COLUMNIZE
             if( hasOptGroup ) {
-                // float non grouped options
-                optionsList.find('> li:not(.optgroup)').css({
-                    float: 'left',
-                    width: (100 / instance.options.columns) +'%'
-                });
+
 
                 // add CSS3 column styles
                 optionsList.find('li.optgroup').css({
@@ -301,13 +297,6 @@
                     '-moz-column-gap'     : 0
                 });
 
-                // for crappy IE versions float grouped options
-                if( this._ieVersion() && (this._ieVersion() < 10) ) {
-                    optionsList.find('li.optgroup > ul > li').css({
-                        float: 'left',
-                        width: (100 / instance.options.columns) +'%'
-                    });
-                }
             }
             else {
                 // add CSS3 column styles
@@ -319,14 +308,6 @@
                     '-moz-column-count'   : instance.options.columns,
                     '-moz-column-gap'     : 0
                 });
-
-                // for crappy IE versions float grouped options
-                if( this._ieVersion() && (this._ieVersion() < 10) ) {
-                    optionsList.find('> li').css({
-                        float: 'left',
-                        width: (100 / instance.options.columns) +'%'
-                    });
-                }
             }
 
             // BIND SELECT ACTION

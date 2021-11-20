@@ -12,7 +12,7 @@
     <title>${TESTS[param.TEST_PATH].name}&nbsp;<spring:message code="questions"/></title>
     <meta name="Description" content="${CATEGORY_ATTRIBUTE.article.description}">
     <script async src="${pageContext.request.contextPath}/js/show_questions.js"></script>
-    <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <script async src="${pageContext.request.contextPath}/js/prism.min.js?ver=1"></script>
     <link rel="canonical" href="<ca:examCanonicalTag/>">
     <style>
       .questionText:before{

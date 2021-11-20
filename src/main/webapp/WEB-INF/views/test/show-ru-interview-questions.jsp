@@ -9,7 +9,7 @@
         <meta name="Keywords" content="Java вопросы на собеседовании">
         <meta name="Description" content="【Вопросы и ответы】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям">
         <title>Вопросы на собеседовании Java, вопросы по собеседованию для Java, ответы на вопросы для собеседования по Java</title>
-        <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{

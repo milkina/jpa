@@ -9,7 +9,7 @@
         <meta name="Keywords" content="java certification questions,java interview preparation,java interview questions,java interview questions and answers">
         <meta name="Description" content="【Questions and Answers】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications">
         <title>Preparation to Oracle Java Certification, Interview Questions and Answers</title>
-        <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{

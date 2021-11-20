@@ -9,7 +9,7 @@
         <meta name="Keywords" content="java online test,java online quiz,java quiz questions and answers,oracle java certification exam">
         <meta name="Description" content="【Online Tests】  - ☜ⒿⒶⓋⒶ☞ 💥Free, ‼Articles/Literature, ✅Preparation to Oracle Certifications">
         <title>Free Java Online Tests and Questions for Learning Java on ExamClouds</title>
-        <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{

@@ -9,7 +9,7 @@
         <meta name="Keywords" content="тесты java">
         <meta name="Description" content="【Онлайн тесты】  - ☜ⒿⒶⓋⒶ☞ 💥Бесплатно, ‼Статьи/литература, ✅Подготовка к сертификациям">
         <title>Задачи по java, тесты java, онлайн задачи по программированию java для начинающих, практические тестовые задачи с ответами по Java программированию</title>
-        <link href="${pageContext.request.contextPath}/css/multi-select_min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/multi-select.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/js/jquery.multi-select.js"></script>
         <style>
           .test_header>a:before{

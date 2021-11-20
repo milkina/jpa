@@ -11,7 +11,7 @@
 <jsp:attribute name="language">lang="${TESTS[param.TEST_PATH].language.code}"</jsp:attribute>
 <jsp:attribute name="header">
     <title>${TESTS[param.TEST_PATH].name}&nbsp;<spring:message code="tests"/></title>
-    <script async src="${pageContext.request.contextPath}/js/prism.js?ver=1"></script>
+    <script async src="${pageContext.request.contextPath}/js/prism.min.js?ver=1"></script>
     <link rel="canonical" href="<ca:examCanonicalTag/>">
     <style>
       .questionText:before{

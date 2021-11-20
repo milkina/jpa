@@ -7,7 +7,7 @@
     <title><spring:message code="login.to"/> ExamClouds</title>
     <meta name="robots" content="noindex">
     <meat name="Description" content="<spring:message code="login.description"/>">
-    <link type="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/login_min.css">
+    <link type="text/css" REL="stylesheet" HREF="${pageContext.request.contextPath}/css/login.css">
  </jsp:attribute>
  <jsp:body>
     <h1><spring:message code="log.in"/></h1>

@@ -1,1 +1,0 @@
-java -jar yuicompressor-2.4.8.jar general.js -o general_min.js

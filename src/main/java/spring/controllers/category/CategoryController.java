@@ -1,5 +1,6 @@
 package spring.controllers.category;
 
+import com.googlecode.htmlcompressor.compressor.HtmlCompressor;
 import model.Category;
 import model.Test;
 import model.article.Article;
@@ -54,8 +55,15 @@ public class CategoryController {
                 CategoryUtility.getCategoriesFromServletContext(request);
 
         Category category = categoryMap.get(categoryPath);
+        Article article = category.getArticle();
+
+        String text = article.getText();
+        HtmlCompressor compressor = new HtmlCompressor();
+        String compressedText = compressor.compress(text);
+
+        article.setText(compressedText);
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
-        model.addAttribute(ARTICLE_ATTRIBUTE, category.getArticle());
+        model.addAttribute(ARTICLE_ATTRIBUTE, article);
         List<Category> list = new ArrayList<>(categoryMap.values());
         int index = list.indexOf(category);
 

@@ -1,5 +1,6 @@
 package spring.controllers.article;
 
+import com.googlecode.htmlcompressor.compressor.HtmlCompressor;
 import model.article.Article;
 import model.person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import static util.AllConstantsParam.URL_PARAM;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+    private HtmlCompressor compressor = new HtmlCompressor();
 
     @RequestMapping(value = "/delete-article")
     public ModelAndView deleteArticle(Locale locale,
@@ -48,6 +50,9 @@ public class ArticleController {
     public ModelAndView showArticle(@RequestParam(URL_PARAM) String articleUrl) {
         Article article =
                 articleService.getArticleByUrl("publications/" + articleUrl);
+        String text = article.getText();
+        String compressedText = compressor.compress(text);
+        article.setText(compressedText);
         ModelAndView modelAndView = new ModelAndView(SHOW_ARTICLE_PAGE);
         modelAndView.addObject(ARTICLE_ATTRIBUTE, article);
         return modelAndView;

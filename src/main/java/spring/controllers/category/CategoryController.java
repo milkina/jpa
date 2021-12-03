@@ -47,6 +47,7 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+    private HtmlCompressor compressor = new HtmlCompressor();
 
     @RequestMapping(value = {"/show-category", "{langid}/show-category"})
     public ModelAndView showCategory(@RequestParam(CATEGORY_PATH) String categoryPath,
@@ -58,10 +59,9 @@ public class CategoryController {
         Article article = category.getArticle();
 
         String text = article.getText();
-        HtmlCompressor compressor = new HtmlCompressor();
         String compressedText = compressor.compress(text);
-
         article.setText(compressedText);
+
         model.addAttribute(CATEGORY_ATTRIBUTE, category);
         model.addAttribute(ARTICLE_ATTRIBUTE, article);
         List<Category> list = new ArrayList<>(categoryMap.values());

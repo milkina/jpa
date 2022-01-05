@@ -25,7 +25,8 @@
     		 </address>
           </div>
           <div class="col-xs-12 col-md-4 col-md-pull-8 copyright footerItem">
-          			 Copyright &#169; 2012-2021 ExamClouds
+              <p>Copyright &#169; 2012-2022 ExamClouds</p>
+              <p><a href="<menu:privacyTag/>"><spring:message code="privacy"/></a></p>
           </div>
        </footer>
     </div>

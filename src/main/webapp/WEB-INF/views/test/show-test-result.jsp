@@ -77,6 +77,11 @@
                <a href="https://<spring:message code="trustpilot.url"/>.trustpilot.com/review/examclouds.com" target="_blank" rel="noopener">Trustpilot</a>
              </div>
              <!-- End TrustBox widget -->
+            <!-- TrustBox widget - Micro Review Count -->
+            <div class="trustpilot-widget" data-locale="ru-RU" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="60103d74ba7c3600012452fe" data-style-height="24px" data-style-width="100%" data-theme="light" data-stars="1,2,3,4,5" data-no-reviews="hide" data-scroll-to-list="true" data-allow-robots="true" data-min-review-count="10">
+                <a href="https://ru.trustpilot.com/review/examclouds.com" target="_blank" rel="noopener">Trustpilot</a>
+            </div>
+            <!-- End TrustBox widget -->
              <ul class="showQuestionsList">
               <c:forEach var="number" begin="1" end="${fn:length(CURRENT_EXAM_ATTRIBUTE.questionEntries)}">
                  <li>

@@ -1,6 +1,8 @@
 <%@tag description="Wrapper Tag with 2 columns" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true"%>
 <%@attribute name="language" fragment="true"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="/WEB-INF/tld/menu-jsp-taglib.tld" prefix="menu"%>
 <!DOCTYPE html>
 <html <jsp:invoke fragment="language"/>>
         <head>

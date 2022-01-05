@@ -44,4 +44,13 @@ public class AdministrationController {
     public String showMainRu() {
         return "main-ru";
     }
+    @RequestMapping(value = "/privacy")
+    public String showPrivacy() {
+        return "privacy";
+    }
+
+    @RequestMapping(value = "/ru/privacy")
+    public String showPrivacyRu() {
+        return "privacy-ru";
+    }
 }

@@ -141,8 +141,8 @@ nav>ul>li:last-child{
   transition: all .5s ease;
 }
 .footer{
-   height:142px;
-   margin-top:-142px;
+   height:164px;
+   margin-top:-132px;
 }
 .copyright{
    font: 300 16px proxima;

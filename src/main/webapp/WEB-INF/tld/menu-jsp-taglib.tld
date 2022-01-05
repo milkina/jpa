@@ -26,6 +26,12 @@
         <info>Menu Articles Tag.</info>
     </tag>
     <tag>
+        <name>privacyTag</name>
+        <tagclass>tags.menu.MenuPrivacyTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Menu Privacy Tag.</info>
+    </tag>
+    <tag>
         <name>homeTag</name>
         <tagclass>tags.menu.MenuHomeTag</tagclass>
         <bodycontent>empty</bodycontent>

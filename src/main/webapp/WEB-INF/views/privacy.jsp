@@ -4,187 +4,186 @@
 <t:wrapper>
     <jsp:attribute name="language">lang="en"</jsp:attribute>
     <jsp:attribute name="header">
-    <title>Политика конфиденциальности - ExamClouds</title>
+    <title>Privacy Policy for ExamClouds</title>
     <link rel="alternate" hreflang="ru" href="https://www.examclouds.com/ru/privacy">
     <link rel="alternate" hreflang="en" href="https://www.examclouds.com/privacy">
     <link rel="alternate" hreflang="x-default" href="https://www.examclouds.com/privacy">
     <link rel="canonical" href="https://www.examclouds.com/privacy">
-    <meta name="Description" content="Политика конфиденциальности - ExamClouds">
+    <meta name="Description" content="Privacy Policy for ExamClouds">
  </jsp:attribute>
     <jsp:body>
-        <h1>Политика в отношении обработки персональных данных</h1>
         <div>
-            <div>
-                <h5>1. Общие положения</h5>
-                <div>Настоящая политика обработки персональных данных определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые <span id="genName" data-scroll-to="#privacyName" class="link mark">ExamClouds</span> (далее – Оператор).</div>
-                <div>
-                    <div>1.1. Оператор ставит своей важнейшей целью и условием осуществления своей деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.</div>
-                    <div>1.2. Настоящая политика Оператора в отношении обработки персональных данных (далее – Политика) применяется ко всей информации, которую Оператор может получить о посетителях веб-сайта <span data-scroll-to="#prefixURL" class="link mark">httpsː//www.examclouds.com</span>.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>2. Основные понятия, используемые в Политике</h5>
-                <div>
-                    <div>2.1. Автоматизированная обработка персональных данных – обработка персональных данных с помощью средств вычислительной техники.</div>
-                    <div>2.2. Блокирование персональных данных – временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных).</div>
-                    <div>2.3. Веб-сайт – совокупность графических и информационных материалов, а также программ для ЭВМ и баз данных, обеспечивающих их доступность в сети интернет по сетевому адресу <span data-scroll-to="#prefixURL" class="link mark">httpsː//www.examclouds.com</span>.</div>
-                    <div>2.4. Информационная система персональных данных — совокупность содержащихся в базах данных персональных данных, и обеспечивающих их обработку информационных технологий и технических средств.</div>
-                    <div>2.5. Обезличивание персональных данных — действия, в результате которых невозможно определить без использования дополнительной информации принадлежность персональных данных конкретному Пользователю или иному субъекту персональных данных.</div>
-                    <div>2.6. Обработка персональных данных – любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.</div>
-                    <div>2.7. Оператор – государственный орган, муниципальный орган, юридическое или физическое лицо, самостоятельно или совместно с другими лицами организующие и (или) осуществляющие обработку персональных данных, а также определяющие цели обработки персональных данных, состав персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными.</div>
-                    <div>2.8. Персональные данные – любая информация, относящаяся прямо или косвенно к определенному или определяемому Пользователю веб-сайта <span data-scroll-to="#prefixURL" class="link mark">httpsː//www.examclouds.com</span>.</div>
-                    <div>2.9. Персональные данные, разрешенные субъектом персональных данных для распространения, - персональные данные, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных путем дачи согласия на обработку персональных данных, разрешенных субъектом персональных данных для распространения в порядке, предусмотренном Законом о персональных данных (далее - персональные данные, разрешенные для распространения).</div>
-                    <div>2.10. Пользователь – любой посетитель веб-сайта <span data-scroll-to="#prefixURL" class="link mark">httpsː//www.examclouds.com</span>.</div>
-                    <div>2.11. Предоставление персональных данных – действия, направленные на раскрытие персональных данных определенному лицу или определенному кругу лиц.</div>
-                    <div>2.12. Распространение персональных данных – любые действия, направленные на раскрытие персональных данных неопределенному кругу лиц (передача персональных данных) или на ознакомление с персональными данными неограниченного круга лиц, в том числе обнародование персональных данных в средствах массовой информации, размещение в информационно-телекоммуникационных сетях или предоставление доступа к персональным данным каким-либо иным способом.</div>
-                    <div>2.13. Трансграничная передача персональных данных – передача персональных данных на территорию иностранного государства органу власти иностранного государства, иностранному физическому или иностранному юридическому лицу.</div>
-                    <div>2.14. Уничтожение персональных данных – любые действия, в результате которых персональные данные уничтожаются безвозвратно с невозможностью дальнейшего восстановления содержания персональных данных в информационной системе персональных данных и (или) уничтожаются материальные носители персональных данных.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>3. Основные права и обязанности Оператора</h5>
-                <div>
-                    <div>3.1. Оператор имеет право:</div>
-                    <div>– получать от субъекта персональных данных достоверные информацию и/или документы, содержащие персональные данные;</div>
-                    <div>3.2. Оператор обязан:</div>
-                    <div>– предоставлять субъекту персональных данных по его просьбе информацию, касающуюся обработки его персональных данных;</div>
-                    <div>– публиковать или иным образом обеспечивать неограниченный доступ к настоящей Политике в отношении обработки персональных данных;</div>
-                    <div>– принимать правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа к ним, уничтожения, изменения, блокирования, копирования, предоставления, распространения персональных данных, а также от иных неправомерных действий в отношении персональных данных;</div>
-                    <div>– прекратить передачу (распространение, предоставление, доступ) персональных данных, прекратить обработку и уничтожить персональные данные в порядке и случаях, предусмотренных Законом о персональных данных;</div>
-                    <div>– исполнять иные обязанности, предусмотренные Законом о персональных данных.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>4. Основные права и обязанности субъектов персональных данных</h5>
-                <div>
-                    <div>4.1. Субъекты персональных данных имеют право:</div>
-                    <div>– получать информацию, касающуюся обработки его персональных данных. Сведения предоставляются субъекту персональных данных Оператором в доступной форме, и в них не должны содержаться персональные данные, относящиеся к другим субъектам персональных данных, за исключением случаев, когда имеются законные основания для раскрытия таких персональных данных.</div>
-                    <div>– требовать от оператора уточнения его персональных данных, их блокирования или уничтожения в случае, если персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки, а также принимать предусмотренные законом меры по защите своих прав;</div>
-                    <div>– выдвигать условие предварительного согласия при обработке персональных данных в целях продвижения на рынке товаров, работ и услуг;</div>
-                    <div>– на отзыв согласия на обработку персональных данных;</div>
-                    <div>– обжаловать в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке неправомерные действия или бездействие Оператора при обработке его персональных данных;</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>5. Оператор может обрабатывать следующие персональные данные Пользователя</h5>
-                <div id="generatedDataCollecting">
-                    <div>5.1. <mark>Адрес электронной почты;</mark></div>
-                    <div>5.2. Также на сайте происходит сбор и обработка обезличенных данных о посетителях (в т.ч. файлов «cookie») с помощью сервисов интернет-статистики (Гугл Аналитика и других).</div>
-                    <div>5.3. Вышеперечисленные данные далее по тексту Политики объединены общим понятием Персональные данные.</div>
-                    <div>5.4. Обработка специальных категорий персональных данных, касающихся расовой, национальной принадлежности, политических взглядов, религиозных или философских убеждений, интимной жизни, Оператором не осуществляется.</div>
-                    <div>5.5. Согласие Пользователя на обработку персональных данных, разрешенных для распространения, оформляется отдельно от других согласий на обработку его персональных данных.</div>
-                    <div>5.5.1. Согласие на обработку персональных данных, разрешенных для распространения, Пользователь предоставляет Оператору непосредственно.</div>
-                    <div>5.5.2. Оператор обязан в срок не позднее трех рабочих дней с момента получения указанного согласия Пользователя опубликовать информацию об условиях обработки, о наличии запретов и условий на обработку неограниченным кругом лиц персональных данных, разрешенных для распространения.</div>
-                    <div>5.5.3. Передача (распространение, предоставление, доступ) персональных данных, разрешенных субъектом персональных данных для распространения, должна быть прекращена в любое время по требованию субъекта персональных данных. Данное требование должно включать в себя фамилию, имя, отчество (при наличии), контактную информацию (номер телефона, адрес электронной почты или почтовый адрес) субъекта персональных данных, а также перечень персональных данных, обработка которых подлежит прекращению. Указанные в данном требовании персональные данные могут обрабатываться только Оператором, которому оно направлено.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>6. Принципы обработки персональных данных</h5>
-                <div>
-                    <div>6.1. Обработка персональных данных осуществляется на законной и справедливой основе.</div>
-                    <div>6.2. Обработка персональных данных ограничивается достижением конкретных, заранее определенных и законных целей. Не допускается обработка персональных данных, несовместимая с целями сбора персональных данных.</div>
-                    <div>6.3. Не допускается объединение баз данных, содержащих персональные данные, обработка которых осуществляется в целях, несовместимых между собой.</div>
-                    <div>6.4. Обработке подлежат только персональные данные, которые отвечают целям их обработки.</div>
-                    <div>6.5. Содержание и объем обрабатываемых персональных данных соответствуют заявленным целям обработки. Не допускается избыточность обрабатываемых персональных данных по отношению к заявленным целям их обработки.</div>
-                    <div>6.6. При обработке персональных данных обеспечивается точность персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям обработки персональных данных. Оператор принимает необходимые меры и/или обеспечивает их принятие по удалению или уточнению неполных или неточных данных.</div>
-                    <div>6.7. Хранение персональных данных осуществляется в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных, если срок хранения персональных данных не установлен федеральным законом, договором, стороной которого, выгодоприобретателем или поручителем по которому является субъект персональных данных. Обрабатываемые персональные данные уничтожаются либо обезличиваются по достижении целей обработки или в случае утраты необходимости в достижении этих целей, если иное не предусмотрено федеральным законом.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>7. Цели обработки персональных данных</h5>
-                <div>
-                    <div>7.1. Цель обработки персональных данных Пользователя:</div>
-                    <div id="generatedProcessingTargets">
-                        <div>– <mark>информирование Пользователя посредством отправки электронных писем</mark>;</div>
-                        <div>– <mark>предоставление доступа Пользователю к сервисам, информации и/или материалам, содержащимся на веб-сайте httpsː//www.examclouds.com;</mark></div>
-                    </div>
-                    <div>7.2. Также Оператор имеет право направлять Пользователю уведомления о новых продуктах и услугах, специальных предложениях и различных событиях. Пользователь всегда может отказаться от получения информационных сообщений, направив Оператору письмо на адрес электронной почты <span data-scroll-to="#privacyEmail" class="link mark">tatyana.milkina@gmail.com</span> с пометкой «Отказ от уведомлений о новых продуктах и услугах и специальных предложениях».</div>
-                    <div>7.3. Обезличенные данные Пользователей, собираемые с помощью сервисов интернет-статистики, служат для сбора информации о действиях Пользователей на сайте, улучшения качества сайта и его содержания. </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>8. Правовые основания обработки персональных данных</h5>
-                <div>
-                    <div>8.1. Оператор обрабатывает персональные данные Пользователя только в случае их заполнения и/или отправки Пользователем самостоятельно через специальные формы, расположенные на сайте <span data-scroll-to="#prefixURL" class="link mark">httpsː//www.examclouds.com</span> или направленные Оператору посредством электронной почты. Заполняя соответствующие формы и/или отправляя свои персональные данные Оператору, Пользователь выражает свое согласие с данной Политикой.</div>
-                    <div>8.2. Оператор обрабатывает обезличенные данные о Пользователе в случае, если это разрешено в настройках браузера Пользователя (включено сохранение файлов «cookie» и использование технологии JavaScript).</div>
-                    <div>8.3. Субъект персональных данных самостоятельно принимает решение о предоставлении его персональных данных и дает согласие свободно, своей волей и в своем интересе.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>9. Условия обработки персональных данных</h5>
-                <div>
-                    <div>9.1. Обработка персональных данных осуществляется с согласия субъекта персональных данных на обработку его персональных данных.</div>
-                    <div>9.2. Обработка персональных данных необходима для исполнения договора, стороной которого либо выгодоприобретателем или поручителем по которому является субъект персональных данных, а также для заключения договора по инициативе субъекта персональных данных или договора, по которому субъект персональных данных будет являться выгодоприобретателем или поручителем.</div>
-                    <div>9.3. Обработка персональных данных необходима для осуществления прав и законных интересов оператора или третьих лиц либо для достижения общественно значимых целей при условии, что при этом не нарушаются права и свободы субъекта персональных данных.</div>
-                    <div>9.4. Осуществляется обработка персональных данных, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных либо по его просьбе (далее – общедоступные персональные данные).</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>10. Порядок сбора, хранения, передачи и других видов обработки персональных данных</h5>
-                <div class="descr">Безопасность персональных данных, которые обрабатываются Оператором, обеспечивается путем реализации правовых, организационных и технических мер, необходимых для выполнения в полном объеме требований действующего законодательства в области защиты персональных данных.</div>
-                <div>
-                    <div>10.1. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.</div>
-                    <div>10.2. Персональные данные Пользователя никогда, ни при каких условиях не будут переданы третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства либо в случае, если субъектом персональных данных дано согласие Оператору на передачу данных третьему лицу для исполнения обязательств по гражданско-правовому договору.</div>
-                    <div>10.3. В случае выявления неточностей в персональных данных, Пользователь может актуализировать их самостоятельно, путем направления Оператору уведомление на адрес электронной почты Оператора <span data-scroll-to="#privacyEmail" class="link mark">tatyana.milkina@gmail.com</span> с пометкой «Актуализация персональных данных».</div>
-                    <div>10.4. Срок обработки персональных данных определяется достижением целей, для которых были собраны персональные данные, если иной срок не предусмотрен договором или действующим законодательством.<br>Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление посредством электронной почты на электронный адрес Оператора <span data-scroll-to="#privacyEmail" class="link mark">tatyana.milkina@gmail.com</span> с пометкой «Отзыв согласия на обработку персональных данных».</div>
-                    <div>10.5. Вся информация, которая собирается сторонними сервисами, в том числе платежными системами, средствами связи и другими поставщиками услуг, хранится и обрабатывается указанными лицами (Операторами) в соответствии с их Пользовательским соглашением и Политикой конфиденциальности. Субъект персональных данных и/или Пользователь обязан самостоятельно своевременно ознакомиться с указанными документами. Оператор не несет ответственность за действия третьих лиц, в том числе указанных в настоящем пункте поставщиков услуг.</div>
-                    <div>10.6. Оператор при обработке персональных данных обеспечивает конфиденциальность персональных данных.</div>
-                    <div>10.7. Оператор осуществляет хранение персональных данных в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных, если срок хранения персональных данных не установлен федеральным законом, договором, стороной которого, выгодоприобретателем или поручителем по которому является субъект персональных данных.</div>
-                    <div>10.8. Условием прекращения обработки персональных данных может являться достижение целей обработки персональных данных, истечение срока действия согласия субъекта персональных данных или отзыв согласия субъектом персональных данных, а также выявление неправомерной обработки персональных данных.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>11. Перечень действий, производимых Оператором с полученными персональными данными</h5>
-                <div>
-                    <div>11.1. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение персональных данных.</div>
-                    <div>11.2. Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>12. Трансграничная передача персональных данных</h5>
-                <div>
-                    <div>12.1. Оператор до начала осуществления трансграничной передачи персональных данных обязан убедиться в том, что иностранным государством, на территорию которого предполагается осуществлять передачу персональных данных, обеспечивается надежная защита прав субъектов персональных данных.</div>
-                    <div>12.2. Трансграничная передача персональных данных на территории иностранных государств, не отвечающих вышеуказанным требованиям, может осуществляться только в случае наличия согласия в письменной форме субъекта персональных данных на трансграничную передачу его персональных данных и/или исполнения договора, стороной которого является субъект персональных данных.</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>13. Конфиденциальность персональных данных</h5>
-                <div class="descr">Оператор и иные лица, получившие доступ к персональным данным, обязаны не раскрывать третьим лицам и не распространять персональные данные без согласия субъекта персональных данных.</div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h5>14. Заключительные положения</h5>
-                <div>
-                    <div>14.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору с помощью электронной почты <span data-scroll-to="#privacyEmail" class="link mark">tatyana.milkina@gmail.com</span>.</div>
-                    <div>14.2. В данном документе будут отражены любые изменения политики обработки персональных данных Оператором. Политика действует бессрочно до замены ее новой версией.</div>
-                    <div>14.3. Актуальная версия Политики в свободном доступе расположена в сети Интернет по адресу <span id="genURLLink" data-scroll-to="#prefixURLLink" class="link mark">httpsː//www.examclouds.com/privacy/</span>.</div>
-                </div>
-            </div>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: January 07, 2022</p>
+            <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+            <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+            <h1>Interpretation and Definitions</h1>
+            <h2>Interpretation</h2>
+            <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+            <h2>Definitions</h2>
+            <p>For the purposes of this Privacy Policy:</p>
+            <ul>
+                <li>
+                    <p><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</p>
+                </li>
+                <li>
+                    <p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to ExamClouds.</p>
+                </li>
+                <li>
+                    <p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</p>
+                </li>
+                <li>
+                    <p><strong>Country</strong> refers to: Ukraine</p>
+                </li>
+                <li>
+                    <p><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</p>
+                </li>
+                <li>
+                    <p><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
+                </li>
+                <li>
+                    <p><strong>Service</strong> refers to the Website.</p>
+                </li>
+                <li>
+                    <p><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</p>
+                </li>
+                <li>
+                    <p><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
+                </li>
+                <li>
+                    <p><strong>Website</strong> refers to ExamClouds, accessible from <a href="${pageContext.request.contextPath}" rel="external nofollow noopener">https://www.examclouds.com</a></p>
+                </li>
+                <li>
+                    <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+                </li>
+            </ul>
+            <h1>Collecting and Using Your Personal Data</h1>
+            <h2>Types of Data Collected</h2>
+            <h3>Personal Data</h3>
+            <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+            <ul>
+                <li>
+                    <p>Email address</p>
+                </li>
+                <li>
+                    <p>First name and last name</p>
+                </li>
+                <li>
+                    <p>Usage Data</p>
+                </li>
+            </ul>
+            <h3>Usage Data</h3>
+            <p>Usage Data is collected automatically when using the Service.</p>
+            <p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+            <p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+            <p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
+            <h3>Tracking Technologies and Cookies</h3>
+            <p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>
+            <ul>
+                <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</li>
+                <li><strong>Flash Cookies.</strong> Certain features of our Service may use local stored objects (or Flash Cookies) to collect and store information about Your preferences or Your activity on our Service. Flash Cookies are not managed by the same browser settings as those used for Browser Cookies.</li>
+                <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>
+            </ul>
+            <p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.</p>
+            <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+            <ul>
+                <li>
+                    <p><strong>Necessary / Essential Cookies</strong></p>
+                    <p>Type: Session Cookies</p>
+                    <p>Administered by: Us</p>
+                    <p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+                </li>
+                <li>
+                    <p><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
+                    <p>Type: Persistent Cookies</p>
+                    <p>Administered by: Us</p>
+                    <p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>
+                </li>
+                <li>
+                    <p><strong>Functionality Cookies</strong></p>
+                    <p>Type: Persistent Cookies</p>
+                    <p>Administered by: Us</p>
+                    <p>Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</p>
+                </li>
+            </ul>
+            <p>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy.</p>
+            <h2>Use of Your Personal Data</h2>
+            <p>The Company may use Personal Data for the following purposes:</p>
+            <ul>
+                <li>
+                    <p><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</p>
+                </li>
+                <li>
+                    <p><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
+                </li>
+                <li>
+                    <p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</p>
+                </li>
+                <li>
+                    <p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</p>
+                </li>
+                <li>
+                    <p><strong>To provide You</strong> with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</p>
+                </li>
+                <li>
+                    <p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
+                </li>
+                <li>
+                    <p><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</p>
+                </li>
+                <li>
+                    <p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.</p>
+                </li>
+            </ul>
+            <p>We may share Your personal information in the following situations:</p>
+            <ul>
+                <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.</li>
+                <li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
+                <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+                <li><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+                <li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
+                <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
+            </ul>
+            <h2>Retention of Your Personal Data</h2>
+            <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+            <p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
+            <h2>Transfer of Your Personal Data</h2>
+            <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
+            <p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
+            <p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
+            <h2>Disclosure of Your Personal Data</h2>
+            <h3>Business Transactions</h3>
+            <p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+            <h3>Law enforcement</h3>
+            <p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+            <h3>Other legal requirements</h3>
+            <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+            <ul>
+                <li>Comply with a legal obligation</li>
+                <li>Protect and defend the rights or property of the Company</li>
+                <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
+                <li>Protect the personal safety of Users of the Service or the public</li>
+                <li>Protect against legal liability</li>
+            </ul>
+            <h2>Security of Your Personal Data</h2>
+            <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+            <h1>Children's Privacy</h1>
+            <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
+            <p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
+            <h1>Links to Other Websites</h1>
+            <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+            <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+            <h1>Changes to this Privacy Policy</h1>
+            <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+            <p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
+            <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            <h1>Contact Us</h1>
+            <p>If you have any questions about this Privacy Policy, You can contact us:</p>
+            <ul>
+                <li>
+                    <p>By email: tatyana.milkina@gmail.com</p>
+                </li>
+            </ul>
         </div>
     </jsp:body>
 </t:wrapper>

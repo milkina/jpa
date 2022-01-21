@@ -367,6 +367,31 @@
     </rule>
 
     <rule>
+        <from>^/java/java-core-russian/klass-hashset$</from>
+        <to type="permanent-redirect">/java/java-core-russian/interface-set</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/klass-hashset$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-set</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/klass-linkedhashset$</from>
+        <to type="permanent-redirect">/java/java-core-russian/interface-set</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/klass-linkedhashset$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-set</to>
+    </rule>
+    <rule>
+        <from>^/java/java-core-russian/sozdanie-zapusk-java$</from>
+        <to type="permanent-redirect">/java/java-core-russian/sozdanie-zapusk-java-prilogenija</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/unaryoperator-interface-russian.$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/unaryoperator-interface-russian</to>
+    </rule>
+
+    <rule>
         <from>^/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule

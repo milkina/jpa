@@ -390,6 +390,14 @@
         <from>^/ru/java/java-core-russian/unaryoperator-interface-russian.$</from>
         <to type="permanent-redirect">/ru/java/java-core-russian/unaryoperator-interface-russian</to>
     </rule>
+    <rule>
+        <from>^/java/java-core-russian/klass-treeset$</from>
+        <to type="permanent-redirect">/java/java-core-russian/interface-sortedset</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/klass-treeset$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-sortedset</to>
+    </rule>
 
     <rule>
         <from>^/java/(.*)/(.*)$</from>

@@ -32,22 +32,22 @@
             </props>
         </property>
     </bean>
-<!--    <bean id="dataSource"
+    <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
                   value="jdbc:mysql://127.0.0.1:3307/jpa?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf8&amp;useSSL=false"/>
         <property name="username" value="root"/>
         <property name="password" value="admin"/>
-    </bean>-->
-    <bean id="dataSource"
+    </bean>
+   <!-- <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
                   value="jdbc:mysql://node65600-env-1844334.mircloud.ru/jpa?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf8"/>
         <property name="username" value="root"/>
         <property name="password" value="HFOcrn31114"/>
-    </bean>
+    </bean>-->
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="myEmf"/>

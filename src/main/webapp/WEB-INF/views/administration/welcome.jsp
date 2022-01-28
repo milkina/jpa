@@ -6,7 +6,7 @@
  <jsp:attribute name="header">
     <title><spring:message	code="administration.panel"/> | ExamClouds</title>
     <script src="${pageContext.request.contextPath}/js/administration.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.tablednd.js"></script>
     <meta name="robots" content="noindex">
 </jsp:attribute>

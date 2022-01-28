@@ -77,7 +77,7 @@ public class ExamUtility extends SpringUtility {
     }
 
     public static int getCount(String[] categoryPaths, HttpServletRequest request, Function<Category, Integer> function) {
-        int count = 0;
+        int count = 20;
         String countString = request.getParameter(NUMBER_OF_QUESTIONS);
         if (countString != null && !countString.isEmpty()) {
             count = Integer.parseInt(countString);

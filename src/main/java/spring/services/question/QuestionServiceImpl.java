@@ -10,15 +10,14 @@ import model.Test;
 import model.TestQuestionEntry;
 import model.person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spring.repositories.QuestionRepository;
 import spring.services.answer.AnswerService;
 import spring.services.category.CategoryService;
 
-import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +39,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<AbstractQuestionEntry> getAllQuestions(List<Category> category) {
+        return questionRepository.getAllQuestionsForCategories(category);
+    }
+
+    @Override
     public List<AbstractQuestionEntry> getAllTestQuestions(Category category) {
         return questionRepository.getAllTestQuestions(category);
     }
@@ -50,8 +54,18 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<AbstractQuestionEntry> getAnsweredQuestions(List<Category> category, Person person) {
+        return questionRepository.getAnsweredQuestionsForCategories(category, person);
+    }
+
+    @Override
     public List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category, Person person) {
         return questionRepository.getNotAnsweredQuestions(category, person);
+    }
+
+    @Override
+    public List<AbstractQuestionEntry> getNotAnsweredQuestions(List<Category> category, Person person) {
+        return questionRepository.getNotAnsweredQuestionsForCategories(category, person);
     }
 
     @Override
@@ -69,18 +83,40 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<AbstractQuestionEntry> getQuestions(List<Category> categories,
+                                                    Person person,
+                                                    String questionType) {
+        if (person == null || questionType == null
+                || QuestionType.ALL.toString().equals(questionType)) {
+            return getAllQuestions(categories);
+        } else if (QuestionType.ANSWERED.toString().equals(questionType)) {
+            return getAnsweredQuestions(categories, person);
+        } else {
+            return getNotAnsweredQuestions(categories, person);
+        }
+    }
+
+    @Override
     public List<AbstractQuestionEntry> getQuestionsForQuiz(String[] categoryPaths,
                                                            Person person,
                                                            String questionType,
                                                            int count) {
-        List<AbstractQuestionEntry> result = new ArrayList<>();
+        List<AbstractQuestionEntry> result = getCategoryPaths(categoryPaths, person, questionType);
+        Collections.shuffle(result);
+        count = Math.min(result.size(), count);
+        return result.subList(0, count);
+    }
+
+    private List<AbstractQuestionEntry> getCategoryPaths(String[] categoryPaths, Person person, String questionType) {
+        List<Category> categories = new ArrayList<>();
         for (String pathName : categoryPaths) {
             Category category = categoryService.getCategory(pathName);
-            result.addAll(getQuestions(category, person, questionType));
+            categories.add(category);
+            if (category.getSubCategories() != null && !category.getSubCategories().isEmpty()) {
+                categories.addAll(category.getSubCategories());
+            }
         }
-        Collections.shuffle(result);
-        count = result.size() < count ? result.size() : count;
-        return result.subList(0, count);
+        return getQuestions(categories, person, questionType);
     }
 
     public List<AbstractQuestionEntry> getAllAbstractQuestions(Category category) {
@@ -229,12 +265,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public List<AbstractQuestionEntry> getQuestionsForExam(String[] categoryPaths, int count) {
-        List<AbstractQuestionEntry> result = new ArrayList<>();
-        for (String pathName : categoryPaths) {
-            result.addAll(questionRepository.getQuestionsForExam(pathName));
-        }
+        List<AbstractQuestionEntry> result = new ArrayList<>(questionRepository.getQuestionsForExamForBatch(Arrays.asList(categoryPaths)));
         Collections.shuffle(result);
-        count = result.size() < count ? result.size() : count;
+        count = Math.min(result.size(), count);
         return result.subList(0, count);
     }
 

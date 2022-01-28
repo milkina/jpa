@@ -1,12 +1,10 @@
 package spring.services.question;
 
 import model.AbstractQuestionEntry;
-import model.Answer;
 import model.Category;
 import model.Question;
 import model.Test;
 import model.person.Person;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -14,13 +12,23 @@ import java.util.Map;
 public interface QuestionService {
     List<AbstractQuestionEntry> getAllQuestions(Category category);
 
+    List<AbstractQuestionEntry> getAllQuestions(List<Category> categories);
+
     List<AbstractQuestionEntry> getAllTestQuestions(Category category);
 
     List<AbstractQuestionEntry> getAnsweredQuestions(Category category, Person person);
 
+    List<AbstractQuestionEntry> getAnsweredQuestions(List<Category> category, Person person);
+
     List<AbstractQuestionEntry> getNotAnsweredQuestions(Category category, Person person);
 
+    List<AbstractQuestionEntry> getNotAnsweredQuestions(List<Category> categories, Person person);
+
     List<AbstractQuestionEntry> getQuestions(Category category,
+                                             Person person,
+                                             String questionType);
+
+    List<AbstractQuestionEntry> getQuestions(List<Category> categories,
                                              Person person,
                                              String questionType);
 

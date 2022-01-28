@@ -1,4 +1,4 @@
-<script src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
    $(document).on("change", "#TEST_PATH", function() {
        $.get("${pageContext.request.contextPath}/change-course",{TEST_PATH: $("select#TEST_PATH").val()}, function(responseJson) {

@@ -18,9 +18,14 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepository extends CrudRepository<AbstractQuestionEntry, Integer> {
+
     @Query("SELECT DISTINCT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
             + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id")
     List<AbstractQuestionEntry> getAllQuestions(@Param("param") Category category);
+
+    @Query("SELECT DISTINCT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+            + "JOIN FETCH qe.category WHERE qe.category IN (:param) AND qe.approved=true ORDER BY qe.orderColumn, qe.id")
+    List<AbstractQuestionEntry> getAllQuestionsForCategories(@Param("param") List<Category> categories);
 
     @Query("SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
             + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id")
@@ -32,9 +37,19 @@ public interface QuestionRepository extends CrudRepository<AbstractQuestionEntry
     List<AbstractQuestionEntry> getAnsweredQuestions(@Param("category") Category category, @Param("person") Person person);
 
     @Query("SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+            + "JOIN FETCH qe.category WHERE qe.category IN (:category) AND qe.id IN "
+            + "(select aq.id FROM Person p JOIN p.answeredQuestions aq where p=:person) ORDER BY qe.orderColumn,qe.id")
+    List<AbstractQuestionEntry> getAnsweredQuestionsForCategories(@Param("category") List<Category> categories, @Param("person") Person person);
+
+    @Query("SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
             + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.approved=true AND qe.id NOT IN "
             + "(SELECT aq.id FROM Person p JOIN p.answeredQuestions aq WHERE p=:person) ORDER BY qe.orderColumn,qe.id")
     List<AbstractQuestionEntry> getNotAnsweredQuestions(@Param("category") Category category, @Param("person") Person person);
+
+    @Query("SELECT qe FROM QuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+            + "JOIN FETCH qe.category WHERE qe.category=:category AND qe.approved=true AND qe.id NOT IN "
+            + "(SELECT aq.id FROM Person p JOIN p.answeredQuestions aq WHERE p=:person) ORDER BY qe.orderColumn,qe.id")
+    List<AbstractQuestionEntry> getNotAnsweredQuestionsForCategories(@Param("category") List<Category> category, @Param("person") Person person);
 
     @Query("SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
             + "JOIN FETCH qe.category WHERE qe.category=:param AND qe.approved=true ORDER BY qe.orderColumn, qe.id")
@@ -56,6 +71,11 @@ public interface QuestionRepository extends CrudRepository<AbstractQuestionEntry
             + "JOIN FETCH qe.category WHERE qe.approved=true AND (qe.category.pathName=:param OR qe.category IN "
             + "(SELECT c FROM Category c WHERE c.parentCategory.pathName=:param))")
     List<TestQuestionEntry> getQuestionsForExam(@Param("param") String categoryPath);
+
+    @Query("SELECT DISTINCT qe from TestQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
+            + "JOIN FETCH qe.category WHERE qe.approved=true AND (qe.category.pathName IN (:param) OR qe.category IN "
+            + "(SELECT c FROM Category c WHERE c.parentCategory.pathName IN (:param)))")
+    List<TestQuestionEntry> getQuestionsForExamForBatch(@Param("param") List<String> categoryPath);
 
     @Query("SELECT DISTINCT qe FROM AbstractQuestionEntry qe JOIN FETCH qe.question JOIN FETCH qe.answers "
             + "JOIN FETCH qe.category WHERE qe.approved=false ORDER BY qe.orderColumn, qe.id")

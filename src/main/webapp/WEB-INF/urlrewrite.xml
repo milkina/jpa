@@ -398,12 +398,25 @@
         <from>^/ru/java/java-core-russian/klass-treeset$</from>
         <to type="permanent-redirect">/ru/java/java-core-russian/interface-sortedset</to>
     </rule>
+    <rule>
+        <from>^/java/java-core-russian/interface-comparator$</from>
+        <to type="permanent-redirect">/java/java-core-russian/interface-comparable</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/interface-comparator$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-comparable</to>
+    </rule>
+
+    <rule>
+        <from>^/ru/java/java-core-russian/klass-period.$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/klass-period</to>
+    </rule>
 
     <rule>
         <from>^/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
-    </rule
-    > <rule>
+    </rule>
+    <rule>
         <from>^/ru/java/(.*)/(.*)$</from>
         <to type="passthrough">/show-category?CATEGORY_PATH=$2&amp;TEST_PATH=$1</to>
     </rule>

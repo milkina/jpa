@@ -114,9 +114,9 @@ public class GeneralUtility {
     public void setIfModifiedSinceHeader(
             HttpServletRequest request, HttpServletResponse response,
             Person person) {
-        if (person == null) {
+       // if (person == null) {
             setIfModifiedSinceHeader(request, response);
-        }
+     //   }
     }
 
     public static Integer getIntegerValue(

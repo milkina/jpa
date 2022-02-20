@@ -7,16 +7,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import spring.services.person.PersonService;
 import util.GeneralUtility;
 import util.ServletUtilities;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.Locale;
 
 import static util.AllConstants.COOKIE_VALUE;
+import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
 import static util.AllConstantsAttribute.PERSON_ATTRIBUTE;
 import static util.AllConstantsAttribute.WRONG_LOGIN_MESSAGE_ATTRIBUTE;
 import static util.AllConstantsParam.LOGIN_PARAMETER;
@@ -38,7 +43,7 @@ public class LoginController {
     public String login(@RequestParam(LOGIN_PARAMETER) String login,
                         @RequestParam(PASSWORD_PARAMETER) String password,
                         @RequestParam(value = REMEMBER_PARAMETER, required = false) String remember,
-                        Model model, Locale locale) {
+                        Model model, Locale locale, HttpServletRequest request) {
         login = GeneralUtility.decodeRussianCharacters(login);
         password = ServletUtilities.getMD5(
                 GeneralUtility.decodeRussianCharacters(password));
@@ -60,7 +65,12 @@ public class LoginController {
             HttpSession session = GeneralUtility.getSession(true);
 
             session.setAttribute(PERSON_ATTRIBUTE, person);
-            return "redirect:" + getResourceValue(locale, "menu.home", "label");
+            GeneralUtility generalUtility = new GeneralUtility();
+            generalUtility.setIfModifiedSinceHeader(request, response, new Date().getTime());
+
+            String message = getResourceValue(locale, "user.login", "messages");
+            model.addAttribute(MESSAGE_ATTRIBUTE, message);
+            return SPRING_MESSAGE_PAGE;
         } else {
             model.addAttribute(WRONG_LOGIN_MESSAGE_ATTRIBUTE,
                     GeneralUtility.getResourceValue(locale, "wrong.login.password", "messages"));
@@ -69,7 +79,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/logout")
-    public String logout(Locale locale) {
+    public ModelAndView logout(Locale locale, HttpServletRequest request) {
         HttpSession session = GeneralUtility.getSession(true);
         session.invalidate();
         Cookie cookie = new Cookie(COOKIE_VALUE, "");
@@ -77,7 +87,13 @@ public class LoginController {
         cookie.setPath("/");
         HttpServletResponse response = GeneralUtility.getResponse();
         response.addCookie(cookie);
-        String href = getResourceValue(locale, "menu.home", "label");
-        return "redirect:" + href;
+
+        GeneralUtility generalUtility = new GeneralUtility();
+        generalUtility.setIfModifiedSinceHeader(request, response, new Date().getTime());
+
+        ModelAndView modelAndView = new ModelAndView(SPRING_MESSAGE_PAGE);
+        String message = getResourceValue(locale, "user.logout", "messages");
+        modelAndView.addObject(MESSAGE_ATTRIBUTE, message);
+        return modelAndView;
     }
 }

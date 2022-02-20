@@ -47,6 +47,7 @@ public interface AllConstants {
     String TESTS_RU_PAGE = "test/show-ru-tests";
     String QUESTIONS_PAGE = "test/show-interview-questions";
     String QUESTIONS_RU_PAGE = "test/show-ru-interview-questions";
+    String TASKS_PAGE = "tasks/practicheskie-zadachi";
     String SHOW_TEST_RESULT = "test/show-test-result";
     String ARTICLES = "ARTICLES";
     String CHANGE_PASSWORD_PAGE = "person/change-password";

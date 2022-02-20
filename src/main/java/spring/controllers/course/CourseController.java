@@ -29,6 +29,7 @@ import java.util.TreeMap;
 import static util.AllConstants.QUESTIONS_PAGE;
 import static util.AllConstants.QUESTIONS_RU_PAGE;
 import static util.AllConstants.SPRING_MESSAGE_PAGE;
+import static util.AllConstants.TASKS_PAGE;
 import static util.AllConstants.TESTS_PAGE;
 import static util.AllConstants.TESTS_RU_PAGE;
 import static util.AllConstantsAttribute.MESSAGE_ATTRIBUTE;
@@ -62,6 +63,11 @@ public class CourseController {
     @RequestMapping(value = "ru/questions")
     public String showRuQuestions() {
         return QUESTIONS_RU_PAGE;
+    }
+
+    @RequestMapping(value = {"/practicheskie-zadachi", "ru/practicheskie-zadachi"})
+    public String showTasks() {
+        return TASKS_PAGE;
     }
 
     @RequestMapping(value = "/show-add-course")
@@ -144,7 +150,7 @@ public class CourseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/show-course","{langid}/show-course"})
+    @RequestMapping(value = {"/show-course", "{langid}/show-course"})
     public String showCourse() {
         return "course/show-course";
     }

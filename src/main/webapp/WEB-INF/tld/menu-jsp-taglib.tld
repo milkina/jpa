@@ -20,6 +20,12 @@
         <info>Menu Questions Tag.</info>
     </tag>
     <tag>
+        <name>tasksTag</name>
+        <tagclass>tags.menu.MenuTaskTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <info>Menu Tasks Tag.</info>
+    </tag>
+    <tag>
         <name>articlesTag</name>
         <tagclass>tags.menu.MenuArticleTag</tagclass>
         <bodycontent>empty</bodycontent>

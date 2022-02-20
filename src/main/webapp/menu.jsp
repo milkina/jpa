@@ -74,6 +74,7 @@
              </li>
              <li class="menuItem"><a href="<menu:testsTag/>" id="tests"><spring:message code="tests"/></a></li>
              <li class="menuItem"><a href="<menu:questionsTag/>" id="questions"><spring:message code="questions.interviews"/></a></li>
+             <li class="menuItem"><a href="<menu:tasksTag/>" id="tasks"><spring:message code="menu.tasks.label"/></a></li>
              <li class="menuItem"><a href="<menu:articlesTag/>"><spring:message code="articles"/></a></li>
            </ul>
         </nav>

@@ -42,7 +42,7 @@
              <div class="col-xs-12 col-md-4">
                 <h1>Онлайн-курсы Java для начинающих</h1>
                  <c:if test="${param.param != null || person == null}">
-                   <a class="start-learning" href="${pageContext.request.contextPath}/show-login-page">Начать обучение</a>
+                   <a class="start-learning" href="${pageContext.request.contextPath}/ru/exam/java-core-russian">Начать обучение</a>
                  </c:if>
              </div>
              <div class="hidden-xs hidden-sm col-md-8 computer-img"></div>
@@ -54,12 +54,38 @@
      	     <p class="index-items-text">Решили получить современную профессию? Хотите много зарабатывать? Увлекает кодирование и создание
      	     программных продуктов? Мы предлагаем <strong>лучший курс Java Junior</strong> для тех, кто совсем не знаком с
      	     программированием.</p>
+                <h2><a href="${pageContext.request.contextPath}/ru/exam/java-core-russian">Программа базового курса по Java Core</a>:</h2>
+                <div class="lessons-list scroll-style">
+                    <c:set var="count" value="${1}"/>
+                    <c:forEach var="category" items="${TESTS['java-core-russian'].categories}">
+                        <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
+                            <div>
+                                <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}"
+                                   class="lesson-icon${count%3}"></a>
+                                <h5>${category.value.name}</h5>
+                                <c:set var="count" value="${count+1}"/>
+                                <div>${category.value.article.description}</div>
+                                <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}">Полный урок</a>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
              <p class="index-items-text">Современное образование — это получение актуальных знаний в комфортной обстановке в удобное для
              вас время. Теория подкрепляется практикой, которой уделяют максимум времени. При этом,
              уроки увлекают, побуждая узнавать все больше информации. В итоге, полученная профессия должна
              будет приносить не только удовлетворение, но и хорошую прибыль. Именно по этим концепциям была
               разработана <strong>бесплатная обучающая программа, чтобы стать
               специалистом</strong> Junior Java Developer смог каждый желающий.</p>
+              <p  class="index-items-text">Каждый урок содержит:</p>
+                <ul>
+                    <li>лекции</li>
+                    <li>видео</li>
+                    <li>домашние задания</li>
+                    <li>тесты</li>
+                    <li>вопросы по пройденным темам</li>
+                    <li>слайды</li>
+                </ul>
+                <p>Подписывайтесь на наш&nbsp;<span class="external-reference" data-link="https://www.youtube.com/c/tatyanamilkina">канал</span>&nbsp;на youtube и смотрите видео к урокам.</p>
               <h2 class="reasons">5 причин выбрать курсы Java-программирования</h2>
               <ol class="index-items-text">
               <li>Java — один из самых популярных языков программирования. Он был изобретен более 20 лет назад и останется востребованным еще долгие годы.</li>
@@ -125,23 +151,7 @@
                 <li>SoftServe</li>
             </ul>
             <p class="index-items-text">При участии в таких программах стажировки возможно даже получать стипендию. К сожалению, при отборе на программы стажировки работодатели часто набирают только студентов или молодых людей не старше 22-23 лет.</p>
-            <h4><a href="${pageContext.request.contextPath}/ru/exam/java-core-russian">Программа базового курса по Java Core</a>:</h4>
-            <div class="lessons-list scroll-style">
-               <c:set var="count" value="${1}"/>
-               <c:forEach var="category" items="${TESTS['java-core-russian'].categories}">
-                  <c:if test="${category.value.hidden==false && category.value.parentCategory==null}">
-                    <div>
-                       <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}"
-                        class="lesson-icon${count%3}"></a>
-                       <h5>${category.value.name}</h5>
-                       <c:set var="count" value="${count+1}"/>
-                       <div>${category.value.article.description}</div>
-                       <a href="${pageContext.request.contextPath}/java/java-core-russian/${category.value.pathName}">Полный урок</a>
-                    </div>
-                  </c:if>
-               </c:forEach>
-            </div>
-            <h3>3. Продвинутый курс программирования на Java</h3>
+             <h3>3. Продвинутый курс программирования на Java</h3>
             <p class="index-items-text">При успешном прохождении собеседования, в первый же день работы Вы столкнетесь с необходимостью взаимодействовать с командой программистов с использованием соответствующих инструментов для командной разработки (система контроля версий исходных кодов, инструменты планирования задач и отчетности, коммуникации с QA, заказчиком и участниками проекта). </p>
             <p class="index-items-text">Мы расскажем о таких инструментах как Git, Jira, Maven и научим ими пользоваться. Опыт работы с этими инструментами нельзя получить за один день или даже неделю. Вы же будете работать с ними на протяжении всего курса и выработаете основные навыки, ответите для себя на базовые вопросы с чего начать Java программирование.</p>
            </main>

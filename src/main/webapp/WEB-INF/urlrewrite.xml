@@ -406,6 +406,10 @@
         <from>^/ru/java/java-core-russian/interface-comparator$</from>
         <to type="permanent-redirect">/ru/java/java-core-russian/interface-comparable</to>
     </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/interface-comparable.$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-comparable</to>
+    </rule>
 
     <rule>
         <from>^/ru/java/java-core-russian/klass-period.$</from>

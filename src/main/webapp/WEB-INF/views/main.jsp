@@ -42,9 +42,6 @@
                  <div class="col-xs-12 col-md-4">
                     <h1>Free Java Tutorial</h1>
                     <h2>Start learning Java? Welcome to ExamClouds</h2>
-                     <c:if test="${param.param != null || person == null}">
-                       <a class="start-learning" href="${pageContext.request.contextPath}/show-login-page">Start Learning</a>
-                     </c:if>
                  </div>
                  <div class="hidden-xs hidden-sm col-md-8 computer-img"></div>
              </div>

@@ -410,6 +410,14 @@
         <from>^/ru/java/java-core-russian/interface-comparable.$</from>
         <to type="permanent-redirect">/ru/java/java-core-russian/interface-comparable</to>
     </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/struktura$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/struktura-pamyati</to>
+    </rule>
+    <rule>
+        <from>^/ru/java/java-core-russian/interface-sortedset.$</from>
+        <to type="permanent-redirect">/ru/java/java-core-russian/interface-sortedset</to>
+    </rule>
 
     <rule>
         <from>^/ru/java/java-core-russian/klass-period.$</from>

@@ -21,13 +21,13 @@
              <li>
                  <form method="post" action="<menu:languageRuTag/>">
                    <input type="hidden" name="lang" value="ru">
-                   <button type="submit" id="ru-flag"></button>
+                   <button type="submit"><spring:message code="language.ru"/></button>
                  </form>
              </li>
              <li>
                  <form method="post" action="<menu:languageEnTag/>">
                     <input type="hidden" name="lang" value="en">
-                    <button type="submit" id="en-flag"></button>
+                    <button type="submit"><spring:message code="language.en"/></button>
                  </form>
              </li>
            </ul>

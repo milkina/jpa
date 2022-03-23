@@ -184,55 +184,51 @@ nav>ul>li:last-child{
 }
  .flags ul li{
    display:inline-block;
+   border-bottom: 2px solid rgba(250,250,250,0.28)
  }
  .flags ul li button{
     border:none;
-    margin-left: 7px;
+    padding: 0;
     display:inline-block;
-    width: 17px;
+    width: 27px;
     height: 18px;
-    background: url('../images/general/sprites.webp')
- }
- #en-flag{
-    background-position: -161px -2px
- }
- #ru-flag{
-    background-position: -182px -2px
+    font: 700 18px proxima;
+    background-color: #a1d6f7
  }
 .logo{
    padding-top: 13px;
-   display:block;
+   display:block
 }
 .logo img{
   width:122px;
-  height:49px;
+  height:49px
 }
 .breadCrumbs{
     font: 700 17px proxima;
     color:#6b6b6b;
     display:inline-block;
-    margin:14px 0;
+    margin:14px 0
  }
  .breadCrumbs ol li{
     display:inline-block;
-    line-height:40px;
+    line-height:40px
  }
  .breadCrumbs ol li a, .breadCrumbs ol li a:visited{
     color:#6b6b6b;
     text-decoration: none;
     padding-bottom: 5px;
-    border-bottom: 2px solid rgba(107, 107, 107,0.15);
+    border-bottom: 2px solid rgba(107, 107, 107,0.15)
  }
  .breadCrumbs ol li:after{
    content:'/';
    padding: 0 5px;
-   color:#6b6b6b;
+   color:#6b6b6b
  }
  .breadCrumbs ol li:last-child:after{
-   content:'';
+   content:''
  }
 .breadCrumbs ol:last-child{
-   color:#2f3748;
+   color:#2f3748
  }
 .nav .open>a:hover{
   background:none;
